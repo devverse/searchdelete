@@ -1,0 +1,449 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "app/Controller/InsurancesController.php",
+			"settings":
+			{
+				"buffer_size": 227,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/View/Insurances/index.ctp",
+			"settings":
+			{
+				"buffer_size": 1281,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/View/Posts/index.ctp",
+			"settings":
+			{
+				"buffer_size": 1241,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/Controller/SearchController.php",
+			"settings":
+			{
+				"buffer_size": 290,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/View/test.ctp",
+			"settings":
+			{
+				"buffer_size": 40,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/Model/Post.php",
+			"settings":
+			{
+				"buffer_size": 214,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/Controller/PostsController.php",
+			"settings":
+			{
+				"buffer_size": 1978,
+				"line_ending": "Unix"
+			}
+		}
+	],
+	"build_system": "",
+	"command_palette":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"console":
+	{
+		"height": 0.0
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"file_history":
+	[
+		"/var/www/commandgeosearch/app/View/Insurances/view.ctp",
+		"/var/www/commandgeosearch/app/Model/Specialtie.php",
+		"/var/www/commandgeosearch/app/Model/Provider.php",
+		"/var/www/commandgeosearch/app/Model/Location.php",
+		"/var/www/commandgeosearch/app/Model/Language.php",
+		"/var/www/commandgeosearch/app/Model/Insurance.php",
+		"/var/www/commandgeosearch/app/Config/Schema/schema.php",
+		"/var/www/commandgeosearch/app/Config/routes.php",
+		"/var/www/commandgeosearch/app/View/Layouts/default.ctp",
+		"/var/www/commandgeosearch/app/View/Posts/edit.ctp",
+		"/var/www/commandgeosearch/app/View/Posts/add.ctp",
+		"/var/www/commandgeosearch/app/View/Posts/view.ctp",
+		"/var/www/commandgeosearch/app/View/Posts/index.ctp",
+		"/var/www/commandgeosearch/app/Controller/PostsController.php",
+		"/var/www/commandgeosearch/app/Model/Post.php",
+		"/var/www/cakephptest/.htaccess",
+		"/var/www/cakephptest/app/Controller/PostsController.php",
+		"/var/www/cakephptest/app/Model/Post.php",
+		"/var/www/cakephptest/app/Config/core.php",
+		"/var/www/cakephptest/app/Config/database.php",
+		"/var/www/cakephptest/index.php",
+		"/var/www/cakephptest/app/webroot/.htaccess",
+		"/var/www/cakephptest/app/.htaccess",
+		"/home/geoffrey/Desktop/dereksproject/untitled.sublime-project",
+		"/home/geoffrey/Desktop/dereksproject/test.js",
+		"/home/geoffrey/Desktop/setup.txt",
+		"/usr/share/applications/sublime.desktop"
+	],
+	"find":
+	{
+		"height": 35.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"$post",
+			"post",
+			"posts",
+			"Router",
+			"	//"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+			"/>\n"
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 4,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "app/Controller/InsurancesController.php",
+					"settings":
+					{
+						"buffer_size": 227,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								223,
+								223
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 51.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "app/View/Insurances/index.ctp",
+					"settings":
+					{
+						"buffer_size": 1281,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1199,
+								1199
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "app/View/Posts/index.ctp",
+					"settings":
+					{
+						"buffer_size": 1241,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								260,
+								260
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "app/Controller/SearchController.php",
+					"settings":
+					{
+						"buffer_size": 290,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								243,
+								243
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "app/View/test.ctp",
+					"settings":
+					{
+						"buffer_size": 40,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								40,
+								40
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				}
+			]
+		},
+		{
+			"selected": 1,
+			"sheets":
+			[
+				{
+					"buffer": 5,
+					"file": "app/Model/Post.php",
+					"settings":
+					{
+						"buffer_size": 214,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								202,
+								202
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 6,
+					"file": "app/Controller/PostsController.php",
+					"settings":
+					{
+						"buffer_size": 1978,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								175,
+								175
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 0.0
+	},
+	"input":
+	{
+		"height": 0.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			],
+			[
+				1,
+				0,
+				2,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			0.495726104964,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"replace":
+	{
+		"height": 0.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+			[
+				"insurances",
+				"View/Insurances/view.ctp"
+			],
+			[
+				"s",
+				"app/Config/Schema/schema.php"
+			],
+			[
+				"appconfigrou",
+				"app/Config/routes.php"
+			],
+			[
+				"edit",
+				"app/View/Posts/edit.ctp"
+			],
+			[
+				"add.c",
+				"app/View/Posts/add.ctp"
+			],
+			[
+				"appconfigcore",
+				"app/Config/core.php"
+			],
+			[
+				"app/configdat",
+				"app/Config/database.php"
+			]
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 234.0,
+	"status_bar_visible": true
+}
