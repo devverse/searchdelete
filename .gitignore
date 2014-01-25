@@ -1,3 +1,4 @@
 cakephptest.sublime-project
 cakephptest.sublime-workspace
 app/Config/database.php
+app/tmp/cache/*
