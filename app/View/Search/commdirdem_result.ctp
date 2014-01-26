@@ -134,7 +134,7 @@
 
 			<?php 
 				$count++; 
-				if($count > 35)//LIMIT ON MAPS
+				if($count > 30)//LIMIT ON MAPS
 					break;
 			} ?>
 		
