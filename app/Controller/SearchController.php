@@ -1,7 +1,7 @@
 <?php
 class SearchController extends AppController {
 	public $helpers = array('Html', 'Form','Session');
-	public $uses = array('Insurance','Language','Location','Provider','Specialtie','Client');
+	public $uses = array('AppModel','Insurance','Language','Location','Provider','Specialtie','Client');
 
 	public function index($client,$action='search') {
 		$this->autoRender = false;
@@ -17,6 +17,9 @@ class SearchController extends AppController {
 				break;
 			case 'result':
 				$this->result($client);
+				break;
+			case 'test':
+				$this->test($client);
 				break;
 			default:
 				$this->search();
@@ -75,6 +78,7 @@ class SearchController extends AppController {
 		$this->set('results', $results['providers']);
 		$this->set('locations', $results['locations']);
 		$this->set('coor', $results['coor_array']);
+
 		$this->layout = 'search';
 		$this->render($client['Client']['view_prefix_name'].'result');
 	}
@@ -87,6 +91,14 @@ class SearchController extends AppController {
 		$this->render('view1');
 	}
 
+	public function test()
+	{
+		//no code
+		Configure::write('Model.globalSource', 'centersplan');
+		$this->loadModel('Temptable');
+		//$this->Temptable->populateDB();
+		//$this->Temptable->geocodeCurrentLocations();
+	}
 }
 
 ?>
