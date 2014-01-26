@@ -185,7 +185,7 @@ class Search extends AppModel {
 			SELECT * FROM locations 
 			WHERE (longitude BETWEEN @lng_min AND @lng_max) 
 				AND (latitude BETWEEN @lat_min and @lat_max)) locations 
-		ON providers_locations.location_id = locations.id WHERE 1 = 1";
+		ON providers_locations.location_id = locations.id WHERE 1 = 1 LIMIT 100";
 
 		if(isset($filter_array['specialtie_id']) && $filter_array['specialtie_id'] != '0')
 			$sql .= " AND specialties.id = ".$filter_array['specialtie_id'];
