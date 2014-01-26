@@ -185,7 +185,7 @@ class Search extends AppModel {
 			SELECT * FROM locations 
 			WHERE (longitude BETWEEN @lng_min AND @lng_max) 
 				AND (latitude BETWEEN @lat_min and @lat_max)) locations 
-		ON providers_locations.location_id = locations.id WHERE 1 = 1 LIMIT 100";
+		ON providers_locations.location_id = locations.id WHERE 1 = 1 ";
 
 		if(isset($filter_array['specialtie_id']) && $filter_array['specialtie_id'] != '0')
 			$sql .= " AND specialties.id = ".$filter_array['specialtie_id'];
@@ -202,7 +202,7 @@ class Search extends AppModel {
 		// 	$sql .= " AND locations.wheelchair_accessible = 1";
 		// if(isset($filter_array['location_id']) && $filter_array['location_id'] != '0')
 		// 	$sql .= " AND locations.id = ".$filter_array['location_id'];
-
+		$sql .= ' LIMIT 100 ';
 		return $this->query($sql,false);
 	}
 
