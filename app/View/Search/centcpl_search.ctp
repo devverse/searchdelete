@@ -1,4 +1,15 @@
-<!-- File: /app/View/Search/search1.ctp -->
+<!-- File: /app/View/Search/centcpl_search.ctp -->
+<script type="text/javascript">
+	$('body').css({
+		"background-image": "url(http://www.centersplan.com/wp-content/themes/cp/img/bg.png)",
+		"font-family": 'Open Sans,Lucida Grande,sans-serif',
+		"line-height": 1.6,
+		"margin": 0,
+		"padding": 0
+    });
+   
+   </script>
+
 
     <div class="container theme-showcase">
 
@@ -7,7 +18,17 @@
 
 
       <div class="page-header">
-        <h1>Search Form</h1>
+        <h1 style="border: medium none;
+color: #359CDA;
+font-family: Open Sans,Helvetica Neue,Arial,Sans Serif;
+font-size: 24px;
+letter-spacing: 0.02em;
+margin-bottom: 15px;
+margin-top: 0;
+padding-bottom: 0;
+padding-left: 15px;
+padding-right: 15px;
+text-shadow: 0 1px 1px #CCCCCC;">Search Form</h1>
       </div>
    
    
@@ -17,7 +38,17 @@
 <fieldset>
 
 <!-- Form Name -->
-<legend>Search Our Provider Directories</legend>
+<legend  style="border: medium none;
+color: #359CDA;
+font-family: Open Sans,Helvetica Neue,Arial,Sans Serif;
+font-size: 24px;
+letter-spacing: 0.02em;
+margin-bottom: 15px;
+margin-top: 0;
+padding-bottom: 0;
+padding-left: 15px;
+padding-right: 15px;
+text-shadow: 0 1px 1px #CCCCCC;">Search Our Provider Directories</legend>
 
 <!-- Select Basic -->
 <div class="form-group">

@@ -1,9 +1,43 @@
+
+<script type="text/javascript">
+	$('body').css({
+		"background-image": "url(http://www.centersplan.com/wp-content/themes/cp/img/bg.png)",
+		"font-family": 'Open Sans,Lucida Grande,sans-serif',
+		"line-height": 1.6,
+		"margin": 0,
+		"padding": 0
+    });
+   
+   </script>
+
 <div class="container">
+<div class="page-header">
+<h1 style="border: medium none;
+color: #359CDA;
+font-family: Open Sans,Helvetica Neue,Arial,Sans Serif;
+font-size: 24px;
+letter-spacing: 0.02em;
+margin-top: 0;
+padding-bottom: 0;
+padding-left: 15px;
+padding-right: 15px;
+text-shadow: 0 1px 1px #CCCCCC;">Search Form</h1>
+</div>
 <div id="map_canvas" style="height: 400px; position: relative; background-color: rgb(229, 227, 223); overflow: hidden;"></div>
 
 <div class="row"><div class="col-md-12">
 <table id="searchResults">
-<tr>
+<tr style="border: medium none;
+color: #359CDA;
+font-family: Open Sans,Helvetica Neue,Arial,Sans Serif;
+font-size: 14px;
+letter-spacing: 0.02em;
+margin-bottom: 5px;
+margin-top: 0;
+padding-bottom: 0;
+padding-left: 5px;
+padding-right: 5px;
+text-shadow: 0 1px 1px #CCCCCC;">
 <td width="13%"><strong>Name</strong></td>
 <td width="13%"><strong>Gender</strong></td>
 <td width="13%"><strong>Specialty</strong></td>
