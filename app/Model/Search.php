@@ -151,7 +151,6 @@ class Search extends AppModel {
 
 	public function searchByRadius($coor_array,$distance,$filter_array)
 	{
-		$this->query( "set SQL_BIG_SELECTS=1;",false);
 		$this->query( "set @latitude=".$coor_array['lat'].";",false);
 		$this->query( "set @longitude=".$coor_array['long'].";",false);
 		$this->query( "set @radius=".$distance.";",false);
@@ -159,7 +158,8 @@ class Search extends AppModel {
 		$this->query(  "set @lng_max = @longitude + @radius/abs(cos(radians(@latitude))*69.444);",false);
 		$this->query(  "set @lat_min = @latitude - (@radius/69.444);",false);
 		$this->query(  "set @lat_max = @latitude + (@radius/69.444);",false);
-	
+		$this->query( "set SQL_BIG_SELECTS=1;",false);
+
 		$insur_sel = false ? 'insurances.name ' : "'TBD' as insurances.name ";
 		$sql = "SELECT providers.* , locations.*, insurances.name, languages.name, specialties.name from providers 
 		JOIN providers_specialties
