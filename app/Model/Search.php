@@ -151,6 +151,7 @@ class Search extends AppModel {
 
 	public function searchByRadius($coor_array,$distance,$filter_array)
 	{
+		$this->query( "set SQL_BIG_SELECTS=1;",false);
 		$this->query( "set @latitude=".$coor_array['lat'].";",false);
 		$this->query( "set @longitude=".$coor_array['long'].";",false);
 		$this->query( "set @radius=".$distance.";",false);
