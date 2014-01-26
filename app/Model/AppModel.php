@@ -32,4 +32,20 @@ App::uses('Model', 'Model');
  * @package       app.Model
  */
 class AppModel extends Model {
+
+	/**
+	 * Overwrite method to change dbconfg source on the fly
+	 * Use Configure::write('Model.globalSource', 'config_name')
+	 *  before model call
+	 */
+	public function getDataSource()
+    {
+        $source = Configure::read('Model.globalSource');
+        if($source !== null && $source !== $this->useDbConfig)
+        {
+            $this->setDataSource($source);
+        }
+
+        return parent::getDataSource();
+    }
 }
