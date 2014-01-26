@@ -78,7 +78,7 @@ class SearchController extends AppController {
 		$this->set('results', $results['providers']);
 		$this->set('locations', $results['locations']);
 		$this->set('coor', $results['coor_array']);
-
+		
 		$this->layout = 'search';
 		$this->render($client['Client']['view_prefix_name'].'result');
 	}

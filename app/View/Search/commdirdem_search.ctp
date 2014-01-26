@@ -47,6 +47,7 @@
   <label class="col-md-4 control-label" for="textinput">Distance</label>  
   <div class="col-md-2">
   <select id="distance" name="distance" class="form-control">
+    <option value="1">1 Miles</option>
   	 <option value="5">5 Miles</option>
       <option value="10">10 Miles</option>
       <option value="20">20 Miles</option>

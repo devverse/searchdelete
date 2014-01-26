@@ -132,7 +132,11 @@
 				infowindow_<?php echo $count; ?>.close(map,marker_<?php echo $count; ?>);
 			}));
 
-			<?php $count++; } ?>
+			<?php 
+				$count++; 
+				if($count > 100)//LIMIT ON MAPS
+					break;
+			} ?>
 		
 		 }
 	});

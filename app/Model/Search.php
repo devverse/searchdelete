@@ -150,8 +150,7 @@ class Search extends AppModel {
 	}
 
 	public function searchByRadius($coor_array,$distance,$filter_array)
-	{var_dump($coor_array);
-		//var_dump($filter_array);exit;
+	{
 		$this->query( "set @latitude=".$coor_array['lat'].";",false);
 		$this->query( "set @longitude=".$coor_array['long'].";",false);
 		$this->query( "set @radius=".$distance.";",false);
@@ -159,38 +158,23 @@ class Search extends AppModel {
 		$this->query(  "set @lng_max = @longitude + @radius/abs(cos(radians(@latitude))*69.444);",false);
 		$this->query(  "set @lat_min = @latitude - (@radius/69.444);",false);
 		$this->query(  "set @lat_max = @latitude + (@radius/69.444);",false);
-// set @latitude=40.7464969;
-// set @longitude=-74.0094471;
-// set @radius=6;
-// set @lng_min = @longitude - @radius/abs(cos(radians(@latitude))*69.444)
-// set @lng_max = @longitude + @radius/abs(cos(radians(@latitude))*69.444)
-// set @lat_min = @latitude - (@radius/69.444)
-// set @lat_max = @latitude + (@radius/69.444)
-// 		set @latitude=40.7464969;
-// set @longitude=-74.0094471;
-// set @radius=6;
-// set @lng_min = @longitude - @radius/abs(cos(radians(@latitude))*69.444);
-// set @lng_max = @longitude + @radius/abs(cos(radians(@latitude))*69.444);
-// set @lat_min = @latitude - (@radius/69.444);
-// set @lat_max = @latitude + (@radius/69.444);
-// SELECT providers.* , locations.*, insurances.name, languages.name, specialties.name from providers 
-// JOIN providers_specialties ON providers.id = providers_specialties.provider_id 
-// JOIN specialties ON specialties.id = providers_specialties.specialtie_id 
-// JOIN providers_insurances ON providers.id = providers_insurances.provider_id 
-// JOIN insurances ON insurances.id = providers_insurances.insurance_id 
-// JOIN providers_languages ON providers.id = providers_languages.provider_id 
-// JOIN languages ON languages.id = providers_languages.language_id JOIN providers_locations ON providers.id = providers_locations.provider_id 
-// JOIN ( SELECT * FROM locations WHERE (longitude BETWEEN @lng_min AND @lng_max) AND (latitude BETWEEN @lat_min and @lat_max)) locations ON providers_locations.location_id = locations.id WHERE 1 = 1;
+	
+		$insur_sel = false ? 'insurances.name ' : "'TBD' as insurances.name ";
 		$sql = "SELECT providers.* , locations.*, insurances.name, languages.name, specialties.name from providers 
 		JOIN providers_specialties
 		ON providers.id = providers_specialties.provider_id
 		JOIN specialties 
 		ON specialties.id = providers_specialties.specialtie_id
-		LEFT JOIN providers_insurances 
-		ON providers.id = providers_insurances.provider_id
-		LEFT JOIN insurances 
-		ON insurances.id = providers_insurances.insurance_id
-		JOIN providers_languages 
+		";
+		if($filter_array['insurance_id'] != '0')
+			$sql .=" LEFT JOIN providers_insurances 
+			ON providers.id = providers_insurances.provider_id
+			LEFT JOIN insurances 
+			ON insurances.id = providers_insurances.insurance_id ";
+		else
+			$sql .= " JOIN (select 'N/A' as name ) insurances ON 1=1 ";
+
+		$sql .= " JOIN providers_languages 
 		ON providers.id = providers_languages.provider_id
 		JOIN languages 
 		ON languages.id = providers_languages.language_id
@@ -212,8 +196,6 @@ class Search extends AppModel {
 			$sql .= " AND locations.id = ".$filter_array['location_id'];
 		if(isset($filter_array['gender']) && $filter_array['gender'] != '0')
 			$sql .= " AND providers.g = '".$filter_array['gender']."'";
-
-echo $sql;
 
 		// if(isset($filter_array['wheelchairaccessible']))
 		// 	$sql .= " AND locations.wheelchair_accessible = 1";
