@@ -168,7 +168,7 @@ text-shadow: 0 1px 1px #CCCCCC;">
 
 			<?php 
 				$count++; 
-				if($count > 35)//LIMIT ON MAPS
+				if($count > 25)//LIMIT ON MAPS
 					break;
 			} ?>
 		
