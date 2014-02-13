@@ -20,7 +20,7 @@
 <!-- Result Information START-->
 <tr>
 	<td>
-		<div class="name"><strong>Dr. <?php echo $result['name'];?></strong></div><div class="title"><?php echo $result['title'];?></div>
+		<div class="name"><strong><?php echo $result['name'];?></div><div class="title"><?php echo $result['title'];?></strong></div>
 	</td>
 	<td>
 		<div class="gender"><?php echo $result['g'] == 'M'?'Male':'Female';?></div>

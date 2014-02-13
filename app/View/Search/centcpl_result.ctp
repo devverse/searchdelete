@@ -12,38 +12,18 @@
 
 <div class="container">
 <div class="page-header">
-<h1 style="border: medium none;
-color: #359CDA;
-font-family: Open Sans,Helvetica Neue,Arial,Sans Serif;
-font-size: 24px;
-letter-spacing: 0.02em;
-margin-top: 0;
-padding-bottom: 0;
-padding-left: 15px;
-padding-right: 15px;
-text-shadow: 0 1px 1px #CCCCCC;">Search Form</h1>
+<h1>Search Form</h1>
 </div>
 <div id="map_canvas" style="height: 400px; position: relative; background-color: rgb(229, 227, 223); overflow: hidden;"></div>
 
 <div class="row"><div class="col-md-12">
 <table id="searchResults">
-<tr style="border: medium none;
-color: #359CDA;
-font-family: Open Sans,Helvetica Neue,Arial,Sans Serif;
-font-size: 14px;
-letter-spacing: 0.02em;
-margin-bottom: 5px;
-margin-top: 0;
-padding-bottom: 0;
-padding-left: 5px;
-padding-right: 5px;
-text-shadow: 0 1px 1px #CCCCCC;">
+<tr>
 <td width="13%"><strong>Name</strong></td>
 <td width="13%"><strong>Gender</strong></td>
 <td width="13%"><strong>Specialty</strong></td>
 <td width="13%"><strong>Language</strong></td>
 <td width="13%"><strong>Insurance</strong></td>
-<td width="13%"><strong>Info</strong></td>
 <td width="22%"><strong>Hospital Affiliation</strong></td>
 </tr>
 <?php
@@ -54,13 +34,14 @@ text-shadow: 0 1px 1px #CCCCCC;">
 <!-- Result Information START-->
 <tr>
 	<td>
-		<div class="name"><strong>Dr. <?php echo $result['name'];?></strong></div><div class="title"><?php echo $result['title'];?></div>
+		<div class="name"><strong>Dr. <?php echo $result['name'];?></div><div class="title"><?php echo $result['title'];?></strong></div>
 	</td>
 	<td>
 		<div class="gender"><?php echo $result['g'] == 'M'?'Male':'Female';?></div>
 	</td>
 	<td>
 		<?php echo implode(', ', $result['specialties']);?>
+		<div class="boardCertified"><?php echo $result['board_certified'] == 1 ? 'Board Certified' : 'Non Board Certified';?></div>
 	</td>
 	<td>
 		<?php echo implode(', ', $result['languages']);?>
@@ -68,11 +49,7 @@ text-shadow: 0 1px 1px #CCCCCC;">
 	<td>
 		<?php echo implode(', ', $result['insurances']);?>
 	</td>
-	<td>
-		<div class="phone"><?php echo $result['phone'];?></div>
-		<div class="website"><?php echo $result['website'];?></div>
-		<div class="boardCertified"><?php echo $result['board_certified'] == 1 ? 'Board Certified' : 'Non Board Certified';?></div>
-	</td>
+	
 	<td>
 		<?php foreach($result['locations'] as $ploc){ ?>
 			<div class="location-div">
@@ -106,6 +83,7 @@ text-shadow: 0 1px 1px #CCCCCC;">
 				<div class="location-wheelchair">
 					<?php echo $ploc['wheelchair_accessible'] == '1'?'* Wheel Chair Accesible':''; ?>
 				</div>
+				<div class="website"><?php echo $result['website'];?></div>
 			<div>
 		<?php } ?>
 	<td>

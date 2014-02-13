@@ -26,8 +26,6 @@ letter-spacing: 0.02em;
 margin-bottom: 15px;
 margin-top: 0;
 padding-bottom: 0;
-padding-left: 15px;
-padding-right: 15px;
 text-shadow: 0 1px 1px #CCCCCC;">Search Form</h1>
       </div>
    
@@ -46,8 +44,6 @@ letter-spacing: 0.02em;
 margin-bottom: 15px;
 margin-top: 0;
 padding-bottom: 0;
-padding-left: 15px;
-padding-right: 15px;
 text-shadow: 0 1px 1px #CCCCCC;">Search Our Provider Directories</legend>
 
 <!-- Select Basic -->
