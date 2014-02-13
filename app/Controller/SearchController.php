@@ -18,8 +18,8 @@ class SearchController extends AppController {
 			case 'result':
 				$this->result($client);
 				break;
-			case 'test':
-				$this->test($client);
+			case 'scrub':
+				$this->scrub($client);
 				break;
 			default:
 				$this->search();
@@ -91,7 +91,7 @@ class SearchController extends AppController {
 		$this->render('view1');
 	}
 
-	public function test()
+	public function scrub()
 	{
 		//no code
 		Configure::write('Model.globalSource', 'centersplan');
