@@ -44,6 +44,8 @@ class SearchController extends AppController {
 		$this->set('locations', $locations);
 		$this->set('providers', $providers);
 		$this->set('specialties', $specialties);
+		$this->set('title', 'Search Directory for '.ucfirst($client['Client']['name']));
+		$this->set('asset_folder', $client['Client']['asset_folder_name']);
 
 		$this->set('client_name', $client['Client']['name']);
 		$this->layout = 'search';
@@ -78,8 +80,10 @@ class SearchController extends AppController {
 		$this->set('results', $results['providers']);
 		$this->set('locations', $results['locations']);
 		$this->set('coor', $results['coor_array']);
-		
-		$this->layout = 'search';
+		$this->set('title', 'Search Results for '.ucfirst($client['Client']['name']));
+		$this->set('asset_folder', $client['Client']['asset_folder_name']);
+
+		$this->layout = 'result';
 		$this->render($client['Client']['view_prefix_name'].'result');
 	}
 
