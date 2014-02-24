@@ -4,13 +4,13 @@
 <div class="row"><div class="col-md-12">
 <table id="searchResults">
 <tr>
-<td width="13%"><strong>Name</strong></td>
-<td width="13%"><strong>Gender</strong></td>
-<td width="13%"><strong>Specialty</strong></td>
-<td width="13%"><strong>Language</strong></td>
-<td width="13%"><strong>Insurance</strong></td>
-<td width="13%"><strong>Info</strong></td>
-<td width="22%"><strong>Hospital Affiliation</strong></td>
+<td width="15%"><strong>Name</strong></td>
+<td width="10%"><strong>Gender</strong></td>
+<td width="10%"><strong>Specialty</strong></td>
+<td width="10%"><strong>Language</strong></td>
+<td width="15%"><strong>Insurance</strong></td>
+<td width="15%"><strong>Info</strong></td>
+<td width="30%"><strong>Hospital Affiliation</strong></td>
 </tr>
 <?php
 	foreach($results as $result)
@@ -20,7 +20,7 @@
 <!-- Result Information START-->
 <tr>
 	<td>
-		<div class="name"><strong>Dr. <?php echo $result['name'];?></strong></div><div class="title"><?php echo $result['title'];?></div>
+		<div class="name"><strong>Dr. <?php echo $result['name'];?><?php echo $result['title'];?></strong></div>
 	</td>
 	<td>
 		<div class="gender"><?php echo $result['g'] == 'M'?'Male':'Female';?></div>
