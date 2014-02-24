@@ -1,9 +1,10 @@
+.container {width: 850px} /* Overwrite bootstrap style */
+
 .searchContainer { width: 820px}
 .page-header h1 {padding: 0}
 .theme-dropdown .dropdown-menu {  display: block;  position: static;  margin-bottom: 20px;}
 .theme-showcase > p > .btn {  margin: 5px 0;}
 table#searchResults tr td {    vertical-align: top; font-size: 12px !important; padding-bottom: 10px}
 table#searchResults td strong{  color: #359CDA;}
-
 table#searchResults { font-size: 12px}
 .message {padding-left: 20px}
