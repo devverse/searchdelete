@@ -19,12 +19,12 @@
 <div class="row"><div class="col-md-12">
 <table id="searchResults">
 <tr>
-<td width="13%"><strong>Name</strong></td>
-<td width="13%"><strong>Gender</strong></td>
-<td width="13%"><strong>Specialty</strong></td>
-<td width="13%"><strong>Language</strong></td>
-<td width="13%"><strong>Insurance</strong></td>
-<td width="22%"><strong>Hospital Affiliation</strong></td>
+<td width="25%"><strong>Name</strong></td>
+<td width="10%"><strong>Gender</strong></td>
+<td width="10%"><strong>Specialty</strong></td>
+<td width="10%"><strong>Language</strong></td>
+<td width="10%"><strong>Insurance</strong></td>
+<td width="35%"><strong>Hospital Affiliation</strong></td>
 </tr>
 <?php
 	foreach($results as $result)
@@ -34,7 +34,7 @@
 <!-- Result Information START-->
 <tr>
 	<td>
-		<div class="name"><strong>Dr. <?php echo $result['name'];?></div><div class="title"><?php echo $result['title'];?></strong></div>
+		<div class="name"><strong>Dr. <?php echo $result['name'];?></div><div class="drtitle"><?php echo $result['title'];?></strong></div>
 	</td>
 	<td>
 		<div class="gender"><?php echo $result['g'] == 'M'?'Male':'Female';?></div>
