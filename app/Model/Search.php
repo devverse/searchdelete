@@ -47,6 +47,10 @@ class Search extends AppModel {
 				'rule' => 'numeric',
 				'required' => true
 			),
+			'start'  => array(
+				'rule' => 'numeric',
+				'required' => false
+			),
 	);
 	
 
@@ -60,11 +64,12 @@ class Search extends AppModel {
 	{
 		return $this->query("SELECT * FROM posts ",false);
 	}
-	public function getResults($zip,$distance,$filter_array = array())
+	public function getResults($zip,$distance,$start = 1,$filter_array = array())
 	{
+		$limit = 25;
 		$coor_array = $this->getCoordinatesFromZip($zip);
 	
-		$radius_results = $this->searchByRadius($coor_array,$distance,$filter_array);
+		$radius_results = $this->searchByRadius($coor_array,$distance,$start,$limit,$filter_array);
 
 		$location_results = $this->formatLocations($radius_results);
 		$provider_results = $this->formatProviders($radius_results);
@@ -149,7 +154,7 @@ class Search extends AppModel {
 		return array('lat'=>$lat,'long'=>$long);	
 	}
 
-	public function searchByRadius($coor_array,$distance,$filter_array)
+	public function searchByRadius($coor_array,$distance,$start,$limit,$filter_array)
 	{
 		$this->query( "set @latitude=".$coor_array['lat'].";",false);
 		$this->query( "set @longitude=".$coor_array['long'].";",false);
@@ -202,7 +207,7 @@ class Search extends AppModel {
 		// 	$sql .= " AND locations.wheelchair_accessible = 1";
 		// if(isset($filter_array['location_id']) && $filter_array['location_id'] != '0')
 		// 	$sql .= " AND locations.id = ".$filter_array['location_id'];
-		$sql .= ' LIMIT 100 ';
+		$sql .= ' LIMIT '.$start.' , '.$limit ;
 		return $this->query($sql,false);
 	}
 

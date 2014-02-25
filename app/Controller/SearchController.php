@@ -57,10 +57,12 @@ class SearchController extends AppController {
 		Configure::write('Model.globalSource', $client['Client']['cake_db_config']);
 		$this->loadModel('Search');
 		$request_data = $this->request->data;
+		$request_data['start'] = isset($request_data['start']) && $request_data['start']>=0 ? $request_data['start']:0;
 		$this->Search->set($request_data);
+
 		if($this->Search->validates())
 		{
-			$results = $this->Search->getResults($request_data['zipcode'],$request_data['distance'],$request_data);
+			$results = $this->Search->getResults($request_data['zipcode'],$request_data['distance'],$request_data['start'],$request_data);
 		}
 		else
 		{
@@ -76,6 +78,7 @@ class SearchController extends AppController {
 		}
 
 		$this->autoRender = false;
+		$this->set('client_name', $client['Client']['name']);
 		$this->set('srch_filter',$request_data);
 		$this->set('results', $results['providers']);
 		$this->set('locations', $results['locations']);

@@ -27,6 +27,7 @@
 <td width="22%"><strong>Hospital Affiliation</strong></td>
 </tr>
 <?php
+	$count = 0;
 	foreach($results as $result)
 	{
 ?>
@@ -85,6 +86,7 @@
 				</div>
 				<div class="website"><?php echo $result['website'];?></div>
 			<div>
+		<?php $count++; ?>
 		<?php } ?>
 	<td>
 	</td>
@@ -96,6 +98,40 @@
 
 </table>
 </div>
+</div>
+
+<div>
+	<form id="nextresult" class="form-horizontal" action="../<?php echo $client_name?>/result" method="post">
+	<?php
+	foreach($srch_filter as $name=>$value)
+	{
+		if($name == 'start')
+			continue;
+		echo "<input type='hidden' name='{$name}' value='{$value}'>";
+	}
+	?>
+	<span>
+		<?php if($srch_filter['start']!=0){?>
+			<a href="javascript:void(0);" onclick="submitsearch('prev')">&lt;&lt; Previous</a>
+		<?php } ?>
+			&nbsp;&nbsp;
+		<?php if($count>=24){?>
+			<a href="javascript:void(0);" onclick="submitsearch('next')">Next &gt;&gt;</a>	</span>
+		<?php } ?>
+	</form>
+	<script type="text/javascript">
+	function submitsearch(type){
+		var form = $('#nextresult');
+		<?php 
+			echo isset($srch_filter['start']) ? "var start = {$srch_filter['start']};" : "var start = 0;";
+		?>
+		if(type == 'prev')
+			start -= 25
+		else
+			start += 25
+		form.append("<input type='hidden' name='start' value='"+start+"'/>");
+		form.submit();
+	}</script>
 </div>
 
 <div class="row">
@@ -129,11 +165,11 @@
 			marker_<?php echo $count; ?> = new google.maps.Marker({
 					position: new google.maps.LatLng(<?php echo $location["latitude"];?>, <?php echo $location["longitude"];?>),
 					map: map,
-					title:'<?php echo $location["name"];?>'
+					title:"<?php echo  $location['name'];?>"
 				});
 				
 			infowindow_<?php echo $count; ?> = new google.maps.InfoWindow(
-			  { content: '<b><?php echo $location["name"];?></b><br /><?php echo $location["address1"];?><br /><?php echo $location["city"];?>, <?php echo $location["state"];?> <?php echo $location["zipcode"];?><br/>Phone: <?php echo $location["phone"];?>',
+			  { content: "<b><?php echo $location['name'];?></b><br /><?php echo $location['address1'];?><br /><?php echo $location["city"];?>, <?php echo $location['state'];?> <?php echo $location['zipcode'];?><br/>Phone: <?php echo $location['phone'];?>",
 				size: new google.maps.Size(50,50)
 			  });
 
