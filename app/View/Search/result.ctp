@@ -4,13 +4,13 @@
 <div class="row"><div class="col-md-12">
 <table id="searchResults">
 <tr>
-<td width="15%"><strong>Name</strong></td>
-<td width="10%"><strong>Gender</strong></td>
-<td width="10%"><strong>Specialty</strong></td>
-<td width="10%"><strong>Language</strong></td>
-<td width="15%"><strong>Insurance</strong></td>
-<td width="15%"><strong>Info</strong></td>
-<td width="30%"><strong>Hospital Affiliation</strong></td>
+<th width="15%"><strong>Name</strong></th>
+<th width="10%"><strong>Gender</strong></th>
+<th width="10%"><strong>Specialty</strong></th>
+<th width="10%"><strong>Language</strong></th>
+<th width="15%"><strong>Insurance</strong></th>
+<th width="15%"><strong>Info</strong></th>
+<th width="30%"><strong>Hospital Affiliation</strong></th>
 </tr>
 <?php
 	foreach($results as $result)
