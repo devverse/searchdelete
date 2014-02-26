@@ -8,3 +8,16 @@ table#searchResults tr td {    vertical-align: top; font-size: 12px !important; 
 table#searchResults td strong{  color: #359CDA;}
 table#searchResults { font-size: 12px}
 .message {padding-left: 20px}
+
+
+/* Result Table Styles */
+#searchResults th {
+    background: none repeat scroll 0 0 #3BACED;
+    color: #FFFFFF;
+    padding: 5px 0 5px 5px;
+}
+#searchResults td {
+    padding: 5px;
+}
+
+tr:nth-of-type(even) { background-color: #c4c4c4; }

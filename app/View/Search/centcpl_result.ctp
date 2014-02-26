@@ -86,7 +86,6 @@
 				<div class="website"><?php echo $result['website'];?></div>
 			<div>
 		<?php } ?>
-	<td>
 	</td>
 </tr>
 <!-- Result Information END-->
