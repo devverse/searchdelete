@@ -1,7 +1,7 @@
 <?php
 class DashboardController extends AppController {
 	public $helpers = array('Html', 'Form','Session');
-	public $uses = array('AppModel','Insurance','Language','Location','Provider','Specialtie','Client','User');
+	public $uses = array('AppModel','Insurance','Language','Location','Provider','Specialtie','Client','User','Dashboard');
 	public $autoRender = false;
 
 	public function beforeFilter()
@@ -14,7 +14,7 @@ class DashboardController extends AppController {
 
 		$diff = $this->Session->read('Config.time') - $this->Session->read('Logintime');
 
-		if($this->Session->read('Logintime') && $diff > 360 && !in_array($this->action, array('login','logout','authenticate')))
+		if($this->Session->read('Logintime') && $diff > 1000 && !in_array($this->action, array('login','logout','authenticate')))
 		{
 			$this->Session->destroy();
 			$this->Session->setFlash('Session Expired', 'default', array(), 'err_msg');
@@ -31,9 +31,15 @@ class DashboardController extends AppController {
 				$this->render('dashboard_admin');
 				break;
 			case 1:
+				Configure::write('Model.globalSource', $this->Session->read('client_db'));
+				$links = $this->Dashboard->getFilters($this->Session->read('client_db'));
+				$this->set('links',$links);
 				$this->render('dashboard_client');
 				break;
 			default:
+				Configure::write('Model.globalSource', $this->Session->read('client_db'));
+				$links = $this->Dashboard->getFilters($this->Session->read('client_db'));
+				$this->set('links',$links);
 				$this->render('dashboard_client');
 				break;
 		}
@@ -66,11 +72,14 @@ class DashboardController extends AppController {
 		$password = $pswdHsh->hash($this->request->data['username']);
 		$username = $this->request->data['password'];
 		$user = $this->User->findByUsernameAndPassword($username,$password);
-
+		
 		if (isset($user['User'])) {
 			unset($user['User']['password']);
 			$this->Session->write('User', $user['User']);
 			$this->Session->write('Logintime', $this->Session->read('Config.time'));
+			$user_client = $this->Client->findById($user['User']['client_id']);
+
+			$this->Session->write('client_db', $user_client['Client']['cake_db_config']);
 			return $this->redirect('index');
 		}
 		
@@ -86,28 +95,58 @@ class DashboardController extends AppController {
 		$this->render('logout');
 	}
 
-	public function provider()
-	{
-		echo 'provider';
+	public function a($table='',$action='',$param=null)
+	{	
+		Configure::write('Model.globalSource', $this->Session->read('client_db'));
+		$this->set('table',$table);
+		$model_name = $table;
+
+		$this->layout = 'dashboard';
+		switch ($action) {
+			case 'add':
+				$this->_actionpath($action,$param);
+				break;
+			case 'edit':
+				$this->_actionpath($action,$param);
+				break;
+			case 'delete':
+				$this->_actionpath($action,$param);
+				break;
+			default:
+				if(in_array($table, $this->Dashboard->getFilters($this->Session->read('client_db'))))	
+				{
+					$request_data = $this->request->data;
+					$start_index = (isset($request_data['pg_index']) && $request_data['pg_index'] > 1)?$request_data['pg_index']:1;
+					$list_lim = 25;
+					$records = $this->Dashboard->getFilterRecord($model_name,$start_index,$list_lim);
+					
+					$this->set('record_keys',$this->Dashboard->getRecordFields($records));
+					$this->set('prev_index',$start_index - 25);
+					$this->set('next_index',$start_index + 25);
+					$this->set('records',$records);
+					$this->render('dashboard_view');
+				}
+				break;
+		}
 	}
 
-	public function location()
+	private function _actionpath($action,$param)
 	{
-		echo 'location';
-	}
-	public function specialty()
-	{
-		echo 'specialty';
+		if($action == 'delete')
+		{
+		var_dump($param);
+			echo 'del';
+		}
+		elseif (isset($param['id'])) {
+			echo 'edit';
+		}
+		else{
+			echo 'add';
+		}
 	}
 
-	public function insurance()
+	private function _handler()
 	{
-		echo 'insurance';
-	}
-
-	public function language()
-	{
-		echo 'language';
 	}
 }
 
