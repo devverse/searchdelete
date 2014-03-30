@@ -4,11 +4,23 @@
 	});
 
 </script>
-<a href='./provider/add'>Add</a>
+<form>
+<?php 
+		
+		foreach ($record_keys as $rkey)
+		{
+			if($rkey == 'id')
+				continue;
+			echo $rkey;
+			echo "<input type='text' name='{$rkey}'>";
+		} 
+	?>
+<input type="submit" value="Add Record"/>
+</form>
 
 <br/>
 
-<form id="nextresult" class="form-horizontal" action="./provider/view" method="post"></form>
+<form id="nextresult" class="form-horizontal" action="./providers/view" method="post"></form>
 <a href='javascript:void(0);' onclick='submintview(<?=$prev_index?>)'>&lt;&lt; Previous</a>
 <a href='javascript:void(0);' onclick='submintview(<?=$next_index?>)'>Next &gt;&gt;</a>
 

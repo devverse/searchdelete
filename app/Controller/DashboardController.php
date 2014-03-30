@@ -120,7 +120,7 @@ class DashboardController extends AppController {
 					$list_lim = 25;
 					$records = $this->Dashboard->getFilterRecord($model_name,$start_index,$list_lim);
 					
-					$this->set('record_keys',$this->Dashboard->getRecordFields($records));
+					$this->set('record_keys',$this->Dashboard->getRecordFields($records,$table));
 					$this->set('prev_index',$start_index - 25);
 					$this->set('next_index',$start_index + 25);
 					$this->set('records',$records);

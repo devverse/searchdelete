@@ -35,17 +35,25 @@ class Dashboard extends AppModel {
 	 	return $scrubed_records;
 	}
 
-	public function getRecordFields($records)
+	public function getRecordFields($records,$table)
 	{
+		$fields = array();
 		//instead of array_key
 		if(!isset($records[0]))
-			return array();
-		$fields = array();
-		foreach($records[0] as $key=>$v)
 		{
-			$fields[] = $key;
+			$sql = "Show fields from {$table}";
+			$result_fields = $this->query($sql,false);
+			foreach ($result_fields as $value) {
+				$fields[]=$value['COLUMNS']['Field'];
+			}
 		}
-
+		else
+		{
+			foreach($records[0] as $key=>$v)
+			{
+				$fields[] = $key;
+			}
+		}
 		return $fields;
 	}
 }
