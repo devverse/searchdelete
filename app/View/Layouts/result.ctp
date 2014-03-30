@@ -12,6 +12,7 @@
     <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
     <script src="/commandgeosearch/dist/js/bootstrap.min.js"></script>
     <script src="/commandgeosearch/docs-assets/js/holder.js"></script>
+    <script src="/commandgeosearch/dist/js/jquery.tablesorter.js"></script>
     <title><?php echo $title; ?></title>
 
     <!-- Bootstrap core CSS -->
@@ -20,6 +21,7 @@
     <link href="/commandgeosearch/dist/css/bootstrap-theme.min.css" rel="stylesheet">
 
     <!-- Custom styles for this template -->
+    <link href="/commandgeosearch/<?php echo $asset_folder; ?>/blue/listsort-style.css" rel="stylesheet">
     <link href="/commandgeosearch/<?php echo $asset_folder; ?>/theme.css" rel="stylesheet">
 
     <!-- Just for debugging purposes. Don't actually copy this line! -->
@@ -30,6 +32,7 @@
       <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
       <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
     <![endif]-->
+    
   </head>
 
   <body>
