@@ -1,4 +1,6 @@
 
+
+
 <script type="text/javascript">
 	$('body').css({
 		"background-image": "url(http://www.centersplan.com/wp-content/themes/cp/img/bg.png)",
@@ -7,9 +9,7 @@
 		"margin": 0,
 		"padding": 0
     });
-   
-   </script>
-
+</script>
 <div class="container">
 <div class="page-header">
 <h1>Search Form</h1>
@@ -17,7 +17,8 @@
 <div id="map_canvas" style="height: 400px; position: relative; background-color: rgb(229, 227, 223); overflow: hidden;"></div>
 
 <div class="row"><div class="col-md-12">
-<table id="searchResults">
+<table id="searchResults" class="tablesorter">
+<thead>
 <tr>
 <th width="25%"><strong>Name</strong></th>
 <th width="10%"><strong>Gender</strong></th>
@@ -26,6 +27,7 @@
 <th width="10%"><strong>Insurance</strong></th>
 <th width="35%"><strong>Hospital Affiliation</strong></th>
 </tr>
+</thead>
 <?php
 	$count = 0;
 	foreach($results as $result)
@@ -141,8 +143,8 @@
 </div>
 
 <!--Todo move map script to better place for faster load-->
-<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false">//google maps</script>
-<script type='text/javascript'>
+<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false">  </script>
+<script type="text/javascript">
 	$(document).ready(function() {
 		initializemap();
 		
@@ -186,6 +188,9 @@
 			} ?>
 		
 		 }
+		// Table Sorter
+        $("table").tablesorter(); 
+    
 	});
 </script>
 </div>	
