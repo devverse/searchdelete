@@ -1,5 +1,6 @@
-.container {width: 850px} /* Overwrite bootstrap style */
+/* CenterPlan Style */
 
+.container {width: 850px} /* Overwrite bootstrap style */
 .searchContainer { width: 820px}
 .page-header h1 {padding: 0}
 .theme-dropdown .dropdown-menu {  display: block;  position: static;  margin-bottom: 20px;}
@@ -11,13 +12,6 @@ table#searchResults { font-size: 12px}
 
 
 /* Result Table Styles */
-#searchResults th {
-    background: none repeat scroll 0 0 #3BACED;
-    color: #FFFFFF;
-    padding: 5px 0 5px 5px;
-}
-#searchResults td {
-    padding: 5px;
-}
-
+#searchResults th {    background: none repeat scroll 0 0 #3BACED;    color: #FFFFFF;    padding: 5px 0 5px 5px;}
+#searchResults td {    padding: 5px;}
 tr:nth-of-type(even) { background-color: #c4c4c4; }
