@@ -169,6 +169,7 @@ class Mysql extends DboSource {
 		}
 
 		try {
+			$flags[\PDO::MYSQL_ATTR_LOCAL_INFILE] = 1;
 			$this->_connection = new PDO(
 				$dsn,
 				$config['login'],

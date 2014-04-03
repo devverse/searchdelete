@@ -98,11 +98,33 @@ class SearchController extends AppController {
 		$this->render('view1');
 	}
 
-	public function scrub()
-	{
+	public function scrub($client= false)
+	{	
+		// This shouldnt be here but for testing
+		echo '<pre>';
+		//create newu client and user
+		//do not set prefix_name
+		//append database to database file
+		//creates database
+		//all migrating process shown uploads disables
+
+
+		$this->loadModel('Migration');
+
+		$file_path = '../webroot/files/client_wisconsin.zip';
+		$this->Migration->setClient($client);
+		var_dump($this->Migration->import($file_path));
+		
+		// $this->Client->clear();
+		// $this->Client->read(null,$client['Client']['id']);
+		// $this->Client->set('migrating',1);
+		// $this->Client->clear();
+		
+		echo '</pre>';
+		// var_dump($client);
 		//no code
-		Configure::write('Model.globalSource', 'centersplan');
-		$this->loadModel('Temptable');
+		// Configure::write('Model.globalSource', 'centersplan');
+		// $this->loadModel('Temptable');
 		//$this->Temptable->populateDB();
 		//$this->Temptable->geocodeCurrentLocations();
 	}
