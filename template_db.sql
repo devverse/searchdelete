@@ -27,7 +27,7 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE IF NOT EXISTS `counties` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(100) NOT NULL,
   KEY `id` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -151,9 +151,11 @@ CREATE TABLE IF NOT EXISTS `locations` (
 --
 
 CREATE TABLE IF NOT EXISTS `locations_counties` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `location_id` int(11) NOT NULL,
-  `countie_id` int(11) NOT NULL
+  `countie_id` int(11) NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `id` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -163,9 +165,11 @@ CREATE TABLE IF NOT EXISTS `locations_counties` (
 --
 
 CREATE TABLE IF NOT EXISTS `locations_insurances` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `location_id` int(11) NOT NULL,
-  `insurance_id` int(11) NOT NULL
+  `insurance_id` int(11) NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `id` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -175,9 +179,11 @@ CREATE TABLE IF NOT EXISTS `locations_insurances` (
 --
 
 CREATE TABLE IF NOT EXISTS `locations_languages` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `location_id` int(11) NOT NULL,
-  `language_id` int(11) NOT NULL
+  `language_id` int(11) NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `id` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -187,9 +193,11 @@ CREATE TABLE IF NOT EXISTS `locations_languages` (
 --
 
 CREATE TABLE IF NOT EXISTS `locations_networks` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `location_id` int(11) NOT NULL,
-  `network_id` int(11) NOT NULL
+  `network_id` int(11) NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `id` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -199,9 +207,11 @@ CREATE TABLE IF NOT EXISTS `locations_networks` (
 --
 
 CREATE TABLE IF NOT EXISTS `locations_specialties` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `location_id` int(11) NOT NULL,
-  `specialtie_id` int(11) NOT NULL
+  `specialtie_id` int(11) NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `id` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -211,8 +221,10 @@ CREATE TABLE IF NOT EXISTS `locations_specialties` (
 --
 
 CREATE TABLE IF NOT EXISTS `networks` (
-  `id` int(11) NOT NULL,
-  `name` varchar(100) NOT NULL
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(100) NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `id` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -253,9 +265,11 @@ CREATE TABLE IF NOT EXISTS `providers` (
 --
 
 CREATE TABLE IF NOT EXISTS `providers_counties` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `provider_id` int(11) NOT NULL,
-  `countie_id` int(11) NOT NULL
+  `countie_id` int(11) NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `id` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -307,9 +321,11 @@ CREATE TABLE IF NOT EXISTS `providers_locations` (
 --
 
 CREATE TABLE IF NOT EXISTS `providers_networks` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `provider_id` int(11) NOT NULL,
-  `network_id` int(11) NOT NULL
+  `network_id` int(11) NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `id` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -333,6 +349,19 @@ CREATE TABLE IF NOT EXISTS `providers_specialties` (
 --
 
 CREATE TABLE IF NOT EXISTS `specialties` (
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `id` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `providertypes`
+--
+
+CREATE TABLE IF NOT EXISTS `providertypes` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `name` varchar(255) NOT NULL,
   PRIMARY KEY (`id`),
@@ -368,6 +397,14 @@ CREATE TABLE IF NOT EXISTS `temptables` (
 
 
 ALTER TABLE fullrecords AUTO_INCREMENT=1;
+ALTER TABLE networks AUTO_INCREMENT=1;
+ALTER TABLE specialties AUTO_INCREMENT=1;
+ALTER TABLE languages AUTO_INCREMENT=1;
+ALTER TABLE providers AUTO_INCREMENT=1;
+ALTER TABLE locations AUTO_INCREMENT=1;
+ALTER TABLE providertypes AUTO_INCREMENT=1;
+ALTER TABLE counties AUTO_INCREMENT=1;
+ALTER TABLE insurances AUTO_INCREMENT=1;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

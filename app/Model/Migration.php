@@ -126,15 +126,26 @@ class Migration extends AppModel {
 		Configure::write('Model.globalSource', $this->client_info['Client']['cake_db_config']);
 		$database = 'carewisconsin_db';
 		//imports tempalted mysql related tables
-		$this->_importTemplateMysql($database);
+		$this->_importTemplateSchema($database);
 		$this->_importDataFromFile($database,'/var/www/commandgeosearch/app/webroot/files/client_wisconsin.txt');
 		$this->_cleanRecords($database);
+		$this->_insertSecTbleData();
 		//change back to default databases
 	    Configure::write('Model.globalSource', 'default');
 	}
 
+	private function _insertSecTbleData()
+	{
+		$this->cacheQueries = false; 
+		$this->query("INSERT INTO `networks`( `name`) select distinct lob from fullrecords",false);
+		$this->query("INSERT INTO `specialties`( `name`) select distinct specialty from fullrecords",false);
+		$this->query("INSERT INTO `providertypes`( `name`) select distinct category from fullrecords",false);
+		$this->query("INSERT INTO `counties`( `name`) select distinct servicearea from fullrecords",false);
+	}
+
 	private function _cleanRecords($database=false)
 	{
+		//Removes double quotes dont know why they are there
 		$qry = 'UPDATE fullrecords set latitude_str=REPLACE(latitude_str,\'\"\',\'\'), longitude_str=REPLACE(longitude_str,\'\"\',\'\')';
 		foreach($this->array_needed as $flds)
 		{
@@ -146,6 +157,7 @@ class Migration extends AppModel {
 		$cmd_clean	= $this->_buildMysqlCommandWrapper($qry,$database);
 		$stat 		= $this->_executeCommandLine($cmd_clean,false);
 
+		//Converts string coords to float coords
 		$qry 		= "UPDATE fullrecords SET latitude = CAST(latitude_str AS DECIMAL(10,6)), longitude = CAST(longitude_str AS DECIMAL(10,6))";
 		$cmd_cast	= $this->_buildMysqlCommandWrapper($qry,$database);
 		$stat 		= $this->_executeCommandLine($cmd_cast,false);
@@ -154,7 +166,7 @@ class Migration extends AppModel {
 		/**
 	 * Function to clone template blank mysql schema to clients new db
 	 */
-	private function _importTemplateMysql($database = false)
+	private function _importTemplateSchema($database = false)
 	{
 		if(!$database)
 			return $this->formResp(false,'Bad Database during _importTemplateMysql');
