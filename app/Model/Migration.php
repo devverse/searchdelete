@@ -54,6 +54,7 @@ class Migration extends AppModel {
 
 	private function _unzipFile($file_path=''){
 		$zip = new ZipArchive;
+
 		$res = $zip->open($file_path);
 		if ($res === TRUE) {
 		  // extract it to the path we determined above
@@ -127,7 +128,7 @@ class Migration extends AppModel {
 		$database = 'carewisconsin_db';
 		//imports tempalted mysql related tables
 		$this->_importTemplateSchema($database);
-		$this->_importDataFromFile($database,'/var/www/commandgeosearch/app/webroot/files/client_wisconsin.txt');
+		$this->_importDataFromFile($database,'/var/www/html/providersearch.geoffreychin.com/app/webroot/files/client_wisconsin.txt');
 		$this->_cleanRecords($database);
 		$this->_insertSecTbleData();
 		//change back to default databases
@@ -183,7 +184,7 @@ class Migration extends AppModel {
 		$stat[] 	= $this->_executeCommandLine($crt_db_cmd);
 
 		//Import Base Schema for client db
-		$tmp_db_cmd = $database.' < /var/www/commandgeosearch/template_db.sql';
+		$tmp_db_cmd = $database.' < /var/www/html/providersearch.geoffreychin.com/template_db.sql';
 		$tmp_db_cmd = $this->_buildMysqlCommandWrapper($tmp_db_cmd,'',false);
 		$stat[] 	= $this->_executeCommandLine($tmp_db_cmd,false);
 
@@ -218,13 +219,13 @@ class Migration extends AppModel {
 		if(!$mysql_cmd)
 			return false;
 		$usr = 'root';
-		$pswd = 'aspire5610z';
+		$pswd = 'dBCommand2014$';
 
-		$cmd = "mysql -u{$usr} -p'{$pswd}' --local-infile --verbose {$db} -e ";
+		$cmd = "mysql -u{$usr} -p{$pswd} --local-infile --verbose {$db} -e ";
 		$cmd.= "\" {$mysql_cmd} \"";
 
 		if(!$has_e)
-			$cmd = "mysql -u{$usr} -p'{$pswd}' --local-infile --verbose {$mysql_cmd}";
+			$cmd = "mysql -u{$usr} -p{$pswd} --local-infile --verbose {$mysql_cmd}";
 		
 		return $cmd;
 	}
