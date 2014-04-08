@@ -1,27 +1,18 @@
-<script type="text/javascript">
-	$('body').css({
-		"background-image": "url(http://www.centersplan.com/wp-content/themes/cp/img/bg.png)",
-		"font-family": 'Open Sans,Lucida Grande,sans-serif',
-		"line-height": 1.6,
-		"margin": 0,
-		"padding": 0
-    });
-</script>
 <div class="container">
 <div class="page-header">
-<h1>Search Form</h1>
+<h2>Search Form</h2>
 </div>
 <div id="map_canvas" style="height: 400px; position: relative; background-color: rgb(229, 227, 223); overflow: hidden;"></div>
 
 <div class="row"><div class="col-md-12">
-<table id="searchResults" class="tablesorter">
+<table id="searchResults" class="tablesorter table table-striped table-hover table-condensed">
 <thead>
 <tr>
 <th width="10%"><strong>Name</strong></th>
 <th width="10%"><strong>Degree</strong></th>
 <th width="10%"><strong>Specialty</strong></th>
-<th width="10%"><strong>Provider type</strong></th>
-<th width="10%"><strong>PracticeName</strong></th>
+<th width="10%"><strong>Provider Type</strong></th>
+<th width="10%"><strong>Practice Name</strong></th>
 <th width="10%"><strong>Address</strong></th>
 <th width="10%"><strong>Info</strong></th>
 

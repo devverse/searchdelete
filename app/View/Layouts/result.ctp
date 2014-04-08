@@ -5,20 +5,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
-    <link rel="shortcut icon" href="/commandgeosearch/docs-assets/ico/favicon.png">
+    <link rel="shortcut icon" href="/docs-assets/ico/favicon.png">
 <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
-    <script src="/commandgeosearch/dist/js/bootstrap.min.js"></script>
-    <script src="/commandgeosearch/docs-assets/js/holder.js"></script>
-    <script src="/commandgeosearch/dist/js/jquery.tablesorter.js"></script>
+    <script src="/dist/js/bootstrap.min.js"></script>
+    <script src="/docs-assets/js/holder.js"></script>
+    <script src="/dist/js/jquery.tablesorter.js"></script>
     <title><?php echo $title; ?></title>
 
     <!-- Bootstrap core CSS -->
-    <link href="/commandgeosearch/dist/css/bootstrap.css" rel="stylesheet">
+    <link href="/dist/css/bootstrap.css" rel="stylesheet">
     <!-- Bootstrap theme -->
-    <link href="/commandgeosearch/dist/css/bootstrap-theme.min.css" rel="stylesheet">
+    <link href="/dist/css/bootstrap-theme.min.css" rel="stylesheet">
 
     <!-- Custom styles for this template -->
     <link href="/commandgeosearch/<?php echo $asset_folder; ?>/blue/listsort-style.css" rel="stylesheet">
