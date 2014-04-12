@@ -5,6 +5,13 @@
 <div id="map_canvas" style="height: 400px; position: relative; background-color: rgb(229, 227, 223); overflow: hidden;"></div>
 
 <div class="row"><div class="col-md-12">
+
+<span class="output-btns">
+	<a class="print-btn" onClick="window.print()"><img style="width:25px;height:25px" src="/img/print5.png"/></a>
+	<a class="pdf-btn"><img style="width:27px;height:27px" src="/img/pdf19.png"/></a>
+	<a class="email-btn"><img style="width:23px;height:23px" src="/img/opened4.png"/></a>
+</span>
+
 <table id="searchResults" class="tablesorter table table-striped table-hover table-condensed">
 <thead>
 <tr>
