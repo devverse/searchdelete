@@ -24,6 +24,9 @@
     <link href="/commandgeosearch/<?php echo $asset_folder; ?>/blue/listsort-style.css" rel="stylesheet">
     <link href="/commandgeosearch/<?php echo $asset_folder; ?>/theme.css" rel="stylesheet">
 
+    <!--js for print pdf emailing page-->
+    <script src="/js/outputpage.js"></script>
+
     <!-- Just for debugging purposes. Don't actually copy this line! -->
     <!--[if lt IE 9]><script src="/commandgeosearch/docs-assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
 
