@@ -141,7 +141,7 @@ class Migration extends AppModel {
 		$this->query("INSERT INTO `networks`( `name`) select distinct lob from fullrecords",false);
 		$this->query("INSERT INTO `specialties`( `name`) select distinct specialty from fullrecords",false);
 		$this->query("INSERT INTO `providertypes`( `name`) select distinct category from fullrecords",false);
-		$this->query("INSERT INTO `counties`( `name`) select distinct servicearea from fullrecords",false);
+		$this->query("INSERT INTO `counties`( `name`,`state`) select distinct servicearea, state from fullrecords",false);
 	}
 
 	private function _cleanRecords($database=false)

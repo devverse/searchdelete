@@ -1,8 +1,9 @@
 <?php
 class SearchController extends AppController {
+
 	public $helpers = array('Html', 'Form','Session');
 	public $uses = array('AppModel','Insurance','Language','Location','Provider','Specialtie','Network','Client','Providertype','Countie');
-
+	public $components = array('RequestHandler','Email');
 	public function index($client_orig_name,$action='search') {
 		$this->autoRender = false;
 
@@ -111,20 +112,49 @@ class SearchController extends AppController {
 			return $this->redirect(array('action' => $client_orig_name));
 		}
 
-		$this->autoRender = false;
-		$this->set('client_name', $client['Client']['name']);
-		$this->set('srch_filter',$request_data);
+		$param = array(
+			'client_name'=> $client['Client']['name'],
+			'srch_filter'=>$request_data,
+			'results'=>$results['providers'],
+			'locations'=>$results['locations'],
+			'coor'=>$results['coor_array'],
+			'title'=>'Search Results for '.ucfirst($client['Client']['name']),
+			'asset_folder'=>$client['Client']['asset_folder_name'],
+			'client_url_name'=>$client_orig_name
+		);
 
-		$this->set('results', $results['providers']);
-		$this->set('locations', $results['locations']);
-		$this->set('coor', $results['coor_array']);
-		$this->set('title', 'Search Results for '.ucfirst($client['Client']['name']));
-		$this->set('asset_folder', $client['Client']['asset_folder_name']);
-		$this->set('client_url_name', $client_orig_name);
+		if(isset($request_data['pdf']) || isset($request_data['email']))
+		{
+			$this->autoRender = false;
 
+			$view = new View($this, false);
+			$view->set($param);
+			$view->layout = 'result';
+			$view_output = $view->render($client['Client']['view_prefix_name'].'resultpdf');
 
-		$this->layout = 'result';
-		$this->render($client['Client']['view_prefix_name'].'result');
+			if(isset($request_data['pdf'])){
+				require_once(dirname(__FILE__).'/../Vendor/html2pdf_v4.03/html2pdf.class.php');
+			    $html2pdf = new HTML2PDF('P','A4','fr');
+			    $html2pdf->WriteHTML($view_output);
+			    $html2pdf->Output('proivderlist.pdf','D');
+			}
+			else
+			{
+				$Email = new CakeEmail();
+				$Email->from(array('chin.geoff@gmail.com' => 'My Site'));
+				$Email->to('chin.geoff@gmail.com');
+				$Email->subject('About');
+				$Email->send('My message');
+			}
+			
+		}
+		else
+		{
+			$this->autoRender = false;
+			$this->set($param);
+			$this->layout = 'result';
+			$this->render($client['Client']['view_prefix_name'].'result');
+		}
 	}
 
 	// public function view()
