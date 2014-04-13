@@ -134,10 +134,19 @@ class SearchController extends AppController {
 
 			if(isset($request_data['pdf'])){
 				set_time_limit(0);
-				require_once(dirname(__FILE__).'/../Vendor/html2pdf_v4.03/html2pdf.class.php');
-			    $html2pdf = new HTML2PDF('P','A4','fr');
-			    $html2pdf->WriteHTML($view_output);
-			    $html2pdf->Output('proivderlist.pdf','D');
+				require_once(dirname(__FILE__).'/../Vendor/dompdf/dompdf_config.inc.php');
+
+				$dompdf = new DOMPDF();
+				$dompdf->set_paper('letter');
+				$dompdf->load_html($view_output);
+				$dompdf->render();
+				$dompdf->stream("provider.pdf");
+
+				// set_time_limit(0);
+				// require_once(dirname(__FILE__).'/../Vendor/html2pdf_v4.03/html2pdf.class.php');
+			 //    $html2pdf = new HTML2PDF('P','A4','fr');
+			 //    $html2pdf->WriteHTML($view_output);
+			 //    $html2pdf->Output('proivderlist.pdf','D');
 			}
 			else
 			{
