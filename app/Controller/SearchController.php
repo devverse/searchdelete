@@ -173,6 +173,7 @@ class SearchController extends AppController {
 			else
 			{
 				echo 'email test';
+				echo $request_data['email'];
 				// $Email = new CakeEmail();
 				// $Email->from(array('chin.geoff@gmail.com' => 'My Site'));
 				// $Email->to('chin.geoff@gmail.com');

@@ -6,10 +6,15 @@
 
 <div class="row"><div class="col-md-12">
 
-<span class="output-btns">
+<span class="output-btns" style="poistion:relative">
+	<div>
 	<a class="print-btn" onClick="window.print()"><img style="width:25px;height:25px" src="/img/print5.png"/></a>
 	<a class="pdf-btn"><img style="width:27px;height:27px" src="/img/pdf19.png"/></a>
 	<a class="email-btn"><img style="width:23px;height:23px" src="/img/opened4.png"/></a>
+	</div>
+	<div style="position:absolute">
+		<div class="email-box" style="background-color:#FFFFFF;display:none;">Your Email : <input type="text" class="email-input"/><button class="email-page">Email</button></div>
+	</div>
 </span>
 
 <table id="searchResults" class="tablesorter table table-striped table-hover table-condensed">
