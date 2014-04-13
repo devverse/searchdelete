@@ -86,7 +86,7 @@
 
     </div>
 
-    <div class="form-group">
+    <div class="form-group" style="display:none">
     <label class="col-sm-2 control-label">Language</label>
     <div class="col-sm-8">
     <select id="specialty" name="language_name" class="form-control">
@@ -133,7 +133,7 @@
     </div>
 
 
-    <div class="form-group">
+    <div class="form-group" >
     <label class="col-sm-2 control-label">Handicap Accessible</label>
     <div class="col-sm-8">
     <select id="state" name="handicapaccess" class="form-control">
@@ -144,7 +144,7 @@
     </div>
     </div>
 
-    <div class="form-group">
+    <div class="form-group" style="display:none">
     <label class="col-sm-2 control-label">Insurances</label>
     <div class="col-sm-8">
     <select id="specialty" name="insurance_name" class="form-control">
@@ -161,34 +161,37 @@
     <label class="col-sm-2 control-label">Distance </label> 
     <div class="col-sm-6">
     <select id="distance" name="distance" class="form-control">
-      <option value="0">Select a Distance</option>
+     <!--<option value="0">Select a Distance</option>-->
       <option value="1">1 Miles</option>
       <option value="5">5 Miles</option>
       <option value="10">10 Miles</option>
       <option value="15">15 Miles</option>
-      <option value="20">20 Miles</option>
+      <option value="20">25 Miles</option>
+      <option value="50">50 Miles</option>
+      <option value="75">75 Miles</option>
+      <option value="100">100 Miles</option>
     </select>
     <span class="field-error" style="color:red;"><?php echo $this->Session->flash('distance') ; ?></span>
     </div>
     </div>
 
-   <div class="form-group">
+   <div class="form-group" style="display:none">
      <div class="col-sm-offset-2 col-sm-10">--- or ---</div>
 </div>
 
-    <div class="form-group">
+    <div class="form-group" style="display:none">
     <div class="col-sm-offset-2 col-sm-6"><input id="textinput" name="distance_c" placeholder="Less than 100" value="" type="text" class="form-control">
     <span class="field-error" style="color:red;"><?php echo $this->Session->flash('distance_c') ; ?></span>
     </div>
     </div>
     
-      <div class="form-group">
+      <div class="form-group" style="display:none">
     <label class="col-sm-2 control-label">First Name</label>
     <div class="col-sm-6">
     <input id="textinput"  value=""  name="firstname" placeholder="firstname" type="text" class="form-control">
     </div>
     </div>
-    <div class="form-group">
+    <div class="form-group" style="display:none">
     <label class="col-sm-2 control-label">Last Name</label>
     <div class="col-sm-6">
     <input id="textinput"  value=""  name="lastname" placeholder="lastname" type="text" class="form-control">
@@ -196,11 +199,11 @@
     
     </div>
     
-    <div class="form-group">
+    <div class="form-group" style="display:none">
      <div class="col-sm-offset-2 col-sm-10">--- or ---</div>
 </div>
 
-    <div class="form-group">
+    <div class="form-group" >
     <label class="col-sm-2 control-label">Practice Name</label>
 <!--IF typed delete practice name-->
 <div class="col-sm-6">
@@ -212,4 +215,4 @@
 
     </form>
 
-</div> <!-- /container -->
+</div> <!-- /container

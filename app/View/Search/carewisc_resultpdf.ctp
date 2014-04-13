@@ -9,12 +9,12 @@
 <thead>
 <tr>
 <th width="10%"><strong>Name</strong></th>
-<th width="10%"><strong>Degree</strong></th>
 <th width="10%"><strong>Specialty</strong></th>
 <th width="10%"><strong>Provider Type</strong></th>
 <th width="10%"><strong>Practice Name</strong></th>
 <th width="10%"><strong>Address</strong></th>
 <th width="10%"><strong>Info</strong></th>
+<th width="10%"><strong></strong></th>
 
 </tr>
 </thead>
@@ -30,10 +30,7 @@
 <!-- Result Information START-->
 <tr>
 	<td>
-		<div class="namde">Dr. <?php echo $result['firstname'].' '.$result['middlename'].' '.$result['lastname'];?></div><div><?php echo $result['degree'];?></div>
-	</td>
-	<td>
-		<div><?php echo $result['degree'];?></div>
+		<div class="name"><?php echo ($result['lastname']!='') ?"Dr.{$result['firstname']} {$result['middlename']} {$result['lastname']}":'';?></div><div><?php echo ($result['degree']!='') ? "({$result['degree']})" :'';?></div>
 	</td>
 	<td>
 		<div><?php echo $result['specialty'];?></div>
@@ -49,15 +46,19 @@
 	</td>
 	<td>
 		<div>
-			<?php echo $result['languages'];?>
-			<?php echo $result['officehours'];?>	
-			<?php echo $result['hospaffiliations'];?>	
-			<?php echo $result['acceptsmedicaid'];?>	
-			<?php echo $result['acceptsmedicare'];?>	
-			<?php echo $result['acceptingnew'];?>	
-			<?php echo $result['handicap'];?>	
-			<?php echo $result['phone'];?>
-			<?php echo $result['servicearea'];?>
+			<div><?php echo "Phone: {$result['phone']}";?></div>
+			<div><?php echo "OfficeHours: {$result['officehours']}";?></div>
+			<div><?php echo "Languages: {$result['languages']}";?></div>
+			<div><?php echo "Service Area: {$result['servicearea']}, {$result['state']}";?></div>
+		</div>
+	</td>
+	<td>
+		<div>	
+			<div><?php echo "Hospital Affiliations: {$result['hospaffiliations']}";?></div>
+			<div><?php echo "Accepts Medicaid: {$result['acceptsmedicaid']}";?></div>
+			<div><?php echo "Accepts Medicatre: {$result['acceptsmedicare']}";?></div>
+			<div><?php echo "Accepting New Patiends: {$result['acceptingnew']}";?></div>
+			<div><?php echo "Handicap Accessible: {$result['handicap']}";?></div>
 		</div>
 	</td>
 </tr>

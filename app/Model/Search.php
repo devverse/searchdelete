@@ -17,7 +17,7 @@ class Search extends AppModel {
 			),
 			'countie_name'=>array(
 				'Select a service area or fill in search address.' => array(
-	                'rule'=>array('locationOrCountie'),
+	                'rule'=>array('locationOrCountieOrPracticeName'),
             	),
 				'Must be Alpha Numeric Character' => array(
 	                'rule'     => array('custom', '/^[a-z0-9 ]*$/i')
@@ -43,7 +43,7 @@ class Search extends AppModel {
             ),
             'zipcode' => array(
             	'Select a service area or fill in search address.' => array(
-	                'rule'=>array('locationOrCountie'),
+	                'rule'=>array('locationOrCountieOrPracticeName'),
             	),
 				'Must Be Numeric' => array(
 					'rule' => 'numeric',
@@ -159,10 +159,10 @@ class Search extends AppModel {
 			return true;
 	}
 
-	public function locationOrCountie($field = array())
+	public function locationOrCountieOrPracticeName($field = array())
 	{
 		$d = $this->data['Search'];
-		if(strtolower($d['countie_name']) == 'none' && strtolower($d['state']) == 'none'  && empty($d['street_address']) && empty($d['city'])  && empty($d['zipcode']))
+		if(strtolower($d['countie_name']) == 'none' && strtolower($d['state']) == 'none'  && empty($d['street_address']) && empty($d['city'])  && empty($d['zipcode']) && empty($d['practicename']))
 			return false;
 		else
 			return true;
@@ -172,7 +172,7 @@ class Search extends AppModel {
 	{
 		$limit = 25;
 
-		if(strtolower($this->data['Search']['countie_name']) == 'none' )
+		if(strtolower($this->data['Search']['countie_name']) == 'none' && $this->data['Search']['practicename'] == '')
 			$coor_array = $this->getCoordinatesFromAddress();
 		else
 			$coor_array = false;
@@ -278,7 +278,7 @@ class Search extends AppModel {
 
 		$distance = ($d['distance_c'] != '')? $d['distance_c'] : $d['distance'];
 
-		if($coor_array){
+		if($coor_array && $coor_array['lat'] && $coor_array['long']){
 			$this->query( "set @latitude=".$coor_array['lat'].";",false);
 			$this->query( "set @longitude=".$coor_array['long'].";",false);
 			$this->query( "set @radius=".$distance.";",false);
@@ -289,6 +289,8 @@ class Search extends AppModel {
 			$this->query( "set SQL_BIG_SELECTS=1;",false);
 
 			$sql .= " (longitude BETWEEN @lng_min and @lng_max) AND (latitude BETWEEN @lat_min and @lat_max) ";
+		}elseif ($d['practicename'] != '') {
+			$sql .= "practicename LIKE '%{$d['practicename']}%' ";
 		}else{
 			$sql .= " servicearea collate latin1_swedish_ci = '{$d['countie_name']}' ";
 		}
@@ -345,61 +347,61 @@ class Search extends AppModel {
 		return $sql;
 	}
 
-	function old()
-	{
-		$this->query( "set @latitude=".$coor_array['lat'].";",false);
-		$this->query( "set @longitude=".$coor_array['long'].";",false);
-		$this->query( "set @radius=".$distance.";",false);
-		$this->query( "set @lng_min = @longitude - @radius/abs(cos(radians(@latitude))*69.444);",false);
-		$this->query(  "set @lng_max = @longitude + @radius/abs(cos(radians(@latitude))*69.444);",false);
-		$this->query(  "set @lat_min = @latitude - (@radius/69.444);",false);
-		$this->query(  "set @lat_max = @latitude + (@radius/69.444);",false);
-		$this->query( "set SQL_BIG_SELECTS=1;",false);
+	// function old()
+	// {
+	// 	$this->query( "set @latitude=".$coor_array['lat'].";",false);
+	// 	$this->query( "set @longitude=".$coor_array['long'].";",false);
+	// 	$this->query( "set @radius=".$distance.";",false);
+	// 	$this->query( "set @lng_min = @longitude - @radius/abs(cos(radians(@latitude))*69.444);",false);
+	// 	$this->query(  "set @lng_max = @longitude + @radius/abs(cos(radians(@latitude))*69.444);",false);
+	// 	$this->query(  "set @lat_min = @latitude - (@radius/69.444);",false);
+	// 	$this->query(  "set @lat_max = @latitude + (@radius/69.444);",false);
+	// 	$this->query( "set SQL_BIG_SELECTS=1;",false);
 
-		$sql = "SELECT providers.* , locations.*, insurances.name, languages.name, specialties.name from providers 
-		JOIN providers_specialties
-		ON providers.id = providers_specialties.provider_id
-		JOIN specialties 
-		ON specialties.id = providers_specialties.specialtie_id
-		";
-		if($filter_array['insurance_id'] != '0')
-			$sql .=" LEFT JOIN providers_insurances 
-			ON providers.id = providers_insurances.provider_id
-			LEFT JOIN insurances 
-			ON insurances.id = providers_insurances.insurance_id ";
-		else
-			$sql .= " JOIN (select 'N/A' as name ) insurances ON 1=1 ";
+	// 	$sql = "SELECT providers.* , locations.*, insurances.name, languages.name, specialties.name from providers 
+	// 	JOIN providers_specialties
+	// 	ON providers.id = providers_specialties.provider_id
+	// 	JOIN specialties 
+	// 	ON specialties.id = providers_specialties.specialtie_id
+	// 	";
+	// 	if($filter_array['insurance_id'] != '0')
+	// 		$sql .=" LEFT JOIN providers_insurances 
+	// 		ON providers.id = providers_insurances.provider_id
+	// 		LEFT JOIN insurances 
+	// 		ON insurances.id = providers_insurances.insurance_id ";
+	// 	else
+	// 		$sql .= " JOIN (select 'N/A' as name ) insurances ON 1=1 ";
 
-		$sql .= " JOIN providers_languages 
-		ON providers.id = providers_languages.provider_id
-		JOIN languages 
-		ON languages.id = providers_languages.language_id
-		JOIN providers_locations
-		ON providers.id = providers_locations.provider_id
-		JOIN (
-			SELECT * FROM locations 
-			WHERE (longitude BETWEEN @lng_min AND @lng_max) 
-				AND (latitude BETWEEN @lat_min and @lat_max)) locations 
-		ON providers_locations.location_id = locations.id WHERE 1 = 1 ";
+	// 	$sql .= " JOIN providers_languages 
+	// 	ON providers.id = providers_languages.provider_id
+	// 	JOIN languages 
+	// 	ON languages.id = providers_languages.language_id
+	// 	JOIN providers_locations
+	// 	ON providers.id = providers_locations.provider_id
+	// 	JOIN (
+	// 		SELECT * FROM locations 
+	// 		WHERE (longitude BETWEEN @lng_min AND @lng_max) 
+	// 			AND (latitude BETWEEN @lat_min and @lat_max)) locations 
+	// 	ON providers_locations.location_id = locations.id WHERE 1 = 1 ";
 
-		if(isset($filter_array['specialtie_id']) && $filter_array['specialtie_id'] != '0')
-			$sql .= " AND specialties.id = ".$filter_array['specialtie_id'];
-		if(isset($filter_array['insurance_id']) && $filter_array['insurance_id'] != '0')
-			$sql .= " AND insurances.id = ".$filter_array['insurance_id'];
-		if(isset($filter_array['language_id']) && $filter_array['language_id'] != '0')
-			$sql .= " AND languages.id = ".$filter_array['language_id'];
-		if(isset($filter_array['location_id']) && $filter_array['location_id'] != '0')
-			$sql .= " AND locations.id = ".$filter_array['location_id'];
-		if(isset($filter_array['gender']) && $filter_array['gender'] != '0')
-			$sql .= " AND providers.g = '".$filter_array['gender']."'";
+	// 	if(isset($filter_array['specialtie_id']) && $filter_array['specialtie_id'] != '0')
+	// 		$sql .= " AND specialties.id = ".$filter_array['specialtie_id'];
+	// 	if(isset($filter_array['insurance_id']) && $filter_array['insurance_id'] != '0')
+	// 		$sql .= " AND insurances.id = ".$filter_array['insurance_id'];
+	// 	if(isset($filter_array['language_id']) && $filter_array['language_id'] != '0')
+	// 		$sql .= " AND languages.id = ".$filter_array['language_id'];
+	// 	if(isset($filter_array['location_id']) && $filter_array['location_id'] != '0')
+	// 		$sql .= " AND locations.id = ".$filter_array['location_id'];
+	// 	if(isset($filter_array['gender']) && $filter_array['gender'] != '0')
+	// 		$sql .= " AND providers.g = '".$filter_array['gender']."'";
 
-		// if(isset($filter_array['wheelchairaccessible']))
-		// 	$sql .= " AND locations.wheelchair_accessible = 1";
-		// if(isset($filter_array['location_id']) && $filter_array['location_id'] != '0')
-		// 	$sql .= " AND locations.id = ".$filter_array['location_id'];
-		$sql .= ' LIMIT '.$start.' , '.$limit ;
+	// 	// if(isset($filter_array['wheelchairaccessible']))
+	// 	// 	$sql .= " AND locations.wheelchair_accessible = 1";
+	// 	// if(isset($filter_array['location_id']) && $filter_array['location_id'] != '0')
+	// 	// 	$sql .= " AND locations.id = ".$filter_array['location_id'];
+	// 	$sql .= ' LIMIT '.$start.' , '.$limit ;
 
-	}
+	// }
 
 }
 ?>

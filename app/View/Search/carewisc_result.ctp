@@ -1,6 +1,6 @@
 <div class="container">
 <div class="page-header">
-<h2>Search Form</h2>
+<h2>Search Results</h2>
 </div>
 <div id="map_canvas" style="height: 400px; position: relative; background-color: rgb(229, 227, 223); overflow: hidden;"></div>
 
@@ -16,12 +16,12 @@
 <thead>
 <tr>
 <th width="10%"><strong>Name</strong></th>
-<th width="10%"><strong>Degree</strong></th>
 <th width="10%"><strong>Specialty</strong></th>
 <th width="10%"><strong>Provider Type</strong></th>
 <th width="10%"><strong>Practice Name</strong></th>
 <th width="10%"><strong>Address</strong></th>
 <th width="10%"><strong>Info</strong></th>
+<th width="10%"><strong><!--info 2--></strong></th>
 
 </tr>
 </thead>
@@ -37,10 +37,7 @@
 <!-- Result Information START-->
 <tr>
 	<td>
-		<div class="name"><strong>Dr. <?php echo $result['firstname'].' '.$result['middlename'].' '.$result['lastname'];?></div><div><?php echo $result['degree'];?></strong></div>
-	</td>
-	<td>
-		<div><?php echo $result['degree'];?></div>
+		<div class="name"><strong><?php echo ($result['lastname']!='') ?"Dr.{$result['firstname']} {$result['middlename']} {$result['lastname']}":'';?></div><div><?php echo ($result['degree']!='') ? "({$result['degree']})" :'';?></strong></div>
 	</td>
 	<td>
 		<div><?php echo $result['specialty'];?></div>
@@ -54,17 +51,21 @@
 	<td>
 		<div><?php echo $result['address'] .' '.$result['suite'];?></div><div><?php echo $result['city'].' '.$result['state'].', '.$result['zip4'].', '.$result['county']; ?></div>
 	</td>
-	<td>
+	<td width="100">
 		<div>
-			<?php echo $result['languages'];?>
-			<?php echo $result['officehours'];?>	
-			<?php echo $result['hospaffiliations'];?>	
-			<?php echo $result['acceptsmedicaid'];?>	
-			<?php echo $result['acceptsmedicare'];?>	
-			<?php echo $result['acceptingnew'];?>	
-			<?php echo $result['handicap'];?>	
-			<?php echo $result['phone'];?>
-			<?php echo $result['servicearea'];?>
+			<div><?php echo "Phone: {$result['phone']}";?></div>
+			<div><?php echo "OfficeHours: {$result['officehours']}";?></div>
+			<div><?php echo "Languages: {$result['languages']}";?></div>
+			<div><?php echo "Service Area: {$result['servicearea']}, {$result['state']}";?></div>
+		</div>
+	</td>
+	<td width="100">
+		<div>	
+			<div><?php echo "Hospital Affiliations: {$result['hospaffiliations']}";?></div>
+			<div><?php echo "Accepts Medicaid: {$result['acceptsmedicaid']}";?></div>
+			<div><?php echo "Accepts Medicatre: {$result['acceptsmedicare']}";?></div>
+			<div><?php echo "Accepting New Patiends: {$result['acceptingnew']}";?></div>
+			<div><?php echo "Handicap Accessible: {$result['handicap']}";?></div>
 		</div>
 	</td>
 </tr>

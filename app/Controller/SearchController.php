@@ -93,7 +93,7 @@ class SearchController extends AppController {
 		$this->loadModel('Search');
 		$request_data = $this->request->data;
 
-//maybe for hidden css
+		//start for indexing every 25 results
 		$request_data['start'] = isset($request_data['start']) && $request_data['start']>=0 ? $request_data['start']:0;
 		$this->Search->set($request_data);
 
@@ -133,6 +133,7 @@ class SearchController extends AppController {
 			$view_output = $view->render($client['Client']['view_prefix_name'].'resultpdf');
 
 			if(isset($request_data['pdf'])){
+				set_time_limit(0);
 				require_once(dirname(__FILE__).'/../Vendor/html2pdf_v4.03/html2pdf.class.php');
 			    $html2pdf = new HTML2PDF('P','A4','fr');
 			    $html2pdf->WriteHTML($view_output);
@@ -140,11 +141,12 @@ class SearchController extends AppController {
 			}
 			else
 			{
-				$Email = new CakeEmail();
-				$Email->from(array('chin.geoff@gmail.com' => 'My Site'));
-				$Email->to('chin.geoff@gmail.com');
-				$Email->subject('About');
-				$Email->send('My message');
+				echo 'email test';
+				// $Email = new CakeEmail();
+				// $Email->from(array('chin.geoff@gmail.com' => 'My Site'));
+				// $Email->to('chin.geoff@gmail.com');
+				// $Email->subject('About');
+				// $Email->send('My message');
 			}
 			
 		}
