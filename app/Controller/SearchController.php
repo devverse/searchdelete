@@ -172,13 +172,20 @@ class SearchController extends AppController {
 			}
 			else
 			{
-				echo 'email test';
-				echo $request_data['email'];
-				// $Email = new CakeEmail();
-				// $Email->from(array('chin.geoff@gmail.com' => 'My Site'));
-				// $Email->to('chin.geoff@gmail.com');
-				// $Email->subject('About');
-				// $Email->send('My message');
+				//email using postfix
+				$view->set('maplink',$this->_buildStaticMap($param));
+				$view->layout = 'result';
+				$view_output = $view->render($client['Client']['view_prefix_name'].'resultemail');
+
+				$client_email = $request_data['email'];
+				$Email = new CakeEmail();
+				$Email->emailFormat('html');
+				$Email->from(array('noreply@geosearch.commanddirect.com' => ucfirst($client['Client']['name']).' Provider Search Results'));
+				//$Email->from(array('chin.geoff@gmail.com' => 'Provider Search List'));
+				$Email->to($client_email);
+				$Email->subject(ucfirst($client['Client']['name']).' Search Results');
+				$Email->send($view_output);
+				echo '<html><head></head><body><p>Provider List Sent to '.$client_email.'</p><button onclick="history.go(-1)">Go Back</button></body></head>';
 			}
 			
 		}
