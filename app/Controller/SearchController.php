@@ -194,8 +194,8 @@ class SearchController extends AppController {
 	{
 		if($param['coor']['lat']){
 			$center = $param['coor']['lat'].','.$param['coor']['long'];
-		}else if(isset($param['results'	][0]['fullrecords']['latitude'])){
-			$center = $param['results'][0]['fullrecords']['latitude'].','.$param['results'][0]['fullrecords']['longitude'];
+		}else if(isset($param['results'	][1]['fullrecords']['latitude'])){
+			$center = $param['results'][1]['fullrecords']['latitude'].','.$param['results'][1]['fullrecords']['longitude'];
 		}else{
 			return false;
 		}
