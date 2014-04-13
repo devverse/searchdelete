@@ -84,8 +84,6 @@
 	<?php
 	foreach($srch_filter as $name=>$value)
 	{
-		if($name == 'start')
-			continue;
 		echo "<input type='hidden' name='{$name}' value='{$value}'>";
 	}
 	?>
@@ -108,6 +106,7 @@
 			start -= 25
 		else
 			start += 25
+		$('#nextresult input[name=start]').remove();
 		form.append("<input type='hidden' name='start' value='"+start+"'/>");
 		form.submit();
 	}</script>

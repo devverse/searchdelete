@@ -129,10 +129,30 @@ class SearchController extends AppController {
 
 			$view = new View($this, false);
 			$view->set($param);
-			$view->layout = 'result';
-			$view_output = $view->render($client['Client']['view_prefix_name'].'resultpdf');
 
 			if(isset($request_data['pdf'])){
+				$static_map_link = $this->_buildStaticMap($param);
+				$view->set('statimgname','sdf');
+				if($static_map_link)
+				{
+					//curl img
+					$s = curl_init();
+					curl_setopt($s, CURLOPT_URL,$static_map_link);
+			        curl_setopt($s, CURLOPT_VERBOSE, 0);
+					curl_setopt($s, CURLOPT_HEADER, 0);
+					curl_setopt($s, CURLOPT_RETURNTRANSFER, 1); 
+					$imgdata = curl_exec($s); 
+					curl_close($s);
+
+					$filename = $this->_randString(10);
+					$path = "../webroot/files/{$filename}.png";
+					file_put_contents($path, $imgdata);
+					$view->set('statimgname',$filename);
+				}
+
+				$view->layout = 'result';
+				$view_output = $view->render($client['Client']['view_prefix_name'].'resultpdf');
+
 				set_time_limit(0);
 				require_once(dirname(__FILE__).'/../Vendor/dompdf/dompdf_config.inc.php');
 
@@ -142,6 +162,8 @@ class SearchController extends AppController {
 				$dompdf->render();
 				$dompdf->stream("provider.pdf");
 
+				if($static_map_link)
+					unlink($path);
 				// set_time_limit(0);
 				// require_once(dirname(__FILE__).'/../Vendor/html2pdf_v4.03/html2pdf.class.php');
 			 //    $html2pdf = new HTML2PDF('P','A4','fr');
@@ -166,6 +188,35 @@ class SearchController extends AppController {
 			$this->layout = 'result';
 			$this->render($client['Client']['view_prefix_name'].'result');
 		}
+	}
+
+	private function _buildStaticMap($param)
+	{
+		if($param['coor']['lat']){
+			$center = $param['coor']['lat'].','.$param['coor']['long'];
+		}else if(isset($param['results'	][0]['fullrecords']['latitude'])){
+			$center = $param['results'][0]['fullrecords']['latitude'].','.$param['results'][0]['fullrecords']['longitude'];
+		}else{
+			return false;
+		}
+
+		$markers = '';
+		foreach($param['results'] as $p)
+		{
+			$markers .= $p['fullrecords']['latitude'].','.$p['fullrecords']['longitude'].'|';
+		}
+		return "http://maps.google.com/maps/api/staticmap?center={$center}&zoom=8&size=500x300&maptype=roadmap&sensor=false&language=&markers=color:red|label:none|{$markers}";
+	}
+
+	private function _randString( $length ) {
+		$chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";	
+
+		$size = strlen( $chars );
+		for( $i = 0; $i < $length; $i++ ) {
+			$str .= $chars[ rand( 0, $size - 1 ) ];
+		}
+
+		return $str;
 	}
 
 	// public function view()

@@ -39,7 +39,7 @@
 	</td>
 	<td colspan="1" width="25%">
 		<div>	
-			<div><?php echo "Hospital Affiliations: <br/>dd{$result['hospaffiliations']}";?></div>
+			<div><?php echo "Hospital Affiliations: <br/>{$result['hospaffiliations']}";?></div>
 			<div><?php echo "Medicaid: {$result['acceptsmedicaid']}";?></div>
 			<div><?php echo "Medicatre: {$result['acceptsmedicare']}";?></div>
 			<div><?php echo "Accepts New Patients: {$result['acceptingnew']}";?></div>
@@ -79,3 +79,8 @@
 </div>
 </div>
 </div>	
+
+<!--<img style="width:75%;" src="img/print5.png"/>-->
+<img style="width:99%;" src="files/<?php echo $statimgname; ?>.png"/>
+<!--<img style="width:200px;" src="http://maps.google.com/maps/api/staticmap?center=40.7536854,-73.9991637&zoom=16&size=500x300&maptype=roadmap&sensor=false&language=&markers=color:red|label:none|40.7536854,-73.9991637"/>-->
+
