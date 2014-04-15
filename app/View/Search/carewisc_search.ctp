@@ -18,7 +18,7 @@
         	<option value="<?php echo $specialty['Specialtie']['name'];?>"><?php echo $specialty['Specialtie']['name'];?></option>
         <?php } ?>
     	</select>
-    <span class="field-error" style="color:red;"><?php echo $this->Session->flash('specialtie_name') ; ?></span>
+    <span class="field-error"><?php echo $this->Session->flash('specialtie_name') ; ?></span>
     	</div>
     </div>
 
@@ -34,7 +34,7 @@
             <option value="<?php echo $providertype['Providertype']['name'];?>"><?php echo $providertype['Providertype']['name'];?></option>
         <?php } ?>
     </select>
-    <span class="field-error" style="color:red;"><?php echo $this->Session->flash('providertype_name') ; ?></span>
+    <span class="field-error"><?php echo $this->Session->flash('providertype_name') ; ?></span>
     </div>
     </div>
 
@@ -65,8 +65,8 @@
     <label class="control-label">Zip</label>
     </div>
     <div class="col-sm-2">
-    <input id="textinput" name="zipcode" placeholder="Zip Code" type="text" value="" class="form-control">
-    <span class="field-error" style="color:red;"><?php echo $this->Session->flash('zipcode') ; ?>
+    <input id="zipcode" name="zipcode" placeholder="Zip Code" type="text" value="" class="form-control">
+    <span class="field-error"><?php echo $this->Session->flash('zipcode') ; ?></span>
     </div>
     </div>
 <div class="form-group">
@@ -81,7 +81,7 @@
         <option value="<?php echo $countie['Countie']['name'];?>"><?php echo $countie['Countie']['name'];?></option>
         <?php } ?>
     </select>
-    <span class="field-error" style="color:red;"><?php echo $this->Session->flash('countie_name') ; ?></span>
+    <span class="field-error"><?php echo $this->Session->flash('countie_name') ; ?></span>
     </div>
 
     </div>
@@ -89,20 +89,20 @@
     <div class="form-group" style="display:none">
     <label class="col-sm-2 control-label">Language</label>
     <div class="col-sm-8">
-    <select id="specialty" name="language_name" class="form-control">
+    <select id="lauguage" name="language_name" class="form-control">
         <option value="none">All Languages</option>
         <?php foreach($languages as $language){ ?>
             <option value="<?php echo $language['Language']['name'];?>"><?php echo $language['Lessanguage']['name'];?></option>
         <?php } ?>
     </select>
-    <span class="field-error" style="color:red;"><?php echo $this->Session->flash('language_name') ; ?></span>
+    <span class="field-error"><?php echo $this->Session->flash('language_name') ; ?></span>
     </div>
     </div>
 
     <div class="form-group">
     <label class="col-sm-2 control-label">Gender</label>
     <div class="col-sm-8">
-    <select id="state" name="gender" class="form-control">
+    <select id="gender" name="gender" class="form-control">
       <option value="none">No Preference</option>
       <option value="M">M</option>
       <option value="F">F</option>
@@ -113,7 +113,7 @@
     <div class="form-group">
     <label class="col-sm-2 control-label">Accepts New</label>
     <div class="col-sm-8">
-    <select id="state" name="acceptnew" class="form-control">
+    <select id="acceptnew" name="acceptnew" class="form-control">
       <option value="none">No Preference</option>
       <option value="Y">Y</option>
       <option value="N">N</option>
@@ -124,7 +124,7 @@
     <div class="form-group">
     <label class="col-sm-2 control-label">Accepts Medicare</label>
     <div class="col-sm-8">
-    <select id="state" name="acceptmedicare" class="form-control">
+    <select id="acceptmediarestate" name="acceptmedicare" class="form-control">
       <option value="none">No Preference</option>
       <option value="Y">Y</option>
       <option value="N">N</option>
@@ -136,7 +136,7 @@
     <div class="form-group" >
     <label class="col-sm-2 control-label">Handicap Accessible</label>
     <div class="col-sm-8">
-    <select id="state" name="handicapaccess" class="form-control">
+    <select id="handicapaccess" name="handicapaccess" class="form-control">
       <option value="none">No Preference</option>
       <option value="Y">Y</option>
       <option value="N">N</option>
@@ -153,7 +153,7 @@
           <option value="<?php echo $insurance['Insurance']['name'];?>"><?php echo $insurance['Insurance']['name'];?></option>
         <?php } ?>
         </select>
-    <span class="field-error" style="color:red;"><?php echo $this->Session->flash('insurance_name') ; ?></span>
+    <span class="field-error"><?php echo $this->Session->flash('insurance_name') ; ?></span>
     </div>
     </div>
 
@@ -171,7 +171,7 @@
       <option value="75">75 Miles</option>
       <option value="100">100 Miles</option>
     </select>
-    <span class="field-error" style="color:red;"><?php echo $this->Session->flash('distance') ; ?></span>
+    <span class="field-error"><?php echo $this->Session->flash('distance') ; ?></span>
     </div>
     </div>
 
@@ -180,21 +180,21 @@
 </div>
 
     <div class="form-group" style="display:none">
-    <div class="col-sm-offset-2 col-sm-6"><input id="textinput" name="distance_c" placeholder="Less than 100" value="" type="text" class="form-control">
-    <span class="field-error" style="color:red;"><?php echo $this->Session->flash('distance_c') ; ?></span>
+    <div class="col-sm-offset-2 col-sm-6"><input id="radiussearch" name="distance_c" placeholder="Less than 100" value="" type="text" class="form-control">
+    <span class="field-error"><?php echo $this->Session->flash('distance_c') ; ?></span>
     </div>
     </div>
     
       <div class="form-group" style="display:none">
     <label class="col-sm-2 control-label">First Name</label>
     <div class="col-sm-6">
-    <input id="textinput"  value=""  name="firstname" placeholder="firstname" type="text" class="form-control">
+    <input value=""  name="firstname" placeholder="firstname" type="text" class="form-control">
     </div>
     </div>
     <div class="form-group" style="display:none">
     <label class="col-sm-2 control-label">Last Name</label>
     <div class="col-sm-6">
-    <input id="textinput"  value=""  name="lastname" placeholder="lastname" type="text" class="form-control">
+    <input value=""  name="lastname" placeholder="lastname" type="text" class="form-control">
     </div>
     
     </div>
@@ -207,7 +207,7 @@
     <label class="col-sm-2 control-label">Practice Name</label>
 <!--IF typed delete practice name-->
 <div class="col-sm-6">
-    <input id="textinput" value="" name="practicename" placeholder="Practice Name" class="form-control" type="text" class="form-control">
+    <input id="pracitcename" value="" name="practicename" placeholder="Practice Name" type="text" class="form-control">
     </div>
     </div>
 
@@ -215,4 +215,4 @@
 
     </form>
 
-</div> <!-- /container
+</div> <!-- /container -->
