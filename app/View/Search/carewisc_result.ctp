@@ -1,8 +1,11 @@
 <div class="container">
 <div class="row">
 <div class="col-md-12 page-header">
-<h2>Search Results</h2>
+<h2>Search Results
+<a href="#" class="btn-xs btn-default pull-right">Return to Search</a></h2>
+
 </div>
+
 </div>
 <div class="row">
 <div id="map_canvas" style="height: 400px; position: relative; background-color: rgb(229, 227, 223); overflow: hidden;" class="col-md-12"></div>
