@@ -62,7 +62,7 @@
 	<td width="100">
 		<div>
 			<div><?php echo "Phone: {$result['phone']}";?></div>
-			<div><?php echo "OfficeHours: {$result['officehours']}";?></div>
+			<div><?php echo "Office Hours: {$result['officehours']}";?></div>
 			<div><?php echo "Languages: {$result['languages']}";?></div>
 			<div><?php echo "Service Area: {$result['servicearea']}, {$result['state']}";?></div>
 		</div>
@@ -71,8 +71,8 @@
 		<div>	
 			<div><?php echo "Hospital Affiliations: {$result['hospaffiliations']}";?></div>
 			<div><?php echo "Accepts Medicaid: {$result['acceptsmedicaid']}";?></div>
-			<div><?php echo "Accepts Medicatre: {$result['acceptsmedicare']}";?></div>
-			<div><?php echo "Accepting New Patiends: {$result['acceptingnew']}";?></div>
+			<div><?php echo "Accepts Medicare: {$result['acceptsmedicare']}";?></div>
+			<div><?php echo "Accepting New Patients: {$result['acceptingnew']}";?></div>
 			<div><?php echo "Handicap Accessible: {$result['handicap']}";?></div>
 		</div>
 	</td>
@@ -94,13 +94,13 @@
 		echo "<input type='hidden' name='{$name}' value='{$value}'>";
 	}
 	?>
-	<span>
+	<ul class="pager">
 		<?php if($srch_filter['start']!=0){?>
-			<a href="javascript:void(0);" onclick="submitsearch('prev')">&lt;&lt; Previous</a>
+			<li class="previous"><a href="javascript:void(0);" onclick="submitsearch('prev')">&larr; Previous</a></li>
 		<?php } ?>
-			&nbsp;&nbsp;
 		<?php if($count>=24){?>
-			<a href="javascript:void(0);" onclick="submitsearch('next')">Next &gt;&gt;</a>	</span>
+			<li class="next"><a href="javascript:void(0);" onclick="submitsearch('next')">Next &rarr;</a></li>
+			</ul>
 		<?php } ?>
 	</form>
 	<script type="text/javascript">

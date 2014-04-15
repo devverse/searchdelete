@@ -58,7 +58,7 @@
 		<div class="row">
 		<div class="col-md-12">
 		<h2>Notice</h2>
-		<p>Provider information contained in this Directory is updated on a daily basis and may have changed. Therefore, please check with your provider before receiving services to confirm whether he or she is participating and accepting patients before scheduling your appointment.</p>
+		<p><small>Provider information contained in this Directory is updated on a daily basis and may have changed. Therefore, please check with your provider before receiving services to confirm whether he or she is participating and accepting patients before scheduling your appointment.</small></p>
 		</div>
 		</div>
 		<table width="600px" style="page-break-before:always">
