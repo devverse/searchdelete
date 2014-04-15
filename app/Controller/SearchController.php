@@ -185,7 +185,13 @@ class SearchController extends AppController {
 				$Email->to($client_email);
 				$Email->subject(ucfirst($client['Client']['name']).' Search Results');
 				$Email->send($view_output);
-				echo '<html><head></head><body><p>Provider List Sent to '.$client_email.'</p><button onclick="history.go(-1)">Go Back</button></body></head>';
+				
+				$resp_view = new View($this, false);
+				$resp_view->set($param);
+				$resp_view->set('client_email',$client_email);
+				$resp_view->layout = 'result';
+				echo $resp_view->render($client['Client']['view_prefix_name'].'resultemaillanding');
+				//echo '<html><head></head><body><p>Provider List Sent to '.$client_email.'</p><button onclick="history.go(-1)">Go Back</button></body></head>';
 			}
 			
 		}
