@@ -21,8 +21,8 @@
     <link href="/dist/css/bootstrap-theme.min.css" rel="stylesheet">
 
     <!-- Custom styles for this template -->
-    <link href="/commandgeosearch/<?php echo $asset_folder; ?>/blue/listsort-style.css" rel="stylesheet">
-    <link href="/commandgeosearch/<?php echo $asset_folder; ?>/theme.css" rel="stylesheet">
+    <link href="/<?php echo $asset_folder; ?>/blue/listsort-style.css" rel="stylesheet">
+    <link href="/<?php echo $asset_folder; ?>/theme.css" rel="stylesheet">
 
     <!--js for print pdf emailing page-->
     <script src="/js/outputpage.js"></script>

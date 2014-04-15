@@ -1,22 +1,25 @@
 <div class="container">
-<div class="page-header">
+<div class="row">
+<div class="col-md-12 page-header">
 <h2>Search Results</h2>
 </div>
-<div id="map_canvas" style="height: 400px; position: relative; background-color: rgb(229, 227, 223); overflow: hidden;"></div>
-
-<div class="row"><div class="col-md-12">
-
-<span class="output-btns" style="poistion:relative">
-	<div>
-	<a class="print-btn" onClick="window.print()"><img style="width:25px;height:25px" src="/img/print5.png"/></a>
-	<a class="pdf-btn"><img style="width:27px;height:27px" src="/img/pdf19.png"/></a>
-	<a class="email-btn"><img style="width:23px;height:23px" src="/img/opened4.png"/></a>
+</div>
+<div class="row">
+<div id="map_canvas" style="height: 400px; position: relative; background-color: rgb(229, 227, 223); overflow: hidden;" class="col-md-12"></div>
+</div>
+<div class="row top5">
+<div class="col-md-2" style="poistion:relative">Export:
+	<a class="print-btn" onClick="window.print()"><img style="width:25px;height:25px" src="/img/print5.png" title="Print page"/></a>
+	<a class="pdf-btn"><img style="width:27px;height:27px" src="/img/pdf19.png" title="Save as pdf"/></a>
+	<a class="email-btn"><img style="width:23px;height:23px" src="/img/opened4.png" title="Email page"/></a>
 	</div>
-	<div style="position:absolute">
-		<div class="email-box" style="background-color:#FFFFFF;display:none;">Your Email : <input type="text" class="email-input"/><button class="email-page">Email</button></div>
-	</div>
-</span>
-
+	
+	<div id="col-md-10">
+		<div class="email-box" style="background-color:#FFFFFF;display:none;">Your Email : <input type="text" class="email-input"/><button class="email-page">Email</button>
+		</div>
+</div>
+</div>
+<div class="row">
 <table id="searchResults" class="tablesorter table table-striped table-hover table-condensed">
 <thead>
 <tr>
@@ -82,7 +85,6 @@
 
 </table>
 </div>
-</div>
 
 <div>
 	<form id="nextresult" class="form-horizontal" action="../<?php echo $client_url_name?>/result" method="post">
@@ -119,7 +121,7 @@
 
 <div class="row">
 <div class="col-md-12">
-<h2>Notice</h2>
+<h3>Notice</h3>
 <p>Provider information contained in this Directory is updated on a daily basis and may have changed. Therefore, please check with your provider before receiving services to confirm whether he or she is participating and accepting patients before scheduling your appointment.</p>
 </div>
 </div>
