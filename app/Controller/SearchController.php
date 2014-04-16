@@ -225,6 +225,7 @@ class SearchController extends AppController {
 	private function _randString( $length ) {
 		$chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";	
 
+		$str='';
 		$size = strlen( $chars );
 		for( $i = 0; $i < $length; $i++ ) {
 			$str .= $chars[ rand( 0, $size - 1 ) ];
