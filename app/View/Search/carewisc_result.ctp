@@ -11,13 +11,13 @@
 <div id="map_canvas" style="height: 400px; position: relative; background-color: rgb(229, 227, 223); overflow: hidden;" class="col-md-12"></div>
 </div>
 <div class="row top5">
-<div class="col-md-2" style="poistion:relative">Export:
+<div class="col-md-3">Export:
 	<a class="print-btn" onClick="window.print()"><img style="width:25px;height:25px" src="/img/print5.png" title="Print page"/></a>
 	<a class="pdf-btn"><img style="width:27px;height:27px" src="/img/pdf19.png" title="Save as pdf"/></a>
 	<a class="email-btn"><img style="width:23px;height:23px" src="/img/opened4.png" title="Email page"/></a>
 	</div>
 	
-	<div id="col-md-10">
+	<div class="col-md-9">
 		<div class="email-box" style="background-color:#FFFFFF;display:none;">Your Email : <input type="text" class="email-input"/><button class="email-page">Email</button>
 		</div>
 </div>
@@ -26,13 +26,13 @@
 <table id="searchResults" class="tablesorter table table-striped table-hover table-condensed">
 <thead>
 <tr>
-<th width="10%"><strong>Name</strong></th>
-<th width="10%"><strong>Specialty</strong></th>
-<th width="10%"><strong>Provider Type</strong></th>
-<th width="10%"><strong>Practice Name</strong></th>
-<th width="10%"><strong>Address</strong></th>
-<th width="10%"><strong>Info</strong></th>
-<th width="10%"><strong><!--info 2--></strong></th>
+<th width="10%"><h6>Name</h6></th>
+<th width="10%"><h6>Specialty</h6></th>
+<th width="10%"><h6>Provider Type</h6></th>
+<th width="10%"><h6>Practice Name</h6></th>
+<th width="10%"><h6>Address</h6></th>
+<th width="10%"><h6>Info</h6></th>
+<th width="10%"><h6><!--info 2--></h6></th>
 
 </tr>
 </thead>
