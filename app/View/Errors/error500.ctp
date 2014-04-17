@@ -1,4 +1,5 @@
 <?php
+$this->layout = '';
 /**
  *
  * PHP 5
@@ -17,13 +18,18 @@
  * @license       http://www.opensource.org/licenses/mit-license.php MIT License
  */
 ?>
-<h2><?php echo $name; ?></h2>
-<p class="error">
-	<strong><?php echo __d('cake', 'Error'); ?>: </strong>
-	<?php echo __d('cake', 'An Internal Error Has Occurred.'); ?>
-</p>
+<?php //echo $name; ?>
+<?php //echo __d('cake', 'Error'); ?>
+<?php //echo __d('cake', 'An Internal Error Has Occurred.'); ?>
 <?php
-if (Configure::read('debug') > 0):
-	echo $this->element('exception_stack_trace');
-endif;
+// if (Configure::read('debug') > 0):
+// 	echo $this->element('exception_stack_trace');
+// endif;
 ?>
+
+<html>
+<head>
+</head>
+<body>
+</body>
+</html>
