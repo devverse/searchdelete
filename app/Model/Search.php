@@ -16,7 +16,7 @@ class Search extends AppModel {
             		)
 			),
 			'countie_name'=>array(
-				'Select a service area or fill in search address.' => array(
+				'Fill in search address, practice name or select a service area.' => array(
 	                'rule'=>array('locationOrCountieOrPracticeName'),
             	),
 				'Must be Alpha Numeric Character' => array(
@@ -42,7 +42,7 @@ class Search extends AppModel {
             	)
             ),
             'zipcode' => array(
-            	'Select a service area or fill in search address.' => array(
+            	'Fill in search address, practice name or select a service area.' => array(
 	                'rule'=>array('locationOrCountieOrPracticeName'),
             	),
 				'Must Be Numeric' => array(
@@ -297,7 +297,7 @@ class Search extends AppModel {
 
 		$sql .= $this->_buildAndSql();
 
-		$sql .= ' LIMIT '.$d['start'].' , '.$limit ;
+		$sql .= ' Group By fullrecords.address, fullrecords.practicename LIMIT '.$d['start'].' , '.$limit ;
 
 		return $this->query($sql,false);
 	}
