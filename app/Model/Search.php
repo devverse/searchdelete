@@ -319,7 +319,7 @@ class Search extends AppModel {
 		}elseif ($d['practicename'] != '') {
 			$sql .= "practicename LIKE '%{$d['practicename']}%' ";
 		}else{
-			$sql .= " servicearea collate latin1_swedish_ci = '{$d['countie_name']}' ";
+			$sql .= " county collate latin1_swedish_ci = '{$d['countie_name']}' ";
 		}
 
 		$sql .= $this->_buildAndSql();

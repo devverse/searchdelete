@@ -159,7 +159,10 @@ $(function(){
     <div class="col-sm-8">
         <select  name="countie_name" class="form-control">
         <option value="none">All Counties</option>
-        <?php foreach($counties as $countie){ ?>
+        <?php foreach($counties as $countie){ 
+             if($countie['Countie']['name']=='')
+              continue;
+        ?>
         <option value="<?php echo $countie['Countie']['name'];?>"><?php echo $countie['Countie']['name'];?></option>
         <?php } ?>
     </select>

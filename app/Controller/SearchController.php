@@ -63,7 +63,7 @@ class SearchController extends AppController {
 		$providers 		= $this->Provider->find('all');
 		$specialties 	= $this->Specialtie->find('all');
 		$providertypes 	= $this->Providertype->find('all');
-		$counties 		= $this->Countie->find('all');
+		$counties 		= $this->Countie->find('all',array('order' => 'name ASC'));
 		$this->set('counties', $counties);
 		$this->set('providertypes', $providertypes);
 		$this->set('insurances', $insurances);
