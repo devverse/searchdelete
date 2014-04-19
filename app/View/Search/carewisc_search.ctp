@@ -92,7 +92,7 @@
      <div class="col-sm-offset-2 col-sm-10">--- or ---</div>
 </div>
     <div class="form-group">
-    <label class="col-sm-2 control-label">Counties</label>
+    <label class="col-sm-2 control-label">County</label>
     <div class="col-sm-8">
         <select  name="countie_name" class="form-control">
         <option value="none">All Counties</option>
@@ -141,7 +141,7 @@
         <label class="col-sm-2 control-label">Specialty</label>
         <div class="col-sm-6">
         <select name="specialtie_name" class="form-control">
-        <option value="none">- All specialties -</option>
+        <option value="none">- All Specialties -</option>
         <?php foreach($specialties as $specialty){
             if($specialty['Specialtie']['name']=='')
               continue;
@@ -154,7 +154,7 @@
     </div>
 
     <div class="form-group">
-    <label class="col-sm-2 control-label">Provider Types</label>
+    <label class="col-sm-2 control-label">Provider Type</label>
     <div class="col-sm-6">
     <select name="providertype_name" class="form-control">
             <option value="none">- All Provider Types -</option>

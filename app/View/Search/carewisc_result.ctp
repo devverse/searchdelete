@@ -60,7 +60,9 @@
 		<div><?php echo $result['practicename'];?></div>
 	</td>
 	<td>
-		<div><?php echo $result['address'] .' '.$result['suite'];?></div><div><?php echo $result['city'].' '.$result['state'].', '.$result['zip4'].', '.$result['county']; ?></div>
+		<div><?php echo $result['address'] .' '.$result['suite'];?></div>
+		<div><?php echo $result['city'].', '.$result['zip4']; ?></div>
+		<div><?php echo $result['county'].', '.$result['state']; ?></div>
 	</td>
 	<td width="100">
 		<div>
