@@ -183,7 +183,34 @@ class Search extends AppModel {
 
 		$provider_results = $this->formatProviders($radius_results);
 
+		if($coor_array == false)
+			$coor_array = $this->getAverageCoordinates($radius_results);
+
 		return array('providers'=>$provider_results,'coor_array'=>$coor_array,'locations'=>$location_results);
+	}
+
+	public function getAverageCoordinates($result_array)
+	{
+		$average_array = array();
+		$count = 0;
+		$index = 0;
+		foreach($result_array as $k=>$v)
+		{
+			$v = $v['fullrecords'];
+			if(isset($average_array[$v['state']][$v['city']])){
+				$average_array[$v['state']][$v['city']]['count']++;
+			}else{
+			 	$average_array[$v['state']]=array($v['city']=>array('count'=>1,'index'=>$k));
+			}	
+
+			if($count < $average_array[$v['state']][$v['city']]['count'])
+			{
+				$count = $average_array[$v['state']][$v['city']]['count'];
+				$index = $average_array[$v['state']][$v['city']]['index'];
+			}
+		}
+
+		return array('lat'=>$result_array[$index]['fullrecords']['latitude'],'long'=>$result_array[$index]['fullrecords']['longitude']);
 	}
 
 	public function getCoordinatesFromAddress()
