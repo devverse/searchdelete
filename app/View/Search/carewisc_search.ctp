@@ -186,22 +186,6 @@ $(function(){
      <div class="col-sm-offset-2 col-sm-10">Filter By:</div>
     </div>
 
-     <div class="form-group">
-        <label class="col-sm-2 control-label">Specialty</label>
-        <div class="col-sm-6">
-        <select name="specialtie_name" class="form-control">
-        <option value="none">- All Specialties -</option>
-        <?php foreach($specialties as $specialty){
-            if($specialty['Specialtie']['name']=='')
-              continue;
-            ?>
-            <option value="<?php echo $specialty['Specialtie']['name'];?>"><?php echo $specialty['Specialtie']['name'];?></option>
-        <?php } ?>
-        </select>
-    <span class="field-error"><?php echo $this->Session->flash('specialtie_name') ; ?></span>
-        </div>
-    </div>
-
     <div class="form-group">
     <label class="col-sm-2 control-label">Provider Type</label>
     <div class="col-sm-6">
@@ -216,6 +200,22 @@ $(function(){
     </select>
     <span class="field-error"><?php echo $this->Session->flash('providertype_name') ; ?></span>
     </div>
+    </div>
+
+     <div class="form-group">
+        <label class="col-sm-2 control-label">Specialty</label>
+        <div class="col-sm-6">
+        <select name="specialtie_name" class="form-control">
+        <option value="none">- All Specialties -</option>
+        <?php foreach($specialties as $specialty){
+            if($specialty['Specialtie']['name']=='')
+              continue;
+            ?>
+            <option value="<?php echo $specialty['Specialtie']['name'];?>"><?php echo $specialty['Specialtie']['name'];?></option>
+        <?php } ?>
+        </select>
+    <span class="field-error"><?php echo $this->Session->flash('specialtie_name') ; ?></span>
+        </div>
     </div>
 
     <div class="form-group" style="display:none">
