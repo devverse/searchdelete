@@ -9,12 +9,12 @@ class Search extends AppModel {
 	                'allowEmpty' => false,
             	)
 			),
-            'providertype_name'=>array(
-				'Cannot be blank. Must be Alpha Numeric Character' => array(
-	                'rule'     => array('custom', '/^[a-z0-9 ]*$/i'),
-	                'allowEmpty' => false
-            		)
-			),
+   //          'providertype_name'=>array(
+			// 	'Provider type cannot be blank. Must be Alpha Numeric Character' => array(
+	  //               'rule'     => array('custom', '/^[a-z0-9 ]*$/i'),
+	  //               'allowEmpty' => false
+   //          		)
+			// ),
 			'countie_name'=>array(
 				'Fill in search address, practice name or select a service area.' => array(
 	                'rule'=>array('locationOrCountieOrPracticeName'),
@@ -118,12 +118,12 @@ class Search extends AppModel {
 	                'allowEmpty' => false,
             	)
             ),
-			'specialtie_name'  => array(
-				'Must be Alpha Numeric Character' => array(
-	                'rule'     => array('custom', '/^[a-z0-9 ]*$/i'),
-	                'allowEmpty' => false,
-            	)
-            ),
+			// 'specialtie_name'  => array(
+			// 	'Must be Alpha Numeric Character' => array(
+	  //               'rule'     => array('custom', '/^[a-z0-9 ]*$/i'),
+	  //               'allowEmpty' => false,
+   //          	)
+   //          ),
 			'acceptnew'  => array(
 				'Must be Alpha Numeric Character' => array(
 	                'rule'     => array('custom', '/^[a-z0-9 ]*$/i'),
