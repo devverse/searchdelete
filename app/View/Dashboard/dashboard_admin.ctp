@@ -1,8 +1,25 @@
+Edit an existing Client database
 
-	Admin Dashboard
-	<a href="./provider">Go to Providers</a><br>
-	<a href="./location">Go to Locations</a><br>
-	<a href="./specialty">Go to Specialties</a><br>
-	<a href="./insurance">Go to Insurance</a><br>
-	<a href="./language">Go to Languages</a><br>
-	<a href="./logout">Logout</a><br>
+<form method="post" action="./client/edit">
+Select a client
+<select name="client">
+<?php
+foreach($clients as $client)
+{
+	echo "<option value='{$client['Client']['id']}'>{$client['Client']['company_name']}</option>";
+}
+?>
+</select>
+<input type="submit" value="Use Client">
+</form>
+<br/>
+--OR--
+<br/>
+Add a new Client
+<form method="post" action="./client/add">
+<input type="text" name="new_client_name"/>
+<input type="submit" value="Add New Client">
+</form>
+<?php echo $this->Session->flash('new_client_name'); ?>
+
+

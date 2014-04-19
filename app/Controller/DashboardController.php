@@ -28,6 +28,9 @@ class DashboardController extends AppController {
 
 		switch ($this->Session->read('User.type')) {
 			case 2:
+				Configure::write('Model.globalSource', 'default');
+				$clients = $this->Client->find('all');
+				$this->set('clients',$clients);
 				$this->render('dashboard_admin');
 				break;
 			case 1:
@@ -94,6 +97,32 @@ class DashboardController extends AppController {
 		$this->layout = 'logout';
 		$this->render('logout');
 	}
+
+	public function client($action='')
+	{
+		switch ($action) {
+			case 'add':
+				$this->_adminAdd();
+				break;
+			case 'edit':
+				$this->_adminEdit();
+				break;
+			default:
+				return $this->redirect(array('action' => './'));
+				break;
+		}
+	}
+
+	public function _adminAdd()
+	{
+
+	}
+
+	public function _adminEdit()
+	{
+		
+	}
+
 
 	public function a($table='',$action='',$param=null)
 	{	
