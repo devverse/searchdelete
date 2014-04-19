@@ -26,9 +26,8 @@
 <table id="searchResults" class="tablesorter table table-striped table-hover table-condensed">
 <thead>
 <tr>
-<th width="10%"><h6>Name</h6></th>
-<th width="10%"><h6>Specialty</h6></th>
 <th width="10%"><h6>Provider Type</h6></th>
+<th width="10%"><h6>Specialty</h6></th>
 <th width="10%"><h6>Practice Name</h6></th>
 <th width="10%"><h6>Address</h6></th>
 <th width="10%"><h6>Info</h6></th>
@@ -47,38 +46,38 @@
 
 <!-- Result Information START-->
 <tr>
-	<td>
+<!--	<td>
 		<div class="name"><strong><?php echo ($result['lastname']!='') ?"Dr.{$result['firstname']} {$result['middlename']} {$result['lastname']}":'';?></div><div><?php echo ($result['degree']!='') ? "({$result['degree']})" :'';?></strong></div>
+	</td>-->
+	<td>
+		<div><?php echo $result['category'];?></div>
 	</td>
 	<td>
 		<div><?php echo $result['specialty'];?></div>
-	</td>
-	<td>
-		<div><?php echo $result['category'];?></div>
 	</td>
 	<td>
 		<div><?php echo $result['practicename'];?></div>
 	</td>
 	<td>
 		<div><?php echo $result['address'] .' '.$result['suite'];?></div>
-		<div><?php echo $result['city'].', '.$result['zip4']; ?></div>
-		<div><?php echo $result['county'].', '.$result['state']; ?></div>
+		<div><?php echo $result['city'].', '.$result['state'].' '.$result['zip4']; ?></div>
+		<div><?php echo ($result['county'] != '')?$result['county'].' County':'' ?></div>
 	</td>
 	<td width="100">
 		<div>
 			<div><?php echo "Phone: {$result['phone']}";?></div>
-			<div><?php echo "Office Hours: {$result['officehours']}";?></div>
+			<!--<div><?php echo "Office Hours: {$result['officehours']}";?></div>-->
 			<div><?php echo "Languages: {$result['languages']}";?></div>
-			<div><?php echo "Service Area: {$result['servicearea']}, {$result['state']}";?></div>
+			<!--<div><?php echo "Service Area: {$result['servicearea']}, {$result['state']}";?></div>-->
 		</div>
 	</td>
 	<td width="100">
 		<div>	
-			<div><?php echo "Hospital Affiliations: {$result['hospaffiliations']}";?></div>
-			<div><?php echo "Accepts Medicaid: {$result['acceptsmedicaid']}";?></div>
-			<div><?php echo "Accepts Medicare: {$result['acceptsmedicare']}";?></div>
+			<!--<div><?php echo "Hospital Affiliations: {$result['hospaffiliations']}";?></div>-->
+			<!--<div><?php echo "Accepts Medicaid: {$result['acceptsmedicaid']}";?></div>-->
+			<!--<div><?php echo "Accepts Medicare: {$result['acceptsmedicare']}";?></div>-->
 			<div><?php echo "Accepting New Patients: {$result['acceptingnew']}";?></div>
-			<div><?php echo "Handicap Accessible: {$result['handicap']}";?></div>
+			<div><?php echo ($result['handicap']=='Y'||$result['handicap']=='')?"Handicap Accessible: Y":"";?></div>
 		</div>
 	</td>
 </tr>
@@ -89,6 +88,11 @@
 ?>
 
 </table>
+
+<?php if(count($result) < 1){?>
+<h3>No Providers were found. Please change your search criteria.</h3>
+
+<?php } ?>
 </div>
 
 <div>
@@ -127,7 +131,7 @@
 <div class="row">
 <div class="col-md-12">
 <h3>Notice</h3>
-<p>Provider information contained in this Directory is updated on a daily basis and may have changed. Therefore, please check with your provider before receiving services to confirm whether he or she is participating and accepting patients before scheduling your appointment.</p>
+<p>Provider information contained in this Directory is updated on a frequent basis and may have changed. Therefore, please check with your provider before receiving services to confirm whether he or she is participating and accepting patients before scheduling your appointment.</p>
 </div>
 </div>
 

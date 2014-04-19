@@ -3,9 +3,55 @@
 <div class="container"> <!--container -->
 <h2>Search Form <?php echo($network_name!='')?'- '.$network_name:'';?></h2>
 
+<form id="radio-search">
+<input type="radio" name="searchtype" value="name">Practice Name<br>
+<input type="radio" name="searchtype" value="location">Location<br>
+<input type="radio" name="searchtype" value="county">Service County
+</form><br>
+<script type="text/javascript">
+$(function(){
+    $('#radio-search').on('change','input',function()
+        {
+             var inputValue = $(this).val();
+             $('.searchtype-location').hide();
+             $('.searchtype-county').hide();
+             $('.searchtype-name').hide();
+
+             $('#pracitcename').val('');
+             $('.searchtype-county select[name=countie_name]').val('none');
+             $('.searchtype-location input[type=text]').val('');
+             $('.searchtype-location select[name=state]').val('None');
+
+             $('.'+'searchtype-'+inputValue).show();
+             $('.filter-by').css('display','block');
+        });
+});
+</script>
+
+<div><!--Error Message Section-->
+    <span class="field-error"><?php echo $this->Session->flash('zipcode') ; ?></span>
+    <span class="field-error"><?php echo $this->Session->flash('distance') ; ?></span>
+    <span class="field-error"><?php echo $this->Session->flash('countie_name') ; ?></span>
+     <span class="field-error"><?php echo $this->Session->flash('distance_c') ; ?></span>
+    <span class="field-error"><?php echo $this->Session->flash('specialtie_name') ; ?></span>
+    <span class="field-error"><?php echo $this->Session->flash('providertype_name') ; ?></span>
+    <span class="field-error"><?php echo $this->Session->flash('language_name') ; ?></span>
+    <span class="field-error"><?php echo $this->Session->flash('insurance_name') ; ?></span>
+</div>
+
 <form action="<?php echo $client_url_name;?>/result" method="post" class="form-horizontal">
+
     <input type="hidden" name="network_name" value="<?=$network_name?>"/>
 
+    <div class="form-group searchtype-name" style="display:none">
+        <label class="col-sm-2 control-label">Practice Name</label>
+        <!--IF typed delete practice name-->
+        <div class="col-sm-6">
+        <input id="pracitcename" value="" name="practicename" placeholder="Practice Name" type="text" class="form-control">
+        </div>
+    </div>
+
+<div class="searchtype-location" style="display:none"><!--Beginingof Adresses-->
     <div class="form-group">
     	<label class="col-sm-2 control-label">Address</label>
     	<div class="col-sm-8">
@@ -81,17 +127,34 @@
 
     </div>
     <div class="col-sm-1">
-    <label class="control-label">Zip</label>
+    <label class="control-label">ZIP</label>
     </div>
     <div class="col-sm-2">
     <input id="zipcode" name="zipcode" placeholder="Zip Code" type="text" value="" class="form-control">
     <span class="field-error"><?php echo $this->Session->flash('zipcode') ; ?></span>
     </div>
     </div>
-<div class="form-group">
-     <div class="col-sm-offset-2 col-sm-10">--- or ---</div>
-</div>
+
     <div class="form-group">
+        <label class="col-sm-2 control-label">Distance </label> 
+        <div class="col-sm-6">
+        <select id="distance" name="distance" class="form-control">
+         <!--<option value="0">Select a Distance</option>-->
+          <option value="1">1 Miles</option>
+          <option value="5">5 Miles</option>
+          <option value="10">10 Miles</option>
+          <option value="15">15 Miles</option>
+          <option value="20">25 Miles</option>
+          <option value="50">50 Miles</option>
+          <option value="75">75 Miles</option>
+          <option value="100">100 Miles</option>
+        </select>
+        <span class="field-error"><?php echo $this->Session->flash('distance') ; ?></span>
+        </div>
+    </div>
+</div><!--End of Addresses-->
+
+    <div class="form-group searchtype-county" style="display:none">
     <label class="col-sm-2 control-label">County</label>
     <div class="col-sm-8">
         <select  name="countie_name" class="form-control">
@@ -105,24 +168,6 @@
 
     </div>
 
-    <div class="form-group">
-    <label class="col-sm-2 control-label">Distance </label> 
-    <div class="col-sm-6">
-    <select id="distance" name="distance" class="form-control">
-     <!--<option value="0">Select a Distance</option>-->
-      <option value="1">1 Miles</option>
-      <option value="5">5 Miles</option>
-      <option value="10">10 Miles</option>
-      <option value="15">15 Miles</option>
-      <option value="20">25 Miles</option>
-      <option value="50">50 Miles</option>
-      <option value="75">75 Miles</option>
-      <option value="100">100 Miles</option>
-    </select>
-    <span class="field-error"><?php echo $this->Session->flash('distance') ; ?></span>
-    </div>
-    </div>
-
     <div class="form-group" style="display:none">
      <div class="col-sm-offset-2 col-sm-10">--- or ---</div>
     </div>
@@ -133,6 +178,7 @@
     </div>
     </div>
 
+<div class="filter-by" style="display:none"><!--filter by-->
     <div class="form-group">
      <div class="col-sm-offset-2 col-sm-10">Filter By:</div>
     </div>
@@ -182,7 +228,7 @@
     </div>
     </div>
 
-    <div class="form-group">
+    <div class="form-group"  style="display:None">
     <label class="col-sm-2 control-label">Gender</label>
     <div class="col-sm-8">
     <select id="gender" name="gender" class="form-control">
@@ -193,7 +239,7 @@
     </div>
     </div>
 
-    <div class="form-group">
+    <div class="form-group"  style="display:None">
     <label class="col-sm-2 control-label">Accepts New</label>
     <div class="col-sm-8">
     <select id="acceptnew" name="acceptnew" class="form-control">
@@ -204,7 +250,7 @@
     </div>
     </div>
 
-    <div class="form-group">
+    <div class="form-group"  style="display:None">
     <label class="col-sm-2 control-label">Accepts Medicare</label>
     <div class="col-sm-8">
     <select id="acceptmediarestate" name="acceptmedicare" class="form-control">
@@ -216,7 +262,7 @@
     </div>
 
 
-    <div class="form-group" >
+    <div class="form-group" style="display:None">
     <label class="col-sm-2 control-label">Handicap Accessible</label>
     <div class="col-sm-8">
     <select id="handicapaccess" name="handicapaccess" class="form-control">
@@ -253,21 +299,12 @@
     </div>
     
     </div>
-    
     <div class="form-group" style="display:none">
      <div class="col-sm-offset-2 col-sm-10">--- or ---</div>
 </div>
 
-    <div class="form-group" >
-    <label class="col-sm-2 control-label">Practice Name</label>
-<!--IF typed delete practice name-->
-<div class="col-sm-6">
-    <input id="pracitcename" value="" name="practicename" placeholder="Practice Name" type="text" class="form-control">
-    </div>
-    </div>
-
     <button id="singlebutton" type="submit" class="col-sm-offset-2 btn btn-default">Search Provider</button>
-
+</div><!--filterby-->
     </form>
 
 </div> <!-- /container -->
