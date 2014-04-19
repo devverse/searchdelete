@@ -77,7 +77,10 @@ class SearchController extends AppController {
 		$this->set('client_url_name', $client_url_name);
 
 		// We are using just the search base layout / Dynamic is the asset_folder name
-		$this->set('asset_folder', $client['Client']['asset_folder_name']);
+		if($ntwk_ind != false)
+			$this->set('asset_folder', $client['Client']['asset_folder_name']."_$ntwk_ind");
+		else
+			$this->set('asset_folder', $client['Client']['asset_folder_name']);
 		$this->layout = 'search';
 
 		//IF view_prefix_name is '' it defaults to base search page

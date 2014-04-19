@@ -1,0 +1,21 @@
+/* CenterPlan Style */
+
+.container {} /* Overwrite bootstrap style */
+.searchContainer { width: 820px}
+.page-header h1 {padding: 0}
+th>h6 { font-size: 12; margin: 5px 0}
+.theme-dropdown .dropdown-menu {  display: block;  position: static;  margin-bottom: 20px;}
+.theme-showcase > p > .btn {  margin: 5px 0;}
+table#searchResults tr td {    vertical-align: top; font-size: 12px !important; padding-bottom: 10px}
+table#searchResults td strong{  color: #359CDA;}
+table#searchResults { font-size: 12px; width: 100%}
+.message {padding-left: 20px}
+.top5 { margin-top:5px; }
+.top7 { margin-top:7px; }
+.top10 { margin-top:10px; }
+.print-btn,.pdf-btn,.email-btn { cursor: pointer}
+.field-error { color: red}
+/* Result Table Styles */
+#searchResults th {      padding: 5px 0 5px 5px;}
+#searchResults td {    padding: 5px;}
+tr:nth-of-type(even) { background-color: #c4c4c4; }
