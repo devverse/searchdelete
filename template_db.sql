@@ -350,6 +350,7 @@ CREATE TABLE IF NOT EXISTS `providers_specialties` (
 
 CREATE TABLE IF NOT EXISTS `specialties` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `parent_id` int(11)  NOT NULL,
   `name` varchar(255) NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `id` (`id`)

@@ -181,6 +181,24 @@ $(function(){
     </div>
     </div>
 
+     <!--JS to sub categorize specialites to provider specialties-->
+    <script type="text/javascript">
+        $(function(){
+            $('.filter-by').on('change','select[name=providertype_name]',function()
+                {
+                    var parentid = $(this).find('option:selected').attr("data-id");
+
+                    $('.filter-by select[name=specialtie_name] option').show();
+                    $('.filter-by select[name=specialtie_name]').val('none');
+                    if(parentid == undefined)
+                         $('.filter-by select[name=specialtie_name] option').show();
+                    else
+                        $('.filter-by select[name=specialtie_name] option[data-parent!='+parentid+']').hide();
+                     $('.filter-by select[name=specialtie_name] option[value=none]').show();
+                });
+        });
+    </script>
+
 <div class="filter-by" style="display:none"><!--filter by-->
     <div class="form-group">
      <div class="col-sm-offset-2 col-sm-10">Filter By:</div>
@@ -192,10 +210,10 @@ $(function(){
     <select name="providertype_name" class="form-control">
             <option value="none">- All Provider Types -</option>
         <?php foreach($providertypes as $providertype){ 
-            if($providertype['Providertype']['name']=='')
-              continue;
+            // if($providertype['Providertype']['name']=='')
+            //   continue;
             ?>
-            <option value="<?php echo $providertype['Providertype']['name'];?>"><?php echo $providertype['Providertype']['name'];?></option>
+            <option data-id="<?php echo $providertype['Providertype']['id']; ?>" value="<?php echo $providertype['Providertype']['name'];?>"><?php echo $providertype['Providertype']['name'];?></option>
         <?php } ?>
     </select>
     <span class="field-error"><?php echo $this->Session->flash('providertype_name') ; ?></span>
@@ -211,7 +229,7 @@ $(function(){
             if($specialty['Specialtie']['name']=='')
               continue;
             ?>
-            <option value="<?php echo $specialty['Specialtie']['name'];?>"><?php echo $specialty['Specialtie']['name'];?></option>
+            <option data-parent="<?php echo $specialty['Specialtie']['parent_id']; ?>" value="<?php echo $specialty['Specialtie']['name'];?>"><?php echo $specialty['Specialtie']['name'];?></option>
         <?php } ?>
         </select>
     <span class="field-error"><?php echo $this->Session->flash('specialtie_name') ; ?></span>

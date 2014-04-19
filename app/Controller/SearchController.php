@@ -61,7 +61,7 @@ class SearchController extends AppController {
 		$languages 		= $this->Language->find('all');
 		$locations 		= $this->Location->find('all');
 		$providers 		= $this->Provider->find('all');
-		$specialties 	= $this->Specialtie->find('all',array('order' => 'name ASC'));
+		$specialties 	= $this->Specialtie->find('all',array('order' => 'name ASC','fields'=>array('id','name','parent_id')));
 		$providertypes 	= $this->Providertype->find('all',array('order' => 'name ASC'));
 		$counties 		= $this->Countie->find('all',array('order' => 'name ASC'));
 		$this->set('counties', $counties);
