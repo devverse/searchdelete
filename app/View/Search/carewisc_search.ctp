@@ -16,6 +16,7 @@
 </form>
 <script type="text/javascript">
 $(function(){
+    $('#radio-search')[0].reset();
     $('#radio-search').on('change','input',function()
         {
              var inputValue = $(this).val();
