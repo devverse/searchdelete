@@ -1,11 +1,11 @@
-<div class="container">
+<div class="container" style="width:550px;margin:1.5em">
 <div class="page-header">
 <h2>Search Form</h2>
 </div>
 
 <div class="row"><div class="col-md-12">
 
-<table width="600px">
+<table width="550px">
 
 
 <?php
@@ -60,7 +60,7 @@
 		<p><small>Provider information contained in this Directory is updated on a frequent basis and may have changed. Therefore, please check with your provider before receiving services to confirm whether he or she is participating and accepting patients before scheduling your appointment.</small></p>
 		</div>
 		</div>
-		<table width="600px" style="page-break-before:always">
+		<table width="550px" style="page-break-before:always">
 <?php
 
 		}
@@ -74,12 +74,13 @@
 <div class="row">
 <div class="col-md-12">
 <h2>Notice</h2>
-<p>Provider information contained in this Directory is updated on a frequent basis and may have changed. Therefore, please check with your provider before receiving services to confirm whether he or she is participating and accepting patients before scheduling your appointment.</p>
+<p><small>Provider information contained in this Directory is updated on a frequent basis and may have changed. Therefore, please check with your provider before receiving services to confirm whether he or she is participating and accepting patients before scheduling your appointment.</small></p>
 </div>
 </div>
+<img style="width:99%;" src="files/<?php echo $statimgname; ?>.png"/>
 </div>	
 
 <!--<img style="width:75%;" src="img/print5.png"/>-->
-<img style="width:99%;" src="files/<?php echo $statimgname; ?>.png"/>
+
 <!--<img style="width:200px;" src="http://maps.google.com/maps/api/staticmap?center=40.7536854,-73.9991637&zoom=16&size=500x300&maptype=roadmap&sensor=false&language=&markers=color:red|label:none|40.7536854,-73.9991637"/>-->
 
