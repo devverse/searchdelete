@@ -15,6 +15,7 @@ table#searchResults { font-size: 12px; width: 100%}
 .top10 { margin-top:10px; }
 .print-btn,.pdf-btn,.email-btn { cursor: pointer}
 .field-error { color: red}
+label.radio { display: block;padding: 5px 0; width: 100%;}
 /* Result Table Styles */
 #searchResults th {      padding: 5px 0 5px 5px;}
 #searchResults td {    padding: 5px;}

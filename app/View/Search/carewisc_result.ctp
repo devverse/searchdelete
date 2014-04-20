@@ -1,8 +1,8 @@
-<div class="container">
+<div class="container" id="providerresults">
 <div class="row">
 <div class="col-md-12 page-header">
 <h2>Search Results
-<a onclick="history.go(-1)" class="btn-xs btn-default pull-right">Return to Search</a></h2>
+<a onclick="history.go(-1)" class="btn-xs btn-default pull-right"><span class="glyphicon glyphicon-arrow-left"></span> Return to Search</a></h2>
 
 </div>
 

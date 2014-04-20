@@ -1,13 +1,19 @@
 <!-- File: /app/View/Search/search1.ctp -->
 
-<div class="container"> <!--container -->
-<h2>Search Form <?php echo($network_name!='')?'- '.$network_name:'';?></h2>
+<div class="container" id="providersearch"> <!--container -->
+<h2><span class="glyphicon glyphicon-search"></span> Search Form <?php echo($network_name!='')?'- '.$network_name:'';?></h2>
 
 <form id="radio-search">
-<input type="radio" name="searchtype" value="name">Practice Name<br>
-<input type="radio" name="searchtype" value="location">Location<br>
-<input type="radio" name="searchtype" value="county">Service County
-</form><br>
+<div class="control-group">
+	<div clas="controls">
+	<div class="radio">
+		<label class="radio"><input type="radio" name="searchtype" value="name">Practice Name</label>
+		<label class="radio"><input type="radio" name="searchtype" value="location">Location</label>
+		<label class="radio"><input type="radio" name="searchtype" value="county">Service County</label>
+	</div>
+	</div>
+</div>
+</form>
 <script type="text/javascript">
 $(function(){
     $('#radio-search').on('change','input',function()
@@ -44,7 +50,7 @@ $(function(){
     <input type="hidden" name="network_name" value="<?=$network_name?>"/>
 
     <div class="form-group searchtype-name" style="display:none">
-        <label class="col-sm-2 control-label">Practice Name</label>
+        <label class="col-sm-2 control-label"><span class="field-error">*</span> Practice Name</label>
         <!--IF typed delete practice name-->
         <div class="col-sm-6">
         <input id="pracitcename" value="" name="practicename" placeholder="Practice Name" type="text" class="form-control">
@@ -53,7 +59,7 @@ $(function(){
 
 <div class="searchtype-location" style="display:none"><!--Beginingof Adresses-->
     <div class="form-group">
-    	<label class="col-sm-2 control-label">Address</label>
+    	<label class="col-sm-2 control-label"><span class="field-error">*</span> Address</label>
     	<div class="col-sm-8">
     	<input value="" name="street address" placeholder="Address" type="text" class="form-control">
     	</div>
@@ -155,7 +161,7 @@ $(function(){
 </div><!--End of Addresses-->
 
     <div class="form-group searchtype-county" style="display:none">
-    <label class="col-sm-2 control-label">County</label>
+    <label class="col-sm-2 control-label"><span class="field-error">*</span> County</label>
     <div class="col-sm-8">
         <select  name="countie_name" class="form-control">
         <option value="none">All Counties</option>
@@ -324,7 +330,9 @@ $(function(){
      <div class="col-sm-offset-2 col-sm-10">--- or ---</div>
 </div>
 
-    <button id="singlebutton" type="submit" class="col-sm-offset-2 btn btn-default">Search Provider</button>
+<div class="col-sm-offset-2"><span class="field-error">*</span> Required Fields</p>
+
+    <button id="singlebutton" type="submit" class="btn btn-default btn-custom">Search Provider</button>
 </div><!--filterby-->
     </form>
 
