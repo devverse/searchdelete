@@ -46,7 +46,7 @@ $(function(){
     <span class="field-error"><?php echo $this->Session->flash('insurance_name') ; ?></span>
 </div>
 
-<form action="<?php echo $client_url_name;?>/result" method="post" class="form-horizontal">
+<form action="/search/<?php echo $client_url_name;?>/result" method="post" class="form-horizontal">
 
     <input type="hidden" name="network_name" value="<?=$network_name?>"/>
 
