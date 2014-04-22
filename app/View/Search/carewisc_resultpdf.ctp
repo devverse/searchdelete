@@ -1,6 +1,6 @@
 <div class="container" style="width:550px;margin:1.5em">
 <div class="page-header">
-<h2>Search Form</h2>
+<h2>Search Results</h2>
 </div>
 
 <div class="row"><div class="col-md-12">
@@ -73,7 +73,7 @@
 
 <div class="row">
 <div class="col-md-12">
-<h2>Notice</h2>
+<h3>Notice</h3>
 <p><small>Provider information contained in this Directory is updated on a frequent basis and may have changed. Therefore, please check with your provider before receiving services to confirm whether he or she is participating and accepting patients before scheduling your appointment.</small></p>
 </div>
 </div>

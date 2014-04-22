@@ -134,7 +134,7 @@ $(function(){
 
     </div>
     <div class="col-sm-1">
-    <label class="control-label">ZIP</label>
+    <label class="control-label">Zip</label>
     </div>
     <div class="col-sm-2">
     <input id="zipcode" name="zipcode" placeholder="Zip Code" type="text" value="" class="form-control">
