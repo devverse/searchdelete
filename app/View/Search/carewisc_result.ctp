@@ -7,9 +7,7 @@
 </div>
 
 </div>
-<div class="row">
-<div id="map_canvas" style="height: 400px; position: relative; background-color: rgb(229, 227, 223); overflow: hidden;" class="col-md-12"></div>
-</div>
+
 <div class="row top5">
 <div class="col-md-3">Export:
 	<a class="print-btn" onClick="window.print()"><img style="width:25px;height:25px" src="/img/print5.png" title="Print page"/></a>
@@ -126,6 +124,10 @@
 		form.append("<input type='hidden' name='start' value='"+start+"'/>");
 		form.submit();
 	}</script>
+</div>
+
+<div class="row">
+<div id="map_canvas" style="height: 400px; position: relative; background-color: rgb(229, 227, 223); overflow: hidden;" class="col-md-12"></div>
 </div>
 
 <div class="row">
