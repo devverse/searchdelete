@@ -23,7 +23,7 @@ class SearchController extends AppController {
 				$this->search($client_obj,$network_ind,$client_orig_name);
 				break;
 			case 'result':
-				$this->result($client_obj,$client_orig_name);
+				$this->result($client_obj,$network_ind,$client_orig_name);
 				break;
 			case 'error':
 				$this->error($client_orig_name);
@@ -87,7 +87,7 @@ class SearchController extends AppController {
 		$this->render($client['Client']['view_prefix_name'].'search');
 	}
 
-	public function result($client,$client_orig_name)
+	public function result($client,$ntwk_ind=false,$client_orig_name)
 	{
 		Configure::write('Model.globalSource', $client['Client']['cake_db_config']);
 		$this->loadModel('Search');
@@ -119,9 +119,13 @@ class SearchController extends AppController {
 			'locations'=>$results['locations'],
 			'coor'=>$results['coor_array'],
 			'title'=>'Search Results for '.ucfirst($client['Client']['name']),
-			'asset_folder'=>$client['Client']['asset_folder_name'],
 			'client_url_name'=>$client_orig_name
 		);
+
+		if($ntwk_ind != false)
+			$this->set('asset_folder', $client['Client']['asset_folder_name']."_$ntwk_ind");
+		else
+			$this->set('asset_folder', $client['Client']['asset_folder_name']);
 
 		if(isset($request_data['pdf']) || isset($request_data['email']))
 		{
