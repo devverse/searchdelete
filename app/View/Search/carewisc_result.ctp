@@ -88,7 +88,7 @@
 </table>
 
 <?php if(count($result) < 1){?>
-<h3>No Providers were found. Please change your search criteria.</h3>
+<h3>No providers were found. Please change your search criteria.</h3>
 
 <?php } ?>
 </div>
