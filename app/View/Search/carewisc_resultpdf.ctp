@@ -1,7 +1,30 @@
 <div class="container" style="width:550px;margin:1.5em">
-<div class="page-header">
-<h2>Search Results</h2>
+<div style="page-break-after: always" class="page-header">
+<center>
+<?php if($results[0]['fullrecords']['lob'] == 'Medicaid SSI'){ ?>
+	<img style="width:30%;" src="carewisconsin/logoSSI.png"/>
+<?php }else{ ?>
+	<img style="width:30%;" src="carewisconsin/logoPartnership.png"/>
+<?php } ?>
+
+<p>
+<h3>Provider Search Results: <?php echo date("F j, Y"); ?></h3>
+<br/></center>
+<ul style="text-align:left;">
+<li>This is a list of providers that matched your search. </li>
+<li><strong>This is not a full list of all of our providers.</strong></li>
+<li>It is only correct as of the date of your search. (or date above)</li>
+<li>To be sure you have the latest listing, use our online search. </li>
+</ul>
+<br/>
+<div>Please call 1-855-463-0026 if you need help finding a provider. We can also answer questions about which providers are in the network.
 </div>
+</p>
+
+</div>
+
+<h2>Search Results</h2>
+
 
 <div class="row"><div class="col-md-12">
 
