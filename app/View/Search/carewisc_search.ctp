@@ -2,14 +2,14 @@
 
 <div class="container" id="providersearch"> <!--container -->
 <h2><span class="glyphicon glyphicon-search"></span> Search Form <?php echo($network_name!='')?'- '.$network_name:'';?></h2>
-
+<p>You will be able to choose Provider Type and Specialty on the next page.<br>Click on one of the other areas to include in your search.</p>
 <form id="radio-search">
 <div class="control-group">
 	<div clas="controls">
 	<div class="radio">
-		<label class="radio"><input type="radio" name="searchtype" value="name">Practice Name</label>
-		<label class="radio"><input type="radio" name="searchtype" value="location">Location</label>
-		<label class="radio"><input type="radio" name="searchtype" value="county">Service County</label>
+		<label class="radio"><input type="radio" name="searchtype" value="name">Provider Name</label>
+		<label class="radio"><input type="radio" name="searchtype" value="location">Address, City, ZIP</label>
+		<label class="radio"><input type="radio" name="searchtype" value="county">Provider Serving a Specific County</label>
 	</div>
 	</div>
 </div>
@@ -51,7 +51,7 @@ $(function(){
     <input type="hidden" name="network_name" value="<?=$network_name?>"/>
 
     <div class="form-group searchtype-name" style="display:none">
-        <label class="col-sm-2 control-label"><span class="field-error">*</span> Practice Name</label>
+        <label class="col-sm-2 control-label">Provider Name</label>
         <!--IF typed delete practice name-->
         <div class="col-sm-6">
         <input id="pracitcename" value="" name="practicename" placeholder="Practice Name" type="text" class="form-control">
@@ -60,7 +60,7 @@ $(function(){
 
 <div class="searchtype-location" style="display:none"><!--Beginingof Adresses-->
     <div class="form-group">
-    	<label class="col-sm-2 control-label"><span class="field-error">*</span> Address</label>
+    	<label class="col-sm-2 control-label">Address</label>
     	<div class="col-sm-8">
     	<input value="" name="street address" placeholder="Address" type="text" class="form-control">
     	</div>
@@ -134,7 +134,7 @@ $(function(){
 
     </div>
     <div class="col-sm-1">
-    <label class="control-label">Zip</label>
+    <label class="control-label">ZIP</label>
     </div>
     <div class="col-sm-2">
     <input id="zipcode" name="zipcode" placeholder="Zip Code" type="text" value="" class="form-control">
@@ -162,7 +162,7 @@ $(function(){
 </div><!--End of Addresses-->
 
     <div class="form-group searchtype-county" style="display:none">
-    <label class="col-sm-2 control-label"><span class="field-error">*</span> County</label>
+    <label class="col-sm-2 control-label"><span class="field-error">*</span> Counties of Service</label>
     <div class="col-sm-8">
         <select  name="countie_name" class="form-control">
         <option value="none">All Counties</option>

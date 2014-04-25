@@ -2,7 +2,7 @@
 <div class="row">
 <div class="col-md-12 page-header">
 <h2>Search Results
-<a onclick="history.go(-1)" class="btn-xs btn-default pull-right"><span class="glyphicon glyphicon-arrow-left"></span> Return to Search</a></h2>
+<a onclick="history.go(-1)" class="btn-xs btn-default pull-right"><span class="glyphicon glyphicon-arrow-left"></span> Return to Search form</a></h2>
 
 </div>
 
@@ -24,9 +24,9 @@
 <table id="searchResults" class="tablesorter table table-striped table-hover table-condensed">
 <thead>
 <tr>
+<th width="10%"><h6>Practice Name</h6></th>
 <th width="10%"><h6>Provider Type</h6></th>
 <th width="10%"><h6>Specialty</h6></th>
-<th width="10%"><h6>Practice Name</h6></th>
 <th width="10%"><h6>Address</h6></th>
 <th width="10%"><h6>Info</h6></th>
 <th width="10%"><h6><!--info 2--></h6></th>
@@ -47,14 +47,15 @@
 <!--	<td>
 		<div class="name"><strong><?php echo ($result['lastname']!='') ?"Dr.{$result['firstname']} {$result['middlename']} {$result['lastname']}":'';?></div><div><?php echo ($result['degree']!='') ? "({$result['degree']})" :'';?></strong></div>
 	</td>-->
+	
+	<td>
+		<div><?php echo $result['practicename'];?></div>
+	</td>
 	<td>
 		<div><?php echo $result['category'];?></div>
 	</td>
 	<td>
 		<div><?php echo $result['specialty'];?></div>
-	</td>
-	<td>
-		<div><?php echo $result['practicename'];?></div>
 	</td>
 	<td>
 		<div><?php echo $result['address'] .' '.$result['suite'];?></div>

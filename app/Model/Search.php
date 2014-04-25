@@ -16,7 +16,7 @@ class Search extends AppModel {
    //          		)
 			// ),
 			'countie_name'=>array(
-				'Fill in search address, practice name or select a service area.' => array(
+				'Fill in search address, provider name or select a specific county.' => array(
 	                'rule'=>array('locationOrCountieOrPracticeName'),
             	),
 				'Must be Alpha Numeric Character' => array(
@@ -42,14 +42,14 @@ class Search extends AppModel {
             	)
             ),
             'zipcode' => array(
-            	'Fill in search address, practice name or select a service area.' => array(
+            	'Fill in search address, provider name or select a specific county.' => array(
 	                'rule'=>array('locationOrCountieOrPracticeName'),
             	),
-				'Must Be Numeric' => array(
+				'Invalid ZIP code.' => array(
 					'rule' => 'numeric',
 					'allowEmpty' => true,
 				),
-				'Must Be 6 Digits' => array(
+				'ZIP code must be 6 digits.' => array(
              	   'rule'    => array('between', 5, 5)
              	 ),
                
