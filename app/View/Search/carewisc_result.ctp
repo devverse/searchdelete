@@ -50,7 +50,7 @@
 	
 	<td>
 		<div><?php echo $result['practicename'];?></div>
-	</td>
+   </td>
 	<td>
 		<div><?php echo $result['category'];?></div>
 	</td>
