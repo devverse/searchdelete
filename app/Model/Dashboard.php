@@ -3,25 +3,26 @@
 class Dashboard extends AppModel {
 	public $useTable = false;
 
-	public function getFilters($db_name='')
+	public function getTables($db_name='')
 	{
 		$sql = "Show tables";
-		$filters = $this->query($sql,false);
-		$scrubed_filter = array();
-		foreach ($filters as $filter)
+		$tables = $this->query($sql,false);
+
+		$scrubed_tables = array();
+		foreach ($tables as $table)
 		{
-			$filtername = $filter['TABLE_NAMES']["Tables_in_{$db_name}_db"];
-			if($filtername != 'temptables' && strpos($filtername, '_') ===false)
-			$scrubed_filter[] = $filtername;
+			$tablename = $table['TABLE_NAMES']["Tables_in_{$db_name}_db"];
+			
+			$scrubed_tables[] = $tablename;
 		}
-		return array('providers','locations','specialties','insurances','languages');
+		return $scrubed_tables;
 	}
 
-	public function getFilterRecord($model_name,$start,$count)
+	public function getTableRecords($tablename,$start,$count)
 	{
 		$this->useTable = false;
 	 	$sql = 'SELECT * FROM  ';
-	 	$sql .= $model_name;
+	 	$sql .= $tablename;
 	 	$sql .= ' LIMIT '.$start.' , '.$count ;
 
 	 	$records = $this->query($sql,false);
@@ -35,25 +36,17 @@ class Dashboard extends AppModel {
 	 	return $scrubed_records;
 	}
 
-	public function getRecordFields($records,$table)
+	public function getRecordFields($table)
 	{
 		$fields = array();
-		//instead of array_key
-		if(!isset($records[0]))
-		{
-			$sql = "Show fields from {$table}";
-			$result_fields = $this->query($sql,false);
-			foreach ($result_fields as $value) {
-				$fields[]=$value['COLUMNS']['Field'];
-			}
+
+		$sql = "Show fields from {$table}";
+		$result_fields = $this->query($sql,false);
+
+		foreach ($result_fields as $value) {
+			$fields[]=$value['COLUMNS']['Field'];
 		}
-		else
-		{
-			foreach($records[0] as $key=>$v)
-			{
-				$fields[] = $key;
-			}
-		}
+		
 		return $fields;
 	}
 }

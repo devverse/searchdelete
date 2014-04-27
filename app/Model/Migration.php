@@ -11,17 +11,19 @@ class Migration extends AppModel {
 		$this->Client = ClassRegistry::init('Client');
 	}
 
-	public function setClient($client){
-		$this->client_info = $client;
+	public function setClient($client_id){
+		//clears client
 		$this->Client->clear();
-		$this->Client->read(null,$client['Client']['id']);
-		$this->migration_in_progress = ($client['Client']['migrating'] == 1)?true:false;
+		//sets migration modes member client info
+		$this->client_info = $this->Client->read(null,$client_id);
+		//sets migration status
+		$this->migration_in_progress = ($this->client_info['Client']['migrating'] == 1)?true:false;
 	}
 
 	public function import($file_path)
 	{
-		if($this->migration_in_progress)
-			return array('status'=>false,'response'=>'Migration in progress for this Client!');
+		// if($this->migration_in_progress)
+		// 	return array('status'=>false,'response'=>'Migration in progress for this Client!');
 
 		$this->_setMigrationProcess(true);
 
@@ -36,6 +38,8 @@ class Migration extends AppModel {
 
 		$this->_setMigrationProcess(false);
 		$this->Client->clear();
+
+		return $this->formResp(true,"Database records created.");
 	}
 
 	private function _setMigrationProcess($migrating)
@@ -58,7 +62,7 @@ class Migration extends AppModel {
 		$res = $zip->open($file_path);
 		if ($res === TRUE) {
 		  // extract it to the path we determined above
-		  $zip->extractTo('../webroot/files');
+		  $zip->extractTo('../webroot/files/'.$this->client_info['Client']['name'],'providers.txt');
 		  $zip->close();
 		  return $this->formResp(true,'Zip extracted');
 		} else {
@@ -67,7 +71,7 @@ class Migration extends AppModel {
 	}
 
 	private function _checkData(){
-		$file = "../webroot/files/client_wisconsin.txt";
+		$file = "../webroot/files/".$this->client_info['Client']['name']."/providers.txt";
 		$handle = fopen($file, "r");
 		if ($handle===false)
 			return $this->formResp(false,"Cant open file $file");
@@ -123,12 +127,21 @@ class Migration extends AppModel {
 		set_time_limit(0);
 		$this->cacheQueries = false; 
 
+		//set database to use
+		$dataSource = ConnectionManager::getDataSource($this->client_info['Client']['cake_db_config']);
+		$database = $dataSource->config['database'];
 		//need to change the database config to use clients database
 		Configure::write('Model.globalSource', $this->client_info['Client']['cake_db_config']);
-		$database = 'carewisconsin_db';
 		//imports tempalted mysql related tables
+
 		$this->_importTemplateSchema($database);
-		$this->_importDataFromFile($database,'/var/www/html/providersearch.geoffreychin.com/app/webroot/files/client_wisconsin.txt');
+
+		if(isset($_SERVER['SERVER_NAME'])&& strpos($_SERVER['SERVER_NAME'],'localhost') !==false)
+			$path = '/var/www/commandgeosearch/app/webroot/files/'.$this->client_info['Client']['name'].'/providers.txt';
+		else
+			$path = '/var/www/html/providersearch.geoffreychin.com/app/webroot/files/'.$this->client_info['Client']['name'].'/providers.txt';
+
+		$this->_importDataFromFile($database,$path);
 		$this->_cleanRecords($database);
 		$this->_insertSecTbleData();
 		//change back to default databases
@@ -186,7 +199,7 @@ class Migration extends AppModel {
 		$stat[] 	= $this->_executeCommandLine($crt_db_cmd);
 
 		//Import Base Schema for client db
-		$tmp_db_cmd = $database.' < /var/www/html/providersearch.geoffreychin.com/template_db.sql';
+		$tmp_db_cmd = $database.' < ../../template_db.sql';
 		$tmp_db_cmd = $this->_buildMysqlCommandWrapper($tmp_db_cmd,'',false);
 		$stat[] 	= $this->_executeCommandLine($tmp_db_cmd,false);
 
@@ -221,7 +234,10 @@ class Migration extends AppModel {
 		if(!$mysql_cmd)
 			return false;
 		$usr = 'root';
-		$pswd = 'dBCommand2014$';
+		if(isset($_SERVER['SERVER_NAME'])&& strpos($_SERVER['SERVER_NAME'],'localhost') !==false)
+			$pswd = 'aspire5610z';
+		else
+			$pswd = 'dBCommand2014$';
 
 		$cmd = "mysql -u{$usr} -p{$pswd} --local-infile --verbose {$db} -e ";
 		$cmd.= "\" {$mysql_cmd} \"";

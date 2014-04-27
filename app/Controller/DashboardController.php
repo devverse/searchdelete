@@ -1,7 +1,7 @@
 <?php
 class DashboardController extends AppController {
 	public $helpers = array('Html', 'Form','Session');
-	public $uses = array('AppModel','Insurance','Language','Location','Provider','Specialtie','Client','User','Dashboard');
+	public $uses = array('AppModel','Fullrecord','Dashboard','User','Client');
 	public $autoRender = false;
 
 	public function beforeFilter()
@@ -34,16 +34,10 @@ class DashboardController extends AppController {
 				$this->render('dashboard_admin');
 				break;
 			case 1:
-				Configure::write('Model.globalSource', $this->Session->read('client_db'));
-				$links = $this->Dashboard->getFilters($this->Session->read('client_db'));
-				$this->set('links',$links);
-				$this->render('dashboard_client');
+				$this->_loadClientDash();
 				break;
 			default:
-				Configure::write('Model.globalSource', $this->Session->read('client_db'));
-				$links = $this->Dashboard->getFilters($this->Session->read('client_db'));
-				$this->set('links',$links);
-				$this->render('dashboard_client');
+				$this->_loadClientDash();
 				break;
 		}
 	}
@@ -55,6 +49,37 @@ class DashboardController extends AppController {
 		$this->render('login');
 	}
 
+	public function logout()
+	{
+		$this->Session->destroy();
+		$this->Session->setFlash('You have been logged out', 'default', array(), 'err_msg');
+		return $this->redirect('login');
+	}
+
+	public function _loadClientDash()
+	{
+		Configure::write('Model.globalSource', $this->Session->read('client_db'));
+		$fields = $this->Dashboard->getRecordFields('fullrecords');
+
+		$this->set('fields',$fields);
+		$this->set('field_count',count($fields));
+
+		$request_data = $this->request->data;
+
+		$update_records = $this->Fullrecord->getForUpdate($request_data);
+		if($update_records)
+		{
+			$this->set('editrecords',$update_records);
+		}
+
+		if(!$update_records&&isset($request_data['Search']))
+			$this->Session->setFlash("'{$request_data['Search']}' was not found.", 'default', array(), 'err_msg');
+		$this->render('dashboard_client');
+	}
+
+	/**
+	 * TODO Throw in model
+	 */
 	public function authenticate()
 	{	
 		$this->autoRender = false;
@@ -90,124 +115,132 @@ class DashboardController extends AppController {
 		return $this->redirect('login');
 	}
 
-	public function logout()
+	/**
+	 * TODO throw in model 
+	 */
+	public function upload()
 	{
-		$this->Session->destroy();
-		$this->autoRender = false;
-		$this->layout = 'logout';
-		$this->render('logout');
-	}
+		$client_db 		= $this->Session->read('client_db');
+		$user 			= $this->Session->read('User');
+		$upload_array 	= $_FILES;
 
-	public function client($action='')
-	{
-		switch ($action) {
-			case 'add':
-				$this->_adminAdd();
-				break;
-			case 'edit':
-				$this->_adminEdit();
-				break;
-			default:
-				return $this->redirect(array('action' => './'));
-				break;
-		}
-	}
-
-	public function _adminAdd()
-	{
-
-	}
-
-	public function _adminEdit()
-	{
-		
-	}
-
-
-	public function a($table='',$action='',$param=null)
-	{	
-		Configure::write('Model.globalSource', $this->Session->read('client_db'));
-		$this->set('table',$table);
-		$model_name = $table;
-
-		$this->layout = 'dashboard';
-		switch ($action) {
-			case 'add':
-				$this->_actionpath($action,$param);
-				break;
-			case 'edit':
-				$this->_actionpath($action,$param);
-				break;
-			case 'delete':
-				$this->_actionpath($action,$param);
-				break;
-			default:
-				if(in_array($table, $this->Dashboard->getFilters($this->Session->read('client_db'))))	
-				{
-					$request_data = $this->request->data;
-					$start_index = (isset($request_data['pg_index']) && $request_data['pg_index'] > 1)?$request_data['pg_index']:1;
-					$list_lim = 25;
-					$records = $this->Dashboard->getFilterRecord($model_name,$start_index,$list_lim);
-					
-					$this->set('record_keys',$this->Dashboard->getRecordFields($records,$table));
-					$this->set('prev_index',$start_index - 25);
-					$this->set('next_index',$start_index + 25);
-					$this->set('records',$records);
-					$this->render('dashboard_view');
-				}
-				break;
-		}
-	}
-
-	private function _actionpath($action,$param)
-	{
-		if($action == 'delete')
+		if($client_db&&$user&&is_array($upload_array)&&isset($upload_array['file']['tmp_name'])&&$upload_array['file']['tmp_name']!='')
 		{
-		var_dump($param);
-			echo 'del';
-		}
-		elseif (isset($param['id'])) {
-			echo 'edit';
-		}
-		else{
-			echo 'add';
+			$this->loadModel('Migration');
+
+			$this->Migration->setClient($user['client_id']);
+			try {
+				//uploads zip file
+				$file_path = '../webroot/files/client_'.$this->Migration->client_info['Client']['name'].'.zip';
+				copy($upload_array['file']['tmp_name'], $file_path);
+
+				//import action
+				$resp = $this->Migration->import($file_path);
+
+				// rm zip provider txt and folder
+				unlink($file_path);
+				unlink('../webroot/files/'.$this->Migration->client_info['Client']['name'].'/providers.txt');
+				rmdir('../webroot/files/'.$this->Migration->client_info['Client']['name']);
+
+			} catch (Exception $e) {
+				$resp = array('status'=>false,'response'=>'Something went wrong migrating db. Contact the web administrator');
+			}
+			
+			if($resp['status'])
+				$this->Session->setFlash($resp['response'], 'default', array(), 'succ_msg');
+			else
+				$this->Session->setFlash($resp['response'], 'default', array(), 'err_msg');
+
+			return $this->redirect('index');
+		}else{
+			$this->Session->setFlash('There was a problem with the request. You have been logged out.', 'default', array(), 'err_msg');
+			return $this->redirect('login');
 		}
 	}
 
-	private function _handler()
+	public function updateprovider()
 	{
+		Configure::write('Model.globalSource', $this->Session->read('client_db'));
+
+		$request_data = $this->request->data;
+
+		$this->Fullrecord->set($request_data);
+
+		if($this->Fullrecord->validates())
+		{
+			$this->Fullrecord->save($request_data);
+			if($this->Fullrecord->id)
+				$resp = array('status'=>true);
+			else
+				$resp = array('status'=>false,'response'=>'Record was not saved');
+		}
+		else
+		{
+			$error = $this->Fullrecord->validationErrors;
+			$err_field = key($error);
+			$err_msg = $error[$err_field][0];
+			$resp = array('status'=>false,'response'=>$err_msg);
+		}
+
+		if($resp['status'])
+			$this->Session->setFlash('Provider Record Updated', 'default', array(), 'succ_msg');
+		else
+			$this->Session->setFlash($resp['response'], 'default', array(), 'err_msg');
+		return $this->redirect('index');
 	}
 
-	
-	public function scrub($client= false)
-	{	
-		// This shouldnt be here but for testing
-		echo '<pre>';
-		//create newu client and user
-		//do not set prefix_name
-		//append database to database file
-		//creates database
-		//all migrating process shown uploads disables
+	public function addprovider()
+	{
+		Configure::write('Model.globalSource', $this->Session->read('client_db'));
 
+		$request_data = $this->request->data;
 
-		$this->loadModel('Migration');
+		$this->Fullrecord->set($request_data);
 
-		$file_path = '../webroot/files/client_wisconsin.zip';
-		$this->Migration->setClient($client);
-		var_dump($this->Migration->import($file_path));
+		if($this->Fullrecord->validates())
+		{
+			$request_data['longitude_str'] = $request_data['longitude'];
+			$request_data['latitude_str'] = $request_data['latitude'];
+
+			$this->Fullrecord->create();
+			$this->Fullrecord->save($request_data);
+			if($this->Fullrecord->id)
+				$resp = array('status'=>true);
+			else
+				$resp = array('status'=>false,'response'=>'Record was not saved');
+
+		}
+		else
+		{
+			$error = $this->Fullrecord->validationErrors;
+			$err_field = key($error);
+			$err_msg = $error[$err_field][0];
+			$resp = array('status'=>false,'response'=>$err_msg);
+		}
+
+		if($resp['status'])
+			$this->Session->setFlash('Provider Record Added', 'default', array(), 'succ_msg');
+		else
+			$this->Session->setFlash($resp['response'], 'default', array(), 'err_msg');
+		return $this->redirect('index');
+	}
+
+	public function deleteprovider()
+	{
+		Configure::write('Model.globalSource', $this->Session->read('client_db'));
+
+		$request_data = $this->request->data;
+		$id = isset($request_data['id'])?$request_data['id']:false;
+		if($id && is_numeric($id)&&$id!=false){
+			if($this->Fullrecord->delete($id))
+				$this->Session->setFlash('Provider record deleted', 'default', array(), 'succ_msg');
+			else
+				$this->Session->setFlash('Provider record wasnt deleted', 'default', array(), 'err_msg');
+		}else{
+			$this->Session->setFlash('Incorrect id format', 'default', array(), 'err_msg');
+		}
 		
-		// $this->Client->clear();
-		// $this->Client->read(null,$client['Client']['id']);
-		// $this->Client->set('migrating',1);
-		// $this->Client->clear();
-		
-		echo '</pre>';
-		// var_dump($client);
-		//no code
-		// Configure::write('Model.globalSource', 'centersplan');
-		// $this->loadModel('Temptable');
-		//$this->Temptable->populateDB();
-		//$this->Temptable->geocodeCurrentLocations();
+		return $this->redirect('index');
 	}
 }
 
