@@ -31,7 +31,7 @@
 	<td colspan="1" width="25%">
 		<div>
 			<div><?php echo "Phone: {$result['phone']}";?></div>
-			<div><?php echo "OfficeHours: <br/>{$result['officehours']}";?></div>
+			<div><?php echo "Hours: <br/>{$result['officehours']}";?></div>
 			<div><?php echo "Languages:  <br/>{$result['languages']}";?></div>
 			<!--<div><?php echo "Service Area: {$result['servicearea']}, {$result['state']}";?></div>-->
 		</div>
@@ -40,7 +40,7 @@
 		<div>	
 			<!--<div><?php echo "Hospital Affiliations: <br/>{$result['hospaffiliations']}";?></div>-->
 			<!--<div><?php echo "Medicaid: {$result['acceptsmedicaid']}";?></div>-->
-			<!--<div><?php echo "Medicatre: {$result['acceptsmedicare']}";?></div>-->
+			<!--<div><?php echo "Medicare: {$result['acceptsmedicare']}";?></div>-->
 			<div><?php echo ($result['acceptingnew']=='Y'||$result['acceptingnew']=='')?"Accepting New Patients: Y": "";?></div>
 			<div><?php echo ($result['handicap']=='Y'||$result['handicap']=='')?"Handicap Accessible: Y":"";?></div>
 		</div>
