@@ -128,7 +128,9 @@
 </div>
 
 <div class="row">
-<div id="map_canvas" style="height: 400px; position: relative; background-color: rgb(229, 227, 223); overflow: hidden;" class="col-md-12"></div>
+<div id="map_canvas" style="margin:0px 50px;height: 400px;width:90%; position: relative; background-color: rgb(229, 227, 223); overflow: hidden;" class="col-md-12"></div>
+<center>
+<div>* This map shows locations of only the current page's results.</div></center>
 </div>
 
 <div class="row">
