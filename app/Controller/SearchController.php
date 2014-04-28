@@ -100,6 +100,7 @@ class SearchController extends AppController {
 		if($this->Search->validates())
 		{
 			$results = $this->Search->getResults();
+			$resultcount = isset($this->Search->recordcount)?$this->Search->recordcount:false;
 		}
 		else
 		{
@@ -116,6 +117,7 @@ class SearchController extends AppController {
 			'client_name'=> $client['Client']['name'],
 			'srch_filter'=>$request_data,
 			'results'=>$results['providers'],
+			'resultcount'=>$resultcount,
 			'locations'=>$results['locations'],
 			'coor'=>$results['coor_array'],
 			'title'=>'Search Results for '.ucfirst($client['Client']['name']),

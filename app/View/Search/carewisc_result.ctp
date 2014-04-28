@@ -20,6 +20,9 @@
 		</div>
 </div>
 </div>
+<?php if($resultcount){ ?>
+	<div><h3>Found <?=$resultcount?> Results</h3></div>
+<?php } ?>
 <div class="row">
 <table id="searchResults" class="tablesorter table table-striped table-hover table-condensed">
 <thead>

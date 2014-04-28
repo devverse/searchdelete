@@ -301,7 +301,7 @@ class Search extends AppModel {
 	public function searchByRadius($limit = 25, $coor_array=false)
 	{
 		$d = $this->data['Search'];
-		$sql = "SELECT * FROM fullrecords WHERE ";
+		$sql = "SELECT SQL_CALC_FOUND_ROWS * FROM fullrecords WHERE ";
 
 		$distance = ($d['distance_c'] != '')? $d['distance_c'] : $d['distance'];
 
@@ -331,7 +331,10 @@ class Search extends AppModel {
 
 		$sql .= ' Group By fullrecords.address, fullrecords.practicename LIMIT '.$d['start'].' , '.$limit ;
 
-		return $this->query($sql,false);
+		$records = $this->query($sql,false);
+		$recordcount = $this->query('SELECT FOUND_ROWS()');
+		$this->recordcount = $recordcount[0][0]["FOUND_ROWS()"];
+		return $records;
 	}
 
 	function _buildAndSql()
