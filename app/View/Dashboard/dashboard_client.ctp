@@ -1,6 +1,38 @@
+<!-- Fixed navbar -->
+    <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">Admin Dashboard</a>
+        </div>
+        <!--
+        <div class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+            <li class="active"><a href="#">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#contact">Add Record</a></li>
+          </ul>
+        </div>-->
+      </div>
+    </div>
+    
+    
+
+<div class="container">
 <h3>Client Dashboard</h3>
+
+<div class="well">
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas sed diam eget risus varius blandit sit amet non magna. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Cras mattis consectetur purus sit amet fermentum. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Aenean lacinia bibendum nulla sed consectetur.</p>
+      </div>
+
+
 <form method="post" action="./logout">
-	<input type="submit" value="Logout"/>
+	<input type="submit" value="Logout" class="btn btn-default btn-xs dropdown-toggle" />
 </form>
 <div>
 <span><?php echo $this->Session->flash('succ_msg') ; ?></span>
@@ -142,3 +174,5 @@ Instructions: Search by practice name or street address of the record you want t
 	<?php } ?>
 	</div>
 <?php } ?>
+
+</div>
