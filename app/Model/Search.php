@@ -162,7 +162,7 @@ class Search extends AppModel {
 	public function locationOrCountieOrPracticeName($field = array())
 	{
 		$d = $this->data['Search'];
-		if(strtolower($d['countie_name']) == 'none' && strtolower($d['state']) == 'none'  && empty($d['street_address']) && empty($d['city'])  && empty($d['zipcode']) && empty($d['practicename']))
+		if(strtolower($d['countie_name']) == 'none' && strtolower($d['state']) == 'none'  && empty($d['street_address']) && empty($d['city'])  && empty($d['zipcode']) && empty($d['practicename']) && $d['providertype_name']=='none')
 			return false;
 		else
 			return true;
@@ -318,8 +318,13 @@ class Search extends AppModel {
 			$sql .= " (longitude BETWEEN @lng_min and @lng_max) AND (latitude BETWEEN @lat_min and @lat_max) ";
 		}elseif ($d['practicename'] != '') {
 			$sql .= "practicename LIKE '%{$d['practicename']}%' ";
-		}else{
+		}elseif ($d['countie_name']!='none'){
 			$sql .= " county collate latin1_swedish_ci = '{$d['countie_name']}' ";
+		}elseif ($d['practicename'] == '' && $d['providertype_name']!='none') {
+			$sql .= ' 1 =1 ';
+		}else{
+			throw new Exception("Search type was not properly formated", 1);
+			
 		}
 
 		$sql .= $this->_buildAndSql();

@@ -2,7 +2,7 @@
 <div class="row">
 <div class="col-md-12 page-header">
 <h2>Search Results
-<a onclick="history.go(-1)" class="btn-xs btn-default pull-right"><span class="glyphicon glyphicon-arrow-left"></span> Return to Search form</a></h2>
+<a href="./" class="btn-xs btn-default pull-right"><span class="glyphicon glyphicon-arrow-left"></span> Return to Search form</a></h2>
 
 </div>
 
