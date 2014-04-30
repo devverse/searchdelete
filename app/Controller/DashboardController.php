@@ -97,8 +97,8 @@ class DashboardController extends AppController {
 		}
 
 		$pswdHsh = new SimplePasswordHasher();
-		$password = $pswdHsh->hash($this->request->data['username']);
-		$username = $this->request->data['password'];
+		$password = $pswdHsh->hash($this->request->data['password']);
+		$username = $this->request->data['username'];
 		$user = $this->User->findByUsernameAndPassword($username,$password);
 		
 		if (isset($user['User'])) {
