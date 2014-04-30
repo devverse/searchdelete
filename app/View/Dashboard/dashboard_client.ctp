@@ -139,40 +139,40 @@ Instructions: Search by practice name or street address of the record you want t
 			
 			</div>
 			<div class="col-md-2">
-			<form method="post" action="./deleteprovider">
-			<input type="hidden" name="id"  value="<?=$f['id']?>">
-			<input type="submit" value="Delete Record" class="btn btn-default btn-xs"/>
-			</form>
 			</div>
 			<div class="col-md-12">
-			<div id='update-div-<?=$key?>' class="update-div" style="display:none">
-			<p><small>Instructions: Please follow Command Printing's Data format for proper input types.</small></p>
-			<ul style="float:left">
-			<?php 
-				$third = round(((count($f)-1)/3),PHP_ROUND_HALF_ODD) ; 
-				$count = 0
-			?>
-			<?php foreach($f as $k=>$v) {
-				if($third == $count||$third*2 == $count)
-					echo '</ul><ul style="float:left">';
+				<div id='update-div-<?=$key?>' class="update-div" style="display:none">
+				<form method="post" action="./updateprovider">
+				<p><small>Instructions: Please follow Command Printing's Data format for proper input types.</small></p>
+				<ul style="float:left">
+				<?php 
+					$third = round(((count($f)-1)/3),PHP_ROUND_HALF_ODD) ; 
+					$count = 0
+				?>
+				<?php foreach($f as $k=>$v) {
+					if($third == $count||$third*2 == $count)
+						echo '</ul><ul style="float:left">';
 
-				if($k == 'id')
-				{
-					echo "<input type='hidden' name='{$k}' value='{$v}'/>";
+					if($k == 'id')
+					{
+						echo "<input type='hidden' name='{$k}' value='{$v}'/>";
+						$count++;
+						continue;
+					}
+				?>
+					<li><label for="<?=$k?><?=$key?>-edit"><?=$k?></label>: <input type="text" name="<?=$k?>" value="<?=$v?>" id="<?=$k?><?=$key?>-edit"/></li>
+				<?php 
 					$count++;
-					continue;
-				}
-			?>
-				<li><label for="<?=$k?><?=$key?>-edit"><?=$k?></label>: <input type="text" name="<?=$k?>" value="<?=$v?>" id="<?=$k?><?=$key?>-edit"/></li>
-			<?php 
-				$count++;
-				} 
-			?>
-			</ul>
-			</div>
-			<form method="post" action="./updateprovider">
-			<input type="submit" value="Update Record" class="btn btn-default btn-xs"/>
-		</form>
+					} 
+				?>
+				</ul>
+				<input type="submit" value="Update Record" class="btn btn-default btn-xs"/>
+				</form>
+				<form method="post" action="./deleteprovider">
+				<input type="hidden" name="id"  value="<?=$f['id']?>">
+				<input type="submit" value="Delete Record" class="btn btn-default btn-xs"/>
+				</form>
+				</div>
 			</div>
 
 		</div>
