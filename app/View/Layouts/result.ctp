@@ -7,21 +7,13 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <link rel="shortcut icon" href="/docs-assets/ico/favicon.png">
-<!-- Bootstrap core JavaScript
-    ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
     <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
     <script src="/dist/js/bootstrap.min.js"></script>
     <script src="/docs-assets/js/holder.js"></script>
     <script src="/dist/js/jquery.tablesorter.js"></script>
     <title><?php echo $title; ?></title>
-
-    <!-- Bootstrap core CSS -->
     <link href="/dist/css/bootstrap.css" rel="stylesheet">
-    <!-- Bootstrap theme -->
     <link href="/dist/css/bootstrap-theme.min.css" rel="stylesheet">
-
-    <!-- Custom styles for this template -->
     <link href="/<?php echo $asset_folder; ?>/blue/listsort-style.css" rel="stylesheet">
     <link href="/<?php echo $asset_folder; ?>/theme.css" rel="stylesheet">
 
