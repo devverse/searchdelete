@@ -121,7 +121,8 @@ class SearchController extends AppController {
 			'locations'=>$results['locations'],
 			'coor'=>$results['coor_array'],
 			'title'=>'Search Results for '.ucfirst($client['Client']['name']),
-			'client_url_name'=>$client_orig_name
+			'client_url_name'=>$client_orig_name,
+			'req_data'=>$request_data
 		);
 
 		if($ntwk_ind != false)

@@ -22,6 +22,11 @@
 </div>
 <?php if($resultcount){ ?>
 	<div><h3>Found <?=$resultcount?> Results</h3></div>
+	<?php if (true){echo 'You searched for providers around <b>123 street</b><br/>';}?>
+	<?php if (true){echo 'You searched for providers around <b>Clark county</b><br/>';}?>
+	<?php if($req_data['providertype_name']!='none'){ echo 'Filtered by <b>'.$req_data['providertype_name'].'</b>';}?>
+	<?php if($req_data['specialtie_name']!='none'){ echo ' > <b>'.$req_data['specialtie_name'].'</b>';}?>
+
 <?php } ?>
 <div class="row">
 <table id="searchResults" class="tablesorter table table-striped table-hover table-condensed">
@@ -64,6 +69,11 @@
 		<div><?php echo $result['address'] .' '.$result['suite'];?></div>
 		<div><?php echo $result['city'].', '.$result['state'].' '.$result['zip4']; ?></div>
 		<div><?php echo ($result['county'] != '')?$result['county'].' County':'' ?></div>
+		<?php if($coor){?>
+			<div><a target="_blank" href="http://maps.google.com/maps?f=d&hl=en&saddr=<?=$coor['lat']?>,<?=$coor['long']?>&daddr=<?=$result['latitude']?>,<?=$result['longitude']?>&sll=&sspn=33.214763,82.265625&z=12">Get Directions</a></div><!--Has Coordinates-->
+		<?php }else{ ?>
+			<div><a target="_blank" href="http://maps.google.com/maps?f=d&hl=en&daddr=<?=$result['latitude']?>,<?=$result['longitude']?>&sll=&sspn=33.214763,82.265625&z=12">Get Directions</a></div><!--No Coordinates-->
+		<?php } ?>
 	</td>
 	<td width="100">
 		<div>
