@@ -1,3 +1,4 @@
 .row-even:nth-child(even) {
     background: #F4F4F4;
 }
+#err_msgMessage { color: #EF2828}

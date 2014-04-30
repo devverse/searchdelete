@@ -131,9 +131,9 @@ Instructions: Search by practice name or street address of the record you want t
 	{	$f = $fullrecord['Fullrecord'];
 	?>
 		<div class="clearfix row-even">
-		<div class="row">
+		
 		<div class="col-md-10">
-		<form method="post" action="./updateprovider">
+		
 			<span><?=$f['practicename']?></span><br><span><?=$f['address']?></span> <a href="javascript:void(0);" class="show-div-btn" data-div="update-div-<?=$key?>">Show Record</a>
 			
 			
@@ -163,22 +163,18 @@ Instructions: Search by practice name or street address of the record you want t
 					continue;
 				}
 			?>
-				<li><label for="<?=$k?><?=$key?>-edit"><?=$k?></label><input type="text" name="<?=$k?>" value="<?=$v?>" id="<?=$k?><?=$key?>-edit"/></li>
+				<li><label for="<?=$k?><?=$key?>-edit"><?=$k?></label>: <input type="text" name="<?=$k?>" value="<?=$v?>" id="<?=$k?><?=$key?>-edit"/></li>
 			<?php 
 				$count++;
 				} 
 			?>
 			</ul>
 			</div>
+			<form method="post" action="./updateprovider">
 			<input type="submit" value="Update Record" class="btn btn-default btn-xs"/>
 		</form>
 			</div>
 
-</div>
-
-
-		
-		
 		</div>
 	<?php } ?>
 	</div>
