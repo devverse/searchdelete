@@ -16,10 +16,12 @@
 </form>
 <script type="text/javascript">
 $(function(){
+    var current_search = 'none';
     $('#radio-search')[0].reset();
     $('#radio-search').on('change','input',function()
         {
              var inputValue = $(this).val();
+             current_search = inputValue;
              $('.searchtype-location').hide();
              $('.searchtype-county').hide();
              $('.searchtype-name').hide();
@@ -32,10 +34,29 @@ $(function(){
              $('.'+'searchtype-'+inputValue).show();
              $('.filter-by').css('display','block');
         });
+        $('form').on('click','#singlebutton',function()
+        {
+            var flashmsg = false;
+            if(current_search=='name' && $('select[name=providertype_name]').val()=='none' && $('#pracitcename').val()=='' && $('select[name=specialtie_name]').val()=='none')
+                flashmsg = 'Please type in a practice name or select a provider type.'
+           
+            if(current_search=='location'&& $('input[name=street_address]').val()==''&& $('input[name=city]').val()==''&& $('input[name=zipcode]').val()=='')
+                flashmsg = 'Please type in an address , city , zipcode.'
+             
+            if(current_search=='county'&& $('select[name=countie_name]').val()=='none')
+                flashmsg = 'Please select a county'
+
+            if(flashmsg)
+            {
+                $('#flash-msg').html('<span class="field-error">'+flashmsg+'</span>');
+                return false;
+            }
+            
+        });
 });
 </script>
 
-<div><!--Error Message Section-->
+<div id="flash-msg"><!--Error Message Section-->
     <span class="field-error"><?php echo $this->Session->flash('zipcode') ; ?></span>
     <span class="field-error"><?php echo $this->Session->flash('distance') ; ?></span>
     <span class="field-error"><?php echo $this->Session->flash('countie_name') ; ?></span>
@@ -62,7 +83,7 @@ $(function(){
     <div class="form-group">
     	<label class="col-sm-2 control-label">Address</label>
     	<div class="col-sm-8">
-    	<input value="" name="street address" placeholder="Address" type="text" class="form-control">
+    	<input value="" name="street_address" placeholder="Address" type="text" class="form-control">
     	</div>
     </div>
     
@@ -336,5 +357,4 @@ $(function(){
     <button id="singlebutton" type="submit" class="btn btn-default btn-custom">Search Provider</button>
 </div><!--filterby-->
     </form>
-
 </div> <!-- /container -->

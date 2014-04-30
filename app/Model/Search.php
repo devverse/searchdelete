@@ -16,7 +16,7 @@ class Search extends AppModel {
    //          		)
 			// ),
 			'countie_name'=>array(
-				'Fill in search address, provider name or select a specific county.' => array(
+				'Please select a County' => array(
 	                'rule'=>array('locationOrCountieOrPracticeName'),
             	),
 				'Must be Alpha Numeric Character' => array(
@@ -42,7 +42,7 @@ class Search extends AppModel {
             	)
             ),
             'zipcode' => array(
-            	'Fill in search address, provider name or select a specific county.' => array(
+            	'Please fill in an address.' => array(
 	                'rule'=>array('locationOrCountieOrPracticeName'),
             	),
 				'Invalid ZIP code.' => array(
