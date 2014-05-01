@@ -317,7 +317,7 @@ class Search extends AppModel {
 
 			$sql .= " (longitude BETWEEN @lng_min and @lng_max) AND (latitude BETWEEN @lat_min and @lat_max) ";
 		}elseif ($d['practicename'] != '') {
-			$sql .= "practicename LIKE '%{$d['practicename']}%' ";
+			$sql .= "practicename LIKE '%{$d['practicename']}%' or firstname LIKE '%{$d['practicename']}%' or lastname LIKE '%{$d['practicename']}%' ";
 		}elseif ($d['countie_name']!='none'){
 			$sql .= " county collate latin1_swedish_ci = '{$d['countie_name']}' ";
 		}elseif ($d['practicename'] == '' && $d['providertype_name']!='none') {

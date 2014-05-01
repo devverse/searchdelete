@@ -56,7 +56,7 @@
 
 	<td>
 		<div><strong><?php echo $result['practicename'];?></strong></div>
-		<div class="name"><?php echo ($result['lastname']!='') ?"Dr.{$result['firstname']} {$result['middlename']} {$result['lastname']}":'';?></div>
+		<div class="name"><?php echo ($result['lastname']!='') ?"Dr. {$result['firstname']} {$result['middlename']} {$result['lastname']}":'';?></div>
 		<div><?php echo ($result['degree']!='') ? "({$result['degree']})" :'';?></div>
    </td>
 	<td>
