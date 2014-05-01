@@ -55,9 +55,9 @@
 <tr>
 
 	<td>
-		<div><?php echo $result['practicename'];?></div>
-		<div class="name"><strong><?php echo ($result['lastname']!='') ?"Dr.{$result['firstname']} {$result['middlename']} {$result['lastname']}":'';?></div>
-		<div><?php echo ($result['degree']!='') ? "({$result['degree']})" :'';?></strong></div>
+		<div><strong><?php echo $result['practicename'];?></strong></div>
+		<div class="name"><?php echo ($result['lastname']!='') ?"Dr.{$result['firstname']} {$result['middlename']} {$result['lastname']}":'';?></div>
+		<div><?php echo ($result['degree']!='') ? "({$result['degree']})" :'';?></div>
    </td>
 	<td>
 		<div><?php echo $result['category'];?></div>
