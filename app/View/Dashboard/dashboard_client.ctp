@@ -59,7 +59,12 @@ $(function(){
 
              $('.'+'actiontype-'+inputValue).show();
         });
-});
+     $('#migrate-form').on('click','#migrate-btn',function()
+        {	 
+        	$('.actiontype-migrate').append('<br/><b><i>Migration in Progress. Please Wait a Few Minutes.</i></b>');
+        	$("'#migrate-btn").prop('disabled', true);
+        });
+});	
 </script>
 
 <div class="actiontype-migrate dashboard-div">
@@ -67,10 +72,10 @@ $(function(){
 <p><small>
 Instructions: Please upload a zip file with the record of your providers. The zip file must contain one file name providers.txt and must me a tab separated value file. Follow Command Printings Data format for proper input type.
 </small></p>
-<form method="post" action="./upload" enctype="multipart/form-data">
+<form id="migrate-form" method="post" action="./upload" enctype="multipart/form-data">
 	<label for="file">Filename:</label>
 	<input type="file" name="file" id="file"/><br>
-	<input type="submit" class="btn btn-default" value="Migrate!"/>
+	<input id="migrate-btn" type="submit" class="btn btn-default" value="Migrate!"/>
 </form>
 </div>
 
