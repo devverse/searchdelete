@@ -62,7 +62,7 @@ $(function(){
      $('#migrate-form').on('click','#migrate-btn',function()
         {	 
         	$('.actiontype-migrate').append('<br/><b><i>Migration in Progress. Please Wait a Few Minutes.</i></b>');
-        	$("'#migrate-btn").attr('disabled', 'disabled');
+        	$("#migrate-btn").attr('disabled', 'disabled');
         });
 });	
 </script>
