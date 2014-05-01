@@ -53,12 +53,11 @@
 
 <!-- Result Information START-->
 <tr>
-<!--	<td>
-		<div class="name"><strong><?php echo ($result['lastname']!='') ?"Dr.{$result['firstname']} {$result['middlename']} {$result['lastname']}":'';?></div><div><?php echo ($result['degree']!='') ? "({$result['degree']})" :'';?></strong></div>
-	</td>-->
-	
+
 	<td>
 		<div><?php echo $result['practicename'];?></div>
+		<div class="name"><strong><?php echo ($result['lastname']!='') ?"Dr.{$result['firstname']} {$result['middlename']} {$result['lastname']}":'';?></div>
+		<div><?php echo ($result['degree']!='') ? "({$result['degree']})" :'';?></strong></div>
    </td>
 	<td>
 		<div><?php echo $result['category'];?></div>
@@ -150,7 +149,7 @@
 <div class="row">
 <div class="col-md-12">
 <h3>Notice</h3>
-<p>Provider information contained in this Directory is updated on a frequent basis and may have changed. Therefore, please check with your provider before receiving services to confirm whether he or she is participating and accepting patients before scheduling your appointment.</p>
+<p>This directory is updated often. But provider information can change at any time. Before making an appointment be sure to check with the provider to make sure he or she is in the network and taking patients.</p>
 </div>
 </div>
 

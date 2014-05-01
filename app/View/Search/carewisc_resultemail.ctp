@@ -60,7 +60,7 @@
 <div class="row">
 <div class="col-md-12">
 <h2>Notice</h2>
-<small>Provider information contained in this Directory is updated on a frequent basis and may have changed. Therefore, please check with your provider before receiving services to confirm whether he or she is participating and accepting patients before scheduling your appointment.</small>
+<small>This directory is updated often, but provider information can change at any time. Before making an appointment be sure to check with the provider to make sure he or she is in the network and taking patients.</small>
 </div>
 </div>
 </div>	

@@ -56,17 +56,6 @@ $(function(){
 });
 </script>
 
-<div id="flash-msg"><!--Error Message Section-->
-    <span class="field-error"><?php echo $this->Session->flash('zipcode') ; ?></span>
-    <span class="field-error"><?php echo $this->Session->flash('distance') ; ?></span>
-    <span class="field-error"><?php echo $this->Session->flash('countie_name') ; ?></span>
-     <span class="field-error"><?php echo $this->Session->flash('distance_c') ; ?></span>
-    <span class="field-error"><?php echo $this->Session->flash('specialtie_name') ; ?></span>
-    <span class="field-error"><?php echo $this->Session->flash('providertype_name') ; ?></span>
-    <span class="field-error"><?php echo $this->Session->flash('language_name') ; ?></span>
-    <span class="field-error"><?php echo $this->Session->flash('insurance_name') ; ?></span>
-</div>
-
 <form action="/search/<?php echo $client_url_name;?>/result" method="post" class="form-horizontal">
 
     <input type="hidden" name="network_name" value="<?=$network_name?>"/>
@@ -355,6 +344,18 @@ $(function(){
 <div class="col-sm-offset-2"><span class="field-error">*</span> Required Fields</p>
 
     <button id="singlebutton" type="submit" class="btn btn-default btn-custom">Search Provider</button>
+<br/>
+<br/>
+<div id="flash-msg"><!--Error Message Section-->
+    <span class="field-error"><?php echo $this->Session->flash('zipcode') ; ?></span>
+    <span class="field-error"><?php echo $this->Session->flash('distance') ; ?></span>
+    <span class="field-error"><?php echo $this->Session->flash('countie_name') ; ?></span>
+     <span class="field-error"><?php echo $this->Session->flash('distance_c') ; ?></span>
+    <span class="field-error"><?php echo $this->Session->flash('specialtie_name') ; ?></span>
+    <span class="field-error"><?php echo $this->Session->flash('providertype_name') ; ?></span>
+    <span class="field-error"><?php echo $this->Session->flash('language_name') ; ?></span>
+    <span class="field-error"><?php echo $this->Session->flash('insurance_name') ; ?></span>
+</div>
 </div><!--filterby-->
     </form>
 </div> <!-- /container -->
