@@ -2,6 +2,7 @@
 
 class Search extends AppModel {
 	public $useTable = false;
+	public $limit = false;
 	public $validate = array(
 			'network_name'=>array(
 				'Cannot be blank. Must be Alpha Numeric Character' => array(
@@ -167,6 +168,11 @@ class Search extends AppModel {
 		else
 			return true;
 	}
+
+	public function setLimit($limit = 25)
+	{
+		$this->limit = $limit;
+	}
 	
 	public function getResults()
 	{
@@ -328,6 +334,12 @@ class Search extends AppModel {
 		}
 
 		$sql .= $this->_buildAndSql();
+
+		if($this->limit)
+		{
+			$limit = $this->limit;
+			$d['start']=1;
+		}
 
 		$sql .= ' Group By fullrecords.address, fullrecords.practicename LIMIT '.$d['start'].' , '.$limit ;
 

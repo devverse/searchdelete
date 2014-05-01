@@ -22,7 +22,7 @@
 		<div><?php echo $result['practicename'];?></div>
 		<div><?php echo $result['address'] .' '.$result['suite'];?></div><div><?php echo $result['city'].', '.$result['state'].' '.$result['zip4']; ?></div>
 		<br/>
-		<div class="name"><?php echo ($result['lastname']!='') ?"Dr.{$result['firstname']} {$result['middlename']} {$result['lastname']}":'';?></div><div><?php echo ($result['degree']!='') ? "({$result['degree']})" :'';?></div>
+		<div class="name"><?php echo ($result['lastname']!='') ?"Dr. {$result['firstname']} {$result['middlename']} {$result['lastname']}":'';?></div><div><?php echo ($result['degree']!='') ? "({$result['degree']})" :'';?></div>
 	</td>
 	<td colspan="1" width="20%">
 		<div><?php echo "Category: <br/>{$result['category']}";?></div>

@@ -99,6 +99,8 @@ class SearchController extends AppController {
 
 		if($this->Search->validates())
 		{
+			if(isset($request_data['pdf']) || isset($request_data['email']))
+				$this->Search->setLimit(100);
 			$results = $this->Search->getResults();
 			$resultcount = isset($this->Search->recordcount)?$this->Search->recordcount:false;
 		}
@@ -222,9 +224,14 @@ class SearchController extends AppController {
 		}
 
 		$markers = '';
+		$count = 0;
 		foreach($param['results'] as $p)
 		{
+			$count++;
 			$markers .= $p['fullrecords']['latitude'].','.$p['fullrecords']['longitude'].'|';
+		
+			if($count >25)
+				break;
 		}
 		return "http://maps.google.com/maps/api/staticmap?center={$center}&zoom=8&size=500x300&maptype=roadmap&sensor=false&language=&markers=color:red|label:none|{$markers}";
 	}
