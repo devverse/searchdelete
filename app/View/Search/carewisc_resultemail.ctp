@@ -1,5 +1,21 @@
 <div class="container">
 <div class="page-header">
+
+<p>
+<h3>Provider Search Results: <?php echo date("F j, Y"); ?></h3>
+<br/></center>
+<ul style="text-align:left;">
+<li>This is a list of providers that matched your search. </li>
+<li><strong>This is not a full list of all of our providers.</strong></li>
+<li>It is only correct as of the date of your search. (or date above)</li>
+<li>To be sure you have the latest listing, use our online search. </li>
+</ul>
+<br/>
+<div>Please call 1-855-463-0026 if you need help finding a provider. We can also answer questions about which providers are in the network.
+</div>
+</p>
+
+	
 <h2>Search Form</h2>
 </div>
 
