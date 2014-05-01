@@ -335,11 +335,11 @@ class Search extends AppModel {
 
 		$sql .= $this->_buildAndSql();
 
-		if($this->limit)
-		{
-			$limit = $this->limit;
-			$d['start']=1;
-		}
+		// if($this->limit)
+		// {
+		// 	$limit = $this->limit;
+		// 	$d['start']=1;
+		// }
 
 		$sql .= ' Group By fullrecords.address, fullrecords.practicename LIMIT '.$d['start'].' , '.$limit ;
 

@@ -100,7 +100,7 @@ class SearchController extends AppController {
 		if($this->Search->validates())
 		{
 			if(isset($request_data['pdf']) || isset($request_data['email']))
-				$this->Search->setLimit(100);
+				$this->Search->setLimit(25);
 			$results = $this->Search->getResults();
 			$resultcount = isset($this->Search->recordcount)?$this->Search->recordcount:false;
 		}
