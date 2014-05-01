@@ -42,7 +42,11 @@ $(function(){
            
             if(current_search=='location'&& $('input[name=street_address]').val()==''&& $('input[name=city]').val()==''&& $('input[name=zipcode]').val()=='')
                 flashmsg = 'Please type in an address , city , zipcode.'
-             
+	   
+            if(current_search=='location'&& $('input[name=street_address]').val()!=''&& ($('input[name=city]').val()==''&& $('input[name=zipcode]').val()==''))
+                flashmsg = 'Please type in an city or zipcode.'            
+
+ 
             if(current_search=='county'&& $('select[name=countie_name]').val()=='none'&& $('select[name=specialtie_name]').val()=='none'&& $('select[name=providertype_name]').val()=='none')
                 flashmsg = 'Please select a county or provider type first.'
 
