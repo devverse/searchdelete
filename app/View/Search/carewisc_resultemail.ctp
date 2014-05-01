@@ -1,6 +1,12 @@
 <div class="container">
 <div class="page-header">
 
+<center>
+<?php if($results[0]['fullrecords']['lob'] == 'Medicaid SSI'){ ?>
+	<img style="width:30%;" src="http://geosearch.commandprinting.com/carewisconsin/logoSSI.png"/>
+<?php }else{ ?>
+	<img style="width:30%;" src="http://geosearch.commandprinting.com/carewisconsin/logoPartnership.png"/>
+<?php } ?>
 <p>
 <h3>Provider Search Results: <?php echo date("F j, Y"); ?></h3>
 <br/></center>
@@ -15,7 +21,7 @@
 </div>
 </p>
 
-	
+
 <h2>Search Form</h2>
 </div>
 
