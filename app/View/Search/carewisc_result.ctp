@@ -69,7 +69,7 @@
 		<div><?php echo $result['address'] .' '.$result['suite'];?></div>
 		<div><?php echo $result['city'].', '.$result['state'].' '.$result['zip4']; ?></div>
 		<div><?php echo ($result['county'] != '')?$result['county'].' County':'' ?></div>
-		<?php if($coor){?>
+		<?php if($coor && $req_data['practicename'] == ''){?>
 			<div><a target="_blank" href="http://maps.google.com/maps?f=d&hl=en&saddr=<?=$coor['lat']?>,<?=$coor['long']?>&daddr=<?=$result['latitude']?>,<?=$result['longitude']?>&sll=&sspn=33.214763,82.265625&z=12">Get Directions</a></div><!--Has Coordinates-->
 		<?php }else{ ?>
 			<div><a target="_blank" href="http://maps.google.com/maps?f=d&hl=en&daddr=<?=$result['latitude']?>,<?=$result['longitude']?>&sll=&sspn=33.214763,82.265625&z=12">Get Directions</a></div><!--No Coordinates-->
