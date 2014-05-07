@@ -325,7 +325,8 @@ class Search extends AppModel {
 		}elseif ($d['practicename'] != '') {
 			$sql .= "practicename LIKE '%{$d['practicename']}%' or firstname LIKE '%{$d['practicename']}%' or lastname LIKE '%{$d['practicename']}%' ";
 		}elseif ($d['countie_name']!='none'){
-			$sql .= " county collate latin1_swedish_ci = '{$d['countie_name']}' ";
+			$sql .= " county collate latin1_swedish_ci = '{$d['countie_name']}' OR ";
+			$sql .= " servicearea like '%{$d['countie_name']}%' ";
 		}elseif ($d['practicename'] == '' && $d['providertype_name']!='none') {
 			$sql .= ' 1 =1 ';
 		}else{
