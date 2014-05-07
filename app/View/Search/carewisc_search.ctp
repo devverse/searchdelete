@@ -209,13 +209,13 @@ $(function(){
                 {
                     var parentid = $(this).find('option:selected').attr("data-id");
 
-                    $('.filter-by select[name=specialtie_name] option').show();
+                    $('.filter-by select[name=specialtie_name] option').show().removeAttr("disabled");
                     $('.filter-by select[name=specialtie_name]').val('none');
                     if(parentid == undefined)
-                         $('.filter-by select[name=specialtie_name] option').show();
+                         $('.filter-by select[name=specialtie_name] option').show().removeAttr("disabled");
                     else
-                        $('.filter-by select[name=specialtie_name] option[data-parent!='+parentid+']').hide();
-                     $('.filter-by select[name=specialtie_name] option[value=none]').show();
+                        $('.filter-by select[name=specialtie_name] option[data-parent!='+parentid+']').hide().attr('disabled','disabled');;
+                     $('.filter-by select[name=specialtie_name] option[value=none]').show().removeAttr("disabled");
                 });
         });
     </script>
