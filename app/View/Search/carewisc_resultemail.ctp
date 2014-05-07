@@ -23,6 +23,20 @@
 
 
 <h2>Search Form</h2>
+
+<?php if($resultcount){ ?>
+	<div><h3>Found <?=$resultcount?> Results.&nbsp;
+	<?php if(isset($srch_filter['start'])){echo "Displaying  ".floor($srch_filter['start']/25+1)." of ".ceil($resultcount/25)." Pages.";} ?>
+	</h3></div>
+
+	<?php if ($req_data['state']!='None'||$req_data['street_address']!=''||$req_data['city']!=''||$req_data['zipcode']!=''){ $state = ($req_data['state']!='None')?$req_data['state']:'';echo 'You searched for providers within '.$req_data['distance'].' miles of <b>'.implode(' ',array($req_data['street_address'],$req_data['city'],$state,$req_data['zip'])).'</b><br/>';}?>
+	<?php if ($req_data['practicename']!=''){echo 'You searched for practices containing the words <b>"'.$req_data['practicename'].'"</b><br/>';}?>
+	<?php if ($req_data['countie_name']!='none'){echo 'You searched for providers around <b>'.$req_data['countie_name'].' county</b><br/>';}?>
+	<?php if($req_data['providertype_name']!='none'){ echo 'Filtered by <b>'.$req_data['providertype_name'].'</b>';}?>
+	<?php if($req_data['specialtie_name']!='none'){ echo ' > <b>'.$req_data['specialtie_name'].'</b>';}?>
+
+<?php } ?>
+
 </div>
 
 <div class="row"><div class="col-md-12">
@@ -44,7 +58,7 @@
 		<div><?php echo $result['practicename'];?></div>
 		<div><?php echo $result['address'] .' '.$result['suite'];?></div><div><?php echo $result['city'].', '.$result['state'].' '.$result['zip4']; ?></div>
 		<br/>
-		<div class="name"><?php echo ($result['lastname']!='') ?"Dr. {$result['firstname']} {$result['middlename']} {$result['lastname']}":'';?></div><div><?php echo ($result['degree']!='') ? "({$result['degree']})" :'';?></div>
+		<div class="name"><?php echo ($result['lastname']!='') ?"{$result['firstname']} {$result['middlename']} {$result['lastname']}":'';?></div><div><?php echo ($result['degree']!='') ? "({$result['degree']})" :'';?></div>
 	</td>
 	<td colspan="1" width="20%">
 		<div><?php echo "Category: <br/>{$result['category']}";?></div>

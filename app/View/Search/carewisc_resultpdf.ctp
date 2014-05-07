@@ -23,8 +23,12 @@
 
 </div>
 
-<h2>Search Results</h2>
-
+<div><b>Search Results</b>
+<?php if($resultcount){ ?>
+	&nbsp;Found <?=$resultcount?> Results.&nbsp;
+	<?php if(isset($srch_filter['start'])){echo "Displaying  ".floor($srch_filter['start']/25+1)." of ".ceil($resultcount/25)." Pages.";} ?>
+</div>
+<?php } ?>
 
 <div class="row"><div class="col-md-12">
 
@@ -45,7 +49,7 @@
 		<div><?php echo $result['practicename'];?></div>
 		<div><?php echo $result['address'] .' '.$result['suite'];?></div><div><?php echo $result['city'].', '.$result['state'].' '.$result['zip4']; ?></div>
 		<br/>
-		<div class="name"><?php echo ($result['lastname']!='') ?"Dr. {$result['firstname']} {$result['middlename']} {$result['lastname']}":'';?></div><div><?php echo ($result['degree']!='') ? "({$result['degree']})" :'';?></div>
+		<div class="name"><?php echo ($result['lastname']!='') ?"{$result['firstname']} {$result['middlename']} {$result['lastname']}":'';?></div><div><?php echo ($result['degree']!='') ? "({$result['degree']})" :'';?></div>
 	</td>
 	<td colspan="1" width="20%">
 		<div><?php echo "Category: <br/>{$result['category']}";?></div>
