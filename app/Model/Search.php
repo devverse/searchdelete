@@ -390,7 +390,7 @@ class Search extends AppModel {
 			$sql .= " AND lastname LIKE '%{$d['lastname']}%'";
 
 		if(isset($d['practicename']) && strtolower($d['practicename'])!='none' && strtolower($d['practicename'])!='')
-			$sql .= " AND practicename LIKE '%{$d['practicename']}%'";
+			$sql .= " OR practicename LIKE '%{$d['practicename']}%'";
 		return $sql;
 	}
 
