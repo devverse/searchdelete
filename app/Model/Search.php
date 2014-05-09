@@ -390,8 +390,8 @@ class Search extends AppModel {
 		if(isset($d['lastname']) && strtolower($d['lastname'])!='none' && strtolower($d['lastname'])!='')
 			$sql .= " AND lastname LIKE '%{$d['lastname']}%'";
 
-		if(isset($d['practicename']) && strtolower($d['practicename'])!='none' && strtolower($d['practicename'])!='')
-			$sql .= " OR practicename LIKE '%{$d['practicename']}%'";
+		// if(isset($d['practicename']) && strtolower($d['practicename'])!='none' && strtolower($d['practicename'])!='')
+		// 	$sql .= " OR practicename LIKE '%{$d['practicename']}%'";
 		return $sql;
 	}
 
