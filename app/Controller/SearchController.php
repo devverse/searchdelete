@@ -96,10 +96,11 @@ class SearchController extends AppController {
 		//start for indexing every 25 results
 		$request_data['start'] = isset($request_data['start']) && $request_data['start']>=0 ? $request_data['start']:0;
 		
-		if($request_data['state'] == 'None' && strpos($client_orig_name, 'carewisconsin') !==false)
+		if(($request_data['address'] !=''||$request_data['city'] !='') && $request_data['state'] == 'None' && strpos($client_orig_name, 'carewisconsin') !==false)
 		{
 			$request_data['state'] = 'WI';
 		}
+
 		$this->Search->set($request_data);
 
 		if($this->Search->validates())

@@ -209,13 +209,22 @@ $(function(){
                 {
                     var parentid = $(this).find('option:selected').attr("data-id");
 
-                    $('.filter-by select[name=specialtie_name] option').show().removeAttr("disabled");
+                    $('.filter-by select[name=specialtie_name] .wrap option').unwrap().show().removeAttr("disabled");
                     $('.filter-by select[name=specialtie_name]').val('none');
+
                     if(parentid == undefined)
-                         $('.filter-by select[name=specialtie_name] option').show().removeAttr("disabled");
+                    {
+                        $('.filter-by select[name=specialtie_name] option').show().removeAttr("disabled");
+                        $('.filter-by select[name=specialtie_name] option[value=none]').show().removeAttr("disabled");
+                    }
                     else
-                        $('.filter-by select[name=specialtie_name] option[data-parent!='+parentid+']').hide().attr('disabled','disabled');;
-                     $('.filter-by select[name=specialtie_name] option[value=none]').show().removeAttr("disabled");
+                    {
+                        $('.filter-by select[name=specialtie_name] option[data-parent!='+parentid+']').wrap('<span class="wrap">').hide().attr('disabled','disabled');;
+                        $('.filter-by select[name=specialtie_name] option[value=none]').unwrap().show().removeAttr("disabled");
+                    }
+                    $('.filter-by select[name=specialtie_name]').val('none');
+
+                   
                 });
         });
     </script>
