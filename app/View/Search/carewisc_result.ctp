@@ -9,10 +9,10 @@
 </div>
 
 <div class="row top5">
-<div class="col-md-3">Export:
+<div class="col-md-7">Export:
 	<a class="print-btn" onClick="window.print()"><img style="width:25px;height:25px" src="/img/print5.png" title="Print page"/></a>
 	<a class="pdf-btn"><img style="width:27px;height:27px" src="/img/pdf19.png" title="Save as pdf"/></a>
-	<a class="email-btn"><img style="width:23px;height:23px" src="/img/opened4.png" title="Email page"/></a>
+	<a class="email-btn"><img style="width:23px;height:23px" src="/img/opened4.png" title="Email page"/></a><small>&nbsp;Print, PDF and Email will return current page results only.</small>
 	</div>
 	
 	<div class="col-md-9">
