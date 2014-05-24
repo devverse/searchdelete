@@ -240,8 +240,8 @@ $(function(){
     <select name="providertype_name" class="form-control">
             <option value="none">- All Provider Types -</option>
         <?php foreach($providertypes as $providertype){ 
-            // if($providertype['Providertype']['name']=='')
-            //   continue;
+            if(isset($providertype['Providertype']['lob']) && $providertype['Providertype']['lob']!=$network_name)
+              continue;
             ?>
             <option data-id="<?php echo $providertype['Providertype']['id']; ?>" value="<?php echo $providertype['Providertype']['name'];?>"><?php echo $providertype['Providertype']['name'];?></option>
         <?php } ?>

@@ -365,6 +365,7 @@ CREATE TABLE IF NOT EXISTS `specialties` (
 CREATE TABLE IF NOT EXISTS `providertypes` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `name` varchar(255) NOT NULL,
+  `lob` varchar(255) NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `id` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;

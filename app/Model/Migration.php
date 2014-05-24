@@ -153,7 +153,7 @@ class Migration extends AppModel {
 		$this->cacheQueries = false; 
 		$this->query("INSERT INTO `networks`( `name`) select distinct lob from fullrecords",false);
 
-		$this->query("INSERT INTO `providertypes`( `name`) select distinct category from fullrecords",false);
+		$this->query("INSERT INTO `providertypes`( `name`,`lob`) select distinct category,lob from fullrecords	",false);
 		$this->query("INSERT INTO `specialties`( `name`,`parent_id`) select distinct fullrecords.specialty , providertypes.id from fullrecords left join providertypes on providertypes.name = fullrecords.category",false);
 
 		$this->query("INSERT INTO `counties`( `name`) select distinct servicearea from fullrecords",false);
