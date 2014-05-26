@@ -99,12 +99,17 @@ class ClientUsers extends AppModel {
 
 		$old_config = $file->read();
 		
+		if(isset($_SERVER['SERVER_NAME'])&& strpos($_SERVER['SERVER_NAME'],'localhost') !==false)
+			$password = 'aspire5610z';
+		else
+			$password = 'centersplan_db';
+
 		$added_config = "public \${$dbname} = array(
 		'datasource' => 'Database/Mysql',
 		'persistent' => false,
 		'host' => 'localhost',
 		'login' => 'root',
-		'password' => 'aspire5610z',
+		'password' => '{$password}',
 		'database' => '{$dbname}_db',
 		'prefix' => '',
 		//'encoding' => 'utf8',
