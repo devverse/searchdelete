@@ -107,7 +107,7 @@ class ClientUsers extends AppModel {
 		if(isset($_SERVER['SERVER_NAME'])&& strpos($_SERVER['SERVER_NAME'],'localhost') !==false)
 			$password = 'aspire5610z';
 		else
-			$password = 'centersplan_db';
+			$password = 'dBCommand2014$';
 
 		$added_config = "public \${$dbname} = array(
 		'datasource' => 'Database/Mysql',
