@@ -64,10 +64,10 @@ class ClientUsers extends AppModel {
 
 		$cli['company_name'] 		= $name;
 		$cli['name'] 				= $sname;
-		$cli['view_prefix_name'] 	= $sname.'_';
+		$cli['view_prefix_name'] 	= '';
 		$cli['cake_db_config'] 		= $sname;
 		$cli['search_type'] 		= 1;
-		$cli['asset_folder_name'] 	= $sname;
+		$cli['asset_folder_name'] 	= '';
 		$cli['migrating'] 			= 0;
 		$cli['disable ']			= 1;
 
@@ -117,6 +117,9 @@ class ClientUsers extends AppModel {
 		$status = $file->write($new_config,'w');
 
 		$file->close();
+
+		$sql = 'Create DATABASE '.$dbname.'_db';
+		$records = $this->query($sql,false);
 
 		return $status;
 	}

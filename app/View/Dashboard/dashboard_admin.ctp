@@ -1,3 +1,5 @@
+<form method="post" action="./logout"><input type="submit" value="Logout" class="btn btn-default btn-xs navbar-right" />
+</form>
 <form id="clientsdd">
 Edit a clients configuration.
 <select name="client">
@@ -26,6 +28,12 @@ $(function(){
 <?php foreach($clients as $client){ ?>
 <div  id="<?=$client['Client']['name']?>-div" class="client-div">
 <form method="post" action="./updateClient">
+<h4><?=$client['Client']['company_name']?></h4>
+<p>
+	Username: <?=$client['Client']['name']?>_usr
+	<br/>
+	Password: <?php echo str_replace(array('a','e','i','o','u'),'', $client['Client']['name']).'2014$';?>
+</p>
 <table>
 <tr>
 <th><strong>Views File</strong></th>
@@ -34,7 +42,6 @@ $(function(){
 <th><strong></strong></th>
 </tr>
 <tr>
-<h3><?=$client['Client']['company_name']?></h3>
 <input type="hidden" name="id" value="<?=$client['Client']['id']?>">
 <input type="hidden" name="name" value="<?=$client['Client']['name']?>">
 <td>

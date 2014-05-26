@@ -42,8 +42,12 @@
 	<div clas="controls">
 	<div class="radiogroup">
 		<label class="radio"><input type="radio" name="actiontype" value="migrate">Migrate Data</label>
+		<?php if($field_count != 0) { ?>
+
 		<label class="radio"><input type="radio" name="actiontype" value="addrecord">Add Record</label>
 		<label class="radio"><input type="radio" name="actiontype" value="editrecord">Edit Record</label>
+
+		<?php } ?>
 	</div>
 	</div>
 	</form>

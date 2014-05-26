@@ -59,10 +59,14 @@ class DashboardController extends AppController {
 	public function _loadClientDash()
 	{
 		Configure::write('Model.globalSource', $this->Session->read('client_db'));
-		$fields = $this->Dashboard->getRecordFields('fullrecords');
-
-		$this->set('fields',$fields);
-		$this->set('field_count',count($fields));
+		try {
+			$fields = $this->Dashboard->getRecordFields('fullrecords');
+			$this->set('fields',$fields);
+			$this->set('field_count',count($fields));
+		} catch (Exception $e) {
+			$this->set('fields',array());
+			$this->set('field_count',0);
+		}
 
 		$request_data = $this->request->data;
 
