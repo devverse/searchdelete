@@ -50,9 +50,13 @@ class SearchController extends AppController {
 		else
 			$this->set('network_name', '');
 		//$this->AppModel->setDataSource($client['Client']['cake_db_config']);
-		if($client['Client']['migrating'] == 1 || $client['Client']['disable'] == 1 )
+		if($client['Client']['migrating'] == 1 )
 		{
 			echo 'System is being updated. Please check back in a few minutes.';
+			exit;
+		}
+		elseif ($client['Client']['migrating'] == 0 && $client['Client']['disable'] == 1) {
+			echo 'Search has been disabled by the administrator. Please contact your vendor.';
 			exit;
 		}
 
