@@ -278,8 +278,12 @@ class DashboardController extends AppController {
 	public function updateClient()
 	{
 
-		//Configure::write('Model.globalSource', $this->Session->read('client_db'));
-		$status = true;
+		Configure::write('Model.globalSource', 'default');
+		$status = false;
+		$request_data = $this->request->data;
+
+		$status = $this->ClientUsers->updateClientSettings($request_data);
+
 		if($status)
 		{
 			$this->Session->setFlash('Client settings saved', 'default', array(), 'succ_msg');

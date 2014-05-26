@@ -26,11 +26,24 @@ class ClientUsers extends AppModel {
 			return true;
 	}
 
-	public function getClientSettings($client_name='')
+	public function updateClientSettings($data=array())
 	{
-		
+		if(!isset($data['id']) || !isset($data['name']) || !isset($data['view_prefix_name']) || !isset($data['asset_folder_name']) || !isset($data['disable']))
+			return false;
 
-		return $records;
+		$name = $data['name'];
+		$update_array = array();
+		$update_array['id'] = $data['id'];
+		$update_array['view_prefix_name'] = $data['view_prefix_name'] == '' ? '' : $name.'_';
+		$update_array['asset_folder_name'] = $data['asset_folder_name'] == '' ? '' : $name;
+		$update_array['disable'] = $data['disable'] == '0' ? '0' : '1';
+
+		App::import('model','Client');
+		$client = new Client();
+
+		$saved_client = $client->save($update_array);
+
+		return ($saved_client)?true:false;
 	}
 
 	public function addClientSettings($client_name='')
