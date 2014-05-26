@@ -189,7 +189,7 @@ class Search extends AppModel {
 
 		$provider_results = $this->formatProviders($radius_results);
 
-		if($coor_array == false)
+		if($coor_array == false ||$coor_array['lat']==null)
 			$coor_array = $this->getAverageCoordinates($radius_results);
 
 		return array('providers'=>$provider_results,'coor_array'=>$coor_array,'locations'=>$location_results);
