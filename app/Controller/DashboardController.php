@@ -1,7 +1,7 @@
 <?php
 class DashboardController extends AppController {
 	public $helpers = array('Html', 'Form','Session');
-	public $uses = array('AppModel','Fullrecord','Dashboard','User','Client');
+	public $uses = array('AppModel','Fullrecord','Dashboard','User','Client','ClientUsers');
 	public $autoRender = false;
 
 	public function beforeFilter()
@@ -240,6 +240,54 @@ class DashboardController extends AppController {
 			$this->Session->setFlash('Incorrect id format', 'default', array(), 'err_msg');
 		}
 		
+		return $this->redirect('index');
+	}
+
+	public function addClient()
+	{
+		Configure::write('Model.globalSource', 'default');
+		$status = false;
+		$request_data = $this->request->data;
+		
+		$this->ClientUsers->set($request_data);
+
+		if($this->ClientUsers->validates())
+		{
+			$status = $this->ClientUsers->addClientSettings();
+		}
+		else
+		{
+			$error = $this->ClientUsers->validationErrors;
+			$err_field = key($error);
+			$err_msg = $error[$err_field][0];
+			$this->Session->setFlash($err_msg, 'default', array(), 'err_msg');
+			return $this->redirect('index');
+		}
+
+		if($status)
+		{
+			$this->Session->setFlash('New Client Added', 'default', array(), 'succ_msg');
+		}
+		else
+		{
+			$this->Session->setFlash('There was an error adding a new client', 'default', array(), 'err_msg');
+		}
+		return $this->redirect('index');
+	}
+
+	public function updateClient()
+	{
+
+		//Configure::write('Model.globalSource', $this->Session->read('client_db'));
+		$status = true;
+		if($status)
+		{
+			$this->Session->setFlash('Client settings saved', 'default', array(), 'succ_msg');
+		}
+		else
+		{
+			$this->Session->setFlash('Client setting was not saved. An error occured', 'default', array(), 'err_msg');
+		}
 		return $this->redirect('index');
 	}
 }
