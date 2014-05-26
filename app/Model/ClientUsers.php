@@ -94,7 +94,12 @@ class ClientUsers extends AppModel {
 	{
 		App::uses('File', 'Utility');
 
-		$file = new File('../../app/Config/database.php', false, 0644);
+		if(isset($_SERVER['SERVER_NAME'])&& strpos($_SERVER['SERVER_NAME'],'localhost') !==false)
+			$path = '/var/www/commandgeosearch/app/Config/database.php';
+		else
+			$path = '/var/www/html/providersearch.geoffreychin.com/app/Config/database.php';
+
+		$file = new File($path, false, 0644);
 		$file->open('r+');
 
 		$old_config = $file->read();
