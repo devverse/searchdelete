@@ -46,6 +46,10 @@ $(function(){
         </div>
     </div>
 
+    <div class="form-group">
+     <div class="col-sm-offset-2 col-sm-10">--- or ---</div>
+</div>
+
 <div class="searchtype-location" ><!--Beginingof Adresses-->
     <div class="form-group">
       <label class="col-sm-2 control-label">Address</label>
@@ -149,6 +153,10 @@ $(function(){
     </div>
 </div><!--End of Addresses-->
 
+    <div class="form-group" >
+     <div class="col-sm-offset-2 col-sm-10">--- or ---</div>
+    </div>
+
     <div class="form-group searchtype-county" >
     <label class="col-sm-2 control-label"><span class="field-error">*</span> Counties of Service</label>
     <div class="col-sm-8">
@@ -166,11 +174,7 @@ $(function(){
 
     </div>
 
-    <div class="form-group" >
-     <div class="col-sm-offset-2 col-sm-10">--- or ---</div>
-    </div>
-
-    <div class="form-group" >
+    <div class="form-group" style="display:none">
     <div class="col-sm-offset-2 col-sm-6"><input id="radiussearch" name="distance_c" placeholder="Less than 100" value="" type="text" class="form-control">
     <span class="field-error"><?php echo $this->Session->flash('distance_c') ; ?></span>
     </div>
@@ -323,9 +327,6 @@ $(function(){
     </div>
     
     </div>
-    <div class="form-group">
-     <div class="col-sm-offset-2 col-sm-10">--- or ---</div>
-</div>
 
 <div class="col-sm-offset-2"><span class="field-error">*</span> Required Fields</p>
 
