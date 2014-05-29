@@ -46,9 +46,11 @@ class SearchController extends AppController {
 
 		$networks = $this->Network->find('all');
 		if(is_numeric($ntwk_ind) && isset($networks[$ntwk_ind-1]['Network']))
-			$this->set('network_name', $networks[$ntwk_ind-1]['Network']['name']);
+			$this_network_name = $networks[$ntwk_ind-1]['Network']['name'];
 		else
-			$this->set('network_name', $networks[0]['Network']['name']);
+			$this_network_name = $networks[0]['Network']['name'];
+
+		$this->set('network_name',$this_network_name);
 		//$this->AppModel->setDataSource($client['Client']['cake_db_config']);
 		if($client['Client']['migrating'] == 1 )
 		{

@@ -239,9 +239,11 @@ $(function(){
     <div class="col-sm-6">
     <select name="providertype_name" class="form-control">
             <option value="none">- All Provider Types -</option>
+        <?php $parent_id_array = array();?>
         <?php foreach($providertypes as $providertype){ 
             if(isset($providertype['Providertype']['lob']) && $providertype['Providertype']['lob']!=$network_name)
               continue;
+            $parent_id_array[]=$providertype['Providertype']['id'];
             ?>
             <option data-id="<?php echo $providertype['Providertype']['id']; ?>" value="<?php echo $providertype['Providertype']['name'];?>"><?php echo $providertype['Providertype']['name'];?></option>
         <?php } ?>
@@ -256,7 +258,7 @@ $(function(){
         <select name="specialtie_name" class="form-control">
         <option value="none">- All Specialties -</option>
         <?php foreach($specialties as $specialty){
-            if($specialty['Specialtie']['name']=='')
+            if($specialty['Specialtie']['name']==''|| !in_array($specialty['Specialtie']['parent_id'], $parent_id_array))
               continue;
             ?>
             <option data-parent="<?php echo $specialty['Specialtie']['parent_id']; ?>" value="<?php echo $specialty['Specialtie']['name'];?>"><?php echo $specialty['Specialtie']['name'];?></option>
