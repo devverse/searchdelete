@@ -360,7 +360,7 @@ class Search extends AppModel {
 		// {
 		// 	$sql = 'SELECT * FROM fullrecords join (' . $sql.')as t On t.id = fullrecords.id';
 		// }
-		echo $sql;
+		
 		$records = $this->query($sql,false);
 		$recordcount = $this->query('SELECT FOUND_ROWS()');
 		$this->recordcount = $recordcount[0][0]["FOUND_ROWS()"];
