@@ -349,7 +349,7 @@ class Search extends AppModel {
 		// }
 		if($d['practicename'] != '')
 		{
-			$sql .= ' Group By fullrecords.category,fullrecords.specialty LIMIT '.$d['start'].' , '.$limit ;
+			$sql .= ' Group By fullrecords.practicename, fullrecords.category,fullrecords.specialty LIMIT '.$d['start'].' , '.$limit ;
 		}
 		else
 		{
