@@ -307,7 +307,12 @@ class Search extends AppModel {
 	public function searchByRadius($limit = 25, $coor_array=false)
 	{
 		$d = $this->data['Search'];
-		$sql = "SELECT SQL_CALC_FOUND_ROWS * FROM fullrecords WHERE ";
+//SQL_CALC_FOUND_ROWS
+		if($d['practicename'] != ''){
+			$sql = "SELECT SQL_CALC_FOUND_ROWS company , lob, provId,category,specialty,practicename,firstname,middlename,lastname,suffix,degree,address,suite,city,state,zip,zip4,county,servicearea,phone,fax,gender,handicap,acceptingnew,acceptsmedicaid,hospaffiliations,languages,officehours,customfield1desc,customfield1ind,customfield2desc,customfield2ind,customfield3desc,customfield3ind,latitude_str,longitude_str,latitude,longitude,id FROM fullrecords WHERE ";
+		}else{
+			$sql = "SELECT SQL_CALC_FOUND_ROWS company , lob, provId,category,specialty,practicename,firstname,middlename,lastname,suffix,degree,address,suite,city,state,zip,zip4,county,servicearea,phone,fax,gender,handicap,acceptingnew,acceptsmedicaid,hospaffiliations,languages,officehours,customfield1desc,customfield1ind,customfield2desc,customfield2ind,customfield3desc,customfield3ind,latitude_str,longitude_str,latitude,longitude,id FROM fullrecords WHERE ";
+		}
 
 		$distance = ($d['distance_c'] != '')? $d['distance_c'] : $d['distance'];
 
@@ -342,9 +347,20 @@ class Search extends AppModel {
 		// 	$limit = $this->limit;
 		// 	$d['start']=1;
 		// }
+		if($d['practicename'] != '')
+		{
+			$sql .= 'Group By fullrecords.category,fullrecords.specialty LIMIT '.$d['start'].' , '.$limit ;
+		}
+		else
+		{
+			$sql .= ' Group By fullrecords.address, fullrecords.practicename LIMIT '.$d['start'].' , '.$limit ;
+		}
 
-		$sql .= ' Group By fullrecords.address, fullrecords.practicename LIMIT '.$d['start'].' , '.$limit ;
-
+		// if(true)
+		// {
+		// 	$sql = 'SELECT * FROM fullrecords join (' . $sql.')as t On t.id = fullrecords.id';
+		// }
+		
 		$records = $this->query($sql,false);
 		$recordcount = $this->query('SELECT FOUND_ROWS()');
 		$this->recordcount = $recordcount[0][0]["FOUND_ROWS()"];
