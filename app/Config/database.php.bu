@@ -67,45 +67,42 @@ class DATABASE_CONFIG {
 		'persistent' => false,
 		'host' => 'localhost',
 		'login' => 'root',
-		'password' => 'aspire5610z',
+		'password' => 'dBCommand2014$',
 		'database' => 'command_search',
 		'prefix' => '',
 		//'encoding' => 'utf8',
 	);
-
-	public $commanddemo = array(
-		'datasource' => 'Database/Mysql',
-		'persistent' => false,
-		'host' => 'localhost',
-		'login' => 'root',
-		'password' => 'aspire5610z',
-		'database' => 'caketest',
-		'prefix' => '',
-		//'encoding' => 'utf8',
-	);
-
-	public $centersplan = array(
-		'datasource' => 'Database/Mysql',
-		'persistent' => false,
-		'host' => 'localhost',
-		'login' => 'root',
-		'password' => 'aspire5610z',
-		'database' => 'centersplan_db',
-		'prefix' => '',
-		//'encoding' => 'utf8',
-	);
-	// needs to add this dynamically
 	
 	public $carewisconsin = array(
 		'datasource' => 'Database/Mysql',
 		'persistent' => false,
 		'host' => 'localhost',
 		'login' => 'root',
-		'password' => 'aspire5610z',
+		'password' => 'dBCommand2014$',
 		'database' => 'carewisconsin_db',
 		'prefix' => '',
 		//'encoding' => 'utf8',
 	);
+	public $centersplan = array(
+                'datasource' => 'Database/Mysql',
+                'persistent' => false,
+                'host' => 'localhost',
+                'login' => 'root',
+                'password' => 'dBCommand2014$',
+                'database' => 'centersplan_db',
+                'prefix' => '',
+                //'encoding' => 'utf8',
+        );
 
-	//stringidentifier
-}
+public $derekspractice = array(
+		'datasource' => 'Database/Mysql',
+		'persistent' => false,
+		'host' => 'localhost',
+		'login' => 'root',
+		'password' => 'dBCommand2014$',
+		'database' => 'derekspractice_db',
+		'prefix' => '',
+		//'encoding' => 'utf8',
+	);
+
+}//stringidentifier
