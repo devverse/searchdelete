@@ -21,8 +21,12 @@
     <link href="/dist/css/bootstrap-theme.min.css" rel="stylesheet">
 
     <!-- Custom styles for this template -->
-    <link href="/<?php echo $asset_folder; ?>/theme.css" rel="stylesheet">
+   <?php if($asset_folder == ''){ ?> 
+	<link href="/theme.css" rel="stylesheet">
+<?php }else{ ?>
+	<link href="/<?php echo $asset_folder; ?>/theme.css" rel="stylesheet">
 
+    <?php }?>
     <!-- Just for debugging purposes. Don't actually copy this line! -->
     <!--[if lt IE 9]><script src="/docs-assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
 

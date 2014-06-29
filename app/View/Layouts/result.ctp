@@ -15,7 +15,12 @@
     <link href="/dist/css/bootstrap.css" rel="stylesheet">
     <link href="/dist/css/bootstrap-theme.min.css" rel="stylesheet">
     <link href="/<?php echo $asset_folder; ?>/blue/listsort-style.css" rel="stylesheet">
-    <link href="/<?php echo $asset_folder; ?>/theme.css" rel="stylesheet">
+
+    <?php if($asset_folder == ''){ ?> 
+        <link href="/theme.css" rel="stylesheet">
+    <?php }else{ ?> 
+        <link href="/<?php echo $asset_folder; ?>/theme.css" rel="stylesheet">
+    <?php }?>
 
     <!--js for print pdf emailing page-->
     <script src="/js/outputpage.js"></script>
