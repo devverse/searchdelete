@@ -14,9 +14,17 @@
     <title><?php echo $title; ?></title>
     <link href="/dist/css/bootstrap.css" rel="stylesheet">
     <link href="/dist/css/bootstrap-theme.min.css" rel="stylesheet">
-    <link href="/<?php echo $asset_folder; ?>/blue/listsort-style.css" rel="stylesheet">
+
+    <?php if($asset_folder == ''){ ?>
+	<!--DEFAULT PATH TO STYLES. USED FOR ALL SITES THAT DONT USE CUSTOM--> 
+  	 <link href="/blue/listsort-style.css" rel="stylesheet">
+    <?php }else{ ?> 
+  	 <link href="/<?php echo $asset_folder; ?>/blue/listsort-style.css" rel="stylesheet">
+    <?php }?>
+
 
     <?php if($asset_folder == ''){ ?> 
+	<!--DEFAULT PATH TO STYLES. USED FOR ALL SITES THAT DONT USE CUSTOM--> 
         <link href="/theme.css" rel="stylesheet">
     <?php }else{ ?> 
         <link href="/<?php echo $asset_folder; ?>/theme.css" rel="stylesheet">
