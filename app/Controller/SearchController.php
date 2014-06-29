@@ -8,10 +8,12 @@ class SearchController extends AppController {
 		$this->autoRender = false;
 
 		$network_ind=substr($client_orig_name, -1);
-		if(is_numeric($network_ind))
+		if(is_numeric($network_ind)){
 			$client_name = substr($client_orig_name,0,-1);
-		else
+		}else{
 			$client_name = $client_orig_name;
+			$network_ind = false;
+		}
 
 		if(isset($client_name))
 			$client_obj = $this->Client->findByName($client_name);
