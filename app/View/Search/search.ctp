@@ -318,7 +318,7 @@ $(function(){
     </div>
     </div>
     
-      <div class="form-group">
+    <!--  <div class="form-group">
     <label class="col-sm-2 control-label">First Name</label>
     <div class="col-sm-6">
     <input value=""  name="firstname" placeholder="firstname" type="text" class="form-control">
@@ -331,6 +331,7 @@ $(function(){
     </div>
     
     </div>
+    -->
 
 <div class="col-sm-offset-2"><span class="field-error">*</span> Required Fields</p>
 
