@@ -1,4 +1,9 @@
 <div class="container">
+<div class="col-md-12 page-header">
+<h2>Search Results
+<a href="./" class="btn-xs btn-default pull-right"><span class="glyphicon glyphicon-arrow-left"></span> Return to Search form</a></h2>
+
+</div>
 <div id="map_canvas" style="height: 400px; position: relative; background-color: rgb(229, 227, 223); overflow: hidden;"></div>
 
 <div class="row"><div class="col-md-12">

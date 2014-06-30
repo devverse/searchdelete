@@ -1,8 +1,12 @@
 <!-- File: /app/View/Search/search1.ctp -->
 <?php echo $this->Session->flash(); ?>
 <div class="container" id="providersearch"> <!--container -->
-<h2><span class="glyphicon glyphicon-search"></span> Search Form <?php echo($network_name!='')?'- '.$network_name:'';?></h2>
-
+<div class="row">
+	<div class="col-md-12">
+	<h1 id="logo">Provider Search Demo</h1>
+	<h2><span class="glyphicon glyphicon-search"></span> Search Form <?php //echo($network_name!='')?'- '.$network_name:'';?></h2>
+	</div>
+</div>
 
 
 <script type="text/javascript">
