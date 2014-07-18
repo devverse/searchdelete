@@ -41,16 +41,31 @@ class SearchController extends AppController {
 		die('Client Name does not exist');
 	}
 
+	public function _getEdgeCaseNetworks($ntwk_ind=null,$networks=false,$client)
+	{
+		if(is_numeric($ntwk_ind) && isset($networks[$ntwk_ind-1]['Network']))
+			$this_network_name = $networks[$ntwk_ind-1]['Network']['name'];
+		else
+			$this_network_name = $networks[0]['Network']['name'];
+
+		if($ntwk_ind == 3 && $client['Client']['name'] == 'carewisconsin')
+			$this_network_name = 'Medicaid SSI';
+		if($ntwk_ind == 1 && $client['Client']['name'] == 'carewisconsin')
+			$this_network_name = 'Family Care';
+		if($ntwk_ind == 2 && $client['Client']['name'] == 'carewisconsin')
+			$this_network_name = 'Partnership';
+		
+		return $this_network_name;
+	}
+
 	public function search($client=false,$ntwk_ind=false,$client_url_name='')
 	{	
 		//globally define new database source
 		Configure::write('Model.globalSource', $client['Client']['cake_db_config']);
 
 		$networks = $this->Network->find('all');
-		if(is_numeric($ntwk_ind) && isset($networks[$ntwk_ind-1]['Network']))
-			$this_network_name = $networks[$ntwk_ind-1]['Network']['name'];
-		else
-			$this_network_name = $networks[0]['Network']['name'];
+
+		$this_network_name = $this->_getEdgeCaseNetworks($ntwk_ind,$networks,$client);
 
 		$this->set('network_name',$this_network_name);
 		//$this->AppModel->setDataSource($client['Client']['cake_db_config']);
