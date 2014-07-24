@@ -4,26 +4,27 @@ class Search extends AppModel {
 	public $useTable = false;
 	public $limit = false;
 	public $validate = array(
-			'network_name'=>array(
-				'Cannot be blank. Must be Alpha Numeric Character' => array(
-	                'rule'     => array('custom', '/^[a-z0-9 ]*$/i'),
-	                'allowEmpty' => false,
-            	)
-			),
+			//network name is blank if not carewisconsin
+			// 'network_name'=>array(
+			// 	'Cannot be blank. Must be Alpha Numeric Character' => array(
+	  //               'rule'     => array('custom', '/^[a-z0-9 ]*$/i'),
+	  //               'allowEmpty' => false,
+   //          	)
+			// ),
    //          'providertype_name'=>array(
 			// 	'Provider type cannot be blank. Must be Alpha Numeric Character' => array(
 	  //               'rule'     => array('custom', '/^[a-z0-9 ]*$/i'),
 	  //               'allowEmpty' => false
    //          		)
 			// ),
-			'countie_name'=>array(
-				'Please select a County' => array(
-	                'rule'=>array('locationOrCountieOrPracticeName'),
-            	),
-				'Must be Alpha Numeric Character' => array(
-	                'rule'     => array('custom', '/^[a-z0-9 ]*$/i')
-            	)
-			),
+			// 'countie_name'=>array(
+			// 	'Please select a County' => array(
+	  //               'rule'=>array('locationOrCountieOrPracticeName'),
+   //          	),
+			// 	'Must be Alpha Numeric Character' => array(
+	  //               'rule'     => array('custom', '/^[a-z0-9 ]*$/i')
+   //          	)
+			// ),
 			'street_address'=>array(
 				'Must be Alpha Numeric Character' => array(
 	                'rule'     => array('custom', '/^[a-z0-9 ]*$/i'),
