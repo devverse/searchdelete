@@ -13,7 +13,7 @@
 <th width="15%"><strong>Practice</strong></th>
 <th width="10%"><strong>Gender</strong></th>
 <th width="10%"><strong>Specialty</strong></th>
-<th width="10%"><strong>Language</strong></th>
+<th width="10%"><strong>Category</strong></th>
 <th width="15%"><strong>Address</strong></th>
 <th width="15%"><strong>Info</strong></th>
 <th width="30%"><strong>Hospital Affiliation</strong></th>
@@ -23,6 +23,7 @@
 	foreach($results as $r)
 	{
 		$result = $r['fullrecords'];
+
 ?>
 
 <!-- Result Information START-->
@@ -33,13 +34,13 @@
 		<div><?php echo ($result['degree']!='') ? "({$result['degree']})" :'';?></div>
    </td>
 	<td>
-		<div class="gender"><?php echo $result['g'] == 'M'?'Male':'Female';?></div>
+		<div class="gender"><?php echo $result['g'] == 'M'?'Male':'';?><?php echo $result['g'] == 'F'?'Female':'';?></div>
 	</td>
 	<td>
-		<?php echo implode(', ', $result['specialties']);?>
+		<?php echo $result['specialty'];?>
 	</td>
 	<td>
-		<?php echo implode(', ', $result['languages']);?>
+		<?php echo $result['category'];?>
 	</td>
 	<td>
 		<div><?php echo $result['address'] .' '.$result['suite'];?></div>
@@ -53,8 +54,9 @@
 	</td>
 	<td>
 		<div class="phone"><?php echo $result['phone'];?></div>
-		<div class="website"><?php echo $result['website'];?></div>
-		<div class="boardCertified"><?php echo $result['board_certified'] == 1 ? 'Board Certified' : '';?></div>
+		<div class="website"><?php echo $result['handicap'] == 'Y' ? 'Handicap Accessible' : '';?></div>
+		<div class="website"><?php echo $result['acceptingnew'] == 'Y' ? 'Accepting New' : '';?></div>
+		<div class="boardCertified"><?php echo $result['customfield1desc'] == 'Board Certified' ? 'Board Certified' : '';?></div>
 	</td>
 	<td>
 		<?php foreach($result['locations'] as $ploc){ ?>
