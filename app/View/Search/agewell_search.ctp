@@ -3,7 +3,7 @@
 <div class="container" id="providersearch"> <!--container -->
 <div class="row">
 	<div class="col-md-12">
-	<h1 id="logo">Provider Search Demo</h1>
+	<!-- <h1 id="logo">Provider Search</h1>-->
 	<h2><span class="glyphicon glyphicon-search"></span> Search Form <?php //echo($network_name!='')?'- '.$network_name:'';?></h2>
 	</div>
 </div>
@@ -335,7 +335,7 @@ $(function(){
 
 <div class="col-sm-offset-2"><span class="field-error">*</span> Required Fields</p>
 
-    <button id="singlebutton" type="submit" class="btn btn-default btn-custom">Search Provider</button>
+    <button id="singlebutton" type="submit" class="btn btn-primary btn-lg btn-custom">Search Provider</button>
 <br/>
 <br/>
 <div id="flash-msg"><!--Error Message Section-->

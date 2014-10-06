@@ -1,6 +1,6 @@
 <div class="container">
 <div class="col-md-12 page-header">
-<h2>Search Results
+<h2><span class="glyphicon glyphicon-map-marker"></span>Search Results
 <a href="./" class="btn-xs btn-default pull-right"><span class="glyphicon glyphicon-arrow-left"></span> Return to Search form</a></h2>
 
 </div>
