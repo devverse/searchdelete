@@ -141,11 +141,12 @@
 			marker_<?php echo $count; ?> = new google.maps.Marker({
 					position: new google.maps.LatLng(<?php echo $location["latitude"];?>, <?php echo $location["longitude"];?>),
 					map: map,
-					title:'<?php echo $location["name"];?>'
+					title:'<?php echo $location["name"];?>',
+					icon: 'http://maps.google.com/mapfiles/ms/icons/blue-dot.png'
 				});
 				
 			infowindow_<?php echo $count; ?> = new google.maps.InfoWindow(
-			  { content: '<b><?php echo $location["name"];?></b><br /><?php echo $location["address1"];?><br /><?php echo $location["city"];?>, <?php echo $location["state"];?> <?php echo $location["zipcode"];?><br/>Phone: <?php echo $location["phone"];?>',
+			  { content: '<b><?php echo $location["practicename"];?></b><br /><?php echo $location["address"];?><br /><?php echo $location["city"];?>, <?php echo $location["state"];?> <?php echo $location["zipcode"];?><br/>Phone: <?php echo $location["phone"];?><br/>',
 				size: new google.maps.Size(50,50)
 			  });
 

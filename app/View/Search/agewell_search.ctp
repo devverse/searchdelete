@@ -3,7 +3,7 @@
 <div class="container" id="providersearch"> <!--container -->
 <div class="row">
 	<div class="col-md-12">
-	<!-- <h1 id="logo">Provider Search</h1>-->
+	
 	<h2><span class="glyphicon glyphicon-search"></span> Search Form <?php //echo($network_name!='')?'- '.$network_name:'';?></h2>
 	</div>
 </div>

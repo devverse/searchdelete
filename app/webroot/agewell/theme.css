@@ -1,6 +1,6 @@
 /* Agewell Styles */
 
-h1#logo {  width:200px;  height:81px;  display:block;  text-indent:-9999px;  background:url(blue/company-logo.png);}
+h1#logo {  width:150px;  height:100px;  display:block;  text-indent:-9999px;  background:url('company-logo.jpg');}
 h1, h2, h3 { color: #0099d2}
 label.control-label {color:#107d0e }
 .searchContainer { width: 820px}
