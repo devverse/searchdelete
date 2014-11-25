@@ -49,7 +49,7 @@
 		<div><?php echo ($result['degree']!='') ? "({$result['degree']})" :'';?></div>
    </td>
 	<td>
-		<div class="gender"><?php echo $result['g'] == 'M'?'Male':'';?><?php echo $result['g'] == 'F'?'Female':'';?></div>
+		<div class="gender"><?php echo $result['gender'] == 'M'?'Male':'';?><?php echo $result['gender'] == 'F'?'Female':'';?></div>
 	</td>
 	<td>
 		<?php echo $result['specialty'];?>
