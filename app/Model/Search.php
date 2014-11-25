@@ -262,7 +262,7 @@ class Search extends AppModel {
 		}elseif ($d['countie_name']!='none'){
 	//		$sql .= " (county collate latin1_swedish_ci = '{$d['countie_name']}' OR ";
 	//		$sql .= " servicearea like '%{$d['countie_name']}%') ";
-			$sql .= " county like '%{$d['countie_name']}%' ";
+			$sql .= " servicearea like '%{$d['countie_name']}%' ";
 		}elseif ($d['practicename'] == '' && $d['providertype_name']!='none') {
 			$sql .= ' 1 =1 ';
 		}else{
@@ -303,7 +303,7 @@ class Search extends AppModel {
 		$sql = '';
 
 		if(isset($d['countie_name']) && strtolower($d['countie_name'])!='none')
-			$sql .= " AND county LIKE '%{$d['countie_name']}%''";
+			$sql .= " AND county collate latin1_swedish_ci ='{$d['network_name']}'";
 
 		if(isset($d['network_name']) && strtolower($d['network_name'])!='none')
 			$sql .= " AND lob collate latin1_swedish_ci ='{$d['network_name']}'";
