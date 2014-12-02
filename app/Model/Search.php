@@ -152,7 +152,7 @@ class Search extends AppModel {
 	{
 		$limit = 25;
 
-		if(strtolower($this->data['Search']['countie_name']) == 'none' && $this->data['Search']['practicename'] == '')
+		if(strtolower($this->data['Search']['countie_name']) == 'none')
 			$coor_array = $this->getCoordinatesFromAddress();
 		else
 			$coor_array = false;
@@ -237,7 +237,8 @@ class Search extends AppModel {
 	public function searchByRadius($limit = 25, $coor_array=false)
 	{
 		$d = $this->data['Search'];
-//SQL_CALC_FOUND_ROWS
+
+		//SQL_CALC_FOUND_ROWS
 		if($d['practicename'] != ''){
 			$sql = "SELECT SQL_CALC_FOUND_ROWS company, county, lob, provId,category,specialty,practicename,firstname,middlename,lastname,suffix,degree,address,suite,city,state,zip,zip4,county,servicearea,phone,fax,gender,handicap,acceptingnew,acceptsmedicaid,hospaffiliations,languages,officehours,customfield1desc,customfield1ind,customfield2desc,customfield2ind,customfield3desc,customfield3ind,latitude_str,longitude_str,latitude,longitude,id FROM fullrecords WHERE ";
 		}else{
@@ -267,7 +268,6 @@ class Search extends AppModel {
 			$sql .= ' 1 =1 ';
 		}else{
 			throw new Exception("Search type was not properly formated", 1);
-			
 		}
 
 		$sql .= $this->_buildAndSql();
@@ -303,7 +303,7 @@ class Search extends AppModel {
 		$sql = '';
 
 		if(isset($d['countie_name']) && strtolower($d['countie_name'])!='none')
-			$sql .= " AND county collate latin1_swedish_ci ='{$d['network_name']}'";
+			$sql .= " AND county collate latin1_swedish_ci ='{$d['countie_name']}'";
 
 		if(isset($d['network_name']) && strtolower($d['network_name'])!='none')
 			$sql .= " AND lob collate latin1_swedish_ci ='{$d['network_name']}'";
