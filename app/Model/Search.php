@@ -303,7 +303,7 @@ class Search extends AppModel {
 		$sql = '';
 
 		if(isset($d['countie_name']) && strtolower($d['countie_name'])!='none')
-			$sql .= " AND county collate latin1_swedish_ci ='{$d['network_name']}'";
+			$sql .= " AND county collate latin1_swedish_ci ='{$d['countie_name']}'";
 
 		if(isset($d['network_name']) && strtolower($d['network_name'])!='none')
 			$sql .= " AND lob collate latin1_swedish_ci ='{$d['network_name']}'";
