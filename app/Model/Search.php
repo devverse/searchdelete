@@ -260,9 +260,9 @@ class Search extends AppModel {
 			$sql .= " (longitude BETWEEN @lng_min and @lng_max) AND (latitude BETWEEN @lat_min and @lat_max) ";
 		
 			if ($d['practicename'] != '') {
-				$sql .= "(practicename LIKE '%{$d['practicename']}%' or firstname LIKE '%{$d['practicename']}%' or lastname LIKE '%{$d['practicename']}%') ";
+				$sql .= " AND (practicename LIKE '%{$d['practicename']}%' or firstname LIKE '%{$d['practicename']}%' or lastname LIKE '%{$d['practicename']}%') ";
 			}
-			
+
 		}elseif ($d['practicename'] != '') {
 			$sql .= "(practicename LIKE '%{$d['practicename']}%' or firstname LIKE '%{$d['practicename']}%' or lastname LIKE '%{$d['practicename']}%') ";
 		
