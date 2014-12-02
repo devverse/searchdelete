@@ -163,7 +163,7 @@ class Search extends AppModel {
 
 		$provider_results = $this->formatProviders($radius_results);
 
-		if($coor_array == false ||$coor_array['lat']==null)
+		if($coor_array == false || $coor_array['lat']==null)
 			$coor_array = $this->getAverageCoordinates($radius_results);
 
 		return array('providers'=>$provider_results,'coor_array'=>$coor_array,'locations'=>$location_results);
@@ -258,8 +258,14 @@ class Search extends AppModel {
 			$this->query( "set SQL_BIG_SELECTS=1;",false);
 
 			$sql .= " (longitude BETWEEN @lng_min and @lng_max) AND (latitude BETWEEN @lat_min and @lat_max) ";
+		
+			if ($d['practicename'] != '') {
+				$sql .= "(practicename LIKE '%{$d['practicename']}%' or firstname LIKE '%{$d['practicename']}%' or lastname LIKE '%{$d['practicename']}%') ";
+			}
+			
 		}elseif ($d['practicename'] != '') {
 			$sql .= "(practicename LIKE '%{$d['practicename']}%' or firstname LIKE '%{$d['practicename']}%' or lastname LIKE '%{$d['practicename']}%') ";
+		
 		}elseif ($d['countie_name']!='none'){
 	//		$sql .= " (county collate latin1_swedish_ci = '{$d['countie_name']}' OR ";
 	//		$sql .= " servicearea like '%{$d['countie_name']}%') ";
