@@ -187,6 +187,7 @@
 				{
 			?>
 
+			marker_<?php echo $count; ?> = "";
 			geocoder_map = new google.maps.Geocoder();
 
 			geocoder_map.geocode( { 'address': "<?php echo $location["address"];?>,<?php echo $location["city"];?>,<?php echo $location["state"];?>"}, function(results, status) {
