@@ -64,7 +64,7 @@
 		<?php if($coor && $req_data['practicename'] == ''){?>
 			<div><a target="_blank" href="http://maps.google.com/maps?f=d&hl=en&saddr=<?=$coor['lat']?>,<?=$coor['long']?>&daddr=<?=$result['latitude']?>,<?=$result['longitude']?>&sll=&sspn=33.214763,82.265625&z=12">Get Directions</a></div><!--Has Coordinates-->
 		<?php }else{ ?>
-			<div><a target="_blank" href="http://maps.google.com/maps?f=d&hl=en&daddr=<?=$result['latitude']?>,<?=$result['longitude']?>&sll=&sspn=33.214763,82.265625&z=12">Get Directions</a></div><!--No Coordinates-->
+			<div><a target="_blank" href="http://maps.google.com/maps?f=d&hl=en&daddr=<?= $location["address"];?><br /><?= $location["city"];?>, <?= $location["state"];?>, <?= $location["zipcode"];?>&sll=&sspn=33.214763,82.265625&z=12">Get Directions</a></div><!--No Coordinates-->
 		<?php } ?>
 	</td>
 	<td>
@@ -187,21 +187,13 @@
 				{
 			?>
 
-			marker_<?php echo $count; ?> = "";
-			geocoder_map = new google.maps.Geocoder();
-
-			geocoder_map.geocode( { 'address': "<?php echo $location["address"];?>,<?php echo $location["city"];?>,<?php echo $location["state"];?>"}, function(results, status) {
-	            if (status == google.maps.GeocoderStatus.OK) {
-	                //add marker to the map     
-	                marker_<?php echo $count; ?> = new google.maps.Marker({
-					position: results[0].geometry.location,
+			marker_<?php echo $count; ?> = new google.maps.Marker({
+					position: new google.maps.LatLng(<?php echo $location["latitude"];?>, <?php echo $location["longitude"];?>),
 					map: map,
 					title:'<?php echo $location["name"];?>',
 					icon: 'http://maps.google.com/mapfiles/ms/icons/blue-dot.png'
 				});
-	            }
-        	});	
-
+				
 			infowindow_<?php echo $count; ?> = new google.maps.InfoWindow(
 			  { content: '<b><?php echo $location["practicename"];?></b><br /><?php echo $location["address"];?><br /><?php echo $location["city"];?>, <?php echo $location["state"];?> <?php echo $location["zipcode"];?><br/>Phone: <?php echo $location["phone"];?><br/>',
 				size: new google.maps.Size(50,50)
