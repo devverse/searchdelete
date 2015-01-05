@@ -157,7 +157,7 @@ class Search extends AppModel {
 		else
 			$coor_array = false;
 	
-		$radius_results = $this->searchByRadius($limit,$coor_array);
+		$radius_results = $this->searchByRadius($limit, $coor_array);
 
 		$location_results = $this->formatLocations($radius_results);
 

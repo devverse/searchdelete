@@ -187,13 +187,20 @@
 				{
 			?>
 
-			marker_<?php echo $count; ?> = new google.maps.Marker({
-					position: new google.maps.LatLng(<?php echo $location["latitude"];?>, <?php echo $location["longitude"];?>),
+			geocoder_map = new google.maps.Geocoder();
+
+			geocoder_map.geocode( { 'address': "<?php echo $location["address"];?>,<?php echo $location["city"];?>,<?php echo $location["state"];?>"}, function(results, status) {
+	            if (status == google.maps.GeocoderStatus.OK) {
+	                //add marker to the map     
+	                var marker_<?php echo $count; ?> = new google.maps.Marker({
+					position: results[0].geometry.location,
 					map: map,
 					title:'<?php echo $location["name"];?>',
 					icon: 'http://maps.google.com/mapfiles/ms/icons/blue-dot.png'
 				});
-				
+	            }
+        	});	
+
 			infowindow_<?php echo $count; ?> = new google.maps.InfoWindow(
 			  { content: '<b><?php echo $location["practicename"];?></b><br /><?php echo $location["address"];?><br /><?php echo $location["city"];?>, <?php echo $location["state"];?> <?php echo $location["zipcode"];?><br/>Phone: <?php echo $location["phone"];?><br/>',
 				size: new google.maps.Size(50,50)
