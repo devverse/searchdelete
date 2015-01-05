@@ -192,7 +192,7 @@
 			geocoder_map.geocode( { 'address': "<?php echo $location["address"];?>,<?php echo $location["city"];?>,<?php echo $location["state"];?>"}, function(results, status) {
 	            if (status == google.maps.GeocoderStatus.OK) {
 	                //add marker to the map     
-	                var marker_<?php echo $count; ?> = new google.maps.Marker({
+	                marker_<?php echo $count; ?> = new google.maps.Marker({
 					position: results[0].geometry.location,
 					map: map,
 					title:'<?php echo $location["name"];?>',
