@@ -124,6 +124,7 @@ class DashboardController extends AppController {
 	 */
 	public function upload()
 	{
+		Configure::write('Model.globalSource', $this->Session->read('client_db'));
 		$client_db 		= $this->Session->read('client_db');
 		$user 			= $this->Session->read('User');
 		$upload_array 	= $_FILES;
@@ -133,10 +134,14 @@ class DashboardController extends AppController {
 			$this->loadModel('Migration');
 
 			$this->Migration->setClient($user['client_id']);
+
 			try {
 				//uploads zip file
 				$file_path = '../webroot/files/client_'.$this->Migration->client_info['Client']['name'].'.zip';
 				copy($upload_array['file']['tmp_name'], $file_path);
+
+				// Delete existing records
+				$this->Model->query('TRUNCATE TABLE Fullrecord;');
 
 				//import action
 				$resp = $this->Migration->import($file_path);
