@@ -42,6 +42,11 @@ class Migration extends AppModel {
 		return $this->formResp(true,"Database records created.");
 	}
 
+	public function truncateTable()
+	{
+		$this->query("TRUNCATE TABLE fullrecords", false);
+	}
+
 	private function _setMigrationProcess($migrating)
 	{
 		if($migrating){
