@@ -128,46 +128,51 @@ class DashboardController extends AppController {
 	 */
 	public function upload()
 	{
-		Configure::write('Model.globalSource', $this->Session->read('client_db'));
-		$client_db 		= $this->Session->read('client_db');
-		$user 			= $this->Session->read('User');
-		$upload_array 	= $_FILES;
+		try {
+			Configure::write('Model.globalSource', $this->Session->read('client_db'));
+			$client_db 		= $this->Session->read('client_db');
+			$user 			= $this->Session->read('User');
+			$upload_array 	= $_FILES;
 
-		if($client_db&&$user&&is_array($upload_array)&&isset($upload_array['file']['tmp_name'])&&$upload_array['file']['tmp_name']!='')
-		{
-			$this->loadModel('Migration');
+			if($client_db&&$user&&is_array($upload_array)&&isset($upload_array['file']['tmp_name'])&&$upload_array['file']['tmp_name']!='')
+			{
+				$this->loadModel('Migration');
 
-			$this->Migration->setClient($user['client_id']);
+				$this->Migration->setClient($user['client_id']);
 
-			try {
-				//uploads zip file
-				$file_path = '../webroot/files/client_'.$this->Migration->client_info['Client']['name'].'.zip';
-				copy($upload_array['file']['tmp_name'], $file_path);
+				try {
+					//uploads zip file
+					$file_path = '../webroot/files/client_'.$this->Migration->client_info['Client']['name'].'.zip';
+					copy($upload_array['file']['tmp_name'], $file_path);
 
-				// Delete existing records
-				// $this->Migration->truncateTable();
+					// Delete existing records
+					// $this->Migration->truncateTable();
 
-				//import action
-				$resp = $this->Migration->import($file_path);
+					//import action
+					$resp = $this->Migration->import($file_path);
 
-				// rm zip provider txt and folder
-				unlink($file_path);
-				unlink('../webroot/files/'.$this->Migration->client_info['Client']['name'].'/providers.txt');
-				rmdir('../webroot/files/'.$this->Migration->client_info['Client']['name']);
+					// rm zip provider txt and folder
+					unlink($file_path);
+					unlink('../webroot/files/'.$this->Migration->client_info['Client']['name'].'/providers.txt');
+					rmdir('../webroot/files/'.$this->Migration->client_info['Client']['name']);
 
-			} catch (Exception $e) {
-				$resp = array('status'=>false,'response'=>'Something went wrong migrating db. Contact the web administrator');
+				} catch (Exception $e) {
+					$resp = array('status'=>false,'response'=>'Something went wrong migrating db. Contact the web administrator');
+				}
+				
+				if($resp['status'])
+					$this->Session->setFlash($resp['response'], 'default', array(), 'succ_msg');
+				else
+					$this->Session->setFlash($resp['response'], 'default', array(), 'err_msg');
+
+				return $this->redirect('index');
+			}else{
+				$this->Session->setFlash('There was a problem with the request. You have been logged out.', 'default', array(), 'err_msg');
+				return $this->redirect('login');
 			}
-			
-			if($resp['status'])
-				$this->Session->setFlash($resp['response'], 'default', array(), 'succ_msg');
-			else
-				$this->Session->setFlash($resp['response'], 'default', array(), 'err_msg');
 
-			return $this->redirect('index');
-		}else{
-			$this->Session->setFlash('There was a problem with the request. You have been logged out.', 'default', array(), 'err_msg');
-			return $this->redirect('login');
+		} catch (Exception $e) {
+			var_dump($e->getMessage());
 		}
 	}
 
