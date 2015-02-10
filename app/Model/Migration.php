@@ -44,6 +44,7 @@ class Migration extends AppModel {
 
 	public function truncateTable()
 	{
+		return;
 		$this->query("TRUNCATE TABLE fullrecords", false);
 	}
 
