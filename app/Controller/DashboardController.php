@@ -1,4 +1,8 @@
 <?php
+
+error_reporting(E_ALL);
+ini_set("display_errors", 1);
+
 class DashboardController extends AppController {
 	public $helpers = array('Html', 'Form','Session');
 	public $uses = array('AppModel','Fullrecord','Dashboard','User','Client','ClientUsers');
@@ -141,7 +145,7 @@ class DashboardController extends AppController {
 				copy($upload_array['file']['tmp_name'], $file_path);
 
 				// Delete existing records
-				$this->Migration->truncateTable();
+				// $this->Migration->truncateTable();
 
 				//import action
 				$resp = $this->Migration->import($file_path);
