@@ -129,7 +129,6 @@ class DashboardController extends AppController {
 	public function upload()
 	{
 		try {
-			Configure::write('Model.globalSource', $this->Session->read('client_db'));
 			$client_db 		= $this->Session->read('client_db');
 			$user 			= $this->Session->read('User');
 			$upload_array 	= $_FILES;
