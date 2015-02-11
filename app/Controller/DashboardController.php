@@ -145,7 +145,7 @@ class DashboardController extends AppController {
 					copy($upload_array['file']['tmp_name'], $file_path);
 
 					// Delete existing records
-					$this->Migration->truncateTable();
+					//$this->Migration->truncateTable();
 
 					//import action
 					$resp = $this->Migration->import($file_path);
