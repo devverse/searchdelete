@@ -146,7 +146,7 @@ class DashboardController extends AppController {
 					copy($upload_array['file']['tmp_name'], $file_path);
 
 					// Delete existing records
-					// $this->Migration->truncateTable();
+					//$this->Migration->truncateTable();
 
 					//import action
 					$resp = $this->Migration->import($file_path);
@@ -167,7 +167,8 @@ class DashboardController extends AppController {
 
 				return $this->redirect('index');
 			}else{
-				$this->Session->setFlash('There was a problem with the request. You have been logged out.', 'default', array(), 'err_msg');
+				$error = $e->getMessage();
+				$this->Session->setFlash('There was a problem with the request. You have been logged out. {$error}', 'default', array(), 'err_msg');
 				return $this->redirect('login');
 			}
 

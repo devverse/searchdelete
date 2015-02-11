@@ -1,7 +1,10 @@
 <?php
 
 class Client extends AppModel {
-	 public $validate = array(
+
+	public $useTable = 'temptables';
+
+	public $validate = array(
         'name' => array(
             'rule' => 'notEmpty'
         )
