@@ -83,18 +83,20 @@ class DATABASE_CONFIG {
 		'prefix' => '',
 		//'encoding' => 'utf8',
 	);
-	public $centersplan = array(
-                'datasource' => 'Database/Mysql',
-                'persistent' => false,
-                'host' => 'localhost',
-                'login' => 'root',
-                'password' => 'dBCommand2014$',
-                'database' => 'centersplan_db',
-                'prefix' => '',
-                //'encoding' => 'utf8',
-        );
 
-public $derekspractice = array(
+	public $centersplan = array(
+        'datasource' => 'Database/Mysql',
+        'persistent' => false,
+        'host' => 'localhost',
+        'login' => 'root',
+        'password' => 'dBCommand2014$',
+        'database' => 'centersplan_db',
+        'prefix' => '',
+        //'encoding' => 'utf8',
+     );
+
+
+	public $derekspractice = array(
 		'datasource' => 'Database/Mysql',
 		'persistent' => false,
 		'host' => 'localhost',
