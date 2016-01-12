@@ -254,7 +254,7 @@ $(function(){
     <select id="lauguage" name="language_name" class="form-control">
         <option value="none">All Languages</option>
         <?php foreach($languages as $language){ ?>
-            <option value="<?php echo $language['Language']['name'];?>"><?php echo $language['Language']['name'];?>;?></option>
+            <option value="<?php echo $language['Language']['name'];?>"><?php echo $language['Language']['name'];?></option>
         <?php } ?>
     </select>
     <span class="field-error"><?php echo $this->Session->flash('language_name') ; ?></span>
