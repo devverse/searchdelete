@@ -1,4 +1,3 @@
-<!-- File: /app/View/Search/search1.ctp -->
 <?php echo $this->Session->flash(); ?>
 <div class="container" id="providersearch"> <!--container -->
 <div class="row">
@@ -185,34 +184,7 @@ $(function(){
     </div>
     </div>
 
-     <!--JS to sub categorize specialites to provider specialties-->
-    <script type="text/javascript">
-        // $(function(){
-        //     $('.filter-by').on('change','select[name=providertype_name]',function()
-        //         {
-        //             var parentid = $(this).find('option:selected').attr("data-id");
-
-        //             $('.filter-by select[name=specialtie_name] .wrap option').unwrap().show().removeAttr("disabled");
-        //             $('.filter-by select[name=specialtie_name]').val('none');
-
-        //             if(parentid == undefined)
-        //             {
-        //                 $('.filter-by select[name=specialtie_name] option').show().removeAttr("disabled");
-        //                 $('.filter-by select[name=specialtie_name] option[value=none]').show().removeAttr("disabled");
-        //             }
-        //             else
-        //             {
-        //                 $('.filter-by select[name=specialtie_name] option[data-parent!='+parentid+']').wrap('<span class="wrap">').hide().attr('disabled','disabled');;
-        //                 $('.filter-by select[name=specialtie_name] option[value=none]').unwrap().show().removeAttr("disabled");
-        //             }
-        //             $('.filter-by select[name=specialtie_name]').val('none');
-
-                   
-        //         });
-        // });
-    </script>
-
-<div class="filter-by" ><!--filter by-->
+    <div class="filter-by" ><!--filter by-->
     <div class="form-group">
      <div class="col-sm-offset-2 col-sm-10">Filter By:</div>
     </div>
