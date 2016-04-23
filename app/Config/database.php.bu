@@ -73,13 +73,24 @@ class DATABASE_CONFIG {
 		//'encoding' => 'utf8',
 	);
 	
-	public $carewisconsin = array(
+	public $partnershealthplan = array(
 		'datasource' => 'Database/Mysql',
 		'persistent' => false,
 		'host' => 'localhost',
 		'login' => 'root',
 		'password' => 'dBCommand2014$',
 		'database' => 'carewisconsin_db',
+		'prefix' => '',
+		//'encoding' => 'utf8',
+	);
+
+	public $carewisconsin = array(
+		'datasource' => 'Database/Mysql',
+		'persistent' => false,
+		'host' => 'localhost',
+		'login' => 'root',
+		'password' => 'dBCommand2014$',
+		'database' => 'partnershealthplan_db',
 		'prefix' => '',
 		//'encoding' => 'utf8',
 	);
