@@ -79,7 +79,7 @@ class DATABASE_CONFIG {
 		'host' => 'localhost',
 		'login' => 'root',
 		'password' => 'dBCommand2014$',
-		'database' => 'carewisconsin_db',
+		'database' => 'partnershealthplan_db',
 		'prefix' => '',
 		//'encoding' => 'utf8',
 	);
@@ -90,7 +90,7 @@ class DATABASE_CONFIG {
 		'host' => 'localhost',
 		'login' => 'root',
 		'password' => 'dBCommand2014$',
-		'database' => 'partnershealthplan_db',
+		'database' => 'carewisconsin_db',
 		'prefix' => '',
 		//'encoding' => 'utf8',
 	);

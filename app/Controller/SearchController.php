@@ -61,6 +61,8 @@ class SearchController extends AppController {
 	public function search($client=false,$ntwk_ind=false,$client_url_name='')
 	{	
 		//globally define new database source
+
+		var_dump($client); exit;
 		Configure::write('Model.globalSource', $client['Client']['cake_db_config']);
 
 		$networks = $this->Network->find('all');
