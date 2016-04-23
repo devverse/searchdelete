@@ -1,0 +1,31 @@
+/* Partners Styles */
+
+h1#logo {  width:150px;  height:100px;  display:block;  text-indent:-9999px;  background:url('company-logo.jpg');}
+h1, h2, h3 { color: #0099d2}
+label.control-label {color:#107d0e }
+.searchContainer { width: 820px}
+.page-header h1 {padding: 0}
+.theme-dropdown .dropdown-menu {  display: block;  position: static;  margin-bottom: 20px;}
+.theme-showcase > p > .btn {  margin: 5px 0;}
+table#searchResults tr td {    vertical-align: top; font-size: 12px !important; padding-bottom: 10px}
+table#searchResults td strong{  color: #359CDA;}
+table#searchResults { font-size: 12px}
+.field-error{color: red}
+.message:before { content: "*"}
+.message { font-size:0.9em}
+table th { color: #107d0e}
+
+
+/* Result Table Styles */
+#searchResults th {      padding: 5px 0 5px 5px;}
+#searchResults td {    padding: 5px;}
+#searchResults tr:hover { cursor: pointer;background-color: #E8F5F9}
+
+
+
+/* Responsive Styles */
+@media (max-width: 767px) {
+
+
+
+}
