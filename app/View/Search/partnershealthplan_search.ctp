@@ -3,7 +3,7 @@
 <div class="row">
 	<div class="col-md-12">
 	
-	<h2><span class="glyphicon glyphicon-search"></span> Search Form <?php //echo($network_name!='')?'- '.$network_name:'';?></h2>
+	<h2><span class="glyphicon glyphicon-search"></span> Search Form
 	</div>
 </div>
 
@@ -38,8 +38,6 @@ $(function(){
 </script>
 
 <form action="/search/<?php echo $client_url_name;?>/result" method="post" class="form-horizontal">
-
-    <input type="hidden" name="network_name" value="<?=$network_name?>"/>
 
     <div class="form-group searchtype-name" >
         <label class="col-sm-2 control-label">Provider Name</label>
