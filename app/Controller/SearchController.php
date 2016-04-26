@@ -1,4 +1,9 @@
 <?php
+
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+
 class SearchController extends AppController {
 
 	public $helpers = array('Html', 'Form','Session');
@@ -112,6 +117,7 @@ class SearchController extends AppController {
 
 	public function result($client,$ntwk_ind=false,$client_orig_name)
 	{
+		var_dump("is pdf" . isset($request_data['pdf']);
 		Configure::write('Model.globalSource', $client['Client']['cake_db_config']);
 		$this->loadModel('Search');
 		$request_data = $this->request->data;
@@ -129,7 +135,8 @@ class SearchController extends AppController {
 		if($this->Search->validates())
 		{
 			if(isset($request_data['pdf']) || isset($request_data['email']))
-				$this->Search->setLimit(25);
+			$this->Search->setLimit(25);
+
 			$results = $this->Search->getResults();
 			$resultcount = isset($this->Search->recordcount)?$this->Search->recordcount:false;
 		}
