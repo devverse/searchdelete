@@ -117,7 +117,11 @@ class SearchController extends AppController {
 
 	public function result($client,$ntwk_ind=false,$client_orig_name)
 	{
-		var_dump("is pdf" . isset($request_data['pdf']));
+		if (isset($request_data['pdf'])) {
+			echo "pdf is set!!";
+		} else {
+			echo "pdf is not set";
+		}
 		Configure::write('Model.globalSource', $client['Client']['cake_db_config']);
 		$this->loadModel('Search');
 		$request_data = $this->request->data;
