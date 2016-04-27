@@ -275,6 +275,33 @@ $(function(){
     </div>
     </div>
 
+    <div class="form-group">
+    <label class="col-sm-2 control-label">Insurances</label>
+    <div class="col-sm-8">
+    <select id="specialty" name="insurance_name" class="form-control">
+            <option value="none">All Insurances</option> 
+        <?php foreach($insurances as $insurance){ ?>
+          <option value="<?php echo $insurance['Insurance']['name'];?>"><?php echo $insurance['Insurance']['name'];?></option>
+        <?php } ?>
+        </select>
+    <span class="field-error"><?php echo $this->Session->flash('insurance_name') ; ?></span>
+    </div>
+    </div>
+    
+    <!--  <div class="form-group">
+    <label class="col-sm-2 control-label">First Name</label>
+    <div class="col-sm-6">
+    <input value=""  name="firstname" placeholder="firstname" type="text" class="form-control">
+    </div>
+    </div>
+    <div class="form-group">
+    <label class="col-sm-2 control-label">Last Name</label>
+    <div class="col-sm-6">
+    <input value=""  name="lastname" placeholder="lastname" type="text" class="form-control">
+    </div>
+    
+    </div>
+    -->
     <div class="col-sm-offset-2"><span class="field-error">*</span> Required Fields</p>
 
     <button id="singlebutton" type="submit" class="btn btn-primary btn-lg btn-custom">Search Provider</button>
