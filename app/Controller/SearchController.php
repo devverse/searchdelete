@@ -201,7 +201,7 @@ class SearchController extends AppController {
 					require_once(dirname(__FILE__).'/../Vendor/dompdf/dompdf_config.inc.php');
 
 					$dompdf = new DOMPDF();
-					$dompdf->set_paper('letter');
+					$dompdf->set_paper('a4');
 					$dompdf->load_html($view_output);
 					$dompdf->render();
 					$dompdf->stream("provider.pdf");
