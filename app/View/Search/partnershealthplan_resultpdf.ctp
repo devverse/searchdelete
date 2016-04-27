@@ -39,7 +39,7 @@
 ?>
 
 <!-- Result Information START-->
-<tr>
+<tr style="page-break-after: always;">
 	<td colspan="1" width="30%">
 		<div><?php echo $result['practicename'];?></div>
 		<div><?php echo $result['address'] .' '.$result['suite'];?></div><div><?php echo $result['city'].', '.$result['state'].' '.$result['zip4']; ?></div>
