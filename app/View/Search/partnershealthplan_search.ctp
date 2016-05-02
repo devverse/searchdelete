@@ -275,7 +275,7 @@ $(function(){
     </div>
     </div>
 
-    <div class="form-group">
+<!--     <div class="form-group">
     <label class="col-sm-2 control-label">Insurances</label>
     <div class="col-sm-8">
     <select id="specialty" name="insurance_name" class="form-control">
@@ -286,7 +286,7 @@ $(function(){
         </select>
     <span class="field-error"><?php echo $this->Session->flash('insurance_name') ; ?></span>
     </div>
-    </div>
+    </div> -->
     
     <!--  <div class="form-group">
     <label class="col-sm-2 control-label">First Name</label>
