@@ -170,6 +170,8 @@ $(function(){
         <option value="<?php echo $countie['Countie']['name'];?>"><?php echo $countie['Countie']['name'];?></option>
         <?php } ?>
     </select>
+    <span class="field-error"><?php echo $this->Session->flash('countie_name') ; ?></span>
+    </div>
 
     </div>
 
