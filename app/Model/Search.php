@@ -298,7 +298,6 @@ class Search extends AppModel {
 		// 	$sql = 'SELECT * FROM fullrecords join (' . $sql.')as t On t.id = fullrecords.id';
 		// }
 		
-		var_dump($sql); exit;
 		$records = $this->query($sql,false);
 		$recordcount = $this->query('SELECT FOUND_ROWS()');
 		$this->recordcount = $recordcount[0][0]["FOUND_ROWS()"];
@@ -341,7 +340,7 @@ class Search extends AppModel {
 			$sql .= " AND handicap collate latin1_swedish_ci ='{$d['handicapaccess']}'";
 
 		if(isset($d['zipcode']))
-			$sql .= " AND zip4 LIKE '%{$d['zipcode']}%'"
+			$sql .= " AND zip4 LIKE '%{$d['zipcode']}%'";
 
 		if(isset($d['insurance_name']) && strtolower($d['insurance_name'])!='none')
 			$sql .= " AND insurance collate latin1_swedish_ci ='{$d['insurance_name']}'";
