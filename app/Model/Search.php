@@ -286,6 +286,7 @@ class Search extends AppModel {
 		if($d['practicename'] != '')
 		{
 			// $sql .= ' Group By fullrecords.practicename, fullrecords.category,fullrecords.specialty LIMIT '.$d['start'].' , '.$limit ;
+			$sql.= ' ORDER BY fullrecords.practicename ASC,fullrecords.lastname';
 		}
 		else
 		{
