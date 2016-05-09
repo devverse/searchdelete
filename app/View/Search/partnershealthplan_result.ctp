@@ -91,8 +91,8 @@
 			<!--<div><?php echo "Hospital Affiliations: {$result['hospaffiliations']}";?></div>-->
 			<!--<div><?php echo "Accepts Medicaid: {$result['acceptsmedicaid']}";?></div>-->
 			<!--<div><?php echo "Accepts Medicare: {$result['acceptsmedicare']}";?></div>-->
-			<div><?php echo ($result['acceptingnew']=='Y'||$result['acceptingnew']=='')?"Accepting New Patients: Y": "";?></div>
-			<div><?php echo ($result['handicap']=='Y'||$result['handicap']=='')?"Handicap Accessible: Y":"";?></div>
+			<div><?php echo ($result['acceptingnew']=='Y')?"Accepting New Patients: Y": "";?></div>
+			<div><?php echo ($result['handicap']=='Y')?"Handicap Accessible: Y":"";?></div>
 		</div>
 	</td>
 </tr>

@@ -242,7 +242,7 @@ $(function(){
     </div>
     </div>
 
-    <div class="form-group"  >
+<!--     <div class="form-group"  >
     <label class="col-sm-2 control-label">Accepts New</label>
     <div class="col-sm-8">
     <select id="acceptnew" name="acceptnew" class="form-control">
@@ -251,7 +251,7 @@ $(function(){
       <option value="N">N</option>
     </select>
     </div>
-    </div>
+    </div> -->
 
     <div class="form-group"  >
     <label class="col-sm-2 control-label">Accepts Medicare</label>
@@ -264,7 +264,7 @@ $(function(){
     </div>
     </div>
 
-    <div class="form-group">
+<!--     <div class="form-group">
     <label class="col-sm-2 control-label">Handicap Accessible</label>
     <div class="col-sm-8">
     <select id="handicapaccess" name="handicapaccess" class="form-control">
@@ -273,7 +273,7 @@ $(function(){
       <option value="N">N</option>
     </select>
     </div>
-    </div>
+    </div> -->
 
 <!--     <div class="form-group">
     <label class="col-sm-2 control-label">Insurances</label>
