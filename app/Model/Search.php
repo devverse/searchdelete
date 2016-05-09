@@ -289,7 +289,7 @@ class Search extends AppModel {
 		}
 		else
 		{
-			$sql .= ' Group By fullrecords.address, fullrecords.practicename ORDER BY practicename ASC LIMIT '.$d['start'].' , '.$limit;
+			$sql .= ' Group By fullrecords.address, fullrecords.practicename ORDER BY fullrecords.practicename ASC,fullrecords.lastname ASC LIMIT '.$d['start'].' , '.$limit;
 		}
 
 		// if(true)
