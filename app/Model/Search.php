@@ -338,6 +338,9 @@ class Search extends AppModel {
 		if(isset($d['handicapaccess']) && strtolower($d['handicapaccess'])!='none')
 			$sql .= " AND handicap collate latin1_swedish_ci ='{$d['handicapaccess']}'";
 
+		if(isset($d['zipcode']) && strtolower($d['zipcode'])!='none')
+			$sql .= " AND zip4 LIKE '%{$d['zipcode']}%'"
+
 		if(isset($d['insurance_name']) && strtolower($d['insurance_name'])!='none')
 			$sql .= " AND insurance collate latin1_swedish_ci ='{$d['insurance_name']}'";
 
@@ -346,6 +349,9 @@ class Search extends AppModel {
 
 		if(isset($d['lastname']) && strtolower($d['lastname'])!='none' && strtolower($d['lastname'])!='')
 			$sql .= " AND lastname LIKE '%{$d['lastname']}%'";
+
+		$sql .= " AND ORDER BY practicename ASC";
+
 		return $sql;
 	}
 }
