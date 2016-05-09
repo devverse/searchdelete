@@ -350,8 +350,6 @@ class Search extends AppModel {
 		if(isset($d['lastname']) && strtolower($d['lastname'])!='none' && strtolower($d['lastname'])!='')
 			$sql .= " AND lastname LIKE '%{$d['lastname']}%'";
 
-		$sql .= " AND ORDER BY practicename ASC";
-
 		return $sql;
 	}
 }
