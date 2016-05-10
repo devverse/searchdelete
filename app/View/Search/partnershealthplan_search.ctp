@@ -38,7 +38,8 @@ $(function(){
 </script>
 
 <form action="/search/<?php echo $client_url_name;?>/result" method="post" class="form-horizontal">
-
+    <input name="search_user" type="hidden" value="partnerhealthplan">
+    
     <div class="form-group searchtype-name" >
         <label class="col-sm-2 control-label">Provider Name</label>
         <!--IF typed delete practice name-->

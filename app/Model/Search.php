@@ -286,11 +286,14 @@ class Search extends AppModel {
 		if($d['practicename'] != '')
 		{
 			// $sql .= ' Group By fullrecords.practicename, fullrecords.category,fullrecords.specialty LIMIT '.$d['start'].' , '.$limit ;
-			$sql.= ' ORDER BY fullrecords.practicename ASC,fullrecords.lastname';
+			
+			if(isset($d['search_user']) && strtolower($d['search_user']) =='partnerhealthplan') {
+				$sql.= ' ORDER BY fullrecords.practicename ASC,fullrecords.lastname';
+			}
 		}
 		else
 		{
-			$sql .= ' Group By fullrecords.address, fullrecords.practicename ORDER BY fullrecords.practicename ASC,fullrecords.lastname ASC LIMIT '.$d['start'].' , '.$limit;
+			$sql .= ' Group By fullrecords.address, fullrecords.practicename LIMIT '.$d['start'].' , '.$limit;
 		}
 
 		// if(true)
