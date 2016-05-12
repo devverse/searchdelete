@@ -286,10 +286,12 @@ class Search extends AppModel {
 		if($d['practicename'] != '')
 		{
 			// $sql .= ' Group By fullrecords.practicename, fullrecords.category,fullrecords.specialty LIMIT '.$d['start'].' , '.$limit ;
-		}
-		else
-		{
-			$sql .= ' Group By fullrecords.address, fullrecords.practicename LIMIT '.$d['start'].' , '.$limit ;
+			
+			if(isset($d['search_user']) && strtolower($d['search_user']) == 'partnerhealthplan') {
+				$sql.= ' ORDER BY fullrecords.practicename ASC,fullrecords.lastname ASC';
+			}
+		} else {
+			$sql .= ' Group By fullrecords.address, fullrecords.practicename LIMIT '.$d['start'].' , '.$limit;
 		}
 
 		// if(true)
@@ -338,6 +340,9 @@ class Search extends AppModel {
 		if(isset($d['handicapaccess']) && strtolower($d['handicapaccess'])!='none')
 			$sql .= " AND handicap collate latin1_swedish_ci ='{$d['handicapaccess']}'";
 
+		// if(isset($d['zipcode']))
+		// 	$sql .= " AND zip4 LIKE '%{$d['zipcode']}%'";
+
 		if(isset($d['insurance_name']) && strtolower($d['insurance_name'])!='none')
 			$sql .= " AND insurance collate latin1_swedish_ci ='{$d['insurance_name']}'";
 
@@ -346,6 +351,7 @@ class Search extends AppModel {
 
 		if(isset($d['lastname']) && strtolower($d['lastname'])!='none' && strtolower($d['lastname'])!='')
 			$sql .= " AND lastname LIKE '%{$d['lastname']}%'";
+
 		return $sql;
 	}
 }

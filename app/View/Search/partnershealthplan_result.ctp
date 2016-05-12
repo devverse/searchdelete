@@ -73,9 +73,9 @@
 		<div><?php echo $result['city'].', '.$result['state'].' '.$result['zip4']; ?></div>
 		<div><?php echo ($result['county'] != '')?$result['county'].' County':'' ?></div>
 		<?php if($coor && $req_data['practicename'] == ''){?>
-			<div><a data-map-type="coor" target="_blank" href="http://maps.google.com/maps?f=d&hl=en&saddr=<?=$coor['lat']?>&daddr=<?=$result['latitude']?>,<?=$result['longitude']?>&sll=&z=17">Get Directions</a></div><!--Has Coordinates-->
+			<div><a data-map-type="result" target="_blank" href="http://maps.google.com/maps?f=d&hl=en&daddr=<?=$result['address']?>+<?=$result['city']?>,<?=$result['state']?>+<?=$result['zip4']?>&sll=&z=17">Get Directions</a></div><!--No Coordinates-->
 		<?php }else{ ?>
-			<div><a data-map-type="result" target="_blank" href="http://maps.google.com/maps?f=d&hl=en&daddr=<?=$result['address']?>&sll=&z=17">Get Directions</a></div><!--No Coordinates-->
+			<div><a data-map-type="result" target="_blank" href="http://maps.google.com/maps?f=d&hl=en&daddr=<?=$result['address']?>+<?=$result['city']?>,<?=$result['state']?>+<?=$result['zip4']?>&sll=&z=17">Get Directions</a></div><!--No Coordinates-->
 		<?php } ?>
 	</td>
 	<td width="100">

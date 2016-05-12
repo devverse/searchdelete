@@ -38,7 +38,8 @@ $(function(){
 </script>
 
 <form action="/search/<?php echo $client_url_name;?>/result" method="post" class="form-horizontal">
-
+    <input name="search_user" type="hidden" value="partnerhealthplan">
+    
     <div class="form-group searchtype-name" >
         <label class="col-sm-2 control-label">Provider Name</label>
         <!--IF typed delete practice name-->
@@ -163,14 +164,13 @@ $(function(){
     <div class="col-sm-8">
         <select  name="countie_name" class="form-control">
         <option value="none">All Counties</option>
-	<option value="Bronx"> Bronx </option>
-	<option value="Kings"> Kings </option>
-	<option value="Nassau"> Nassau </option>
-	<option value="New York"> New York </option>
-	<option value="Queens"> Queens </option>
-	<option value="Suffolk"> Suffolk </option>
-	<option value="Westchester"> Westchester </option>    
-</select>
+        <?php foreach($counties as $countie){ 
+             if($countie['Countie']['name']=='')
+              continue;
+        ?>
+        <option value="<?php echo $countie['Countie']['name'];?>"><?php echo $countie['Countie']['name'];?></option>
+        <?php } ?>
+    </select>
     <span class="field-error"><?php echo $this->Session->flash('countie_name') ; ?></span>
     </div>
 
