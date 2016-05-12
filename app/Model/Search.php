@@ -68,11 +68,11 @@ class Search extends AppModel {
 	                'rule'     => array('custom', '/^[a-z0-9 ]*$/i'),
 	                'allowEmpty' => true,
             )),
-			'practicename'=>array(
-				'alphaNumeric' => array(
-	                'rule'     => array('custom', '/^[a-z0-9 ]*$/i'),
-	                'allowEmpty' => true,
-            )),
+			// 'practicename'=>array(
+			// 	'alphaNumeric' => array(
+	  //               'rule'     => array('custom', '/^[a-z0-9 ]*$/i'),
+	  //               'allowEmpty' => true,
+   //          )),
 
 
 			'gender'  => array(
