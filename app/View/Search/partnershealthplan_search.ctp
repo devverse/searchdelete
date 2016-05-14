@@ -164,13 +164,16 @@ $(function(){
     <div class="col-sm-8">
         <select  name="countie_name" class="form-control">
         <option value="none">All Counties</option>
-        <?php foreach($counties as $countie){ 
-             if($countie['Countie']['name']=='')
-              continue;
-        ?>
-        <option value="<?php echo $countie['Countie']['name'];?>"><?php echo $countie['Countie']['name'];?></option>
-        <?php } ?>
-    </select>
+    <option value="Bronx"> Bronx </option>
+    <option value="Kings"> Kings </option>
+    <option value="Nassau"> Nassau </option>
+    <option value="New York"> New York </option>
+    <option value="Queens"> Queens </option>
+    <option value="Rockland"> Rockland </option>
+    <option value="Richmond"> Richmond </option> 
+    <option value="Suffolk"> Suffolk </option>
+    <option value="Westchester"> Westchester </option>    
+</select>
     <span class="field-error"><?php echo $this->Session->flash('countie_name') ; ?></span>
     </div>
 
@@ -252,7 +255,7 @@ $(function(){
     </select>
     </div>
     </div> -->
-
+<!-- 
     <div class="form-group"  >
     <label class="col-sm-2 control-label">Accepts Medicare</label>
     <div class="col-sm-8">
@@ -262,7 +265,7 @@ $(function(){
       <option value="N">N</option>
     </select>
     </div>
-    </div>
+    </div> -->
 
 <!--     <div class="form-group">
     <label class="col-sm-2 control-label">Handicap Accessible</label>
