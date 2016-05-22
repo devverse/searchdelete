@@ -254,6 +254,8 @@ class Search extends AppModel {
 			$practicename = str_replace(" ", "|", $practicename);
 		}
 
+		var_dump($practicename); exit;
+
 		if($coor_array && $coor_array['lat'] && $coor_array['long']){
 			$this->query( "set @latitude=".$coor_array['lat'].";",false);
 			$this->query( "set @longitude=".$coor_array['long'].";",false);
