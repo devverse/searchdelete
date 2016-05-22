@@ -267,11 +267,11 @@ class Search extends AppModel {
 			$sql .= " (longitude BETWEEN @lng_min and @lng_max) AND (latitude BETWEEN @lat_min and @lat_max) ";
 		
 			if ($d['practicename'] != '') {
-				$sql .= " AND (practicename REGEXP '%{$practicename}%' or firstname REGEXP '%{$practicename}%' or lastname REGEXP '%{$practicename}%') ";
+				$sql .= " AND (practicename REGEXP '{$practicename}' or firstname REGEXP '{$practicename}' or lastname REGEXP '{$practicename}') ";
 			}
 
 		} elseif ($d['practicename'] != '') {
-			$sql .= "(practicename REGEXP '%{$practicename}%' or firstname REGEXP '%{$practicename}%' or lastname REGEXP '%{$practicename}%') ";
+			$sql .= "(practicename REGEXP '{$practicename}' or firstname REGEXP '{$practicename}' or lastname REGEXP '{$practicename}') ";
 		
 		} elseif ($d['countie_name']!='none'){
 	//		$sql .= " (county collate latin1_swedish_ci = '{$d['countie_name']}' OR ";
@@ -284,8 +284,6 @@ class Search extends AppModel {
 		}
 
 		$sql .= $this->_buildAndSql();
-
-		var_dump($sql); exit;
 
 		// if($this->limit)
 		// {

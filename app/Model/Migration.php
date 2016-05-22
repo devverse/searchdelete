@@ -345,10 +345,10 @@ var_dump($i);
 					$tbl = 'locations_counties';
 					$fld = 'countie_id';
 					break;
-				case 'languages':
-					$tbl = 'locations_languages';
-					$fld = 'language_id';
-					break;
+				// case 'languages':
+				// 	$tbl = 'locations_languages';
+				// 	$fld = 'language_id';
+				// 	break;
 				case 'specialties':
 					$tbl = 'locationsd_specialties';
 					$fld = 'specialtie_id';
@@ -395,10 +395,10 @@ var_dump($i);
 					$tbl = 'providers_counties';
 					$fld = 'countie_id';
 					break;
-				case 'languages':
-					$tbl = 'providers_languages';
-					$fld = 'language_id';
-					break;
+				// case 'languages':
+				// 	$tbl = 'providers_languages';
+				// 	$fld = 'language_id';
+				// 	break;
 				case 'specialties':
 					$tbl = 'providers_specialties';
 					$fld = 'specialtie_id';
