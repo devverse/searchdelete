@@ -93,12 +93,12 @@ class Search extends AppModel {
 	                'allowEmpty' => false,
             	)
             ),
-			'language_name'  => array(
-				'Must be Alpha Numeric Character' => array(
-	                'rule'     => array('custom', '/^[a-z0-9 ]*$/i'),
-	                'allowEmpty' => false,
-            	)
-            ),
+			// 'language_name'  => array(
+			// 	'Must be Alpha Numeric Character' => array(
+	  //               'rule'     => array('custom', '/^[a-z0-9 ]*$/i'),
+	  //               'allowEmpty' => false,
+   //          	)
+   //          ),
 			'acceptnew'  => array(
 				'Must be Alpha Numeric Character' => array(
 	                'rule'     => array('custom', '/^[a-z0-9 ]*$/i'),
@@ -314,8 +314,8 @@ class Search extends AppModel {
 		if(isset($d['countie_name']) && strtolower($d['countie_name'])!='none')
 			$sql .= " AND county collate latin1_swedish_ci ='{$d['countie_name']}'";
 
-		// if(isset($d['network_name']) && strtolower($d['network_name'])!='none')
-		// 	$sql .= " AND lob collate latin1_swedish_ci ='{$d['network_name']}'";
+		if(isset($d['network_name']) && strtolower($d['network_name'])!='none')
+			$sql .= " AND lob collate latin1_swedish_ci ='{$d['network_name']}'";
 
 		if(isset($d['specialtie_name']) && strtolower($d['specialtie_name'])!='none')
 			$sql .= " AND specialty collate latin1_swedish_ci ='{$d['specialtie_name']}'";
@@ -324,7 +324,7 @@ class Search extends AppModel {
 			$sql .= " AND category collate latin1_swedish_ci ='{$d['providertype_name']}'";
 
 		if(isset($d['language_name']) && strtolower($d['language_name'])!='none')
-			$sql .= " AND languages collate latin1_swedish_ci ='{$d['language_name']}'";
+			$sql .= " AND languages LIKE'%{$d['language_name']}%'";
 
 		if(isset($d['gender']) && strtolower($d['gender'])!='none')
 			$sql .= " AND gender collate latin1_swedish_ci ='{$d['gender']}'";

@@ -82,13 +82,25 @@
 		<div>
 			<div><?php echo "Phone: {$result['phone']}";?></div>
 			<!--<div><?php echo "Office Hours: {$result['officehours']}";?></div>-->
-			<div><?php echo "Languages: {$result['languages']}";?></div>
+			<div><?php 
+				if ($result['languages']) {
+					echo "Languages: {$result['languages']}";
+				}
+
+			?></div>
 			<!--<div><?php echo "Service Area: {$result['servicearea']}, {$result['state']}";?></div>-->
 		</div>
 	</td>
 	<td width="100">
 		<div>	
-			<!--<div><?php echo "Hospital Affiliations: {$result['hospaffiliations']}";?></div>-->
+			<div>
+			<?php 
+			if ($result['hospaffiliations']) {
+				echo "Hospital Affiliations: {$result['hospaffiliations']}";
+			}
+			?>
+			</div>
+
 			<!--<div><?php echo "Accepts Medicaid: {$result['acceptsmedicaid']}";?></div>-->
 			<!--<div><?php echo "Accepts Medicare: {$result['acceptsmedicare']}";?></div>-->
 			<div><?php echo ($result['acceptingnew']=='Y')?"Accepting New Patients: Y": "";?></div>

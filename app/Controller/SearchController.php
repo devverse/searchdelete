@@ -85,7 +85,7 @@ class SearchController extends AppController {
 
 		//BaseDropDown info
 		$insurances 	= $this->Insurance->find('all');
-		$languages 		= $this->Language->find('all');
+		$languages 		= $this->Language->find('all', array('order' => 'name ASC'));
 		$locations 		= $this->Location->find('all');
 		$providers 		= $this->Provider->find('all');
 		$specialties 	= $this->Specialtie->find('all',array('order' => 'name ASC','fields'=>array('id','name','parent_id')));
