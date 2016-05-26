@@ -341,11 +341,11 @@ class Search extends AppModel {
 		if(isset($d['acceptmedicare']) && strtolower($d['acceptmedicare'])!='none')
 			$sql .= " AND acceptsmedicare collate latin1_swedish_ci ='{$d['acceptmedicare']}'";
 
-		// if(isset($d['acceptmedicaid']) && strtolower($d['acceptmedicaid'])!='none')
-		// 	$sql .= " AND acceptsmedicaid collate latin1_swedish_ci ='{$d['acceptmedicaid']}'";
+		if(isset($d['acceptmedicaid']) && strtolower($d['acceptmedicaid'])!='none')
+			$sql .= " AND acceptsmedicaid collate latin1_swedish_ci ='{$d['acceptmedicaid']}'";
 
-		// if(isset($d['handicapaccess']) && strtolower($d['handicapaccess'])!='none')
-		// 	$sql .= " AND handicap collate latin1_swedish_ci ='{$d['handicapaccess']}'";
+		if(isset($d['handicapaccess']) && strtolower($d['handicapaccess'])!='none')
+			$sql .= " AND handicap collate latin1_swedish_ci ='{$d['handicapaccess']}'";
 
 		// if(isset($d['zipcode']))
 		// 	$sql .= " AND zip4 LIKE '%{$d['zipcode']}%'";
