@@ -248,6 +248,12 @@ class Search extends AppModel {
 
 		$distance = ($d['distance_c'] != '')? $d['distance_c'] : $d['distance'];
 
+		$practicename = $d['practicename'];
+
+		if (preg_match('/\s/',$practicename) > 0) {
+			$practicename = str_replace(" ", "|", $practicename);
+		}
+
 		if($coor_array && $coor_array['lat'] && $coor_array['long']){
 			$this->query( "set @latitude=".$coor_array['lat'].";",false);
 			$this->query( "set @longitude=".$coor_array['long'].";",false);
@@ -261,19 +267,19 @@ class Search extends AppModel {
 			$sql .= " (longitude BETWEEN @lng_min and @lng_max) AND (latitude BETWEEN @lat_min and @lat_max) ";
 		
 			if ($d['practicename'] != '') {
-				$sql .= " AND (practicename LIKE '%{$d['practicename']}%' or firstname LIKE '%{$d['practicename']}%' or lastname LIKE '%{$d['practicename']}%') ";
+				$sql .= " AND (practicename REGEXP '{$practicename}' or firstname REGEXP '{$practicename}' or lastname REGEXP '{$practicename}') ";
 			}
 
-		}elseif ($d['practicename'] != '') {
-			$sql .= "(practicename LIKE '%{$d['practicename']}%' or firstname LIKE '%{$d['practicename']}%' or lastname LIKE '%{$d['practicename']}%') ";
+		} elseif ($d['practicename'] != '') {
+			$sql .= "(practicename REGEXP '{$practicename}' or firstname REGEXP '{$practicename}' or lastname REGEXP '{$practicename}') ";
 		
-		}elseif ($d['countie_name']!='none'){
+		} elseif ($d['countie_name']!='none'){
 	//		$sql .= " (county collate latin1_swedish_ci = '{$d['countie_name']}' OR ";
 	//		$sql .= " servicearea like '%{$d['countie_name']}%') ";
 			$sql .= " county like '%{$d['countie_name']}%' ";
-		}elseif ($d['practicename'] == '' && $d['providertype_name']!='none') {
+		} elseif ($d['practicename'] == '' && $d['providertype_name']!='none') {
 			$sql .= ' 1 =1 ';
-		}else{
+		} else{
 			throw new Exception("Search type was not properly formated", 1);
 		}
 

@@ -60,7 +60,7 @@
 	</td>
 	<td colspan="1" width="25%">
 		<div>	
-			<!--<div><?php echo "Hospital Affiliations: <br/>{$result['hospaffiliations']}";?></div>-->
+			<div><?php echo "Hospital Affiliations: <br/>{$result['hospaffiliations']}";?></div>
 			<!--<div><?php echo "Medicaid: {$result['acceptsmedicaid']}";?></div>-->
 			<!--<div><?php echo "Medicatre: {$result['acceptsmedicare']}";?></div>-->
 			<div><?php echo ($result['acceptingnew']=='Y'||$result['acceptingnew']=='')?"Accepting New Patients: Y": "";?></div>
