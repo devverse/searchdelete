@@ -109,6 +109,13 @@
 			<div>
 		<?php } ?>
 	<td>
+			<div>
+			<?php 
+			if ($result['hospaffiliations']) {
+				echo "Hospital Affiliations: {$result['hospaffiliations']}";
+			}
+			?>
+			</div>
 	</td>
 </tr>
 <!-- Result Information END-->
