@@ -108,14 +108,13 @@
 				</div>
 			<div>
 		<?php } ?>
+		</td>
 	<td>
-			<div>
-			<?php 
+	<?php 
 			if ($result['hospaffiliations']) {
 				echo "Hospital Affiliations: {$result['hospaffiliations']}";
 			}
 			?>
-			</div>
 	</td>
 </tr>
 <!-- Result Information END-->
