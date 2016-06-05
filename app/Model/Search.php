@@ -249,9 +249,11 @@ class Search extends AppModel {
 		$distance = ($d['distance_c'] != '')? $d['distance_c'] : $d['distance'];
 
 		$practicename = $d['practicename'];
+		$namesearch = false;
 
 		if (preg_match('/\s/',$practicename) > 0) {
 			$practicename = str_replace(" ", "|", $practicename);
+			$namesearch = true;
 		}
 
 		if($coor_array && $coor_array['lat'] && $coor_array['long']){
@@ -266,9 +268,18 @@ class Search extends AppModel {
 
 			$sql .= " (longitude BETWEEN @lng_min and @lng_max) AND (latitude BETWEEN @lat_min and @lat_max) ";
 		
-			if ($d['practicename'] != '') {
-				$sql .= " AND (practicename REGEXP '{$practicename}' or (firstname REGEXP '{$practicename}' AND lastname REGEXP '{$practicename}')) ";
+			if ($d['practicename'] != '' && $namesearch == false) {
+				$sql .= " AND (practicename REGEXP '{$practicename}') ";
 			}
+
+			if ($d['practicename'] != '' && $namesearch == true) {
+				$sql .= " AND firstname REGEXP '{$practicename}' AND lastname REGEXP '{$practicename}') ";
+			}
+
+			// Old Search Method before $namesearch above
+			// if ($d['practicename'] != '') {
+			// 	$sql .= " AND (practicename REGEXP '{$practicename}' or firstname REGEXP '{$practicename}' or lastname REGEXP '{$practicename}') ";
+			// }
 
 		} elseif ($d['practicename'] != '') {
 			$sql .= "(practicename REGEXP '{$practicename}' or (firstname REGEXP '{$practicename}' AND lastname REGEXP '{$practicename}')) ";
