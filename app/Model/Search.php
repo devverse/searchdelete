@@ -315,7 +315,7 @@ class Search extends AppModel {
 		{
 			// $sql .= ' Group By fullrecords.practicename, fullrecords.category,fullrecords.specialty LIMIT '.$d['start'].' , '.$limit ;
 			
-			if(isset($d['search_user']) && strtolower($d['search_user']) == 'partnerhealthplan') {
+			if(isset($d['search_user']) && strtolower($d['search_user']) == 'partnerhealthplan' && empty($d['street_address']) {
 				$sql.= ' ORDER BY fullrecords.practicename ASC,fullrecords.lastname ASC';
 			}
 		} else {
