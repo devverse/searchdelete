@@ -252,8 +252,8 @@ class Search extends AppModel {
 		$namesearch = false;
 
 		if (preg_match('/\s/',$practicename) > 0) {
-			$practicename = str_replace(" ", "|", $practicename);
 			$data   = preg_split('/\s+/', $practicename);
+			$practicename = str_replace(" ", "|", $practicename);
 			$namesearch = true;
 
 			var_dump($data[0]);
