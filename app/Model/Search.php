@@ -253,7 +253,12 @@ class Search extends AppModel {
 
 		if (preg_match('/\s/',$practicename) > 0) {
 			$practicename = str_replace(" ", "|", $practicename);
+			$data   = preg_split('/\s+/', $practicename);
 			$namesearch = true;
+
+			var_dump($data[0]);
+			var_dump($data[1]);
+			exit;
 		}
 
 		if($coor_array && $coor_array['lat'] && $coor_array['long']){
