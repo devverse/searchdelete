@@ -270,7 +270,7 @@ class Search extends AppModel {
 			$sql .= " (longitude BETWEEN @lng_min and @lng_max) AND (latitude BETWEEN @lat_min and @lat_max) ";
 		
 			if ($d['practicename'] != '' && $namesearch == false) {
-				$sql .= " AND (practicename LIKE '%{$practicename}%') ";
+				$sql .= " AND (practicename REGEXP '{$practicename}') ";
 			}
 
 			if ($d['practicename'] != '' && $namesearch == true) {
@@ -287,7 +287,7 @@ class Search extends AppModel {
 		
 		
 			if ($namesearch == false) {
-				$sql .= " (practicename LIKE '%{$practicename}%') ";
+				$sql .= " (practicename REGEXP '{$practicename}') ";
 			}
 
 			if ($namesearch == true) {
