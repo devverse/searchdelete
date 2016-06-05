@@ -282,8 +282,17 @@ class Search extends AppModel {
 			// }
 
 		} elseif ($d['practicename'] != '') {
-			$sql .= "(practicename REGEXP '{$practicename}' or (firstname REGEXP '{$practicename}' AND lastname REGEXP '{$practicename}')) ";
+			// $sql .= "(practicename REGEXP '{$practicename}' or (firstname REGEXP '{$practicename}' AND lastname REGEXP '{$practicename}')) ";
 		
+		
+			if ($d['practicename'] != '' && $namesearch == false) {
+				$sql .= " practicename REGEXP '{$practicename}' ";
+			}
+
+			if ($d['practicename'] != '' && $namesearch == true) {
+				$sql .= "firstname REGEXP '{$practicename}' AND lastname REGEXP '{$practicename}') ";
+			}
+
 		} elseif ($d['countie_name']!='none'){
 	//		$sql .= " (county collate latin1_swedish_ci = '{$d['countie_name']}' OR ";
 	//		$sql .= " servicearea like '%{$d['countie_name']}%') ";
