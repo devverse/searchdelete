@@ -285,12 +285,12 @@ class Search extends AppModel {
 			// $sql .= "(practicename REGEXP '{$practicename}' or (firstname REGEXP '{$practicename}' AND lastname REGEXP '{$practicename}')) ";
 		
 		
-			if ($d['practicename'] != '' && $namesearch == false) {
-				$sql .= " practicename REGEXP '{$practicename}' ";
+			if ($namesearch == false) {
+				$sql .= " (practicename REGEXP '{$practicename}') ";
 			}
 
-			if ($d['practicename'] != '' && $namesearch == true) {
-				$sql .= "firstname REGEXP '{$practicename}' AND lastname REGEXP '{$practicename}') ";
+			if ($namesearch == true) {
+				$sql .= "(firstname REGEXP '{$practicename}' AND lastname REGEXP '{$practicename}') ";
 			}
 
 		} elseif ($d['countie_name']!='none'){
