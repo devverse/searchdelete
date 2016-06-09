@@ -102,12 +102,12 @@ CREATE TABLE IF NOT EXISTS `insurances` (
 -- Table structure for table `languages`
 --
 
-CREATE TABLE IF NOT EXISTS `languages` (
-  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
-  `name` varchar(255) NOT NULL,
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `id` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+-- CREATE TABLE IF NOT EXISTS `languages` (
+--   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+--   `name` varchar(255) NOT NULL,
+--   PRIMARY KEY (`id`),
+--   UNIQUE KEY `id` (`id`)
+-- ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -401,7 +401,7 @@ CREATE TABLE IF NOT EXISTS `temptables` (
 ALTER TABLE fullrecords AUTO_INCREMENT=1;
 ALTER TABLE networks AUTO_INCREMENT=1;
 ALTER TABLE specialties AUTO_INCREMENT=1;
-ALTER TABLE languages AUTO_INCREMENT=1;
+-- ALTER TABLE languages AUTO_INCREMENT=1;
 ALTER TABLE providers AUTO_INCREMENT=1;
 ALTER TABLE locations AUTO_INCREMENT=1;
 ALTER TABLE providertypes AUTO_INCREMENT=1;

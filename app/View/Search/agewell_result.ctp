@@ -72,6 +72,13 @@
 		<div class="website"><?php echo $result['handicap'] == 'Y' ? 'Handicap Accessible' : '';?></div>
 		<div class="website"><?php echo $result['acceptingnew'] == 'Y' ? 'Accepting New' : '';?></div>
 		<div class="boardCertified"><?php echo $result['customfield1desc'] == 'Board Certified' ? 'Board Certified' : '';?></div>
+		<div class="languages"> 
+			<?php 
+				if ($result['languages']) {
+					echo "Languages: {$result['languages']}";
+				}
+			?>
+		</div>
 	</td>
 	<td>
 		<?php foreach($result['locations'] as $ploc){ ?>
