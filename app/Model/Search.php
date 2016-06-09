@@ -291,7 +291,7 @@ class Search extends AppModel {
 			}
 
 			if ($namesearch == true) {
-				$sql .= "(firstname LIKE '%{$name[0]}%' AND lastname LIKE '%{$name[1]}%') ";
+				$sql .= "(firstname LIKE '%{$name[1]}%' AND lastname LIKE '%{$name[0]}%') ";
 			}
 
 		} elseif ($d['countie_name']!='none'){
