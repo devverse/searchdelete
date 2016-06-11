@@ -45,6 +45,8 @@ $(function(){
         <!--IF typed delete practice name-->
         <div class="col-sm-6">
         <input id="pracitcename" value="" name="practicename" placeholder="Practice Name" type="text" class="form-control">
+        <br/>
+        Use a provider's first and last name when searching (i.e. "John Smith")
         </div>
     </div>
 
