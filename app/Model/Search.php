@@ -273,7 +273,7 @@ class Search extends AppModel {
 				$sql .= " AND (practicename LIKE '%{$practicename}%') ";
 			}
 
-			if ($d['firstname'] != '' && $d['lastname'] != '' && $namesearch == true) {
+			if ($namesearch == true) {
 				$sql .= " AND firstname LIKE '%{$firstname}%' AND lastname LIKE '%{$lastname}%') ";
 			}
 
@@ -305,6 +305,9 @@ class Search extends AppModel {
 		}
 
 		$sql .= $this->_buildAndSql();
+
+
+		var_dump($sql); exit;
 
 		// if($this->limit)
 		// {
@@ -377,8 +380,8 @@ class Search extends AppModel {
 		if(isset($d['lastname']) && strtolower($d['lastname'])!='none' && strtolower($d['lastname'])!='')
 			$sql .= " AND lastname LIKE '%{$d['lastname']}%'";
 
-		// if(isset($d['zipcode']))
-		// 	$sql .= " OR zip4 LIKE '%{$d['zipcode']}%'";
+		if(isset($d['zipcode']))
+			$sql .= " OR zip4 LIKE '%{$d['zipcode']}%'";
 
 		return $sql;
 	}
