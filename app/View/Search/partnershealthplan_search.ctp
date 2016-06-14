@@ -50,7 +50,7 @@ $(function(){
     <div class="form-group searchtype-name" >
         <label class="col-sm-2 control-label">Provider Name</label>
         <!--IF typed delete practice name-->
-        <div class="col-sm-8">
+        <div>
         <div class="col-sm-4">
             <input id="firstname" value="" name="firstname" placeholder="First Name" type="text" class="form-control">
         </div>
