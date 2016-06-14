@@ -251,9 +251,7 @@ class Search extends AppModel {
 		$practicename = $d['practicename'];
 		$namesearch = false;
 
-		if (preg_match('/\s/',$practicename) > 0) {
-			$name   = preg_split('/\s+/', $practicename);
-			$practicename = str_replace(" ", "|", $practicename);
+		if (isset($d['firstname'])) {
 			$namesearch = true;
 		}
 
@@ -273,7 +271,7 @@ class Search extends AppModel {
 				$sql .= " AND (practicename REGEXP '{$practicename}') ";
 			}
 
-			if ($d['practicename'] != '' && $namesearch == true) {
+			if ($d['firstname'] != '' && $namesearch == true) {
 				$sql .= " AND firstname LIKE '%{$name[0]}%' AND lastname LIKE '%{$name[1]}%') ";
 			}
 
@@ -368,9 +366,6 @@ class Search extends AppModel {
 		if(isset($d['handicapaccess']) && strtolower($d['handicapaccess'])!='none')
 			$sql .= " AND handicap collate latin1_swedish_ci ='{$d['handicapaccess']}'";
 
-		if(isset($d['zipcode']))
-			$sql .= " AND zip4 LIKE '%{$d['zipcode']}%'";
-
 		if(isset($d['insurance_name']) && strtolower($d['insurance_name'])!='none')
 			$sql .= " AND insurance collate latin1_swedish_ci ='{$d['insurance_name']}'";
 
@@ -380,6 +375,8 @@ class Search extends AppModel {
 		if(isset($d['lastname']) && strtolower($d['lastname'])!='none' && strtolower($d['lastname'])!='')
 			$sql .= " AND lastname LIKE '%{$d['lastname']}%'";
 
+		if(isset($d['zipcode']))
+			$sql .= " OR zip4 LIKE '%{$d['zipcode']}%'";
 		return $sql;
 	}
 }
