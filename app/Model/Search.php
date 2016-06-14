@@ -274,7 +274,7 @@ class Search extends AppModel {
 			}
 
 			if ($namesearch == true) {
-				$sql .= " AND firstname LIKE '%{$firstname}%' AND lastname LIKE '%{$lastname}%') ";
+				$sql .= " AND firstname LIKE '%{$firstname}%' AND lastname LIKE '%{$lastname}%'";
 			}
 
 			// Old Search Method before $namesearch above
@@ -305,9 +305,6 @@ class Search extends AppModel {
 		}
 
 		$sql .= $this->_buildAndSql();
-
-
-		var_dump($sql); exit;
 
 		// if($this->limit)
 		// {
