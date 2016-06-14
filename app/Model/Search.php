@@ -315,6 +315,10 @@ class Search extends AppModel {
 		{
 			// $sql .= ' Group By fullrecords.practicename, fullrecords.category,fullrecords.specialty LIMIT '.$d['start'].' , '.$limit ;
 			
+			if(isset($d['search_user']) && strtolower($d['search_user']) == 'debug') {
+				$sql.= "ORDER BY (POW((longitude-$coor_array['long']),2) + POW((latitude-$$coor_array['lat']),2))";
+			}
+
 			if(isset($d['search_user']) && strtolower($d['search_user']) == 'partnerhealthplan' && empty($d['street_address'])) {
 				$sql.= ' ORDER BY fullrecords.practicename ASC,fullrecords.lastname ASC';
 			}
@@ -331,9 +335,9 @@ class Search extends AppModel {
 		$recordcount = $this->query('SELECT FOUND_ROWS()');
 		$this->recordcount = $recordcount[0][0]["FOUND_ROWS()"];
 
-		if(isset($d['search_user']) && strtolower($d['search_user']) == 'debug') {
-			var_dump($sql); exit;
-		}
+		// if(isset($d['search_user']) && strtolower($d['search_user']) == 'debug') {
+		// 	var_dump($sql); exit;
+		// }
 
 		return $records;
 	}
