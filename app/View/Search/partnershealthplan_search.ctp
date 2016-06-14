@@ -52,7 +52,7 @@ $(function(){
         <!--IF typed delete practice name-->
         <div>
         <div class="col-sm-4">
-            <input id="firstname" value="" name="firstname" placeholder="First Name" type="text" class="form-control">
+            <input id="firstname" value="" name="firstname" placeholder="First Name" type="text" class="form-control"> AND
         </div>
         <div class="col-sm-4">
             <input id="lastname" value="" name="lastname" placeholder="Last Name" type="text" class="form-control">
