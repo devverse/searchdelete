@@ -137,7 +137,7 @@ class Search extends AppModel {
 	public function locationOrCountieOrPracticeName($field = array())
 	{
 		$d = $this->data['Search'];
-		if(strtolower($d['countie_name']) == 'none' && strtolower($d['state']) == 'none'  && empty($d['street_address']) && empty($d['city'])  && empty($d['zipcode']) && empty($d['practicename']) && $d['providertype_name']=='none')
+		if(strtolower($d['countie_name']) == 'none' && strtolower($d['state']) == 'none'  && empty($d['street_address']) && empty($d['city'])  && empty($d['zipcode']) && empty($d['practicename']) && empty($d['firstname']) && $d['providertype_name']=='none')
 			return false;
 		else
 			return true;
@@ -377,8 +377,8 @@ class Search extends AppModel {
 		if(isset($d['lastname']) && strtolower($d['lastname'])!='none' && strtolower($d['lastname'])!='')
 			$sql .= " AND lastname LIKE '%{$d['lastname']}%'";
 
-		if(isset($d['zipcode']))
-			$sql .= " OR zip4 LIKE '%{$d['zipcode']}%'";
+		// if(isset($d['zipcode']))
+		// 	$sql .= " OR zip4 LIKE '%{$d['zipcode']}%'";
 
 		return $sql;
 	}
