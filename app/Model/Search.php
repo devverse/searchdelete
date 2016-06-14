@@ -290,7 +290,7 @@ class Search extends AppModel {
 				$sql .= " (practicename REGEXP '{$practicename}') ";
 			}
 
-			if ($d['firstname'] != '' && $d['lastname'] != '' && $namesearch == true) {
+			if ($namesearch == true) {
 				$sql .= "(firstname LIKE '%{$firstname}%' AND lastname LIKE '%{$lastname}%') ";
 			}
 
