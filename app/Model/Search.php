@@ -285,16 +285,17 @@ class Search extends AppModel {
 		} elseif ($d['practicename'] != '') {
 			// $sql .= "(practicename REGEXP '{$practicename}' or (firstname REGEXP '{$practicename}' AND lastname REGEXP '{$practicename}')) ";
 		
-		
 			if ($namesearch == false) {
 				$sql .= " (practicename LIKE '%{$practicename}%') ";
 			}
 
-			if ($namesearch == true) {
-				$sql .= "(firstname LIKE '%{$firstname}%' AND lastname LIKE '%{$lastname}%') ";
-			}
+		} 
 
-		} elseif ($d['countie_name']!='none'){
+		elseif ($d['firstname'] != '' && $d['lastname'] != '') {
+			$sql .= "(firstname LIKE '%{$firstname}%' AND lastname LIKE '%{$lastname}%') ";
+		} 
+
+		elseif ($d['countie_name']!='none'){
 	//		$sql .= " (county collate latin1_swedish_ci = '{$d['countie_name']}' OR ";
 	//		$sql .= " servicearea like '%{$d['countie_name']}%') ";
 			$sql .= " county like '%{$d['countie_name']}%' ";
