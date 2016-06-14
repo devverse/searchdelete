@@ -251,9 +251,9 @@ class Search extends AppModel {
 		$practicename = $d['practicename'];
 		$namesearch = false;
 
-		if (preg_match('/\s/',$practicename) > 0) {
-			$name   = preg_split('/\s+/', $practicename);
-			$practicename = str_replace(" ", "|", $practicename);
+		if (isset($d['firstname']) || isset($d['lastname'])) {
+			$firstname = $d['firstname'];
+			$lastname = $d['lastname'];
 			$namesearch = true;
 		}
 
@@ -274,7 +274,7 @@ class Search extends AppModel {
 			}
 
 			if ($d['practicename'] != '' && $namesearch == true) {
-				$sql .= " AND firstname LIKE '%{$name[0]}%' AND lastname LIKE '%{$name[1]}%') ";
+				$sql .= " AND firstname LIKE '%{$firstname}%' AND lastname LIKE '%{$lastname}%') ";
 			}
 
 			// Old Search Method before $namesearch above
@@ -291,7 +291,7 @@ class Search extends AppModel {
 			}
 
 			if ($namesearch == true) {
-				$sql .= "(firstname LIKE '%{$name[1]}%' AND lastname LIKE '%{$name[0]}%') ";
+				$sql .= "(firstname LIKE '%{$firstname}%' AND lastname LIKE '%{$lastname}%') ";
 			}
 
 		} elseif ($d['countie_name']!='none'){
