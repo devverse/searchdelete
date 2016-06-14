@@ -306,6 +306,10 @@ class Search extends AppModel {
 
 		$sql .= $this->_buildAndSql();
 
+		if(isset($d['search_user']) && strtolower($d['search_user']) == 'debug') {
+			var_dump($sql); exit;
+		}
+
 		// if($this->limit)
 		// {
 		// 	$limit = $this->limit;
