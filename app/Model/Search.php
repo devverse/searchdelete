@@ -251,7 +251,9 @@ class Search extends AppModel {
 		$practicename = $d['practicename'];
 		$namesearch = false;
 
-		if (isset($d['firstname'])) {
+		if (isset($d['firstname']) || isset($d['lastname'])) {
+			$firstname = $d['firstname'];
+			$lastname = $d['lastname'];
 			$namesearch = true;
 		}
 
@@ -271,8 +273,8 @@ class Search extends AppModel {
 				$sql .= " AND (practicename REGEXP '{$practicename}') ";
 			}
 
-			if ($d['firstname'] != '' && $namesearch == true) {
-				$sql .= " AND firstname LIKE '%{$name[0]}%' AND lastname LIKE '%{$name[1]}%') ";
+			if ($d['firstname'] != '' && $d['lastname'] != '' && $namesearch == true) {
+				$sql .= " AND firstname LIKE '%{$firstname}%' AND lastname LIKE '%{$lastname}%') ";
 			}
 
 			// Old Search Method before $namesearch above
@@ -288,8 +290,8 @@ class Search extends AppModel {
 				$sql .= " (practicename REGEXP '{$practicename}') ";
 			}
 
-			if ($namesearch == true) {
-				$sql .= "(firstname LIKE '%{$name[1]}%' AND lastname LIKE '%{$name[0]}%') ";
+			if ($d['firstname'] != '' && $d['lastname'] != '' && $namesearch == true) {
+				$sql .= "(firstname LIKE '%{$firstname}%' AND lastname LIKE '%{$lastname}%') ";
 			}
 
 		} elseif ($d['countie_name']!='none'){
