@@ -321,9 +321,9 @@ class Search extends AppModel {
 				$sql.= ' ORDER BY (POW((longitude-' . $coor_array['long'] . '),2) + POW((latitude-' . $coor_array['lat'] .'),2))';
 			}
 
-			if(isset($d['search_user']) && strtolower($d['search_user']) == 'partnerhealthplan' && empty($d['street_address'])) {
-				$sql.= ' ORDER BY fullrecords.practicename ASC,fullrecords.lastname ASC';
-			}
+			// if(isset($d['search_user']) && strtolower($d['search_user']) == 'partnerhealthplan' && empty($d['street_address'])) {
+			// 	$sql.= ' ORDER BY fullrecords.practicename ASC,fullrecords.lastname ASC';
+			// }
 
 			// $sql .= ' Group By fullrecords.address, fullrecords.practicename LIMIT '.$d['start'].' , '.$limit;
 		}
