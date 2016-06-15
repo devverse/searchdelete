@@ -285,9 +285,7 @@ class Search extends AppModel {
 		} elseif ($d['practicename'] != '') {
 			// $sql .= "(practicename REGEXP '{$practicename}' or (firstname REGEXP '{$practicename}' AND lastname REGEXP '{$practicename}')) ";
 		
-	
 			$sql .= " (practicename LIKE '%{$practicename}%') ";
-
 		} 
 
 		elseif ($d['firstname'] != '' && $d['lastname'] != '') {
