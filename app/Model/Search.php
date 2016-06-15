@@ -381,7 +381,7 @@ class Search extends AppModel {
 		if(isset($d['lastname']) && strtolower($d['lastname'])!='none' && strtolower($d['lastname'])!='')
 			$sql .= " AND lastname LIKE '%{$d['lastname']}%'";
 
-		if(isset($d['zipcode']))
+		if(isset($d['zipcode']) && empty($d['firstname']) && empty($d['lastname']) && empty($d['practicename']) )
 			$sql .= " OR zip4 LIKE '%{$d['zipcode']}%'";
 
 		return $sql;
