@@ -283,9 +283,6 @@ class Search extends AppModel {
 			// }
 
 		} elseif ($d['practicename'] != '') {
-			// $sql .= "(practicename REGEXP '{$practicename}' or (firstname REGEXP '{$practicename}' AND lastname REGEXP '{$practicename}')) ";
-		
-	
 			$sql .= " (practicename LIKE '%{$practicename}%') ";
 
 		} 
@@ -311,6 +308,7 @@ class Search extends AppModel {
 		// 	$limit = $this->limit;
 		// 	$d['start']=1;
 		// }
+
 		if($d['practicename'] != '')
 		{
 			// $sql .= ' Group By fullrecords.practicename, fullrecords.category,fullrecords.specialty LIMIT '.$d['start'].' , '.$limit ;
@@ -321,7 +319,7 @@ class Search extends AppModel {
 		} else {
 
 			if(isset($d['search_user']) && strtolower($d['search_user']) == 'partnerhealthplan') {
-				$sql.= ' ORDER BY (POW((longitude-' . $coor_array['long'] . '),2) + POW((latitude-' . $coor_array['lat'] .'),2))';
+				// $sql.= ' ORDER BY (POW((longitude-' . $coor_array['long'] . '),2) + POW((latitude-' . $coor_array['lat'] .'),2))';
 			}
 
 			if(isset($d['search_user']) && strtolower($d['search_user']) != 'partnerhealthplan' && empty($d['street_address'])) {
@@ -336,9 +334,6 @@ class Search extends AppModel {
 		$recordcount = $this->query('SELECT FOUND_ROWS()');
 		$this->recordcount = $recordcount[0][0]["FOUND_ROWS()"];
 
-		// if(isset($d['search_user']) && strtolower($d['search_user']) == 'debug') {
-		// 	var_dump($sql); exit;
-		// }
 
 		return $records;
 	}
