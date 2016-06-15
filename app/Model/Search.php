@@ -257,7 +257,7 @@ class Search extends AppModel {
 			$namesearch = true;
 		}
 
-		if($coor_array && $coor_array['lat'] && $coor_array['long']){
+		if($coor_array && $coor_array['lat'] && $coor_array['long']) {
 			$this->query( "set @latitude=".$coor_array['lat'].";",false);
 			$this->query( "set @longitude=".$coor_array['long'].";",false);
 			$this->query( "set @radius=".$distance.";",false);
@@ -283,8 +283,6 @@ class Search extends AppModel {
 			// }
 
 		} elseif ($d['practicename'] != '') {
-			// $sql .= "(practicename REGEXP '{$practicename}' or (firstname REGEXP '{$practicename}' AND lastname REGEXP '{$practicename}')) ";
-		
 			$sql .= " (practicename LIKE '%{$practicename}%') ";
 		} 
 
@@ -309,19 +307,25 @@ class Search extends AppModel {
 		// 	$limit = $this->limit;
 		// 	$d['start']=1;
 		// }
+
 		if($d['practicename'] != '')
 		{
 			// $sql .= ' Group By fullrecords.practicename, fullrecords.category,fullrecords.specialty LIMIT '.$d['start'].' , '.$limit ;
 			
-			if(isset($d['search_user']) && strtolower($d['search_user']) == 'debug') {
-				$sql.= ' ORDER BY (POW((longitude-' . $coor_array['long'] . '),2) + POW((latitude-' . $coor_array['lat'] .'),2))';
-			}
-
 			if(isset($d['search_user']) && strtolower($d['search_user']) == 'partnerhealthplan' && empty($d['street_address'])) {
 				$sql.= ' ORDER BY fullrecords.practicename ASC,fullrecords.lastname ASC';
 			}
 		} else {
-			$sql .= ' Group By fullrecords.address, fullrecords.practicename LIMIT '.$d['start'].' , '.$limit;
+
+			if(isset($d['search_user']) && strtolower($d['search_user']) == 'partnerhealthplan' && empty($d['firstname']) && empty($d['lastname']) ) {
+				$sql.= ' ORDER BY (POW((longitude-' . $coor_array['long'] . '),2) + POW((latitude-' . $coor_array['lat'] .'),2))';
+			}
+
+			if(isset($d['search_user']) && strtolower($d['search_user']) != 'partnerhealthplan' && empty($d['street_address'])) {
+				$sql.= ' ORDER BY fullrecords.practicename ASC,fullrecords.lastname ASC';
+			}
+
+			// $sql .= ' Group By fullrecords.address, fullrecords.practicename LIMIT '.$d['start'].' , '.$limit;
 		}
 
 		
@@ -329,9 +333,6 @@ class Search extends AppModel {
 		$recordcount = $this->query('SELECT FOUND_ROWS()');
 		$this->recordcount = $recordcount[0][0]["FOUND_ROWS()"];
 
-		// if(isset($d['search_user']) && strtolower($d['search_user']) == 'debug') {
-		// 	var_dump($sql); exit;
-		// }
 
 		return $records;
 	}
