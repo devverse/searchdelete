@@ -315,23 +315,19 @@ class Search extends AppModel {
 		{
 			// $sql .= ' Group By fullrecords.practicename, fullrecords.category,fullrecords.specialty LIMIT '.$d['start'].' , '.$limit ;
 			
-			if(isset($d['search_user']) && strtolower($d['search_user']) == 'debug') {
-				$sql.= ' ORDER BY (POW((longitude-' . $coor_array['long'] . '),2) + POW((latitude-' . $coor_array['lat'] .'),2))';
-			}
-
 			if(isset($d['search_user']) && strtolower($d['search_user']) == 'partnerhealthplan' && empty($d['street_address'])) {
 				$sql.= ' ORDER BY fullrecords.practicename ASC,fullrecords.lastname ASC';
 			}
 		} else {
 
-				if(isset($d['search_user']) && strtolower($d['search_user']) == 'debug') {
+			if(isset($d['search_user']) && strtolower($d['search_user']) == 'partnerhealthplan') {
 				$sql.= ' ORDER BY (POW((longitude-' . $coor_array['long'] . '),2) + POW((latitude-' . $coor_array['lat'] .'),2))';
 			}
 
-			if(isset($d['search_user']) && strtolower($d['search_user']) == 'partnerhealthplan' && empty($d['street_address'])) {
+			if(isset($d['search_user']) && strtolower($d['search_user']) != 'partnerhealthplan' && empty($d['street_address'])) {
 				$sql.= ' ORDER BY fullrecords.practicename ASC,fullrecords.lastname ASC';
 			}
-			
+
 			// $sql .= ' Group By fullrecords.address, fullrecords.practicename LIMIT '.$d['start'].' , '.$limit;
 		}
 
