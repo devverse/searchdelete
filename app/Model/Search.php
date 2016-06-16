@@ -325,7 +325,7 @@ class Search extends AppModel {
 			// 	$sql.= ' ORDER BY fullrecords.practicename ASC,fullrecords.lastname ASC';
 			// }
 
-			// $sql .= ' Group By fullrecords.address, fullrecords.practicename LIMIT '.$d['start'].' , '.$limit;
+			$sql .= ' Group By fullrecords.address, fullrecords.practicename LIMIT '.$d['start'].' , '.$limit;
 		}
 
 		
