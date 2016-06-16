@@ -313,11 +313,11 @@ class Search extends AppModel {
 			// $sql .= ' Group By fullrecords.practicename, fullrecords.category,fullrecords.specialty LIMIT '.$d['start'].' , '.$limit ;
 			
 			if(isset($d['search_user']) && strtolower($d['search_user']) == 'partnerhealthplan' && empty($d['street_address'])) {
-				$sql.= ' ORDER BY fullrecords.practicename ASC,fullrecords.lastname ASC';
+				$sql.= ' ORDER BY fullrecords.practicename ASC,fullrecords.lastname ASC LIMIT '.$d['start'].' , '.$limit;
 			}
 		} else {
 
-			if(isset($d['search_user']) && strtolower($d['search_user']) == 'partnerhealthplan' && empty($d['firstname']) && empty($d['lastname']) ) {
+			if(isset($d['search_user']) && strtolower($d['search_user']) == 'partnerhealthplan' && $coor_array['lat'] && $coor_array['long'] ) {
 				$sql.= ' ORDER BY (POW((longitude-' . $coor_array['long'] . '),2) + POW((latitude-' . $coor_array['lat'] .'),2))' . ' LIMIT '.$d['start'].' , '.$limit;;
 			}
 
