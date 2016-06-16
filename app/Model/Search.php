@@ -318,14 +318,14 @@ class Search extends AppModel {
 		} else {
 
 			if(isset($d['search_user']) && strtolower($d['search_user']) == 'partnerhealthplan' && $coor_array && $coor_array['lat'] && $coor_array['long']) {
-				$sql.= ' ORDER BY (POW((longitude-' . $coor_array['long'] . '),2) + POW((latitude-' . $coor_array['lat'] .'),2))';
+				$sql.= ' ORDER BY (POW((longitude-' . $coor_array['long'] . '),2) + POW((latitude-' . $coor_array['lat'] .'),2)) LIMIT '.$d['start'].' , '.$limit;
 			}
 
 			// if(isset($d['search_user']) && strtolower($d['search_user']) == 'partnerhealthplan' && empty($d['street_address'])) {
 			// 	$sql.= ' ORDER BY fullrecords.practicename ASC,fullrecords.lastname ASC';
 			// }
 
-			$sql .= ' Group By fullrecords.address, fullrecords.practicename LIMIT '.$d['start'].' , '.$limit;
+			$//sql .= ' Group By fullrecords.address, fullrecords.practicename LIMIT '.$d['start'].' , '.$limit;
 		}
 
 		
