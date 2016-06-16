@@ -317,7 +317,7 @@ class Search extends AppModel {
 			}
 		} else {
 
-			if(isset($d['search_user']) && strtolower($d['search_user']) == 'partnerhealthplan' && $coor_array && $coor_array['lat'] && $coor_array['long']) {
+			if(isset($d['search_user']) && strtolower($d['search_user']) == 'partnerhealthplan' && empty($d['firstname']) && empty($d['lastname']) ) {
 				$sql.= ' ORDER BY (POW((longitude-' . $coor_array['long'] . '),2) + POW((latitude-' . $coor_array['lat'] .'),2))';
 			}
 
@@ -325,7 +325,7 @@ class Search extends AppModel {
 			// 	$sql.= ' ORDER BY fullrecords.practicename ASC,fullrecords.lastname ASC';
 			// }
 
-			$//sql .= ' Group By fullrecords.address, fullrecords.practicename LIMIT '.$d['start'].' , '.$limit;
+			// $sql .= ' Group By fullrecords.address, fullrecords.practicename LIMIT '.$d['start'].' , '.$limit;
 		}
 
 		
