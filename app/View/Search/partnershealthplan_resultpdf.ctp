@@ -12,7 +12,7 @@
 <li>To be sure you have the latest listing, use our online search. </li>
 </ul>
 <br/>
-<div>Please call 1-855-463-0026 if you need help finding a provider. We can also answer questions about which providers are in the network.
+<div>Please call Member Services if you need help finding a provider. We can also answer questions about which providers are in the network.
 </div>
 </p>
 
