@@ -384,7 +384,7 @@ class Search extends AppModel {
 			$sql .= " AND lastname LIKE '%{$d['lastname']}%'";
 
 		if(isset($d['zipcode']) && $coor_array['lat'] && $coor_array['long'] )
-			$sql .= " OR zip4 LIKE '%{$d['zipcode']}%'";
+			$sql .= " AND zip4 LIKE '%{$d['zipcode']}%'";
 
 		return $sql;
 	}
