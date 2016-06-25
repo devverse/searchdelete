@@ -25,7 +25,7 @@
 	<?php if(isset($srch_filter['start'])){echo "Displaying  ".floor($srch_filter['start']/25+1)." of ".ceil($resultcount/25)." Pages.";} ?>
 	</h3></div>
 
-	<?php if ($req_data['state']!='None'||$req_data['street_address']!=''||$req_data['city']!=''||$req_data['zipcode']!=''){ $state = ($req_data['state']!='None')?$req_data['state']:'';echo 'You searched for providers within '.echo ($req_data['distance'] == 3 ? '1': $req_data['distance']).' miles of <b>'.implode(' ',array($req_data['street_address'],$req_data['city'],$state,$req_data['zip'])).'</b><br/>';}?>
+	<?php if ($req_data['state']!='None'||$req_data['street_address']!=''||$req_data['city']!=''||$req_data['zipcode']!=''){ $state = ($req_data['state']!='None')?$req_data['state']:'';echo 'You searched for providers within '.($req_data['distance'] == 3 ? '1': $req_data['distance']).' miles of <b>'.implode(' ',array($req_data['street_address'],$req_data['city'],$state,$req_data['zip'])).'</b><br/>';}?>
 	<?php if ($req_data['practicename']!=''){echo 'You searched for practices containing the words <b>"'.$req_data['practicename'].'"</b><br/>';}?>
 	<?php if ($req_data['countie_name']!='none'){echo 'You searched for providers around <b>'.$req_data['countie_name'].' county</b><br/>';}?>
 	<?php if($req_data['providertype_name']!='none'){ echo 'Filtered by <b>'.$req_data['providertype_name'].'</b>';}?>
