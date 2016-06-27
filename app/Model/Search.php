@@ -258,6 +258,8 @@ class Search extends AppModel {
 		}
 
 		if($coor_array && $coor_array['lat'] && $coor_array['long']) {
+
+			var_dump($coor_array); exit;
 			$this->query( "set @latitude=".$coor_array['lat'].";",false);
 			$this->query( "set @longitude=".$coor_array['long'].";",false);
 			$this->query( "set @radius=".$distance.";",false);
@@ -274,7 +276,7 @@ class Search extends AppModel {
 			}
 
 			if ($namesearch == true) {
-				//$sql .= " AND firstname LIKE '%{$firstname}%' AND lastname LIKE '%{$lastname}%'";
+				$sql .= " AND firstname LIKE '%{$firstname}%' AND lastname LIKE '%{$lastname}%'";
 			}
 
 			// Old Search Method before $namesearch above
