@@ -349,6 +349,10 @@ class Search extends AppModel {
 		$d = $this->data['Search'];
 		$sql = '';
 
+
+		if(isset($d['gender']) && strtolower($d['gender'])!='none')
+			$sql .= " AND gender = '{$d['gender']}'";
+		
 		if(isset($d['countie_name']) && strtolower($d['countie_name'])!='none')
 			$sql .= " AND county collate latin1_swedish_ci ='{$d['countie_name']}'";
 
@@ -387,10 +391,6 @@ class Search extends AppModel {
 
 		if(isset($d['zipcode']) && $coor_array['lat'] && $coor_array['long'] )
 			$sql .= " AND zip4 LIKE '{$d['zipcode']}%'";
-
-		if(isset($d['gender']) && strtolower($d['gender'])!='none')
-			//$sql .= " AND gender = '{$d['gender']}'";
-			//$sql .= " AND gender collate latin1_swedish_ci ='{$d['gender']}'";
 
 		return $sql;
 	}
