@@ -155,7 +155,6 @@ $(function(){
         <label class="col-sm-2 control-label">Distance </label> 
         <div class="col-sm-6">
         <select id="distance" name="distance" class="form-control">
-         <!--<option value="0">Select a Distance</option>-->
           <option value="3">1 Miles</option>
           <option value="5">5 Miles</option>
           <option value="10">10 Miles</option>
