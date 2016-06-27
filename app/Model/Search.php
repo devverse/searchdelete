@@ -389,7 +389,7 @@ class Search extends AppModel {
 			$sql .= " AND zip4 LIKE '{$d['zipcode']}%'";
 
 		if(isset($d['gender']) && strtolower($d['gender'])!='none')
-			$sql .= " AND gender = '{$d['gender']}'";
+			//$sql .= " AND gender = '{$d['gender']}'";
 			//$sql .= " AND gender collate latin1_swedish_ci ='{$d['gender']}'";
 
 		return $sql;
