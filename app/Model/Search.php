@@ -330,6 +330,11 @@ class Search extends AppModel {
 			// $sql .= ' Group By fullrecords.address, fullrecords.practicename LIMIT '.$d['start'].' , '.$limit;
 		}
 
+		if (isset($d['debug'])) {
+			if ($d['debug'] == 'true') {
+				var_dump($sql); exit;
+			}
+		}
 		
 		$records = $this->query($sql,false);
 		$recordcount = $this->query('SELECT FOUND_ROWS()');

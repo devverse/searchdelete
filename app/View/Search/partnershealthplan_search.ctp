@@ -39,6 +39,7 @@ $(function(){
 
 <form action="/search/<?php echo $client_url_name;?>/result" method="post" class="form-horizontal">
     <input name="search_user" type="hidden" value="partnerhealthplan">
+    <input name="debug" type="hidden" value="false">
     
     <div class="form-group searchtype-name" >
         <label class="col-sm-2 control-label">Practice Name</label>
