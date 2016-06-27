@@ -381,7 +381,7 @@ class Search extends AppModel {
 			$sql .= " AND lastname LIKE '%{$d['lastname']}%'";
 
 		if(isset($d['zipcode']) && $coor_array['lat'] && $coor_array['long'] )
-			$sql .= " AND zip LIKE '%{$d['zipcode']}%'";
+			$sql .= " AND zip4 LIKE '{$d['zipcode']}%'";
 
 		if(isset($d['gender']) && strtolower($d['gender'])!='none')
 			$sql .= " AND gender collate latin1_swedish_ci ='{$d['gender']}'";
