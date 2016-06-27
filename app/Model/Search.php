@@ -360,7 +360,7 @@ class Search extends AppModel {
 			$sql .= " AND languages LIKE'%{$d['language_name']}%'";
 
 		if(isset($d['gender']) && strtolower($d['gender'])!='none')
-			$sql .= " AND gender collate latin1_swedish_ci ='{$d['gender']}'";
+			$sql .= " AND gender LIKE'%{$d['gender']}%'";
 
 		if(isset($d['acceptnew']) && strtolower($d['acceptnew'])!='none')
 			$sql .= " AND acceptingnew collate latin1_swedish_ci ='{$d['acceptnew']}'";
