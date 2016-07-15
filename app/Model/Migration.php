@@ -208,6 +208,11 @@ class Migration extends AppModel {
 		$tmp_db_cmd = $this->_buildMysqlCommandWrapper($tmp_db_cmd,'',false);
 		$stat[] 	= $this->_executeCommandLine($tmp_db_cmd,false);
 
+		//Import Base Schema for client db
+		$tmp_db_cmd = $database.' < ../../languages.sql';
+		$tmp_db_cmd = $this->_buildMysqlCommandWrapper($tmp_db_cmd,'',false);
+		$stat[] 	= $this->_executeCommandLine($tmp_db_cmd,false);
+
 		//Reset indexes back to0
 		$alt_db_cmd = 'ALTER TABLE fullrecords AUTO_INCREMENT=1';
 		$alt_db_cmd = $this->_buildMysqlCommandWrapper($alt_db_cmd,$database);

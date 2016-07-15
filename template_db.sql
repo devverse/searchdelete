@@ -54,7 +54,7 @@ CREATE TABLE IF NOT EXISTS `fullrecords` (
   `suite` varchar(100) NOT NULL,
   `city` varchar(100) NOT NULL,
   `state` varchar(3) NOT NULL,
-  `zip` varchar(5) NOT NULL,
+  `zip` varchar(10) NOT NULL,
   `zip4` varchar(50) NOT NULL,
   `county` varchar(100) NOT NULL,
   `servicearea` varchar(100) NOT NULL,
@@ -102,12 +102,12 @@ CREATE TABLE IF NOT EXISTS `insurances` (
 -- Table structure for table `languages`
 --
 
--- CREATE TABLE IF NOT EXISTS `languages` (
---   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
---   `name` varchar(255) NOT NULL,
---   PRIMARY KEY (`id`),
---   UNIQUE KEY `id` (`id`)
--- ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+CREATE TABLE IF NOT EXISTS `languages` (
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `id` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
