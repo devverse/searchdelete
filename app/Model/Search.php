@@ -268,10 +268,6 @@ class Search extends AppModel {
 
 			$sql .= " (longitude BETWEEN @lng_min and @lng_max) AND (latitude BETWEEN @lat_min and @lat_max) ";
 
-			if(isset($d['zipcode'])) {
-				$sql .= " OR zip LIKE '%{$d['zipcode']}%'";
-			}
-		
 			if ($d['practicename'] != '' && $namesearch == false) {
 				$sql .= " AND (practicename LIKE '%{$practicename}%') ";
 			}
@@ -290,11 +286,6 @@ class Search extends AppModel {
 		} 
 
 		elseif ($d['firstname'] != '' && $d['lastname'] != '') {
-
-
-			if(isset($d['zipcode'])) {
-				$sql .= " OR zip LIKE '%{$d['zipcode']}%'";
-			}
 
 			$sql .= "(firstname LIKE '%{$firstname}%' AND lastname LIKE '%{$lastname}%') ";
 		} 
@@ -358,8 +349,8 @@ class Search extends AppModel {
 		$d = $this->data['Search'];
 		$sql = '';
 
-		// if(isset($d['zipcode']))
-		// 	$sql .= " OR zip LIKE '%{$d['zipcode']}%'";
+		if(isset($d['zipcode']))
+			$sql .= " OR zip LIKE '%{$d['zipcode']}%'";
 
 		if(isset($d['gender']) && strtolower($d['gender'])!='none')
 			$sql .= " AND gender = '{$d['gender']}'";
@@ -371,13 +362,13 @@ class Search extends AppModel {
 		// 	$sql .= " AND lob collate latin1_swedish_ci ='{$d['network_name']}'";
 
 		if(isset($d['specialtie_name']) && strtolower($d['specialtie_name'])!='none')
-			$sql .= " AND specialty ='{$d['specialtie_name']}'";
+			$sql .= " (AND specialty ='{$d['specialtie_name']}') ";
 
 		if(isset($d['providertype_name']) && strtolower($d['providertype_name'])!='none')
 			$sql .= " AND category  ='{$d['providertype_name']}'";
 
 		if(isset($d['language_name']) && strtolower($d['language_name'])!='none')
-			$sql .= " AND languages LIKE'%{$d['language_name']}%'";
+			$sql .= " (AND languages LIKE'%{$d['language_name']}%') ";
 
 		if(isset($d['acceptnew']) && strtolower($d['acceptnew'])!='none')
 			$sql .= " AND acceptingnew collate latin1_swedish_ci ='{$d['acceptnew']}'";
