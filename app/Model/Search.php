@@ -349,8 +349,10 @@ class Search extends AppModel {
 		$d = $this->data['Search'];
 		$sql = '';
 
-		if(isset($d['zipcode']))
-			$sql .= " OR zip LIKE '%{$d['zipcode']}%'";
+		if(isset($d['zipcode'])) {
+			$zip = substr($d['zipcode'], 0, 4);
+			$sql .= " AND zip LIKE '%{$zip}%'";
+		}
 
 		if(isset($d['gender']) && strtolower($d['gender'])!='none')
 			$sql .= " AND gender = '{$d['gender']}'";
