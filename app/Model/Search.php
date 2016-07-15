@@ -330,7 +330,7 @@ class Search extends AppModel {
 		}
 
 		if(isset($d['zipcode']))
-			$sql .= " OR zip = LIKE '%{$d['zipcode']}%'";
+			$sql .= " OR zip LIKE '%{$d['zipcode']}%'";
 		}
 
 		if (isset($d['debug'])) {
