@@ -329,10 +329,6 @@ class Search extends AppModel {
 			// $sql .= ' Group By fullrecords.address, fullrecords.practicename LIMIT '.$d['start'].' , '.$limit;
 		}
 
-		// if(isset($d['zipcode']))
-		// 	$sql .= " OR zip LIKE '%{$d['zipcode']}%'";
-		// }
-
 		if (isset($d['debug'])) {
 			if ($d['debug'] == 'true') {
 				var_dump($sql); exit;
@@ -352,6 +348,8 @@ class Search extends AppModel {
 		$d = $this->data['Search'];
 		$sql = '';
 
+		if(isset($d['zipcode']))
+			$sql .= " OR zip LIKE '%{$d['zipcode']}%'";
 
 		if(isset($d['gender']) && strtolower($d['gender'])!='none')
 			$sql .= " AND gender = '{$d['gender']}'";
@@ -392,8 +390,6 @@ class Search extends AppModel {
 		if(isset($d['lastname']) && strtolower($d['lastname'])!='none' && strtolower($d['lastname'])!='')
 			$sql .= " AND lastname LIKE '%{$d['lastname']}%'";
 
-		if(isset($d['zipcode']))
-			$sql .= " OR zip LIKE '%{$d['zipcode']}%'";
 
 		return $sql;
 	}
