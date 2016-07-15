@@ -329,9 +329,9 @@ class Search extends AppModel {
 			// $sql .= ' Group By fullrecords.address, fullrecords.practicename LIMIT '.$d['start'].' , '.$limit;
 		}
 
-		if(isset($d['zipcode']))
-			$sql .= " OR zip LIKE '%{$d['zipcode']}%'";
-		}
+		// if(isset($d['zipcode']))
+		// 	$sql .= " OR zip LIKE '%{$d['zipcode']}%'";
+		// }
 
 		if (isset($d['debug'])) {
 			if ($d['debug'] == 'true') {
@@ -392,8 +392,8 @@ class Search extends AppModel {
 		if(isset($d['lastname']) && strtolower($d['lastname'])!='none' && strtolower($d['lastname'])!='')
 			$sql .= " AND lastname LIKE '%{$d['lastname']}%'";
 
-		// if(isset($d['zipcode']) && $coor_array['lat'] && $coor_array['long'] )
-		// 	$sql .= " OR zip = LIKE '%{$d['zipcode']}%'";
+		if(isset($d['zipcode']))
+			$sql .= " OR zip LIKE '%{$d['zipcode']}%'";
 
 		return $sql;
 	}
