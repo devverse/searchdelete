@@ -371,10 +371,10 @@ class Search extends AppModel {
 		// 	$sql .= " AND lob collate latin1_swedish_ci ='{$d['network_name']}'";
 
 		if(isset($d['specialtie_name']) && strtolower($d['specialtie_name'])!='none')
-			$sql .= " AND specialty collate latin1_swedish_ci ='{$d['specialtie_name']}'";
+			$sql .= " AND specialty ='{$d['specialtie_name']}'";
 
 		if(isset($d['providertype_name']) && strtolower($d['providertype_name'])!='none')
-			$sql .= " AND category collate latin1_swedish_ci ='{$d['providertype_name']}'";
+			$sql .= " AND category ='{$d['providertype_name']}'";
 
 		if(isset($d['language_name']) && strtolower($d['language_name'])!='none')
 			$sql .= " AND languages LIKE'%{$d['language_name']}%'";
