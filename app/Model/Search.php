@@ -356,7 +356,7 @@ class Search extends AppModel {
 	function _buildAndSql()
 	{
 		$d = $this->data['Search'];
-		$sql = '( ';
+		$sql = '';
 
 		// if(isset($d['zipcode']))
 		// 	$sql .= " OR zip LIKE '%{$d['zipcode']}%'";
@@ -374,7 +374,7 @@ class Search extends AppModel {
 			$sql .= " AND specialty ='{$d['specialtie_name']}'";
 
 		if(isset($d['providertype_name']) && strtolower($d['providertype_name'])!='none')
-			$sql .= " AND category ='{$d['providertype_name']}'";
+			$sql .= " AND category  ='{$d['providertype_name']}'";
 
 		if(isset($d['language_name']) && strtolower($d['language_name'])!='none')
 			$sql .= " AND languages LIKE'%{$d['language_name']}%'";
@@ -400,11 +400,6 @@ class Search extends AppModel {
 		if(isset($d['lastname']) && strtolower($d['lastname'])!='none' && strtolower($d['lastname'])!='')
 			$sql .= " AND lastname LIKE '%{$d['lastname']}%'";
 
-		if (strlen($sql) > 3) {
-			$sql = ' ) ';
-		} else {
-			$sql = "";
-		}
 
 		return $sql;
 	}
