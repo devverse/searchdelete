@@ -267,6 +267,10 @@ class Search extends AppModel {
 			$this->query( "set SQL_BIG_SELECTS=1;",false);
 
 			$sql .= " (longitude BETWEEN @lng_min and @lng_max) AND (latitude BETWEEN @lat_min and @lat_max) ";
+
+			if(isset($d['zipcode'])) {
+				$sql .= " OR zip LIKE '%{$d['zipcode']}%'";
+			}
 		
 			if ($d['practicename'] != '' && $namesearch == false) {
 				$sql .= " AND (practicename LIKE '%{$practicename}%') ";
@@ -286,6 +290,12 @@ class Search extends AppModel {
 		} 
 
 		elseif ($d['firstname'] != '' && $d['lastname'] != '') {
+
+
+			if(isset($d['zipcode'])) {
+				$sql .= " OR zip LIKE '%{$d['zipcode']}%'";
+			}
+
 			$sql .= "(firstname LIKE '%{$firstname}%' AND lastname LIKE '%{$lastname}%') ";
 		} 
 
@@ -348,8 +358,8 @@ class Search extends AppModel {
 		$d = $this->data['Search'];
 		$sql = '';
 
-		if(isset($d['zipcode']))
-			$sql .= " OR zip LIKE '%{$d['zipcode']}%'";
+		// if(isset($d['zipcode']))
+		// 	$sql .= " OR zip LIKE '%{$d['zipcode']}%'";
 
 		if(isset($d['gender']) && strtolower($d['gender'])!='none')
 			$sql .= " AND gender = '{$d['gender']}'";
