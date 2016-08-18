@@ -238,7 +238,6 @@ class Search extends AppModel {
 	{
 		$d = $this->data['Search'];
 
-
 		//SQL_CALC_FOUND_ROWS
 		if($d['practicename'] != ''){
 			$sql = "SELECT SQL_CALC_FOUND_ROWS company, county, lob, provId,category,specialty,practicename,firstname,middlename,lastname,suffix,degree,address,suite,city,state,zip,zip4,county,servicearea,phone,fax,gender,handicap,acceptingnew,acceptsmedicaid,hospaffiliations,languages,officehours,customfield1desc,customfield1ind,customfield2desc,customfield2ind,customfield3desc,customfield3ind,latitude_str,longitude_str,latitude,longitude,id FROM fullrecords WHERE ";
@@ -268,7 +267,7 @@ class Search extends AppModel {
 			$this->query( "set SQL_BIG_SELECTS=1;",false);
 
 			$sql .= " (longitude BETWEEN @lng_min and @lng_max) AND (latitude BETWEEN @lat_min and @lat_max) ";
-		
+
 			if ($d['practicename'] != '' && $namesearch == false) {
 				$sql .= " AND (practicename LIKE '%{$practicename}%') ";
 			}
@@ -287,6 +286,7 @@ class Search extends AppModel {
 		} 
 
 		elseif ($d['firstname'] != '' && $d['lastname'] != '') {
+
 			$sql .= "(firstname LIKE '%{$firstname}%' AND lastname LIKE '%{$lastname}%') ";
 		} 
 
@@ -349,6 +349,10 @@ class Search extends AppModel {
 		$d = $this->data['Search'];
 		$sql = '';
 
+		if(isset($d['zipcode'])) {
+			$zip = substr($d['zipcode'], 0, 4);
+			$sql .= " AND zip LIKE '%{$zip}%'";
+		}
 
 		if(isset($d['gender']) && strtolower($d['gender'])!='none')
 			$sql .= " AND gender = '{$d['gender']}'";
@@ -360,10 +364,10 @@ class Search extends AppModel {
 			$sql .= " AND lob collate latin1_swedish_ci ='{$d['network_name']}'";
 
 		if(isset($d['specialtie_name']) && strtolower($d['specialtie_name'])!='none')
-			$sql .= " AND specialty collate latin1_swedish_ci ='{$d['specialtie_name']}'";
+			$sql .= " AND specialty ='{$d['specialtie_name']}'";
 
 		if(isset($d['providertype_name']) && strtolower($d['providertype_name'])!='none')
-			$sql .= " AND category collate latin1_swedish_ci ='{$d['providertype_name']}'";
+			$sql .= " AND category  ='{$d['providertype_name']}'";
 
 		if(isset($d['language_name']) && strtolower($d['language_name'])!='none')
 			$sql .= " AND languages LIKE'%{$d['language_name']}%'";
@@ -389,8 +393,6 @@ class Search extends AppModel {
 		if(isset($d['lastname']) && strtolower($d['lastname'])!='none' && strtolower($d['lastname'])!='')
 			$sql .= " AND lastname LIKE '%{$d['lastname']}%'";
 
-		if(isset($d['zipcode']) && $coor_array['lat'] && $coor_array['long'] )
-			$sql .= " AND zip4 LIKE '{$d['zipcode']}%'";
 
 		return $sql;
 	}
