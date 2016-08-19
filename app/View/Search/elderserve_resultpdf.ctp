@@ -101,7 +101,3 @@
 </div>
 <img style="width:99%;" src="files/<?php echo $statimgname; ?>.png"/>
 </div>	
-
-<!--<img style="width:75%;" src="img/print5.png"/>-->
-
-<!--<img style="width:200px;" src="http://maps.google.com/maps/api/staticmap?center=40.7536854,-73.9991637&zoom=16&size=500x300&maptype=roadmap&sensor=false&language=&markers=color:red|label:none|40.7536854,-73.9991637"/>-->

@@ -95,6 +95,3 @@
 </div>
 </div>
 </div>	
-
-<img style="width:600px;" src="<?php echo $maplink; ?>">
-
