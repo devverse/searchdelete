@@ -118,4 +118,16 @@ class DATABASE_CONFIG {
 		//'encoding' => 'utf8',
 	);
 
+
+	public $elderserve = array(
+		'datasource' => 'Database/Mysql',
+		'persistent' => false,
+		'host' => 'localhost',
+		'login' => 'root',
+		'password' => 'dBCommand2014$',
+		'database' => 'elderserve_db',
+		'prefix' => '',
+		//'encoding' => 'utf8',
+	);
+
 }//stringidentifier
