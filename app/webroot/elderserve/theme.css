@@ -1,5 +1,6 @@
 /* Partners Styles */
 
+h1, h2, h3 { color: #428bca}
 h1#logo {  width:150px;  height:100px;  display:block;  text-indent:-9999px;  background:url('company-logo.jpg');}
 h1, h2, h3 { color: #blue}
 label.control-label {color:#107d0e }

@@ -1,0 +1,33 @@
+
+h1, h2, h3 { color: #428bca}
+.container {} /* Overwrite bootstrap style */
+.page-header h1 {padding: 0; }
+#providersearch>h2, #providerresults h2,h3,h4 {color: #94420E}
+#providersearch>.form-horizontal{color: #94420E}
+.page-header { border-bottom: 2px solid #94420E !important}
+th>h6 { font-size: 12; margin: 5px 0}
+h2 {  font-size: 21px;}
+h3 {  font-size: 18px;}
+.theme-dropdown .dropdown-menu {  display: block;  position: static;  margin-bottom: 20px;}
+.theme-showcase > p > .btn {  margin: 5px 0;}
+table#searchResults tr td {    vertical-align: top; font-size: 12px !important; padding-bottom: 10px}
+table#searchResults td strong{  color: #359CDA;}
+table#searchResults { font-size: 12px; width: 100%}
+.message {padding-left: 20px}
+.top5 { margin-top:5px; }
+.top7 { margin-top:7px; }
+.top10 { margin-top:10px; }
+.print-btn,.pdf-btn,.email-btn { cursor: pointer}
+.field-error { color: red}
+label.radio { display: block;padding: 5px 0; width: 100%;}
+.btn-default {cursor: pointer}
+
+/* Custom Button Color */
+
+
+.btn-custom { background-color: hsl(18, 86%, 28%) !important; background-repeat: repeat-x; filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#e35011", endColorstr="#842e09"); background-image: -khtml-gradient(linear, left top, left bottom, from(#e35011), to(#842e09)); background-image: -moz-linear-gradient(top, #e35011, #842e09); background-image: -ms-linear-gradient(top, #e35011, #842e09); background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #e35011), color-stop(100%, #842e09)); background-image: -webkit-linear-gradient(top, #e35011, #842e09); background-image: -o-linear-gradient(top, #e35011, #842e09); background-image: linear-gradient(#e35011, #842e09); border-color: #842e09 #842e09 hsl(18, 86%, 23%); color: #fff !important; text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.33); -webkit-font-smoothing: antialiased; }
+
+/* Result Table Styles */
+#searchResults th {      padding: 5px 0 5px 5px;}
+#searchResults td {    padding: 5px;}
+tr:nth-of-type(even) { background-color: #c4c4c4; }

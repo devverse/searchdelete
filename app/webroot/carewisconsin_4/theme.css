@@ -1,10 +1,10 @@
+/* CenterPlan Style - Medicaid SSI*/
 
-h1, h2, h3 { color: #1b2846;}
 .container {} /* Overwrite bootstrap style */
 .page-header h1 {padding: 0; }
-#providersearch>h2, #providerresults h2, h3 {color: #6DC6E7}
-#providersearch>.form-horizontal{color: #6DC6E7}
-.page-header { border-bottom: 2px solid #6DC6E7}
+#providersearch>h2, #providerresults h2, h3 {color: #8C4400}
+#providersearch>.form-horizontal{color: #8C4400}
+.page-header { border-bottom: 2px solid #8C4400}
 th>h6 { font-size: 12; margin: 5px 0}
 h2 {  font-size: 21px;}
 h3 {  font-size: 18px;}
