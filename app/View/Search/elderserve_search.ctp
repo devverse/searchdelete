@@ -6,20 +6,6 @@
 	</div>
 </div>
 
-<p>You will be able to choose Provider Type and Specialty on the next page.<br>Click on one of the other areas to include in your search.</p>
-<form id="radio-search">
-<div class="control-group">
-    <div clas="controls">
-    <div class="radio">
-        <label class="radio"><input type="radio" name="searchtype" value="name">Provider Name</label>
-        <label class="radio"><input type="radio" name="searchtype" value="location">Address, City, ZIP</label>
-        <label class="radio"><input type="radio" name="searchtype" value="county">Provider Serving a Specific County</label>
-    </div>
-    </div>
-</div>
-</form>
-
-
 <script type="text/javascript">
 $(function(){
     var current_search = 'none';

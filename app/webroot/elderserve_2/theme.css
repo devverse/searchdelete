@@ -1,0 +1,33 @@
+/* CenterPlan Style - Medicaid SSI*/
+
+.container {} /* Overwrite bootstrap style */
+.page-header h1 {padding: 0; }
+#providersearch>h2, #providerresults h2, h3 {color: #6DC6E7}
+#providersearch>.form-horizontal{color: #6DC6E7}
+.page-header { border-bottom: 2px solid #6DC6E7}
+th>h6 { font-size: 12; margin: 5px 0}
+h2 {  font-size: 21px;}
+h3 {  font-size: 18px;}
+.theme-dropdown .dropdown-menu {  display: block;  position: static;  margin-bottom: 20px;}
+.theme-showcase > p > .btn {  margin: 5px 0;}
+table#searchResults tr td {    vertical-align: top; font-size: 12px !important; padding-bottom: 10px}
+table#searchResults td strong{  color: #359CDA;}
+table#searchResults { font-size: 12px; width: 100%}
+.message {padding-left: 20px}
+.top5 { margin-top:5px; }
+.top7 { margin-top:7px; }
+.top10 { margin-top:10px; }
+.print-btn,.pdf-btn,.email-btn { cursor: pointer}
+.field-error { color: red}
+label.radio { display: block;padding: 5px 0; width: 100%;}
+.btn-default {cursor: pointer}
+
+
+/* Custom Button Color */
+
+.btn-custom { background-color: hsl(191, 71%, 36%) !important; background-repeat: repeat-x; filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#3fc1de", endColorstr="#1a859c"); background-image: -khtml-gradient(linear, left top, left bottom, from(#3fc1de), to(#1a859c)); background-image: -moz-linear-gradient(top, #3fc1de, #1a859c); background-image: -ms-linear-gradient(top, #3fc1de, #1a859c); background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #3fc1de), color-stop(100%, #1a859c)); background-image: -webkit-linear-gradient(top, #3fc1de, #1a859c); background-image: -o-linear-gradient(top, #3fc1de, #1a859c); background-image: linear-gradient(#3fc1de, #1a859c); border-color: #1a859c #1a859c hsl(191, 71%, 31%); color: #fff !important; text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.33); -webkit-font-smoothing: antialiased; }
+
+/* Result Table Styles */
+#searchResults th {      padding: 5px 0 5px 5px;}
+#searchResults td {    padding: 5px;}
+tr:nth-of-type(even) { background-color: #c4c4c4; }
