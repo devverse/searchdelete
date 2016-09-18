@@ -1,16 +1,39 @@
-<?php echo $this->Session->flash(); ?>
+<!-- File: /app/View/Search/search1.ctp -->
+
 <div class="container" id="providersearch"> <!--container -->
-<div class="row">
-	<div class="col-md-12">
-	
-	<h2><span class="glyphicon glyphicon-search"></span> Search Form
-	</div>
+<h2><span class="glyphicon glyphicon-search"></span> Search Form <?php echo($network_name!='')?'- '.$network_name:'';?></h2>
+<p>You will be able to choose Provider Type and Specialty on the next page.<br>Click on one of the other areas to include in your search.</p>
+<form id="radio-search">
+<div class="control-group">
+    <div clas="controls">
+    <div class="radio">
+        <label class="radio"><input type="radio" name="searchtype" value="name">Provider Name</label>
+        <label class="radio"><input type="radio" name="searchtype" value="location">Address, City, ZIP</label>
+        <label class="radio"><input type="radio" name="searchtype" value="county">Provider Serving a Specific County</label>
+    </div>
+    </div>
 </div>
-
-
+</form>
 <script type="text/javascript">
 $(function(){
     var current_search = 'none';
+    $('#radio-search')[0].reset();
+    $('#radio-search').on('change','input',function()
+        {
+             var inputValue = $(this).val();
+             current_search = inputValue;
+             $('.searchtype-location').hide();
+             $('.searchtype-county').hide();
+             $('.searchtype-name').hide();
+
+             $('#pracitcename').val('');
+             $('.searchtype-county select[name=countie_name]').val('none');
+             $('.searchtype-location input[type=text]').val('');
+             $('.searchtype-location select[name=state]').val('None');
+
+             $('.'+'searchtype-'+inputValue).show();
+             $('.filter-by').css('display','block');
+        });
         $('form').on('click','#singlebutton',function()
         {
             var flashmsg = false;
@@ -19,7 +42,7 @@ $(function(){
            
             if(current_search=='location'&& $('input[name=street_address]').val()==''&& $('input[name=city]').val()==''&& $('input[name=zipcode]').val()=='')
                 flashmsg = 'Please type in an address , city , zipcode.'
-     
+       
             if(current_search=='location'&& $('input[name=street_address]').val()!=''&& ($('input[name=city]').val()==''&& $('input[name=zipcode]').val()==''))
                 flashmsg = 'Please type in an city or zipcode.'            
 
@@ -38,42 +61,23 @@ $(function(){
 </script>
 
 <form action="/search/<?php echo $client_url_name;?>/result" method="post" class="form-horizontal">
-    <input name="search_user" type="hidden" value="elderserve">
-    <input name="debug" type="hidden" value="false">
-    
-    <div class="form-group searchtype-name" >
-        <label class="col-sm-2 control-label">Practice Name</label>
+
+    <input type="hidden" name="network_name" value="<?=$network_name?>"/>
+
+    <div class="form-group searchtype-name" style="display:none">
+        <label class="col-sm-2 control-label">Provider Name</label>
         <!--IF typed delete practice name-->
         <div class="col-sm-6">
         <input id="pracitcename" value="" name="practicename" placeholder="Practice Name" type="text" class="form-control">
         </div>
     </div>
-    <div class="form-group searchtype-name" >
-        <label class="col-sm-2 control-label">Provider Name</label>
-        <!--IF typed delete practice name-->
-        <div>
-        <div class="col-sm-3">
-            <input id="firstname" value="" name="firstname" placeholder="First Name" type="text" class="form-control">
-        </div>
-        <div class="col-sm-1">
-            <div style="margin-top:5px">AND</div>
-        </div>
-        <div class="col-sm-3">
-            <input id="lastname" value="" name="lastname" placeholder="Last Name" type="text" class="form-control">
-        </div>
-        </div>
-    </div>
 
+<div class="searchtype-location" style="display:none"><!--Beginingof Adresses-->
     <div class="form-group">
-     <div class="col-sm-offset-2 col-sm-10">--- or ---</div>
-</div>
-
-<div class="searchtype-location" ><!--Beginingof Adresses-->
-    <div class="form-group">
-      <label class="col-sm-2 control-label">Address</label>
-      <div class="col-sm-8">
-      <input value="" name="street_address" placeholder="Address" type="text" class="form-control">
-      </div>
+        <label class="col-sm-2 control-label">Address</label>
+        <div class="col-sm-8">
+        <input value="" name="street_address" placeholder="Address" type="text" class="form-control">
+        </div>
     </div>
     
     
@@ -144,7 +148,7 @@ $(function(){
 
     </div>
     <div class="col-sm-1">
-    <label class="control-label"><span class="field-error">*</span> ZIP</label>
+    <label class="control-label">ZIP</label>
     </div>
     <div class="col-sm-2">
     <input id="zipcode" name="zipcode" placeholder="Zip Code" type="text" value="" class="form-control">
@@ -156,6 +160,7 @@ $(function(){
         <label class="col-sm-2 control-label">Distance </label> 
         <div class="col-sm-6">
         <select id="distance" name="distance" class="form-control">
+         <!--<option value="0">Select a Distance</option>-->
           <option value="1">1 Miles</option>
           <option value="5">5 Miles</option>
           <option value="10">10 Miles</option>
@@ -170,28 +175,25 @@ $(function(){
     </div>
 </div><!--End of Addresses-->
 
-    <div class="form-group" >
-     <div class="col-sm-offset-2 col-sm-10">--- or ---</div>
-    </div>
-
-    <div class="form-group searchtype-county" >
+    <div class="form-group searchtype-county" style="display:none">
     <label class="col-sm-2 control-label"><span class="field-error">*</span> Counties of Service</label>
     <div class="col-sm-8">
         <select  name="countie_name" class="form-control">
         <option value="none">All Counties</option>
-    <option value="Bronx"> Bronx </option>
-    <option value="Kings"> Kings </option>
-    <option value="Nassau"> Nassau </option>
-    <option value="New York"> New York </option>
-    <option value="Queens"> Queens </option>
-    <option value="Rockland"> Rockland </option>
-    <option value="Richmond"> Richmond </option> 
-    <option value="Suffolk"> Suffolk </option>
-    <option value="Westchester"> Westchester </option>    
-</select>
+        <?php foreach($counties as $countie){ 
+             if($countie['Countie']['name']=='')
+              continue;
+        ?>
+        <option value="<?php echo $countie['Countie']['name'];?>"><?php echo $countie['Countie']['name'];?></option>
+        <?php } ?>
+    </select>
     <span class="field-error"><?php echo $this->Session->flash('countie_name') ; ?></span>
     </div>
 
+    </div>
+
+    <div class="form-group" style="display:none">
+     <div class="col-sm-offset-2 col-sm-10">--- or ---</div>
     </div>
 
     <div class="form-group" style="display:none">
@@ -200,7 +202,34 @@ $(function(){
     </div>
     </div>
 
-    <div class="filter-by" ><!--filter by-->
+     <!--JS to sub categorize specialites to provider specialties-->
+    <script type="text/javascript">
+        $(function(){
+            $('.filter-by').on('change','select[name=providertype_name]',function()
+                {
+                    var parentid = $(this).find('option:selected').attr("data-id");
+
+                    $('.filter-by select[name=specialtie_name] .wrap option').unwrap().show().removeAttr("disabled");
+                    $('.filter-by select[name=specialtie_name]').val('none');
+
+                    if(parentid == undefined)
+                    {
+                        $('.filter-by select[name=specialtie_name] option').show().removeAttr("disabled");
+                        $('.filter-by select[name=specialtie_name] option[value=none]').show().removeAttr("disabled");
+                    }
+                    else
+                    {
+                        $('.filter-by select[name=specialtie_name] option[data-parent!='+parentid+']').wrap('<span class="wrap">').hide().attr('disabled','disabled');;
+                        $('.filter-by select[name=specialtie_name] option[value=none]').unwrap().show().removeAttr("disabled");
+                    }
+                    $('.filter-by select[name=specialtie_name]').val('none');
+
+                   
+                });
+        });
+    </script>
+
+<div class="filter-by" style="display:none"><!--filter by-->
     <div class="form-group">
      <div class="col-sm-offset-2 col-sm-10">Filter By:</div>
     </div>
@@ -210,8 +239,11 @@ $(function(){
     <div class="col-sm-6">
     <select name="providertype_name" class="form-control">
             <option value="none">- All Provider Types -</option>
+        <?php $parent_id_array = array();?>
         <?php foreach($providertypes as $providertype){ 
-            
+            if(isset($providertype['Providertype']['lob']) && $providertype['Providertype']['lob']!=$network_name)
+              continue;
+            $parent_id_array[]=$providertype['Providertype']['id'];
             ?>
             <option data-id="<?php echo $providertype['Providertype']['id']; ?>" value="<?php echo $providertype['Providertype']['name'];?>"><?php echo $providertype['Providertype']['name'];?></option>
         <?php } ?>
@@ -226,7 +258,7 @@ $(function(){
         <select name="specialtie_name" class="form-control">
         <option value="none">- All Specialties -</option>
         <?php foreach($specialties as $specialty){
-            if($specialty['Specialtie']['name']=='')
+            if($specialty['Specialtie']['name']==''|| !in_array($specialty['Specialtie']['parent_id'], $parent_id_array))
               continue;
             ?>
             <option data-parent="<?php echo $specialty['Specialtie']['parent_id']; ?>" value="<?php echo $specialty['Specialtie']['name'];?>"><?php echo $specialty['Specialtie']['name'];?></option>
@@ -236,7 +268,7 @@ $(function(){
         </div>
     </div>
 
-    <div class="form-group" >
+    <div class="form-group" style="display:none">
     <label class="col-sm-2 control-label">Language</label>
     <div class="col-sm-8">
     <select id="lauguage" name="language_name" class="form-control">
@@ -249,7 +281,7 @@ $(function(){
     </div>
     </div>
 
-    <div class="form-group">
+    <div class="form-group"  style="display:None">
     <label class="col-sm-2 control-label">Gender</label>
     <div class="col-sm-8">
     <select id="gender" name="gender" class="form-control">
@@ -260,7 +292,7 @@ $(function(){
     </div>
     </div>
 
-<!--     <div class="form-group"  >
+    <div class="form-group"  style="display:None">
     <label class="col-sm-2 control-label">Accepts New</label>
     <div class="col-sm-8">
     <select id="acceptnew" name="acceptnew" class="form-control">
@@ -269,9 +301,9 @@ $(function(){
       <option value="N">N</option>
     </select>
     </div>
-    </div> -->
-<!-- 
-    <div class="form-group"  >
+    </div>
+
+    <div class="form-group"  style="display:None">
     <label class="col-sm-2 control-label">Accepts Medicare</label>
     <div class="col-sm-8">
     <select id="acceptmediarestate" name="acceptmedicare" class="form-control">
@@ -280,9 +312,10 @@ $(function(){
       <option value="N">N</option>
     </select>
     </div>
-    </div> -->
+    </div>
 
-<!--     <div class="form-group">
+
+    <div class="form-group" style="display:None">
     <label class="col-sm-2 control-label">Handicap Accessible</label>
     <div class="col-sm-8">
     <select id="handicapaccess" name="handicapaccess" class="form-control">
@@ -291,9 +324,9 @@ $(function(){
       <option value="N">N</option>
     </select>
     </div>
-    </div> -->
+    </div>
 
-<!--     <div class="form-group">
+    <div class="form-group" style="display:none">
     <label class="col-sm-2 control-label">Insurances</label>
     <div class="col-sm-8">
     <select id="specialty" name="insurance_name" class="form-control">
@@ -304,25 +337,28 @@ $(function(){
         </select>
     <span class="field-error"><?php echo $this->Session->flash('insurance_name') ; ?></span>
     </div>
-    </div> -->
+    </div>
     
-    <!--  <div class="form-group">
+      <div class="form-group" style="display:none">
     <label class="col-sm-2 control-label">First Name</label>
     <div class="col-sm-6">
     <input value=""  name="firstname" placeholder="firstname" type="text" class="form-control">
     </div>
     </div>
-    <div class="form-group">
+    <div class="form-group" style="display:none">
     <label class="col-sm-2 control-label">Last Name</label>
     <div class="col-sm-6">
     <input value=""  name="lastname" placeholder="lastname" type="text" class="form-control">
     </div>
     
     </div>
-    -->
-    <div class="col-sm-offset-2"><span class="field-error">*</span> Required Fields</p>
+    <div class="form-group" style="display:none">
+     <div class="col-sm-offset-2 col-sm-10">--- or ---</div>
+</div>
 
-    <button id="singlebutton" type="submit" class="btn btn-primary btn-lg btn-custom">Search Provider</button>
+<div class="col-sm-offset-2"><span class="field-error">*</span> Required Fields</p>
+
+    <button id="singlebutton" type="submit" class="btn btn-default btn-custom">Search Provider</button>
 <br/>
 <br/>
 <div id="flash-msg"><!--Error Message Section-->
