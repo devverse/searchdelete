@@ -2,10 +2,22 @@
 <div class="container" id="providersearch"> <!--container -->
 <div class="row">
 	<div class="col-md-12">
-	
 	<h2><span class="glyphicon glyphicon-search"></span> Search Form <?php echo($network_name!='')?'- '.$network_name:'';?></h2>
 	</div>
 </div>
+
+<p>You will be able to choose Provider Type and Specialty on the next page.<br>Click on one of the other areas to include in your search.</p>
+<form id="radio-search">
+<div class="control-group">
+    <div clas="controls">
+    <div class="radio">
+        <label class="radio"><input type="radio" name="searchtype" value="name">Provider Name</label>
+        <label class="radio"><input type="radio" name="searchtype" value="location">Address, City, ZIP</label>
+        <label class="radio"><input type="radio" name="searchtype" value="county">Provider Serving a Specific County</label>
+    </div>
+    </div>
+</div>
+</form>
 
 
 <script type="text/javascript">
