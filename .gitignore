@@ -4,3 +4,5 @@ app/Config/database.php
 app/tmp/cache/*
 app/tmp/*
 app/webroot/files/*
+phpMyAdmin/
+phpMyAdmin/*
