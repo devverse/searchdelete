@@ -1,5 +1,8 @@
 <?php
 
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
+
 class Search extends AppModel {
 	public $useTable = false;
 	public $limit = false;
@@ -247,6 +250,10 @@ class Search extends AppModel {
 
 		$distance = ($d['distance_c'] != '')? $d['distance_c'] : $d['distance'];
 
+		if ($distance == 1) {
+			$distance = 2.5;
+		}
+
 		$practicename = $d['practicename'];
 		$namesearch = false;
 
@@ -350,7 +357,8 @@ class Search extends AppModel {
 		$sql = '';
 
 		if(isset($d['zipcode'])) {
-			$zip = substr($d['zipcode'], 0, 4);
+			$zip = $d['zipcode'];
+
 			$sql .= " AND zip LIKE '%{$zip}%'";
 		}
 
