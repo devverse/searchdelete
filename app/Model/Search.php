@@ -356,6 +356,11 @@ class Search extends AppModel {
 		$d = $this->data['Search'];
 		$sql = '';
 
+		if(isset($d['zipcode'])) {
+			$zip = $d['zipcode'];
+			$sql .= " AND zip LIKE '%{$zip}%'";
+		}
+
 		if(isset($d['gender']) && strtolower($d['gender'])!='none')
 			$sql .= " AND gender = '{$d['gender']}'";
 		
@@ -395,10 +400,6 @@ class Search extends AppModel {
 		if(isset($d['lastname']) && strtolower($d['lastname'])!='none' && strtolower($d['lastname'])!='')
 			$sql .= " AND lastname LIKE '%{$d['lastname']}%'";
 
-		if(isset($d['zipcode'])) {
-			$zip = $d['zipcode'];
-			$sql .= " AND zip LIKE '%{$zip}%'";
-		}
 
 		return $sql;
 	}
