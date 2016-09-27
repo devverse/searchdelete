@@ -358,7 +358,6 @@ class Search extends AppModel {
 
 		if(isset($d['zipcode'])) {
 			$zip = $d['zipcode'];
-
 			$sql .= " AND zip LIKE '%{$zip}%'";
 		}
 
