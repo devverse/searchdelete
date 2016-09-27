@@ -79,6 +79,10 @@
 				}
 			?>
 		</div>
+		<div class="phone"> NPI #: <?php echo $result['provId'];?></div>
+		<div class="location-wheelchair">
+			<?php echo $ploc['wheelchair_accessible'] == '1'?'* Wheel Chair Accesible':''; ?>
+		</div>
 	</td>
 	<td>
 		<?php foreach($result['locations'] as $ploc){ ?>
@@ -116,7 +120,7 @@
 			<div>
 		<?php } ?>
 		
-	<?php 
+			<?php 
 			if ($result['hospaffiliations']) {
 				echo "{$result['hospaffiliations']}";
 			}
