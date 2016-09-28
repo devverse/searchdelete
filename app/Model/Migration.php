@@ -208,11 +208,6 @@ class Migration extends AppModel {
 		$tmp_db_cmd = $this->_buildMysqlCommandWrapper($tmp_db_cmd,'',false);
 		$stat[] 	= $this->_executeCommandLine($tmp_db_cmd,false);
 
-		//Import Base Schema for client db
-		$tmp_db_cmd = $database.' < ../../languages.sql';
-		$tmp_db_cmd = $this->_buildMysqlCommandWrapper($tmp_db_cmd,'',false);
-		$stat[] 	= $this->_executeCommandLine($tmp_db_cmd,false);
-
 		//Reset indexes back to0
 		$alt_db_cmd = 'ALTER TABLE fullrecords AUTO_INCREMENT=1';
 		$alt_db_cmd = $this->_buildMysqlCommandWrapper($alt_db_cmd,$database);
@@ -350,10 +345,10 @@ var_dump($i);
 					$tbl = 'locations_counties';
 					$fld = 'countie_id';
 					break;
-				case 'languages':
-					$tbl = 'locations_languages';
-					$fld = 'language_id';
-					break;
+				// case 'languages':
+				// 	$tbl = 'locations_languages';
+				// 	$fld = 'language_id';
+				// 	break;
 				case 'specialties':
 					$tbl = 'locationsd_specialties';
 					$fld = 'specialtie_id';
@@ -400,10 +395,10 @@ var_dump($i);
 					$tbl = 'providers_counties';
 					$fld = 'countie_id';
 					break;
-				case 'languages':
-					$tbl = 'providers_languages';
-					$fld = 'language_id';
-					break;
+				// case 'languages':
+				// 	$tbl = 'providers_languages';
+				// 	$fld = 'language_id';
+				// 	break;
 				case 'specialties':
 					$tbl = 'providers_specialties';
 					$fld = 'specialtie_id';
@@ -520,13 +515,7 @@ var_dump($i);
 					'cstm_desc_2'=>$record_array['customfield2desc'],
 					'cstm_ind_2'=>$record_array['customfield2ind'],
 					'cstm_desc_3'=>$record_array['customfield3desc'],
-					'cstm_ind_3'=>$record_array['customfield3ind'],
-					'tty'=>$record_array['tty'],
-					'specialexperince'=>$record_array['specialexperince'],
-					'adacapabilities'=>$record_array['adacapabilities'],
-					'certifications'=>$record_array['certifications'],
-					'culturalcompetancy'=>$record_array['culturalcompetancy'],
-					'publictransavailable'=>$record_array['publictransavailable']
+					'cstm_ind_3'=>$record_array['customfield3ind']
 					);
 		$data = $location_m->find('first',array('conditions'=>array('AND'=>array('name'=>($record_array['practicename']!='')?$record_array['practicename']:'none','zipcode'=>$record_array['zip'],'address1'=>$record_array['address'],'state'=>$record_array['state'],'city'=>$record_array['city']))));
 		if(!isset($data['Location']['id']))

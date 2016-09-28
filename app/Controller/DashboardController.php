@@ -145,15 +145,15 @@ class DashboardController extends AppController {
 					copy($upload_array['file']['tmp_name'], $file_path);
 
 					// Delete existing records
-					$this->Migration->truncateTable();
+					//$this->Migration->truncateTable();
 
 					//import action
 					$resp = $this->Migration->import($file_path);
 
 					// rm zip provider txt and folder
-					unlink($file_path);
-					unlink('../webroot/files/'.$this->Migration->client_info['Client']['name'].'/providers.txt');
-					rmdir('../webroot/files/'.$this->Migration->client_info['Client']['name']);
+					//unlink($file_path);
+					//unlink('../webroot/files/'.$this->Migration->client_info['Client']['name'].'/providers.txt');
+					//rmdir('../webroot/files/'.$this->Migration->client_info['Client']['name']);
 
 				} catch (Exception $e) {
 					$resp = array('status'=>false,'response'=>'Something went wrong migrating db. Contact the web administrator');
