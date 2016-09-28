@@ -30,6 +30,9 @@ class Migration extends AppModel {
 		$this->_unzipFile($file_path);
 		$resp = $this->_checkData();
 
+
+		var_dump($resp); exit;
+
 		if($resp['status'])
 			$resp = $this->_importToMysql();
 
@@ -212,9 +215,6 @@ class Migration extends AppModel {
 		$alt_db_cmd = 'ALTER TABLE fullrecords AUTO_INCREMENT=1';
 		$alt_db_cmd = $this->_buildMysqlCommandWrapper($alt_db_cmd,$database);
 		$stat[] 	= $this->_executeCommandLine($alt_db_cmd);
-
-
-		var_dump($stat); exit;
 
 		foreach($stat as $v)
 		{
