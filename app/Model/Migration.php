@@ -213,6 +213,9 @@ class Migration extends AppModel {
 		$alt_db_cmd = $this->_buildMysqlCommandWrapper($alt_db_cmd,$database);
 		$stat[] 	= $this->_executeCommandLine($alt_db_cmd);
 
+
+		var_dump($stat); exit;
+
 		foreach($stat as $v)
 		{
 			if(!$v['status'])
