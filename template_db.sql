@@ -39,12 +39,6 @@ CREATE TABLE IF NOT EXISTS `counties` (
 --
 
 CREATE TABLE IF NOT EXISTS `fullrecords` (
-  `tty` varchar(30) NOT NULL,
-  `specialexperince` text NOT NULL,
-  `adacapabilities` text NOT NULL,
-  `certifications` varchar(150) NOT NULL,
-  `culturalcompetancy` varchar(2) NOT NULL,
-  `publictransavailable` varchar(100) NOT NULL,
   `company` varchar(100) NOT NULL,
   `lob` varchar(100) NOT NULL,
   `provId` varchar(100) NOT NULL,
@@ -74,6 +68,12 @@ CREATE TABLE IF NOT EXISTS `fullrecords` (
   `hospaffiliations` varchar(100) NOT NULL,
   `languages` text NOT NULL,
   `officehours` varchar(100) NOT NULL,
+  `tty` varchar(30) NOT NULL,
+  `specialexperince` text NOT NULL,
+  `adacapabilities` text NOT NULL,
+  `certifications` varchar(150) NOT NULL,
+  `culturalcompetancy` varchar(2) NOT NULL,
+  `publictransavailable` varchar(2) NOT NULL,
   `customfield1desc` varchar(30) NOT NULL,
   `customfield1ind` text NOT NULL,
   `customfield2desc` varchar(30) NOT NULL,
