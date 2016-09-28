@@ -30,9 +30,6 @@ class Migration extends AppModel {
 		$this->_unzipFile($file_path);
 		$resp = $this->_checkData();
 
-
-		var_dump($resp); exit;
-
 		if($resp['status'])
 			$resp = $this->_importToMysql();
 
