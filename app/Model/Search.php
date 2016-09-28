@@ -13,7 +13,7 @@ class Search extends AppModel {
 	                'allowEmpty' => true,
             	)
 			),
-			'specialexperince'=>array(
+			'specialexperience'=>array(
 				'Must be Alpha Numeric Character' => array(
 	                'rule'     => array('custom', '/^[a-z0-9 ]*$/i'),
 	                'allowEmpty' => true,
@@ -32,6 +32,12 @@ class Search extends AppModel {
             	)
 			),
 			'publictransavailable'=>array(
+				'Must be Alpha Numeric Character' => array(
+	                'rule'     => array('custom', '/^[a-z0-9 ]*$/i'),
+	                'allowEmpty' => true,
+            	)
+			),
+			'certifications'=>array(
 				'Must be Alpha Numeric Character' => array(
 	                'rule'     => array('custom', '/^[a-z0-9 ]*$/i'),
 	                'allowEmpty' => true,

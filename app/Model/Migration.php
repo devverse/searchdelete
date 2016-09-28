@@ -102,7 +102,7 @@ class Migration extends AppModel {
 	{
 		$field_array = $this->_convertToArray($tab_del_v_fields);
 
-		$this->array_needed = array('company','lob','provid','category','specialty','practicename','firstname','middlename','lastname','suffix','degree','address','suite','city','state','zip','zip4','county','servicearea','phone','fax','gender','handicap','acceptingnew','acceptsmedicare','acceptsmedicaid','hospaffiliations','languages','officehours','customfield1desc','customfield1ind','customfield2desc','customfield2ind','customfield3desc','customfield3ind','latitude','longitude');
+		$this->array_needed = array('company','lob','provid','category','specialty','practicename','firstname','middlename','lastname','suffix','degree','address','suite','city','state','zip','zip4','county','servicearea','phone','fax','gender','handicap','acceptingnew','acceptsmedicare','acceptsmedicaid','hospaffiliations','languages','officehours','customfield1desc','customfield1ind','customfield2desc','customfield2ind','customfield3desc','customfield3ind','latitude','longitude', 'tty', 'specialexperience', 'adacapabilities', 'certifications', 'culturalcompetancy', 'publictransavailable');
 		$ret_arr = array_diff($field_array,$this->array_needed);
 
 		if(count($ret_arr) !=0)
