@@ -7,42 +7,6 @@ class Search extends AppModel {
 	public $useTable = false;
 	public $limit = false;
 	public $validate = array(
-			'tty'=>array(
-				'Must be Alpha Numeric Character' => array(
-	                'rule'     => array('custom', '/^[a-z0-9 ]*$/i'),
-	                'allowEmpty' => true,
-            	)
-			),
-			'specialexperience'=>array(
-				'Must be Alpha Numeric Character' => array(
-	                'rule'     => array('custom', '/^[a-z0-9 ]*$/i'),
-	                'allowEmpty' => true,
-            	)
-			),
-			'adacapabilities'=>array(
-				'Must be Alpha Numeric Character' => array(
-	                'rule'     => array('custom', '/^[a-z0-9 ]*$/i'),
-	                'allowEmpty' => true,
-            	)
-			),
-			'culturalcompetancy'=>array(
-				'Must be Alpha Numeric Character' => array(
-	                'rule'     => array('custom', '/^[a-z0-9 ]*$/i'),
-	                'allowEmpty' => true,
-            	)
-			),
-			'publictransavailable'=>array(
-				'Must be Alpha Numeric Character' => array(
-	                'rule'     => array('custom', '/^[a-z0-9 ]*$/i'),
-	                'allowEmpty' => true,
-            	)
-			),
-			'certifications'=>array(
-				'Must be Alpha Numeric Character' => array(
-	                'rule'     => array('custom', '/^[a-z0-9 ]*$/i'),
-	                'allowEmpty' => true,
-            	)
-			),
 			'street_address'=>array(
 				'Must be Alpha Numeric Character' => array(
 	                'rule'     => array('custom', '/^[a-z0-9 ]*$/i'),
