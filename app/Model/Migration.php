@@ -227,7 +227,7 @@ class Migration extends AppModel {
 		if(!$database || $file_path == '')
 			return $this->formResp(false,'Bad Database or filepath during _importDataFromFile');
 
-		$imp_db_cmd = "LOAD DATA LOCAL INFILE '{$file_path}' INTO TABLE fullrecords FIELDS ENCLOSED BY '\"' IGNORE 2 LINES";
+		$imp_db_cmd = "LOAD DATA LOCAL INFILE '{$file_path}' INTO TABLE fullrecords IGNORE 2 LINES";
 		$imp_db_cmd = $this->_buildMysqlCommandWrapper($imp_db_cmd,$database);
 		$stat 		= $this->_executeCommandLine($imp_db_cmd,false);
 
