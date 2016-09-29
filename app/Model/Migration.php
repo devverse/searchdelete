@@ -231,9 +231,6 @@ class Migration extends AppModel {
 		$imp_db_cmd = $this->_buildMysqlCommandWrapper($imp_db_cmd,$database);
 		$stat 		= $this->_executeCommandLine($imp_db_cmd,false);
 
-
-		var_dump($stat); exit;
-
 		return $stat;
 	}
 
