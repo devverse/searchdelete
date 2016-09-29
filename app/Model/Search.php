@@ -394,7 +394,7 @@ class Search extends AppModel {
 
 		if(isset($d['zipcode'])) {
 			$zip = $d['zipcode'];
-			$sql .= " AND zip LIKE '%{$zip}%'";
+			//$sql .= " AND zip LIKE '%{$zip}%'";
 		}
 
 		if(isset($d['gender']) && strtolower($d['gender'])!='none')
