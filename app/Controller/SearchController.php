@@ -60,9 +60,9 @@ class SearchController extends AppController {
 			$this_network_name = 'Partnership';
 
 		if($ntwk_ind == 3 && $client['Client']['name'] == 'elderserve')
-			$this_network_name = 'ISNP, FIDA';
+			$this_network_name = 'ISNP';
 		if($ntwk_ind == 1 && $client['Client']['name'] == 'elderserve')
-			$this_network_name = 'FIDA, MLTC';
+			$this_network_name = 'MLTC';
 		if($ntwk_ind == 2 && $client['Client']['name'] == 'elderserve')
 			$this_network_name = 'FIDA';
 		
