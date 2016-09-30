@@ -54,7 +54,7 @@ CREATE TABLE IF NOT EXISTS `fullrecords` (
   `suite` varchar(100) NOT NULL,
   `city` varchar(100) NOT NULL,
   `state` varchar(3) NOT NULL,
-  `zip` int(6) NOT NULL,
+  `zip` varchar(10) NOT NULL,
   `zip4` varchar(50) NOT NULL,
   `county` varchar(100) NOT NULL,
   `servicearea` varchar(100) NOT NULL,
