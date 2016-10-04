@@ -58,6 +58,8 @@ class SearchController extends AppController {
 			$this_network_name = 'Family Care';
 		if($ntwk_ind == 2 && $client['Client']['name'] == 'carewisconsin')
 			$this_network_name = 'Partnership';
+		if($ntwk_ind == 4 && $client['Client']['name'] == 'carewisconsin')
+			$this_network_name = 'Medicare Dual Advantage';
 
 		if($ntwk_ind == 3 && $client['Client']['name'] == 'elderserve')
 			$this_network_name = 'ISNP';
