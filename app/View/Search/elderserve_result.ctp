@@ -76,7 +76,7 @@
 	<td width="100">
 		<div>
 			<div><?php echo "Phone: {$result['phone']}";?></div>
-			<!--<div><?php echo "Office Hours: {$result['officehours']}";?></div>-->
+			div><?php echo "Office Hours: {$result['officehours']}";?></div>
 			<div><?php 
 				if ($result['languages']) {
 					echo "Languages: {$result['languages']}";
@@ -88,6 +88,47 @@
 	</td>
 	<td width="100">
 		<div>	
+			<div>NPI #: <?php $result['provId'];?> </div>
+
+			<div>
+			<?php 
+			if ($result['customfield1ind']) {
+				echo "{$result['customfield1desc']}:{$result['customfield1ind']}";
+			}
+			?>
+			</div>
+
+			<div>
+			<?php 
+			if ($result['customfield2ind']) {
+				echo "{$result['customfield2desc']}:{$result['customfield2ind']}";
+			}
+			?>
+			</div>
+
+			<div>
+			<?php 
+			if ($result['specialexperince']) {
+				echo "Special Experience: {$result['specialexperince']}";
+			}
+			?>
+			</div>
+
+			<div>
+			<?php 
+			if ($result['publictransavailable']) {
+				echo "Public Transportation Available: {$result['publictransavailable']}";
+			}
+			?>
+			</div>
+			<div>
+			<?php 
+			if ($result['certifications']) {
+				echo "Board Certified";
+			}
+			?>
+			</div>
+
 			<div>
 			<?php 
 			if ($result['hospaffiliations']) {
@@ -96,9 +137,8 @@
 			?>
 			</div>
 
-			<!--<div><?php echo "Accepts Medicaid: {$result['acceptsmedicaid']}";?></div>-->
 			<!--<div><?php echo "Accepts Medicare: {$result['acceptsmedicare']}";?></div>-->
-			<div><?php echo ($result['acceptingnew']=='Y')?"Accepting New Patients: Y": "";?></div>
+			<div><?php echo ($result['acceptingnew']=='Y')?"Accepting New Patients: Y": "Not Accepting New Patients";?></div>
 			<div><?php echo ($result['handicap']=='Y')?"Handicap Accessible: Y":"";?></div>
 		</div>
 	</td>
