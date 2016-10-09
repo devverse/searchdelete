@@ -137,7 +137,7 @@
 			?>
 			</div>
 
-			<!--<div><?php echo "Accepts Medicare: {$result['acceptsmedicare']}";?></div>-->
+			<?php echo "Accepts Medicare: {$result['acceptsmedicare']}";?></div>
 			<div><?php echo ($result['acceptingnew']=='Y')?"Accepting New Patients: Y": "Not Accepting New Patients";?></div>
 			<div><?php echo ($result['handicap']=='Y')?"Handicap Accessible: Y":"";?></div>
 		</div>
