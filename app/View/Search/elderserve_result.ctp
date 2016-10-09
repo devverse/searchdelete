@@ -76,7 +76,7 @@
 	<td width="100">
 		<div>
 			<div><?php echo "Phone: {$result['phone']}";?></div>
-			<div><?php echo "Office Hours: {<?php = utf8_encode($result['officehours'])}";?></div>
+			<div><?php echo "Office Hours: {<?= utf8_encode($result['officehours'])}";?></div>
 			<div><?php 
 				if ($result['languages']) {
 					echo "Languages: {$result['languages']}";
