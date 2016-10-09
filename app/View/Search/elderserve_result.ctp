@@ -88,7 +88,7 @@
 	</td>
 	<td width="100">
 		<div>	
-			<div>NPI #: <?php $result['provId'];?> </div>
+			<div>NPI #: <?php echo $result['provId'];?> </div>
 
 			<div>
 			<?php 
