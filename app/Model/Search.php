@@ -1,7 +1,5 @@
 <?php
 
-header("Content-Type: text/plain; charset=ISO-8859-1");
-
 class Search extends AppModel {
 	public $useTable = false;
 	public $limit = false;
