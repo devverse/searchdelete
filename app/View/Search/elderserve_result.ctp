@@ -82,8 +82,15 @@
 					echo "Languages: {$result['languages']}";
 				}
 
-			?></div>
-			<!--<div><?php echo "Service Area: {$result['servicearea']}, {$result['state']}";?></div>-->
+			?>
+			</div>
+			<div>
+			<?php 
+			if ($result['servicearea']) {
+				echo "Service Area: {$result['servicearea']}, {$result['state']}"
+			}
+			?>
+			</div>
 		</div>
 	</td>
 	<td width="100">
@@ -95,11 +102,34 @@
 			}
 			?>
 			</div>
-
-			<!--<div><?php echo "Accepts Medicaid: {$result['acceptsmedicaid']}";?></div>-->
-			<!--<div><?php echo "Accepts Medicare: {$result['acceptsmedicare']}";?></div>-->
-			<div><?php echo ($result['acceptingnew']=='Y')?"Accepting New Patients: Y": "";?></div>
-			<div><?php echo ($result['handicap']=='Y')?"Handicap Accessible: Y":"";?></div>
+			<div>
+			<?php 
+			if ($result['acceptsmedicaid']) {
+				echo "Accepts Medicaid: {$result['acceptsmedicaid']}";
+			}
+			?>
+			</div>
+			<div>
+			<?php 
+			if ($result['acceptsmedicare']) {
+				echo "Accepts Medicare: {$result['acceptsmedicare']}";
+			}
+			?>
+			</div>
+			<div>
+			<?php 
+			if ($result['acceptingnew']) {
+				echo ($result['acceptingnew']=='Y')?"Accepting New Patients: Y": "";
+			}
+			?>
+			</div>
+			<div>
+			<?php 
+			if ($result['handicap']) {
+				echo ($result['handicap']=='Y')?"Handicap Accessible: Y":"";
+			}
+			?>
+			</div>
 		</div>
 	</td>
 </tr>
