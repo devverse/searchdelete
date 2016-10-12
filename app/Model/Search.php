@@ -240,9 +240,9 @@ class Search extends AppModel {
 
 		//SQL_CALC_FOUND_ROWS
 		if($d['practicename'] != ''){
-			$sql = "SELECT SQL_CALC_FOUND_ROWS company, county, lob, provId,category,specialty,practicename,firstname,middlename,lastname,suffix,degree,address,suite,city,state,zip,zip4,county,servicearea,phone,fax,gender,handicap,acceptingnew,acceptsmedicaid,hospaffiliations,languages,officehours,customfield1desc,customfield1ind,customfield2desc,customfield2ind,customfield3desc,customfield3ind,latitude_str,longitude_str,latitude,longitude,id FROM fullrecords WHERE ";
+			$sql = "SELECT SQL_CALC_FOUND_ROWS company, county, lob, provId,category,specialty,practicename,firstname,middlename,lastname,suffix,degree,address,suite,city,state,zip,zip4,county,servicearea,phone,fax,gender,handicap,acceptingnew,acceptsmedicaid,hospaffiliations,languages,officehours,customfield1desc,customfield1ind,customfield2desc,customfield2ind,customfield3desc,customfield3ind,latitude_str,longitude_str,latitude,longitude,id,specialexperince,publictransavailable,certifications FROM fullrecords WHERE ";
 		}else{
-			$sql = "SELECT SQL_CALC_FOUND_ROWS company, county, lob, provId,category,specialty,practicename,firstname,middlename,lastname,suffix,degree,address,suite,city,state,zip,zip4,county,servicearea,phone,fax,gender,handicap,acceptingnew,acceptsmedicaid,hospaffiliations,languages,officehours,customfield1desc,customfield1ind,customfield2desc,customfield2ind,customfield3desc,customfield3ind,latitude_str,longitude_str,latitude,longitude,id FROM fullrecords WHERE ";
+			$sql = "SELECT SQL_CALC_FOUND_ROWS company, county, lob, provId,category,specialty,practicename,firstname,middlename,lastname,suffix,degree,address,suite,city,state,zip,zip4,county,servicearea,phone,fax,gender,handicap,acceptingnew,acceptsmedicaid,hospaffiliations,languages,officehours,customfield1desc,customfield1ind,customfield2desc,customfield2ind,customfield3desc,customfield3ind,latitude_str,longitude_str,latitude,longitude,id,specialexperince,publictransavailable,certifications FROM fullrecords WHERE ";
 		}
 
 		$distance = ($d['distance_c'] != '')? $d['distance_c'] : $d['distance'];
