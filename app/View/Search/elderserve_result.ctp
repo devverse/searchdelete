@@ -152,13 +152,6 @@
 			</div>
 			<div>
 			<?php 
-			if ($result['acceptsmedicare']) {
-				echo "Accepts Medicare: {$result['acceptsmedicare']}";
-			}
-			?>
-			</div>
-			<div>
-			<?php 
 			if ($result['acceptingnew']) {
 				echo ($result['acceptingnew']=='Y')?"Accepting New Patients: Y": "";
 			}
