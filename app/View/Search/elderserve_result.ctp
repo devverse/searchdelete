@@ -87,7 +87,7 @@
 			<div>
 			<?php 
 			if ($result['servicearea']) {
-				echo "Service Area: {$result['servicearea']}, {$result['state']}"
+				echo "Service Area: {$result['servicearea']}, {$result['state']}";
 			}
 			?>
 			</div>
