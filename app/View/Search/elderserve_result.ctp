@@ -131,7 +131,7 @@
 			<div>
 			<?php 
 			if ($result['certifications']) {
-				echo "Board Certified";
+				echo "Board Certified: Y";
 			}
 			?>
 			</div>
