@@ -83,6 +83,8 @@ CREATE TABLE IF NOT EXISTS `fullrecords` (
   `latitude` float NOT NULL,
   `longitude` float NOT NULL,
   `id` int(11) NOT NULL AUTO_INCREMENT,
+  `latitude_str` varchar(180) NOT NULL,
+  `longitude_str` varchar(180) NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `id` (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=262141 ;
