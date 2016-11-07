@@ -72,13 +72,12 @@ $(function(){
         <input id="pracitcename" value="" name="practicename" placeholder="Practice Name" type="text" class="form-control">
         </div>
         <div class="col-sm-8">
-        </div>
-
-        <div class="col-sm-3">
+        <div class="col-sm-2">
             <input id="firstname" value="" name="firstname" placeholder="First Name" type="text" class="form-control">
         </div>
-        <div class="col-sm-3">
+        <div class="col-sm-2">
             <input id="lastname" value="" name="lastname" placeholder="Last Name" type="text" class="form-control">
+        </div>
         </div>
 
     </div>
