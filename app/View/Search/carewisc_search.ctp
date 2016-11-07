@@ -69,22 +69,25 @@ $(function(){
         <!--IF typed delete practice name-->
         
         <div class="col-sm-6">
-        <input id="pracitcename" value="" name="practicename" placeholder="Practice Name" type="text" class="form-control">
+        <input id="practicename" value="" name="practicename" placeholder="Practice Name" type="text" class="form-control">
         </div>
+    </div>
+
+    <div class="form-group searchtype-name" style="display:none">
         <label class="col-sm-2 control-label">First Name</label>
         <!--IF typed delete practice name-->
         
-        <div class="form-group">
-        <div class="col-sm-3">
+        <div class="col-sm-6">
         <input id="firstname" value="" name="firstname" placeholder="First Name" type="text" class="form-control">
         </div>
+    </div>
+
+    <div class="form-group searchtype-name" style="display:none">
         <label class="col-sm-2 control-label">Last Name</label>
-       </div>
+        <!--IF typed delete practice name-->
         
-        <div class="form-group">
-        <div class="col-sm-3">
+        <div class="col-sm-6">
         <input id="lastname" value="" name="lastname" placeholder="Last Name" type="text" class="form-control">
-        </div>
         </div>
     </div>
 
