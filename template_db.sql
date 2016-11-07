@@ -80,6 +80,8 @@ CREATE TABLE IF NOT EXISTS `fullrecords` (
   `customfield2ind` text NOT NULL,
   `customfield3desc` varchar(30) NOT NULL,
   `customfield3ind` text NOT NULL,
+  `latitude_str` varchar(20) NOT NULL,
+  `longitude_str` varchar(20) NOT NULL,
   `latitude` float NOT NULL,
   `longitude` float NOT NULL,
   `id` int(11) NOT NULL AUTO_INCREMENT,
