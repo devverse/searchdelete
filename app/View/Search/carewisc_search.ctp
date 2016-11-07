@@ -71,15 +71,18 @@ $(function(){
         <div class="col-sm-6">
         <input id="pracitcename" value="" name="practicename" placeholder="Practice Name" type="text" class="form-control">
         </div>
-        <div class="col-sm-8">
-        <div class="col-sm-2">
-            <input id="firstname" value="" name="firstname" placeholder="First Name" type="text" class="form-control">
+        <label class="col-sm-2 control-label">First Name</label>
+        <!--IF typed delete practice name-->
+        
+        <div class="col-sm-6">
+        <input id="firstname" value="" name="firstname" placeholder="First Name" type="text" class="form-control">
         </div>
-        <div class="col-sm-2">
-            <input id="lastname" value="" name="lastname" placeholder="Last Name" type="text" class="form-control">
+        <label class="col-sm-2 control-label">Last Name</label>
+        <!--IF typed delete practice name-->
+        
+        <div class="col-sm-6">
+        <input id="lastname" value="" name="lastname" placeholder="Last Name" type="text" class="form-control">
         </div>
-        </div>
-
     </div>
 
 <div class="searchtype-location" style="display:none"><!--Beginingof Adresses-->
