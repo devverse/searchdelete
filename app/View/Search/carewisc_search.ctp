@@ -70,6 +70,15 @@ $(function(){
         <div class="col-sm-6">
         <input id="pracitcename" value="" name="practicename" placeholder="Practice Name" type="text" class="form-control">
         </div>
+        <div class="col-sm-3">
+            <input id="firstname" value="" name="firstname" placeholder="First Name" type="text" class="form-control">
+        </div>
+        <div class="col-sm-1">
+            <div style="margin-top:5px">AND</div>
+        </div>
+        <div class="col-sm-3">
+            <input id="lastname" value="" name="lastname" placeholder="Last Name" type="text" class="form-control">
+        </div>
     </div>
 
 <div class="searchtype-location" style="display:none"><!--Beginingof Adresses-->
