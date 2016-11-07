@@ -74,14 +74,17 @@ $(function(){
         <label class="col-sm-2 control-label">First Name</label>
         <!--IF typed delete practice name-->
         
-        <div class="col-sm-6">
+        <div class="form-group">
+        <div class="col-sm-3">
         <input id="firstname" value="" name="firstname" placeholder="First Name" type="text" class="form-control">
         </div>
         <label class="col-sm-2 control-label">Last Name</label>
-        <!--IF typed delete practice name-->
+       </div>
         
-        <div class="col-sm-6">
+        <div class="form-group">
+        <div class="col-sm-3">
         <input id="lastname" value="" name="lastname" placeholder="Last Name" type="text" class="form-control">
+        </div>
         </div>
     </div>
 
