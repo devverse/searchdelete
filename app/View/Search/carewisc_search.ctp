@@ -37,7 +37,7 @@ $(function(){
         $('form').on('click','#singlebutton',function()
         {
             var flashmsg = false;
-
+            
             if(current_search=='name' && $('select[name=providertype_name]').val()=='none' && $('#pracitcename').val()=='' && $('select[name=specialtie_name]').val()=='none')
                 flashmsg = 'Please type in a practice name or select a provider type.'
            
@@ -73,20 +73,22 @@ $(function(){
         <input id="practicename" value="" name="practicename" placeholder="Practice Name" type="text" class="form-control">
         </div>
     </div>
-    
-  <div class="form-group searchtype-name" >
-        <label class="col-sm-2 control-label">Provider Name</label>
+
+    <div class="form-group searchtype-name" style="display:none">
+        <label class="col-sm-2 control-label">First Name</label>
         <!--IF typed delete practice name-->
-        <div>
-        <div class="col-sm-3">
-            <input id="firstname" value="" name="firstname" placeholder="First Name" type="text" class="form-control">
+        
+        <div class="col-sm-6">
+        <input id="firstname" value="" name="firstname" placeholder="First Name" type="text" class="form-control">
         </div>
-        <div class="col-sm-1">
-            <div style="margin-top:5px">AND</div>
-        </div>
-        <div class="col-sm-3">
-            <input id="lastname" value="" name="lastname" placeholder="Last Name" type="text" class="form-control">
-        </div>
+    </div>
+
+    <div class="form-group searchtype-name" style="display:none">
+        <label class="col-sm-2 control-label">Last Name</label>
+        <!--IF typed delete practice name-->
+        
+        <div class="col-sm-6">
+        <input id="lastname" value="" name="lastname" placeholder="Last Name" type="text" class="form-control">
         </div>
     </div>
 
