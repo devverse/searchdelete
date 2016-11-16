@@ -1,5 +1,4 @@
-<!-- File: /app/View/Search/search1.ctp -->
-
+<?php echo $this->Session->flash(); ?>
 <div class="container" id="providersearch"> <!--container -->
 <h2><span class="glyphicon glyphicon-search"></span> Search Form <?php echo($network_name!='')?'- '.$network_name:'';?></h2>
 <p>You will be able to choose Provider Type and Specialty on the next page.<br>Click on one of the other areas to include in your search.</p>
@@ -65,7 +64,7 @@ $(function(){
 
     <input type="hidden" name="network_name" value="<?=$network_name?>"/>
     <input name="debug" type="hidden" value="false">
-    
+
     <div class="form-group searchtype-name" style="display:none">
         <label class="col-sm-2 control-label">Provider Name</label>
         <!--IF typed delete practice name-->
@@ -360,7 +359,7 @@ $(function(){
     </div>
     </div>
     
-      <div class="form-group" style="display:none">
+    <div class="form-group" style="display:none">
     <label class="col-sm-2 control-label">First Name</label>
     <div class="col-sm-6">
     <input value=""  name="firstname" placeholder="firstname" type="text" class="form-control">
