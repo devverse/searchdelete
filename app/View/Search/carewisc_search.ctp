@@ -37,7 +37,7 @@ $(function(){
         $('form').on('click','#singlebutton',function()
         {
             var flashmsg = false;
-            
+
             if(current_search=='name' && $('select[name=providertype_name]').val()=='none' && $('#pracitcename').val()=='' && $('select[name=specialtie_name]').val()=='none')
                 flashmsg = 'Please type in a practice name or select a provider type.'
            
@@ -64,7 +64,8 @@ $(function(){
 <form action="/search/<?php echo $client_url_name;?>/result" method="post" class="form-horizontal">
 
     <input type="hidden" name="network_name" value="<?=$network_name?>"/>
-
+    <input name="debug" type="hidden" value="false">
+    
     <div class="form-group searchtype-name" style="display:none">
         <label class="col-sm-2 control-label">Provider Name</label>
         <!--IF typed delete practice name-->
