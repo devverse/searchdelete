@@ -37,6 +37,7 @@ $(function(){
         $('form').on('click','#singlebutton',function()
         {
             var flashmsg = false;
+            
             if(current_search=='name' && $('select[name=providertype_name]').val()=='none' && $('#pracitcename').val()=='' && $('select[name=specialtie_name]').val()=='none')
                 flashmsg = 'Please type in a practice name or select a provider type.'
            
