@@ -58,16 +58,16 @@ class Search extends AppModel {
              	),
             ),
 
-			'firstname'=>array(
-				'AlphaNumeric Characters only' => array(
-	                'rule'     => array('custom', '/^[a-z0-9 ]*$/i'),
-	                'allowEmpty' => true
-            )),
-			'lastname'=>array(
-				'AlphaNumeric Characters only' => array(
-	                'rule'     => array('custom', '/^[a-z0-9 ]*$/i'),
-	                'allowEmpty' => true,
-            )),
+			// 'firstname'=>array(
+			// 	'AlphaNumeric Characters only' => array(
+	  //               'rule'     => array('custom', '/^[a-z0-9 ]*$/i'),
+	  //               'allowEmpty' => true
+   //          )),
+			// 'lastname'=>array(
+			// 	'AlphaNumeric Characters only' => array(
+	  //               'rule'     => array('custom', '/^[a-z0-9 ]*$/i'),
+	  //               'allowEmpty' => true,
+   //          )),
 			// 'practicename'=>array(
 			// 	'alphaNumeric' => array(
 	  //               'rule'     => array('custom', '/^[a-z0-9 ]*$/i'),

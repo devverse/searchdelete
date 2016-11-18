@@ -1,5 +1,4 @@
-<!-- File: /app/View/Search/search1.ctp -->
-
+<?php echo $this->Session->flash(); ?>
 <div class="container" id="providersearch"> <!--container -->
 <h2><span class="glyphicon glyphicon-search"></span> Search Form <?php echo($network_name!='')?'- '.$network_name:'';?></h2>
 <p>You will be able to choose Provider Type and Specialty on the next page.<br>Click on one of the other areas to include in your search.</p>
@@ -37,6 +36,7 @@ $(function(){
         $('form').on('click','#singlebutton',function()
         {
             var flashmsg = false;
+
             if(current_search=='name' && $('select[name=providertype_name]').val()=='none' && $('#pracitcename').val()=='' && $('select[name=specialtie_name]').val()=='none')
                 flashmsg = 'Please type in a practice name or select a provider type.'
            
@@ -63,12 +63,32 @@ $(function(){
 <form action="/search/<?php echo $client_url_name;?>/result" method="post" class="form-horizontal">
 
     <input type="hidden" name="network_name" value="<?=$network_name?>"/>
+    <input name="debug" type="hidden" value="false">
 
     <div class="form-group searchtype-name" style="display:none">
         <label class="col-sm-2 control-label">Provider Name</label>
         <!--IF typed delete practice name-->
+        
         <div class="col-sm-6">
-        <input id="pracitcename" value="" name="practicename" placeholder="Practice Name" type="text" class="form-control">
+        <input id="practicename" value="" name="practicename" placeholder="Practice Name" type="text" class="form-control">
+        </div>
+    </div>
+
+    <div class="form-group searchtype-name" style="display:none">
+        <label class="col-sm-2 control-label">First Name</label>
+        <!--IF typed delete practice name-->
+        
+        <div class="col-sm-6">
+        <input id="firstname" value="" name="firstname" placeholder="First Name" type="text" class="form-control">
+        </div>
+    </div>
+
+    <div class="form-group searchtype-name" style="display:none">
+        <label class="col-sm-2 control-label">Last Name</label>
+        <!--IF typed delete practice name-->
+        
+        <div class="col-sm-6">
+        <input id="lastname" value="" name="lastname" placeholder="Last Name" type="text" class="form-control">
         </div>
     </div>
 
@@ -339,7 +359,9 @@ $(function(){
     </div>
     </div>
     
-<!--       <div class="form-group" style="display:none">
+    <!--
+    <div class="form-group" style="display:none">
+
     <label class="col-sm-2 control-label">First Name</label>
     <div class="col-sm-6">
     <input value=""  name="firstname" placeholder="firstname" type="text" class="form-control">
