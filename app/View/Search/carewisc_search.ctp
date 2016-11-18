@@ -339,7 +339,7 @@ $(function(){
     </div>
     </div>
     
-      <div class="form-group" style="display:none">
+<!--       <div class="form-group" style="display:none">
     <label class="col-sm-2 control-label">First Name</label>
     <div class="col-sm-6">
     <input value=""  name="firstname" placeholder="firstname" type="text" class="form-control">
@@ -349,7 +349,7 @@ $(function(){
     <label class="col-sm-2 control-label">Last Name</label>
     <div class="col-sm-6">
     <input value=""  name="lastname" placeholder="lastname" type="text" class="form-control">
-    </div>
+    </div> -->
     
     </div>
     <div class="form-group" style="display:none">
